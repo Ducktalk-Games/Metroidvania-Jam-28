@@ -1,9 +1,13 @@
 # "repurposed" from https://github.com/abarichello/godot-ci
 name: "godot-ci export"
 on:
-  workflow_dispatch:
-  schedule:
-    - chron: "0 0 * * *"
+  workflow_dispatch: # manual
+  pull_request: # PR's to 'main'
+    types: [created, edited, synchronize]
+    branches:
+      - main
+  schedule: # also, once per day
+    - cron: "0 0 * * *"
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
 
 env:
@@ -65,7 +69,7 @@ jobs:
           mkdir -v -p build/linux
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Linux/X11" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
+          godot --headless --verbose --export-release "Linux" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:

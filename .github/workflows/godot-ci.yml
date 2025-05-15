@@ -7,7 +7,7 @@ on:
     branches:
       - main
   schedule: # also, once per day
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
 
 env:
@@ -43,7 +43,8 @@ jobs:
         with:
           name: windows
           path: build/windows
-      - name: itch deploy - Windows
+      - name: itch deploy - Windows # These deploys only run on the schedule or manual workflows
+        if: ${{ github.event.schedule == '0 0 * * *' }} || ${{ github.event_name == 'workflow_dispatch' }}
         env:
           ITCHIO_USERNAME: ${{ secrets.itchio_username }}
           ITCHIO_GAME: ${{ secrets.itchio_game }}
@@ -76,6 +77,7 @@ jobs:
           name: linux
           path: build/linux
       - name: itch deploy - Linux
+        if: ${{ github.event.schedule == '0 0 * * *' }} || ${{ github.event_name == 'workflow_dispatch' }}
         env:
           ITCHIO_USERNAME: ${{ secrets.itchio_username }}
           ITCHIO_GAME: ${{ secrets.itchio_game }}
@@ -116,6 +118,7 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: build/web # The folder the action should deploy.
       - name: itch deploy - web
+        if: ${{ github.event.schedule == '0 0 * * *' }} || ${{ github.event_name == 'workflow_dispatch' }}
         env:
           ITCHIO_USERNAME: ${{ secrets.itchio_username }}
           ITCHIO_GAME: ${{ secrets.itchio_game }}

@@ -1,13 +1,15 @@
 # "repurposed" from https://github.com/abarichello/godot-ci
 name: "godot-ci export"
-on: push
-
+on:
+  workflow_dispatch:
+  schedule:
+    - chron: "0 0 * * *"
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
 
 env:
   GODOT_VERSION: 4.4.1
-  EXPORT_NAME: test_proj
-  PROJECT_PATH: test_proj
+  EXPORT_NAME: metroid_vania_28 # TODO: Replace me
+  PROJECT_PATH: "."
 
 jobs:
   export-windows:
@@ -37,6 +39,12 @@ jobs:
         with:
           name: windows
           path: build/windows
+      - name: itch deploy - Windows
+        env:
+          ITCHIO_USERNAME: ${{ secrets.itchio_username }}
+          ITCHIO_GAME: ${{ secrets.itchio_game }}
+          BUTLER_API_KEY: ${{ secrets.butler_api_key }}
+        run: butler push ./build/windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
 
   export-linux:
     name: Linux Export
@@ -63,6 +71,12 @@ jobs:
         with:
           name: linux
           path: build/linux
+      - name: itch deploy - Linux
+        env:
+          ITCHIO_USERNAME: ${{ secrets.itchio_username }}
+          ITCHIO_GAME: ${{ secrets.itchio_game }}
+          BUTLER_API_KEY: ${{ secrets.butler_api_key }}
+        run: butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
 
   export-web:
     name: Web Export
@@ -97,3 +111,9 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build/web # The folder the action should deploy.
+      - name: itch deploy - web
+        env:
+          ITCHIO_USERNAME: ${{ secrets.itchio_username }}
+          ITCHIO_GAME: ${{ secrets.itchio_game }}
+          BUTLER_API_KEY: ${{ secrets.butler_api_key }}
+        run: butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:html5 # NOTE: per butler docs, this may fail on first push

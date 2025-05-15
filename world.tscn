@@ -1,26 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbw51itpvaycj"]
+[gd_scene load_steps=6 format=3 uid="uid://dbw51itpvaycj"]
 
-[ext_resource type="Texture2D" uid="uid://c6yo24mdtt60f" path="res://icon.svg" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://bqgw21u1uc27g" path="res://rotating_cube.gd" id="1_f3sb7"]
 
-[node name="World" type="Node2D"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(334, 279)
-texture = ExtResource("1_f3sb7")
+[sub_resource type="Sky" id="Sky_f3sb7"]
+sky_material = SubResource("ProceduralSkyMaterial_gv5m4")
 
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(513, 170)
-texture = ExtResource("1_f3sb7")
+[sub_resource type="Environment" id="Environment_fj7yv"]
+background_mode = 1
+background_color = Color(0.00430048, 0.00532306, 0.0117329, 1)
+sky = SubResource("Sky_f3sb7")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.14
+glow_hdr_threshold = 1.01
 
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(471, 407)
-texture = ExtResource("1_f3sb7")
+[sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
 
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(699, 275)
-texture = ExtResource("1_f3sb7")
+[node name="World" type="Node3D"]
 
-[node name="Icon5" type="Sprite2D" parent="."]
-position = Vector2(671, 450)
-rotation = 0.600192
-texture = ExtResource("1_f3sb7")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fj7yv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="RotatingCube" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gv5m4")
+script = ExtResource("1_f3sb7")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-0.707107, -0.333709, 0.623409, -1.49012e-08, 0.881633, 0.471935, -0.707107, 0.333709, -0.623409, 0, 0, 0)
+spring_length = 2.36
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]

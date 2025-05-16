@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbw51itpvaycj"]
 
-[ext_resource type="Script" uid="uid://bqgw21u1uc27g" path="res://rotating_cube.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://bqgw21u1uc27g" path="res://scripts/rotating_cube.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cu4fnku2rcoth" path="res://assets/duck.glb" id="2_fj7yv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
@@ -29,6 +29,21 @@ adjustment_saturation = 0.75
 
 [sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
 
+[sub_resource type="Animation" id="Animation_tlwt5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuackLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_fj7yv"]
 resource_name = "quack_hide"
 loop_mode = 1
@@ -43,21 +58,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_tlwt5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("QuackLabel:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aqk2v"]

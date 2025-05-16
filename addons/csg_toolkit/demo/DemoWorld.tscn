@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bltlelosbn4ky"]
+
+[ext_resource type="Script" path="res://addons/csg_toolkit/scripts/csg_spreader_3d.gd" id="1_oripl"]
+[ext_resource type="Script" path="res://addons/csg_toolkit/scripts/csg_repeater_3d.gd" id="2_fsnkg"]
+
+[node name="DemoWorld" type="Node3D"]
+
+[node name="CSGSpreader3D" type="CSGCombiner3D" parent="."]
+script = ExtResource("1_oripl")
+template_node_path = NodePath("CSGRepeater3D")
+allow_rotation = true
+
+[node name="CSGRepeater3D" type="CSGCombiner3D" parent="CSGSpreader3D"]
+script = ExtResource("2_fsnkg")
+template_node_path = NodePath("CSGCombiner3D")
+repeat = Vector3(2, 3, 1)
+spacing = Vector3(2, 1.5, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGSpreader3D/CSGRepeater3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGSpreader3D/CSGRepeater3D/CSGCombiner3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGSpreader3D/CSGRepeater3D/CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318927, 0.602158, -0.501595)

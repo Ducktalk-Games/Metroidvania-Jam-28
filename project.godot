@@ -15,10 +15,19 @@ run/main_scene="uid://dbw51itpvaycj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [rendering]
 

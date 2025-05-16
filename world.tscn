@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbw51itpvaycj"]
+[gd_scene load_steps=10 format=3 uid="uid://dbw51itpvaycj"]
 
 [ext_resource type="Script" uid="uid://bqgw21u1uc27g" path="res://rotating_cube.gd" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://cu4fnku2rcoth" path="res://assets/duck.glb" id="2_fj7yv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -13,14 +14,57 @@ sky_material = SubResource("ProceduralSkyMaterial_gv5m4")
 
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 1
-background_color = Color(0.00430048, 0.00532306, 0.0117329, 1)
+background_color = Color(0.00139845, 0.00173106, 0.00381637, 1)
 sky = SubResource("Sky_f3sb7")
+ambient_light_source = 2
+ambient_light_color = Color(0.404511, 0.404511, 0.404511, 1)
 tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.14
 glow_hdr_threshold = 1.01
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_contrast = 1.18
+adjustment_saturation = 0.75
 
 [sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
+
+[sub_resource type="Animation" id="Animation_fj7yv"]
+resource_name = "quack_hide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuackLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.86),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tlwt5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuackLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqk2v"]
+_data = {
+&"RESET": SubResource("Animation_tlwt5"),
+&"quack_hide": SubResource("Animation_fj7yv")
+}
 
 [node name="World" type="Node3D"]
 
@@ -28,15 +72,40 @@ glow_hdr_threshold = 1.01
 environment = SubResource("Environment_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.158489, -0.855081, 0.493679, 1.47562e-08, 0.499998, 0.866027, -0.987361, -0.137256, 0.0792451, 0, 0, 0)
+light_energy = 0.241
 shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 6.063
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.960826, -0.24002, 0.138576, 2.42029e-08, 0.499998, 0.866026, -0.277149, 0.832101, -0.480412, 0, 0, 0)
+light_energy = 0.34
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 6.063
 
 [node name="RotatingCube" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gv5m4")
 script = ExtResource("1_f3sb7")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(-0.707107, -0.333709, 0.623409, -1.49012e-08, 0.881633, 0.471935, -0.707107, 0.333709, -0.623409, 0, 0, 0)
+[node name="Duck" parent="RotatingCube" instance=ExtResource("2_fj7yv")]
+transform = Transform3D(1.7442, 0, 0, 0, 1.7442, 0, 0, 0, 1.7442, 0, 0.479748, 0)
+
+[node name="QuackLabel" type="Label3D" parent="RotatingCube/Duck"]
+transform = Transform3D(0.735719, 0, 0, 0, 0.735719, 0, 0, 0, 0.735719, 0, 0.441166, 0)
+visible = false
+billboard = 1
+text = "QUACK"
+
+[node name="QuackAnim" type="AnimationPlayer" parent="RotatingCube/Duck"]
+libraries = {
+&"": SubResource("AnimationLibrary_aqk2v")
+}
+autoplay = "quack_hide"
+
+[node name="SpringArm" type="SpringArm3D" parent="."]
+transform = Transform3D(-0.707107, -0.333709, 0.623409, -1.49012e-08, 0.881633, 0.471935, -0.707107, 0.333709, -0.623409, 0, 0.334229, 0)
 spring_length = 2.36
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+[node name="MainCamera" type="Camera3D" parent="SpringArm"]

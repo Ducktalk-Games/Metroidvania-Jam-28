@@ -12,7 +12,7 @@ on:
 
 env:
   GODOT_VERSION: 4.4.1
-  EXPORT_NAME: metroid_vania_28 # TODO: Replace me
+  EXPORT_NAME: "The Play" # TODO: Replace me
   PROJECT_PATH: "."
 
 jobs:

@@ -70,6 +70,7 @@ shadow_blur = 6.063
 
 [node name="Kid" type="Node3D" parent="." node_paths=PackedStringArray("debug_label")]
 script = ExtResource("1_ecxui")
+current_controller_mode = null
 speed = 3.0
 debug_label = NodePath("../DebugLog/DebugLabel")
 

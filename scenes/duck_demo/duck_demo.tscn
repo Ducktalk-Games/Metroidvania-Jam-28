@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbw51itpvaycj"]
 
-[ext_resource type="PackedScene" uid="uid://cu4fnku2rcoth" path="res://assets/duck_demo/duck.glb" id="1_dvmjv"]
+[ext_resource type="PackedScene" uid="uid://cu4fnku2rcoth" path="res://assets/duck_demo/SM_Duck.glb" id="1_dvmjv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)

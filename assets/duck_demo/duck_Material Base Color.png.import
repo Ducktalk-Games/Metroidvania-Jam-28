@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckdrwg762ga0g"
-path.s3tc="res://.godot/imported/duck_Material Base Color.png-1b7e8f2236c28b3dbaed8cb08777516a.s3tc.ctex"
+path.s3tc="res://.godot/imported/duck_Material Base Color.png-2ac685e53141b6cdb110296a2a7c6096.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/duck_Material Base Color.png"
-dest_files=["res://.godot/imported/duck_Material Base Color.png-1b7e8f2236c28b3dbaed8cb08777516a.s3tc.ctex"]
+source_file="res://assets/duck_demo/duck_Material Base Color.png"
+dest_files=["res://.godot/imported/duck_Material Base Color.png-2ac685e53141b6cdb110296a2a7c6096.s3tc.ctex"]
 
 [params]
 

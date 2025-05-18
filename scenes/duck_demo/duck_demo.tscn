@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbw51itpvaycj"]
 
-[ext_resource type="Script" uid="uid://bqgw21u1uc27g" path="res://scripts/rotating_cube.gd" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://cu4fnku2rcoth" path="res://assets/duck.glb" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://cu4fnku2rcoth" path="res://assets/duck_demo/duck.glb" id="1_dvmjv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -28,6 +27,14 @@ adjustment_contrast = 1.18
 adjustment_saturation = 0.75
 
 [sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
+
+[sub_resource type="GDScript" id="GDScript_vmuip"]
+resource_name = "rotating_cube"
+script/source = "extends MeshInstance3D
+
+func _process(delta: float) -> void:
+	rotate(Vector3.UP, delta)
+"
 
 [sub_resource type="Animation" id="Animation_tlwt5"]
 length = 0.001
@@ -87,9 +94,9 @@ shadow_blur = 6.063
 
 [node name="RotatingCube" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gv5m4")
-script = ExtResource("1_f3sb7")
+script = SubResource("GDScript_vmuip")
 
-[node name="Duck" parent="RotatingCube" instance=ExtResource("2_fj7yv")]
+[node name="Duck" parent="RotatingCube" instance=ExtResource("1_dvmjv")]
 transform = Transform3D(1.7442, 0, 0, 0, 1.7442, 0, 0, 0, 1.7442, 0, 0.479748, 0)
 
 [node name="QuackLabel" type="Label3D" parent="RotatingCube/Duck"]

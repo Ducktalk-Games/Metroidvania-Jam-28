@@ -36,3 +36,7 @@ window/stretch/aspect="keep_width"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

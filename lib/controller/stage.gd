@@ -2,12 +2,12 @@ class_name Stage
 extends Node3D
 
 enum EController {
-	KID,
-	SCENARIO
+	CHILD,
+	STAGE
 }
 
 @export
-var current_controller: EController = EController.SCENARIO
+var current_controller: EController = EController.STAGE
 
 @export
 var speed: float = 0.3
@@ -31,11 +31,11 @@ func _physics_process(delta: float) -> void:
 
 func process_active_body() -> void:
 	match current_controller:
-		EController.KID:
+		EController.CHILD:
 			player_child_body.velocity.x = input_direction * speed
 			player_child_body.move_and_slide()
 
-		EController.SCENARIO:
+		EController.STAGE:
 			stage_body.velocity.x = input_direction * speed
 			stage_body.move_and_slide()
 
@@ -43,11 +43,11 @@ func process_active_body() -> void:
 func _input(event: InputEvent) -> void:
 	input_direction = Input.get_axis("move_left", "move_right")
 
-	if (Input.is_action_just_pressed("switch") && current_controller == EController.SCENARIO):
-		current_controller = EController.KID
+	if (Input.is_action_just_pressed("switch") && current_controller == EController.STAGE):
+		current_controller = EController.CHILD
 
-	elif(Input.is_action_just_pressed("switch") && current_controller == EController.KID):
-		current_controller = EController.SCENARIO
+	elif(Input.is_action_just_pressed("switch") && current_controller == EController.CHILD):
+		current_controller = EController.STAGE
 
 
 # Logs debug information about the controller on the screen

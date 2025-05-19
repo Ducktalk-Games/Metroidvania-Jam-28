@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="The Play"
-run/main_scene="uid://dbw51itpvaycj"
+run/main_scene="uid://ccfmtiaxoyqck"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -37,7 +37,6 @@ config/icon="res://icon.svg"
 
 CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [debug]

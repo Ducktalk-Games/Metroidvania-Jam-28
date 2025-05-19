@@ -39,7 +39,7 @@ adjustment_saturation = 0.75
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
-size = Vector3(16.013, 0.130249, 1)
+size = Vector3(16.013, 0.130249, 2.20679)
 
 [node name="Stage" type="Node3D"]
 
@@ -68,9 +68,10 @@ shadow_enabled = true
 shadow_opacity = 0.8
 shadow_blur = 6.063
 
-[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("debug_label")]
+[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
 speed = 3.0
+current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage"]
@@ -89,8 +90,6 @@ shape = SubResource("CapsuleShape3D_erodg")
 [node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-collision_layer = 2
-collision_mask = 2
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 
@@ -106,8 +105,12 @@ spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Stage/SpringArm3D"]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="StaticFloor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112076, -1.17205, 0)
 
-[node name="Floor" type="CollisionShape3D" parent="Area3D"]
+[node name="Floor" type="CollisionShape3D" parent="StaticFloor"]
+shape = SubResource("BoxShape3D_erodg")
+
+[node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.06454)
 shape = SubResource("BoxShape3D_erodg")

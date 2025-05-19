@@ -1,6 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=16 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
+[ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
+[ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
+[ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
+[ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
+[ext_resource type="Script" uid="uid://bn7or7ah5u3gm" path="res://lib/components/can_receive_input.gd" id="6_d1yl1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -70,7 +75,6 @@ shadow_blur = 6.063
 
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
-speed = 3.0
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
@@ -79,6 +83,23 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
+script = ExtResource("2_a221a")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
+
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody"]
+script = ExtResource("2_3kwj0")
+jump_max = 6.0
+speed = 2.0
+
+[node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("3_a221a")
+
+[node name="CanMove" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("5_pf3bu")
+speed = 2.0
+
+[node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("6_d1yl1")
 
 [node name="StageMesh" type="MeshInstance3D" parent="Stage/StageBody"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -92,12 +113,25 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
+script = ExtResource("2_a221a")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="PlayerChildMesh" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody"]
 mesh = SubResource("CapsuleMesh_ecxui")
 
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
 shape = SubResource("CapsuleShape3D_ecxui")
+
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody"]
+script = ExtResource("2_3kwj0")
+speed = 2.0
+
+[node name="CanMove" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
+script = ExtResource("5_pf3bu")
+speed = 2.0
+
+[node name="CanReceiveInput" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
+script = ExtResource("6_d1yl1")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.78454)

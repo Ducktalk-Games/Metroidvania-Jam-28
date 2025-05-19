@@ -2,64 +2,52 @@ class_name Stage
 extends Node3D
 
 @export
-var speed: float = 0.3
-
-@export
-var jump_max: float = 6.0
-
-@export
-var current_body: CharacterBody3D
+var current_body: Character
 
 @export
 var debug_label: Label
 
 @onready
-var stage_body: CharacterBody3D = %StageBody
+var stage_body: Character = %StageBody
 
 @onready
-var player_child_body: CharacterBody3D = %PlayerChildBody
+var player_child_body: Character = %PlayerChildBody
 
-var input_direction: float
-var jump_pressed: bool
+
+func _ready() -> void:
+	update_controllers()
+
+
+# Enable and disable the stage and player components according to the current body
+func update_controllers() -> void:
+	match current_body:
+		stage_body:
+			stage_body.can_move.enable()
+			player_child_body.can_move.disable()
+
+		player_child_body:
+			player_child_body.can_move.enable()
+			stage_body.can_move.disable()
 
 
 func _physics_process(_delta: float) -> void:
-	process_active_body()
 	debug_log()
 
 
-func process_active_body() -> void:
-	handle_fall()
-	handle_jump()
-	current_body.velocity.x = input_direction * speed
-	current_body.move_and_slide()
-
-
-func handle_fall() -> void:
-	current_body.velocity.y += current_body.get_gravity().y * 0.02
-
-
-func handle_jump() -> void:
-	if current_body.is_on_floor():
-		if jump_pressed:
-			current_body.velocity.y = jump_max
-			jump_pressed = false
-		else:
-			current_body.velocity.y = 0.0
-
-
 func _input(event: InputEvent) -> void:
-	input_direction = Input.get_axis("move_left", "move_right")
-
 	if Input.is_action_just_pressed("switch"):
-		match current_body:
-			stage_body:
-				current_body = player_child_body
+		switch_current_body()
 
-			player_child_body:
-				current_body = stage_body
 
-	jump_pressed = Input.is_action_just_pressed("jump")
+func switch_current_body() -> void:
+	match current_body:
+		stage_body:
+			current_body = player_child_body
+
+		player_child_body:
+			current_body = stage_body
+
+	update_controllers()
 
 
 # Logs debug information about the controller on the screen

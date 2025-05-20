@@ -45,14 +45,15 @@ func _input(event: InputEvent) -> void:
 
 
 func switch_current_body() -> void:
-	match current_body:
-		stage_body:
-			current_body = player_child_body
+	if (current_body.is_on_floor()):
+		match current_body:
+			stage_body:
+				current_body = player_child_body
 
-		player_child_body:
-			current_body = stage_body
+			player_child_body:
+				current_body = stage_body
 
-	update_controllers()
+		update_controllers()
 
 
 # Logs debug information about the controller on the screen

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=20 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
 [ext_resource type="Script" uid="uid://bn7or7ah5u3gm" path="res://lib/components/can_receive_input.gd" id="6_d1yl1"]
 [ext_resource type="PackedScene" uid="uid://dmsdctniaxke5" path="res://dialogue_balloons/dialogue_container.tscn" id="7_d1yl1"]
+[ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
+[ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -46,6 +48,11 @@ adjustment_saturation = 0.75
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ljyi0"]
 viewport_path = NodePath("SubViewport")
+[sub_resource type="SphereShape3D" id="SphereShape3D_ljyi0"]
+radius = 1.84929
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kb6yy"]
+radius = 0.982268
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
 size = Vector3(16.013, 0.130249, 2.20679)
@@ -126,9 +133,14 @@ mesh = SubResource("CapsuleMesh_ecxui")
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
 shape = SubResource("CapsuleShape3D_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody"]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("2_3kwj0")
 speed = 2.0
+value = 50.0
+delay_seconds = 1.0
+continuous = false
+hit_area = NodePath("../PlayerHitArea")
+health = 100.0
 
 [node name="CanMove" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("5_pf3bu")
@@ -141,6 +153,53 @@ script = ExtResource("6_d1yl1")
 unique_name_in_owner = true
 transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
 texture = SubResource("ViewportTexture_ljyi0")
+[node name="CanAttack" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner" node_paths=PackedStringArray("hit_area")]
+script = ExtResource("7_ljyi0")
+value = 50.0
+continuous = false
+hit_area = NodePath("../../PlayerHitArea")
+
+[node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
+script = ExtResource("8_kb6yy")
+
+[node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody/PlayerHitArea"]
+shape = SubResource("SphereShape3D_ljyi0")
+
+[node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0, 3)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
+script = ExtResource("2_a221a")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
+
+[node name="EnemyChildMesh" type="MeshInstance3D" parent="Stage/StageBody/EnemyTemp"]
+mesh = SubResource("CapsuleMesh_ecxui")
+
+[node name="EnemyChildCollision" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp"]
+shape = SubResource("CapsuleShape3D_ecxui")
+
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/EnemyTemp" node_paths=PackedStringArray("hit_area")]
+script = ExtResource("2_3kwj0")
+value = 10.0
+delay_seconds = 1.0
+continuous = true
+hit_area = NodePath("../EnemyHitArea")
+health = 100.0
+
+[node name="CanAttack" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("hit_area")]
+script = ExtResource("7_ljyi0")
+hit_area = NodePath("../../EnemyHitArea")
+
+[node name="HasHealth" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner"]
+script = ExtResource("8_kb6yy")
+
+[node name="EnemyHitArea" type="Area3D" parent="Stage/StageBody/EnemyTemp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp/EnemyHitArea"]
+shape = SubResource("SphereShape3D_kb6yy")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.78454)
@@ -149,6 +208,7 @@ spring_length = 5.0
 [node name="Camera3D" type="Camera3D" parent="Stage/SpringArm3D"]
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112076, -1.17205, 0)
 
 [node name="Floor" type="CollisionShape3D" parent="StaticFloor"]

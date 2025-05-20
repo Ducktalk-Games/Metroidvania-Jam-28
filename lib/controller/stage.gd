@@ -22,12 +22,26 @@ func _ready() -> void:
 func update_controllers() -> void:
 	match current_body:
 		stage_body:
-			stage_body.can_move.enable()
-			player_child_body.can_move.disable()
+			var sb_canmove: CanMove = Component.find(stage_body, "CanMove") as CanMove
+
+			if sb_canmove:
+				sb_canmove.enable()
+
+			var cb_canmove: CanMove = Component.find(player_child_body, "CanMove") as CanMove
+
+			if cb_canmove:
+				cb_canmove.disable()
 
 		player_child_body:
-			player_child_body.can_move.enable()
-			stage_body.can_move.disable()
+			var sb_canmove: CanMove = Component.find(stage_body, "CanMove") as CanMove
+
+			if sb_canmove:
+				sb_canmove.disable()
+
+			var cb_canmove: CanMove = Component.find(player_child_body, "CanMove") as CanMove
+
+			if cb_canmove:
+				cb_canmove.enable()
 
 
 func _physics_process(_delta: float) -> void:

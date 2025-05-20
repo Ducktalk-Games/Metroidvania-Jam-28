@@ -3,4 +3,4 @@
 *.dylib
 *.so
 *.xcframework
-!libs/
+!libs/**

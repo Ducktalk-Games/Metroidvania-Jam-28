@@ -3,9 +3,7 @@ name: "godot-ci export"
 on:
   workflow_dispatch: # manual
   pull_request: # PR's to 'main'
-    types: [created, edited, synchronize]
-    branches:
-      - main
+    branches: ["main"]
   schedule: # also, once per day
     - cron: '0 0 * * *'
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=27 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -14,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
-[ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
-[ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
 [ext_resource type="Script" uid="uid://4l8gqw0idygk" path="res://lib/components/enemy_patrol.gd" id="15_wvhxk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
@@ -62,19 +60,11 @@ radius = 1.84929
 [sub_resource type="SphereShape3D" id="SphereShape3D_kb6yy"]
 radius = 0.982268
 
-[sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
-size = Vector3(16.013, 0.130249, 2.20679)
-
-[sub_resource type="BoxMesh" id="BoxMesh_suqj7"]
-size = Vector3(3.0638, 0.130249, 2.20679)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wvhxk"]
-size = Vector3(16.013, 0.130249, 2.20679)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
-size = Vector3(3.0638, 0.130249, 2.20679)
+size = Vector3(16.013, 0.130249, 2.20679)
 
 [node name="Stage" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00273418, 0.0202117, 0.00874996)
 
 [node name="DebugLog" type="CanvasLayer" parent="."]
 
@@ -87,19 +77,40 @@ language = "en_GB"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ecxui")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.158489, -0.855081, 0.493679, 1.47562e-08, 0.499998, 0.866027, -0.987361, -0.137256, 0.0792451, 0, 0, 0)
+light_energy = 0.241
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 6.063
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.960826, -0.24002, 0.138576, 2.42029e-08, 0.499998, 0.866026, -0.277149, 0.832101, -0.480412, 0, 0, 0)
+light_energy = 0.34
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 6.063
+
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106411, 0, 0.0194774)
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage"]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("map_body")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155048, -4.76837e-07, -3.01598)
+collision_layer = 5
+collision_mask = 9
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
+map_body = NodePath("StageBodyCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
+
+[node name="StageBodyCollision" type="CollisionShape3D" parent="Stage/StageBody"]
+shape = SubResource("CapsuleShape3D_erodg")
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody"]
 script = ExtResource("2_3kwj0")
@@ -116,30 +127,26 @@ speed = 2.0
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
-[node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0832447, 0)
-shape = SubResource("CapsuleShape3D_erodg")
-
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 17.5373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -3.4239, 17.5373)
 
 [node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
-transform = Transform3D(-1.2144, 0, -0.441813, 0, 1.29227, 0, 0.441813, 0, -1.2144, 5.01715, 0.329832, -9.68876)
+transform = Transform3D(-5.64869e-08, 0, -1.29227, 0, 1.29227, 0, 1.29227, 0, -5.64869e-08, 5.84105, 0.329832, -11.1105)
 
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
-transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14897, 0.445348, -5.02489)
+transform = Transform3D(0.302769, 0, 0.953064, 0, 1, 0, -0.953064, 0, 0.302769, -5.04543, 0.445348, -5.18562)
 
 [node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
-transform = Transform3D(1, 0, 0, 0, 0.921619, 0.388095, 0, -0.388095, 0.921619, -0.0295825, 6.85826, -8.80123)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295825, 8.30059, -15.2791)
 
 [node name="SM_Spotlight" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(0.896417, 0, 0.578299, 0, 1.06677, 0, -0.578299, 0, 0.896417, 2.23096, 0.41537, -5.38934)
+transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 3.2507, 0.41537, -5.47467)
 
 [node name="SM_Spotlight2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(1.00783, 0, -0.709869, 0, 1.23274, 0, 0.709869, 0, 1.00783, -5.36625, 0.411227, -10.1996)
+transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -6.01321, 0.411227, -10.6177)
 
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
-transform = Transform3D(-0.984879, 0.00119097, 0.173235, 0.00108576, 0.999999, -0.000702051, -0.173235, -0.000503341, -0.98488, -1.55049, 0.439881, -4.6462)
+transform = Transform3D(-0.970829, 0.00122242, 0.23977, 0.00108576, 0.999999, -0.000702051, -0.23977, -0.000421235, -0.97083, -3.36652, 0.439881, -4.60989)
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
 
@@ -166,24 +173,27 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0692
 size = Vector3(20, 0.980349, 11.339)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.2886, -21.4498)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.72732, -21.4498)
 operation = 2
-size = Vector3(15, 22.998, 7.72436)
+size = Vector3(15, 22.998, 6.84692)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.157202, -14.0244)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.375295, -14.5539)
 size = Vector3(20, 2.87421, 2.904)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.00048849, 0.584955, -14.2319)
+transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.000488493, 1.98418, -14.0382)
 size = Vector3(20, 3.90566, 0.688727)
 
-[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
+[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody" node_paths=PackedStringArray("map_body")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0832447, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+collision_layer = 6
+collision_mask = 2
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
+map_body = NodePath("PlayerHitArea/CollisionShape3D")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="PlayerChildMesh" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody"]
@@ -218,20 +228,27 @@ hit_area = NodePath("../../PlayerHitArea")
 [node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
-[node name="PlayerDialogueBubble" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
+[node name="DialogueContainer" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
 unique_name_in_owner = true
 transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
 texture = SubResource("ViewportTexture_ljyi0")
 
 [node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+collision_layer = 4
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody/PlayerHitArea"]
 shape = SubResource("SphereShape3D_ljyi0")
 
+[node name="StageBody" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
+shape = SubResource("CapsuleShape3D_erodg")
+
 [node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0.709515, -0.0321641)
-collision_layer = 2
+collision_layer = 9
+collision_mask = 13
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -270,6 +287,8 @@ point_a = NodePath("../../PatrollingPoints/PointA")
 point_b = NodePath("../../PatrollingPoints/PointB")
 
 [node name="EnemyHitArea" type="Area3D" parent="Stage/StageBody/EnemyTemp"]
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp/EnemyHitArea"]
 shape = SubResource("SphereShape3D_kb6yy")
@@ -283,60 +302,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3221, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88015, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
-fov = 29.5537
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58566, 34.4428)
+fov = 22.8183
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0, 4.03158, 16.1734)
-light_energy = 0.077
-shadow_enabled = true
-shadow_bias = 0.095
-spot_range = 312.922
-spot_attenuation = -0.38
+[node name="StageFloor" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3, 0)
+collision_layer = 2
+collision_mask = 0
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Stage/StageBody"]
-transform = Transform3D(0.934248, 0.131924, -0.331325, 0.10109, 0.792989, 0.600791, 0.341996, -0.594781, 0.727512, -3.08481, 4.24015, 8.44111)
-light_energy = 0.357
-shadow_enabled = true
-spot_range = 176.005
-spot_attenuation = -0.38
-spot_angle = 17.83
+[node name="Floor" type="CollisionShape3D" parent="Stage/StageFloor"]
+shape = SubResource("BoxShape3D_erodg")
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Stage/StageBody"]
-transform = Transform3D(0.999268, 0.014149, -0.035535, 0.0302307, 0.276992, 0.960397, 0.0234316, -0.960768, 0.276361, -0.985508, 7.662, 13.2275)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 20.6077
-spot_attenuation = 0.5
-spot_angle = 43.2052
-
-[node name="SM_Rug2" parent="Stage/StageBody" instance=ExtResource("15_wvhxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279752, -1.91063, 9.07173)
-
-[node name="AM_PauseMenu2" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
-transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.347108, -1.93184, 8.62256)
-
-[node name="StaticFloor" type="StaticBody3D" parent="."]
+[node name="Map" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112076, -1.17205, 0)
+collision_mask = 0
 
-[node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, -3.06454)
-mesh = SubResource("BoxMesh_wvhxk")
-
-[node name="PlatformMesh" type="MeshInstance3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
-mesh = SubResource("BoxMesh_suqj7")
-
-[node name="Floor" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, 0)
-shape = SubResource("BoxShape3D_wvhxk")
-
-[node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, -3.06454)
-shape = SubResource("BoxShape3D_wvhxk")
-
-[node name="Floor3" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
+[node name="Floor2" type="CollisionShape3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.06454)
 shape = SubResource("BoxShape3D_erodg")

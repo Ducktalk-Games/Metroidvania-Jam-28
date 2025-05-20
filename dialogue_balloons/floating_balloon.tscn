@@ -65,7 +65,7 @@ unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/normal_font_size = 13
 text = "The lions were very clever."
 horizontal_alignment = 1
 

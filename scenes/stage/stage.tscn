@@ -74,20 +74,6 @@ language = "en_GB"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ecxui")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.158489, -0.855081, 0.493679, 1.47562e-08, 0.499998, 0.866027, -0.987361, -0.137256, 0.0792451, 0, 0, 0)
-light_energy = 0.241
-shadow_enabled = true
-shadow_opacity = 0.8
-shadow_blur = 6.063
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.960826, -0.24002, 0.138576, 2.42029e-08, 0.499998, 0.866026, -0.277149, 0.832101, -0.480412, 0, 0, 0)
-light_energy = 0.34
-shadow_enabled = true
-shadow_opacity = 0.8
-shadow_blur = 6.063
-
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
@@ -117,22 +103,23 @@ speed = 2.0
 script = ExtResource("6_d1yl1")
 
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0832447, 0)
 shape = SubResource("CapsuleShape3D_erodg")
 
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 17.5373)
 
 [node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
-transform = Transform3D(-1.29227, 0, 1.12974e-07, 0, 1.29227, 0, -1.12974e-07, 0, -1.29227, 5.1747, 0.329832, -9.67992)
+transform = Transform3D(-1.2144, 0, -0.441813, 0, 1.29227, 0, 0.441813, 0, -1.2144, 5.01715, 0.329832, -9.68876)
 
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
 transform = Transform3D(0.302769, 0, 0.953064, 0, 1, 0, -0.953064, 0, 0.302769, -3.01614, 0.445348, -5.71988)
 
 [node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295825, 8.30059, -15.2791)
+transform = Transform3D(1, 0, 0, 0, 0.921619, 0.388095, 0, -0.388095, 0.921619, -0.0295825, 6.85826, -8.80123)
 
 [node name="SM_Spotlight" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 3.2507, 0.41537, -5.47467)
+transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 2.42021, 0.41537, -5.31148)
 
 [node name="SM_Spotlight2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
 transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -6.01321, 0.411227, -10.6177)
@@ -179,7 +166,7 @@ size = Vector3(20, 3.90566, 0.688727)
 
 [node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0832447, 3)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -228,7 +215,7 @@ shape = SubResource("SphereShape3D_ljyi0")
 
 [node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0, -0.0603962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, -0.142006, -0.0603962)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -264,13 +251,33 @@ shape = SubResource("SphereShape3D_kb6yy")
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
 fov = 29.5537
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0, 4.03158, 16.1734)
+light_energy = 0.077
+spot_range = 312.922
+spot_attenuation = -0.38
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Stage/StageBody"]
+transform = Transform3D(0.934248, 0.131924, -0.331325, 0.10109, 0.792989, 0.600791, 0.341996, -0.594781, 0.727512, -3.08481, 4.24015, 8.44111)
+light_energy = 0.357
+spot_range = 176.005
+spot_attenuation = -0.38
+spot_angle = 17.83
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Stage/StageBody"]
+transform = Transform3D(0.999268, 0.014149, -0.035535, 0.0302307, 0.276992, 0.960397, 0.0234316, -0.960768, 0.276361, -0.985508, 7.662, 13.2275)
+spot_range = 20.6077
+spot_attenuation = 0.5
+spot_angle = 43.2052
+
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112076, -1.17205, 0)
 
 [node name="Floor" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, 0)
 shape = SubResource("BoxShape3D_erodg")
 
 [node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.06454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, -3.06454)
 shape = SubResource("BoxShape3D_erodg")

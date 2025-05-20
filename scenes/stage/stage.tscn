@@ -120,13 +120,13 @@ script = ExtResource("6_d1yl1")
 shape = SubResource("CapsuleShape3D_erodg")
 
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -3.4239, 17.5373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 17.5373)
 
 [node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
-transform = Transform3D(-5.64869e-08, 0, -1.29227, 0, 1.29227, 0, 1.29227, 0, -5.64869e-08, 5.84105, 0.329832, -11.1105)
+transform = Transform3D(-1.29227, 0, 1.12974e-07, 0, 1.29227, 0, -1.12974e-07, 0, -1.29227, 5.1747, 0.329832, -9.67992)
 
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
-transform = Transform3D(0.302769, 0, 0.953064, 0, 1, 0, -0.953064, 0, 0.302769, -5.04543, 0.445348, -5.18562)
+transform = Transform3D(0.302769, 0, 0.953064, 0, 1, 0, -0.953064, 0, 0.302769, -3.01614, 0.445348, -5.71988)
 
 [node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295825, 8.30059, -15.2791)
@@ -138,7 +138,7 @@ transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 
 transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -6.01321, 0.411227, -10.6177)
 
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
-transform = Transform3D(-0.970829, 0.00122242, 0.23977, 0.00108576, 0.999999, -0.000702051, -0.23977, -0.000421235, -0.97083, -3.36652, 0.439881, -4.60989)
+transform = Transform3D(-0.958784, 0.00124049, 0.284132, 0.00108576, 0.999999, -0.000702051, -0.284132, -0.000364613, -0.958785, -1.55049, 0.439881, -4.6462)
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
 
@@ -165,16 +165,16 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0692
 size = Vector3(20, 0.980349, 11.339)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.72732, -21.4498)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.2886, -21.4498)
 operation = 2
-size = Vector3(15, 22.998, 6.84692)
+size = Vector3(15, 22.998, 7.72436)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.375295, -14.5539)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.157202, -14.0244)
 size = Vector3(20, 2.87421, 2.904)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.000488493, 1.98418, -14.0382)
+transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.00048849, 0.584955, -14.2319)
 size = Vector3(20, 3.90566, 0.688727)
 
 [node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
@@ -261,8 +261,8 @@ script = ExtResource("8_kb6yy")
 shape = SubResource("SphereShape3D_kb6yy")
 
 [node name="Camera3D" type="Camera3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58566, 34.4428)
-fov = 22.8183
+transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
+fov = 29.5537
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

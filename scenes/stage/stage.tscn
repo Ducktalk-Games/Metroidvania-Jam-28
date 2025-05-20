@@ -113,19 +113,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 17.5373)
 transform = Transform3D(-1.2144, 0, -0.441813, 0, 1.29227, 0, 0.441813, 0, -1.2144, 5.01715, 0.329832, -9.68876)
 
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
-transform = Transform3D(0.302769, 0, 0.953064, 0, 1, 0, -0.953064, 0, 0.302769, -3.01614, 0.445348, -5.71988)
+transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14897, 0.445348, -5.02489)
 
 [node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
 transform = Transform3D(1, 0, 0, 0, 0.921619, 0.388095, 0, -0.388095, 0.921619, -0.0295825, 6.85826, -8.80123)
 
 [node name="SM_Spotlight" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 2.42021, 0.41537, -5.31148)
+transform = Transform3D(0.896417, 0, 0.578299, 0, 1.06677, 0, -0.578299, 0, 0.896417, 2.23096, 0.41537, -5.38934)
 
 [node name="SM_Spotlight2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -6.01321, 0.411227, -10.6177)
+transform = Transform3D(1.00783, 0, -0.709869, 0, 1.23274, 0, 0.709869, 0, 1.00783, -5.36625, 0.411227, -10.1996)
 
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
-transform = Transform3D(-0.958784, 0.00124049, 0.284132, 0.00108576, 0.999999, -0.000702051, -0.284132, -0.000364613, -0.958785, -1.55049, 0.439881, -4.6462)
+transform = Transform3D(-0.984879, 0.00119097, 0.173235, 0.00108576, 0.999999, -0.000702051, -0.173235, -0.000503341, -0.98488, -1.55049, 0.439881, -4.6462)
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
 

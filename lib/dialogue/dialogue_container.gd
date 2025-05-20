@@ -3,9 +3,17 @@ extends Sprite3D
 
 @onready var popup_balloon: DialogueManagerExampleBalloon = %PopupBalloon
 
+@export var debug := false
+
 
 func _ready() -> void:
-	show_dialogue(load("res://dialogues/test_dialogue.dialogue"))
+	if debug:
+		show_dialogue(load("res://dialogues/test_dialogue.dialogue"))
+
+
+func _input(event: InputEvent) -> void:
+	if debug and Input.is_action_just_pressed("interact"):
+		next_line()
 
 
 # Shows the balloon dialogue

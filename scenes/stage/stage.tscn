@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=22 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -48,6 +48,7 @@ adjustment_saturation = 0.75
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ljyi0"]
 viewport_path = NodePath("SubViewport")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_ljyi0"]
 radius = 1.84929
 
@@ -149,10 +150,6 @@ speed = 2.0
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
-[node name="DialogueContainer" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
-unique_name_in_owner = true
-transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
-texture = SubResource("ViewportTexture_ljyi0")
 [node name="CanAttack" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("7_ljyi0")
 value = 50.0
@@ -161,6 +158,11 @@ hit_area = NodePath("../../PlayerHitArea")
 
 [node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("8_kb6yy")
+
+[node name="DialogueContainer" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
+unique_name_in_owner = true
+transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
+texture = SubResource("ViewportTexture_ljyi0")
 
 [node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
 

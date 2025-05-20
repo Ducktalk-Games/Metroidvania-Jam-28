@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=18 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
 [ext_resource type="Script" uid="uid://bn7or7ah5u3gm" path="res://lib/components/can_receive_input.gd" id="6_d1yl1"]
+[ext_resource type="PackedScene" uid="uid://dmsdctniaxke5" path="res://dialogue_balloons/dialogue_container.tscn" id="7_d1yl1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -42,6 +43,9 @@ adjustment_saturation = 0.75
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ecxui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ljyi0"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
 size = Vector3(16.013, 0.130249, 2.20679)
@@ -132,6 +136,11 @@ speed = 2.0
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
+
+[node name="DialogueContainer" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
+unique_name_in_owner = true
+transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
+texture = SubResource("ViewportTexture_ljyi0")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.78454)

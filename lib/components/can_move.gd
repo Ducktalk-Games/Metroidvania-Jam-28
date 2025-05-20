@@ -18,8 +18,17 @@ func _node_ready() -> void:
 		printerr("CanReceiveInput not found in " + name)
 
 
-func _physics_process(delta: float) -> void:
+func move(delta: float) -> void:
 	character.velocity.x = character_direction * speed
+
+	# Make the character fall
+	character.velocity.y += character.get_gravity().y * delta
+	# Move the character by its velocity
+	character.move_and_slide()
+
+
+func _physics_process(delta: float) -> void:
+	move(delta)
 
 
 func _on_can_receive_input_move_left_right_pressed(left_right: float) -> void:

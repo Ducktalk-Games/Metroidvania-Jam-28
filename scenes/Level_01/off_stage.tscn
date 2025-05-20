@@ -24,7 +24,7 @@ transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 
 transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -8.23595, 0.411227, -10.6177)
 
 [node name="SM_FilmCamera2" parent="." instance=ExtResource("5_0l4gw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76094, 0.439881, -4.60989)
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -3.76094, 0.439881, -4.60989)
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=26 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dmsdctniaxke5" path="res://dialogue_balloons/dialogue_container.tscn" id="7_d1yl1"]
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
+[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
+[ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
+[ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
+[ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
+[ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -37,8 +42,6 @@ adjustment_enabled = true
 adjustment_brightness = 0.8
 adjustment_contrast = 1.18
 adjustment_saturation = 0.75
-
-[sub_resource type="BoxMesh" id="BoxMesh_erodg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erodg"]
 
@@ -113,12 +116,66 @@ speed = 2.0
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
-[node name="StageMesh" type="MeshInstance3D" parent="Stage/StageBody"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_erodg")
-
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
 shape = SubResource("CapsuleShape3D_erodg")
+
+[node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -3.4239, 17.5373)
+
+[node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
+transform = Transform3D(-5.64869e-08, 0, -1.29227, 0, 1.29227, 0, 1.29227, 0, -5.64869e-08, 5.84105, 0.329832, -11.1105)
+
+[node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
+transform = Transform3D(0.302769, 0, 0.953064, 0, 1, 0, -0.953064, 0, 0.302769, -5.04543, 0.445348, -5.18562)
+
+[node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295825, 8.30059, -15.2791)
+
+[node name="SM_Spotlight" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
+transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 3.2507, 0.41537, -5.47467)
+
+[node name="SM_Spotlight2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
+transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -6.01321, 0.411227, -10.6177)
+
+[node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
+transform = Transform3D(-0.970829, 0.00122242, 0.23977, 0.00108576, 0.999999, -0.000702051, -0.23977, -0.000421235, -0.97083, -3.36652, 0.439881, -4.60989)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0782766, 0.184083, -5.14672)
+size = Vector3(20, 0.5, 18.53)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0782766, 10.4065, -6.094)
+size = Vector3(20, 0.5, 18.53)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.8089, 5.07541, -5.74004)
+size = Vector3(11.218, 0.5, 20.3956)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -8.06964, 5.15474, -5.96201)
+size = Vector3(11.218, 0.5, 19.9796)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0692558, 5.12394, -15.4857)
+size = Vector3(20, 0.980349, 11.339)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.72732, -21.4498)
+operation = 2
+size = Vector3(15, 22.998, 6.84692)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.375295, -14.5539)
+size = Vector3(20, 2.87421, 2.904)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
+transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.000488493, 1.98418, -14.0382)
+size = Vector3(20, 3.90566, 0.688727)
 
 [node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
@@ -171,7 +228,7 @@ shape = SubResource("SphereShape3D_ljyi0")
 
 [node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0, -0.0603962)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -203,11 +260,9 @@ script = ExtResource("8_kb6yy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp/EnemyHitArea"]
 shape = SubResource("SphereShape3D_kb6yy")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.78454)
-spring_length = 5.0
-
-[node name="Camera3D" type="Camera3D" parent="Stage/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58566, 34.4428)
+fov = 22.8183
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

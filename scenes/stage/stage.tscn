@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=27 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
+[ext_resource type="Script" uid="uid://4l8gqw0idygk" path="res://lib/components/enemy_patrol.gd" id="15_wvhxk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -48,6 +49,7 @@ adjustment_saturation = 0.75
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ecxui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
+radius = 0.25
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ljyi0"]
 viewport_path = NodePath("SubViewport")
@@ -89,6 +91,7 @@ shadow_opacity = 0.8
 shadow_blur = 6.063
 
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
+unique_name_in_owner = true
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
@@ -190,6 +193,7 @@ mesh = SubResource("CapsuleMesh_ecxui")
 
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
 shape = SubResource("CapsuleShape3D_ecxui")
+debug_color = Color(0, 0.6, 0.701961, 0.72549)
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("2_3kwj0")
@@ -228,7 +232,8 @@ shape = SubResource("SphereShape3D_ljyi0")
 
 [node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0, -0.0603962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0.709515, -0.0321641)
+collision_layer = 2
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -239,14 +244,19 @@ mesh = SubResource("CapsuleMesh_ecxui")
 
 [node name="EnemyChildCollision" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp"]
 shape = SubResource("CapsuleShape3D_ecxui")
+debug_color = Color(0, 0.6, 0.701961, 0.72549)
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/EnemyTemp" node_paths=PackedStringArray("hit_area")]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/EnemyTemp" node_paths=PackedStringArray("hit_area", "point_a", "point_b")]
 script = ExtResource("2_3kwj0")
 value = 10.0
 delay_seconds = 1.0
 continuous = true
 hit_area = NodePath("../EnemyHitArea")
 health = 100.0
+patrol_speed = 2.0
+end_of_path_delay = 0.1
+point_a = NodePath("../PatrollingPoints/PointA")
+point_b = NodePath("../PatrollingPoints/PointB")
 
 [node name="CanAttack" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("7_ljyi0")
@@ -255,10 +265,24 @@ hit_area = NodePath("../../EnemyHitArea")
 [node name="HasHealth" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
+[node name="EnemyPatrol" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("point_a", "point_b")]
+script = ExtResource("15_wvhxk")
+patrol_speed = 2.0
+point_a = NodePath("../../PatrollingPoints/PointA")
+point_b = NodePath("../../PatrollingPoints/PointB")
+
 [node name="EnemyHitArea" type="Area3D" parent="Stage/StageBody/EnemyTemp"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp/EnemyHitArea"]
 shape = SubResource("SphereShape3D_kb6yy")
+
+[node name="PatrollingPoints" type="Node3D" parent="Stage/StageBody/EnemyTemp"]
+
+[node name="PointA" type="Node3D" parent="Stage/StageBody/EnemyTemp/PatrollingPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3221, 0, 0)
+
+[node name="PointB" type="Node3D" parent="Stage/StageBody/EnemyTemp/PatrollingPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88015, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58566, 34.4428)

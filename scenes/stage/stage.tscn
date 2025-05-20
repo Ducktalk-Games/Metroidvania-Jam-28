@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=27 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
+[ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -276,6 +277,9 @@ shadow_bias = 0.275
 spot_range = 20.6077
 spot_attenuation = 0.5
 spot_angle = 43.2052
+
+[node name="SM_Rug2" parent="Stage/StageBody" instance=ExtResource("15_wvhxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279752, -1.91063, 9.07173)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

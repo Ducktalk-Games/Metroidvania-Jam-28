@@ -204,11 +204,10 @@ hit_area = NodePath("../../PlayerHitArea")
 [node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
-[node name="DialogueContainer" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
+[node name="PlayerDialogueBubble" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
 unique_name_in_owner = true
 transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
 texture = SubResource("ViewportTexture_ljyi0")
-debug = true
 
 [node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
 
@@ -273,7 +272,7 @@ spot_angle = 17.83
 transform = Transform3D(0.999268, 0.014149, -0.035535, 0.0302307, 0.276992, 0.960397, 0.0234316, -0.960768, 0.276361, -0.985508, 7.662, 13.2275)
 light_energy = 0.163
 shadow_enabled = true
-shadow_bias = 0.275
+shadow_bias = 1.125
 spot_range = 20.6077
 spot_attenuation = 0.5
 spot_angle = 43.2052

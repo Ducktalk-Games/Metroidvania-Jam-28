@@ -10,17 +10,6 @@ func _ready() -> void:
 	if debug:
 		show_dialogue(load("res://dialogues/test_dialogue.dialogue"))
 
-
-func _input(event: InputEvent) -> void:
-	if debug and Input.is_action_just_pressed("interact"):
-		next_line()
-
-
 # Shows the balloon dialogue
 func show_dialogue(resource: DialogueResource) -> DialogueManagerExampleBalloon:
 	return DialogueManager.show_dialogue_balloon_scene(popup_balloon, resource)
-
-
-# Goes to next line
-func next_line() -> void:
-	popup_balloon.next(popup_balloon.dialogue_line.next_id)

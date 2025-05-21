@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=28 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
+[ext_resource type="PackedScene" uid="uid://cmjrs0asjrd4o" path="res://assets/bottles/SM_Bottle_B_.glb" id="16_suqj7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -292,3 +293,6 @@ shape = SubResource("BoxShape3D_erodg")
 [node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
+
+[node name="SM_Bottle2" parent="." instance=ExtResource("16_suqj7")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.87223, -1.90629, 6.37212)

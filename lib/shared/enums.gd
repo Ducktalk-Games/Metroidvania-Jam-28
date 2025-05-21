@@ -1,0 +1,5 @@
+enum FSMState {
+	PATROLLING,
+	WAITING,
+	ATTACKING,
+}

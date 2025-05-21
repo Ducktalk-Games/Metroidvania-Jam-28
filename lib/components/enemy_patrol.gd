@@ -1,6 +1,12 @@
 class_name EnemyPatrol
-
 extends Component
+const E = preload("res://lib/shared/enums.gd")
+
+@export
+var point_a: Node3D
+
+@export
+var point_b: Node3D
 
 @export
 var patrol_speed: float = 10.0
@@ -12,29 +18,47 @@ var end_of_path_delay: float = 0.1
 var points_node: Node3D = $PatrollingPoints
 
 @onready
-var patrol_agent := get_object() as CharacterBody3D
+var patrol_agent := Component.component_owner(self)
 
 @onready
 var stage := %Stage
+
+var fsm: FiniteStateMachine
 
 var is_waiting: bool
 
 var current_path: String
 
-@export
-var point_a : Node3D
+var current_state: E.FSMState
 
-@export
-var point_b : Node3D
+signal reached_patrol_endpoint(new_target: String)
 
 
 func _ready() -> void:
+
+	print(fsm)
 	is_waiting = false
 	current_path = point_a.name
+	fsm.connect("state_changed", Callable(self, "_on_state_changed"))
 	pass
 
 
-func patrol(delta: float) -> void:
+func _on_state_changed(state: E.FSMState) -> void:
+	current_state = state
+
+	match state:
+		E.FSMState.PATROLLING:
+			print("patrolling")
+
+		E.FSMState.ATTACKING:
+			print("Engage attack")
+
+		E.FSMState.WAITING:
+			wait(end_of_path_delay)
+			print("waiting...")
+
+
+func patrol(_delta: float) -> void:
 	var direction_vector: Vector3
 	var can_move: bool = !patrol_agent.is_on_wall()
 	var distance: float
@@ -47,7 +71,8 @@ func patrol(delta: float) -> void:
 
 			#Set the direction vector to 0 and switch direction if we are close to the edge of point a
 			if distance < 1 || !can_move:
-				wait(end_of_path_delay)
+				fsm.call("change_state", E.FSMState.WAITING)
+				emit_signal("reached_patrol_endpoint", point_b.name)
 				current_path = point_b.name
 
 		point_b.name:
@@ -55,9 +80,8 @@ func patrol(delta: float) -> void:
 			distance = patrol_agent.global_position.x - point_b.global_position.x
 
 			if distance < 1 || !can_move:
-				#TODO:
-				print("weee")
-				wait(end_of_path_delay)
+				fsm.call("change_state", E.FSMState.WAITING)
+				emit_signal("reached_patrol_endpoint", point_b.name)
 				current_path = point_a.name
 
 	#character.velocity.y += character.get_gravity().y * delta
@@ -69,27 +93,32 @@ func patrol(delta: float) -> void:
 
 
 func wait(seconds: float) -> void:
-	is_waiting = true
 	await get_tree().create_timer(end_of_path_delay, true, false).timeout
-	is_waiting = false
 	pass
 
 
 func _physics_process(delta: float) -> void:
-	if (stage.current_body.name == "StageBody"):
-		patrol(delta)
+	if (!stage.current_body.name == "StageBody"):
+		return
 
-	pass
+	match current_state:
+		E.FSMState.PATROLLING:
+			patrol(delta)
+
+		E.FSMState.WAITING:
+			pass
+
+		E.FSMState.ATTACKING:
+			pass
 
 
 func _on_reach_patrol_point() -> void:
-	is_waiting = true
 	#patrol_speed = Vector3.ZERO
 	#move_and_slide()
 	#await get_tree().create_timer(wait_time).timeout
 	#current_target_idx = (current_target_idx + 1) % patrol_points.size()
 	#_set_new_path()
-	is_waiting = false
+	pass
 
 
 func _set_new_path() -> void:

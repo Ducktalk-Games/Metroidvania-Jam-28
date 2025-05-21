@@ -3,7 +3,7 @@ extends Component
 @export var speed := 1.0
 @export var attenuation := 0.2
 
-@onready var bobbing_mesh := get_object() as MeshInstance3D
+@onready var bobbing_mesh := get_object() as Node3D
 
 var time_elapsed := 0.0
 

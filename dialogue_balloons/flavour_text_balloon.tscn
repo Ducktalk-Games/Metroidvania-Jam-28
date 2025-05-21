@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://djbqn0km4jxn4"]
+[gd_scene load_steps=6 format=3 uid="uid://bb4dhudim5062"]
 
-[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_fkdl6"]
-[ext_resource type="Texture2D" uid="uid://b5pog0sw344f4" path="res://ui/balloon_albedo.png" id="2_72lis"]
-[ext_resource type="Theme" uid="uid://rji5vppge0oc" path="res://dialogue_balloons/floating_balloon_theme.tres" id="2_egn4h"]
-[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_is8sf"]
-[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_cvjug"]
+[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_fkemq"]
+[ext_resource type="Theme" uid="uid://rji5vppge0oc" path="res://dialogue_balloons/floating_balloon_theme.tres" id="2_vyvrq"]
+[ext_resource type="Texture2D" uid="uid://b5pog0sw344f4" path="res://ui/balloon_albedo.png" id="3_pc47o"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_u78lh"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="5_2yiqt"]
 
-[node name="FloatingBalloon" type="CanvasLayer"]
+[node name="FlavourTextBalloon" type="CanvasLayer"]
 layer = 100
-script = ExtResource("1_fkdl6")
+script = ExtResource("1_fkemq")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_egn4h")
+theme = ExtResource("2_vyvrq")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="NinePatchRect" parent="Balloon"]
@@ -28,11 +28,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-texture = ExtResource("2_72lis")
+texture = ExtResource("3_pc47o")
 region_rect = Rect2(18, 18, 92, 92)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -60,30 +59,13 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/VBoxContainer" instance=ExtResource("2_is8sf")]
+[node name="DialogueLabel" parent="Balloon/Panel/VBoxContainer" instance=ExtResource("4_u78lh")]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/normal_font_size = 13
-text = "The lions were very clever."
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="Balloon/Panel"]
-z_index = 1
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -5.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "V"
+text = "You got the sewing scissors!"
 horizontal_alignment = 1
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
@@ -106,11 +88,12 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
-script = ExtResource("3_cvjug")
+script = ExtResource("5_2yiqt")
 response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
 
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

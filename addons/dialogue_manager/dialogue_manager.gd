@@ -107,6 +107,7 @@ func get_next_dialogue_line(resource: DialogueResource, key: String = "", extra_
 
 	# If our dialogue is nothing then we hit the end
 	if not _is_valid(dialogue):
+		Global.enable_player_input()
 		dialogue_ended.emit.call_deferred(resource)
 		return null
 
@@ -501,6 +502,7 @@ func _start_balloon(balloon: Node, resource: DialogueResource, title: String, ex
 	else:
 		assert(false, DMConstants.translate(&"runtime.dialogue_balloon_missing_start_method"))
 
+	Global.disable_player_input()
 	dialogue_started.emit(resource)
 	bridge_dialogue_started.emit(resource)
 

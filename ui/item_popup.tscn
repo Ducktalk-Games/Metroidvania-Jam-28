@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgqgd3jpadiit"]
+[gd_scene load_steps=7 format=3 uid="uid://bgqgd3jpadiit"]
 
 [ext_resource type="Theme" uid="uid://rji5vppge0oc" path="res://dialogue_balloons/floating_balloon_theme.tres" id="1_icgxd"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_1urga"]
+[ext_resource type="Script" uid="uid://cdcn4b3hbqv7y" path="res://ui/item_popup.gd" id="2_toqn8"]
 [ext_resource type="Script" uid="uid://b0q4tujrxaxdc" path="res://lib/components/can_rotate.gd" id="3_1utkn"]
 [ext_resource type="Script" uid="uid://c3uqofysyh80t" path="res://lib/components/can_bob.gd" id="4_1utkn"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_cxfpb"]
+[ext_resource type="PackedScene" uid="uid://bb4dhudim5062" path="res://dialogue_balloons/flavour_text_balloon.tscn" id="6_mx3dx"]
 
 [node name="ItemPopup" type="Control"]
 layout_mode = 3
@@ -15,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_icgxd")
+script = ExtResource("2_toqn8")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -41,25 +42,26 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer"]
+own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(200, 200)
 render_target_update_mode = 4
 
-[node name="RotatingMesh" type="MeshInstance3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
+[node name="ItemParent" type="Node3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 transform = Transform3D(0.88861, 0.313823, -0.334496, -0.404422, 0.880126, -0.248641, 0.216369, 0.356222, 0.909005, 0, 0, 0)
-mesh = SubResource("BoxMesh_cxfpb")
 
-[node name="ComponentOwner" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/RotatingMesh"]
+[node name="ComponentOwner" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/ItemParent"]
 script = ExtResource("2_1urga")
 speed = 1.0
 speed = 1.0
 attenuation = 0.2
 
-[node name="CanRotate" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/RotatingMesh/ComponentOwner"]
+[node name="CanRotate" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/ItemParent/ComponentOwner"]
 script = ExtResource("3_1utkn")
 
-[node name="CanBob" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/RotatingMesh/ComponentOwner"]
+[node name="CanBob" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/ItemParent/ComponentOwner"]
 script = ExtResource("4_1utkn")
 
 [node name="Camera3D" type="Camera3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
@@ -69,9 +71,15 @@ fov = 23.0375
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
 transform = Transform3D(0.83826, -0.521104, 0.160533, 0.512073, 0.853492, 0.0966001, -0.187352, 0.00122857, 0.982292, 0, 0, 0)
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 65.7)
 layout_mode = 2
-text = "You found the Sewing Scissors!"
-horizontal_alignment = 1
-autowrap_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 65)
+render_target_update_mode = 4
+
+[node name="FlavourTextBalloon" parent="CenterContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_mx3dx")]
+unique_name_in_owner = true

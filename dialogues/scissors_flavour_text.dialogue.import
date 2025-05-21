@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cjsg1hqqe5bkl"
+path="res://.godot/imported/scissors_flavour_text.dialogue-e37eaf4e92e933e7a7b85c2089927b40.tres"
+
+[deps]
+
+source_file="res://dialogues/scissors_flavour_text.dialogue"
+dest_files=["res://.godot/imported/scissors_flavour_text.dialogue-e37eaf4e92e933e7a7b85c2089927b40.tres"]
+
+[params]
+
+defaults=true

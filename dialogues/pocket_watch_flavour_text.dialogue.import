@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bnntkffx0w4cm"
+path="res://.godot/imported/pocket_watch_flavour_text.dialogue-a99a7af3dd75b844f5ec7ee3594ee8be.tres"
+
+[deps]
+
+source_file="res://dialogues/pocket_watch_flavour_text.dialogue"
+dest_files=["res://.godot/imported/pocket_watch_flavour_text.dialogue-a99a7af3dd75b844f5ec7ee3594ee8be.tres"]
+
+[params]
+
+defaults=true

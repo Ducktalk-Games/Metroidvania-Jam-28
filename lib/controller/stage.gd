@@ -16,32 +16,23 @@ var player_child_body: Character = %PlayerChildBody
 
 func _ready() -> void:
 	update_controllers()
+	Global.stage = self
 
 
 # Enable and disable the stage and player components according to the current body
 func update_controllers() -> void:
-	match current_body:
-		stage_body:
-			var sb_canmove: CanMove = Component.find(stage_body, "CanMove") as CanMove
+	var sb_can_move := Component.find(stage_body, "CanMove") as CanMove
+	var cb_can_move := Component.find(player_child_body, "CanMove") as CanMove
 
-			if sb_canmove:
-				sb_canmove.enable()
+	if sb_can_move and cb_can_move:
+		match current_body:
+			stage_body:
+				sb_can_move.enable()
+				cb_can_move.disable()
 
-			var cb_canmove: CanMove = Component.find(player_child_body, "CanMove") as CanMove
-
-			if cb_canmove:
-				cb_canmove.disable()
-
-		player_child_body:
-			var sb_canmove: CanMove = Component.find(stage_body, "CanMove") as CanMove
-
-			if sb_canmove:
-				sb_canmove.disable()
-
-			var cb_canmove: CanMove = Component.find(player_child_body, "CanMove") as CanMove
-
-			if cb_canmove:
-				cb_canmove.enable()
+			player_child_body:
+				sb_can_move.disable()
+				cb_can_move.enable()
 
 
 func _physics_process(_delta: float) -> void:

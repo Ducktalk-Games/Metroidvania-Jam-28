@@ -291,7 +291,7 @@ spot_angle = 43.2052
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279752, -1.91063, 9.07173)
 
 [node name="AM_PauseMenu2" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
-transform = Transform3D(-2.49205, 0, -2.17862e-07, 0, 2.49205, 0, 2.17862e-07, 0, -2.49205, -0.347108, -1.93184, 8.62256)
+transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.347108, -1.93184, 8.62256)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

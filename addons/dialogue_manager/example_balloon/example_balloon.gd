@@ -156,7 +156,8 @@ func _input(event: InputEvent) -> void:
 
 # Goes to next line
 func next_line() -> void:
-	next(dialogue_line.next_id)
+	if dialogue_line:
+		next(dialogue_line.next_id)
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:

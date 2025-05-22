@@ -78,7 +78,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(200, 65)
+size = Vector2i(2, 65)
 render_target_update_mode = 4
 
 [node name="FlavourTextBalloon" parent="CenterContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_mx3dx")]

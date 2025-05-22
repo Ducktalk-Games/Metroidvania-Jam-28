@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhl3dby1g4fyh"]
+
+[ext_resource type="PackedScene" uid="uid://bd5qini8qs3h8" path="res://assets/pause_menu/AM_PauseMenu.glb" id="1_ejwgg"]
+[ext_resource type="Script" uid="uid://7h1p82yligtg" path="res://ui/pause_menu.gd" id="2_fob5h"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejwgg"]
+animation = &"Dismiss"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fob5h"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_avurv"]
+animation = &"Roll"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_npydk"]
+animation = &"Unroll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ap7o"]
+advance_mode = 2
+advance_condition = &"roll"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vovkw"]
+advance_mode = 2
+advance_condition = &"dismiss"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jyvtb"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"dismiss"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3kxr"]
+priority = 2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b1mq0"]
+states/Dismiss/node = SubResource("AnimationNodeAnimation_ejwgg")
+states/Dismiss/position = Vector2(539, 143)
+states/End/position = Vector2(482, 224)
+states/Idle/node = SubResource("AnimationNodeAnimation_fob5h")
+states/Idle/position = Vector2(539, 12)
+states/Roll/node = SubResource("AnimationNodeAnimation_avurv")
+states/Roll/position = Vector2(415, 143)
+states/Start/position = Vector2(206, 12)
+states/Unroll/node = SubResource("AnimationNodeAnimation_npydk")
+states/Unroll/position = Vector2(415, 12)
+transitions = ["Start", "Unroll", SubResource("AnimationNodeStateMachineTransition_6ap7o"), "Idle", "Dismiss", SubResource("AnimationNodeStateMachineTransition_vovkw"), "Unroll", "Roll", SubResource("AnimationNodeStateMachineTransition_jyvtb"), "Unroll", "Idle", SubResource("AnimationNodeStateMachineTransition_j3kxr")]
+graph_offset = Vector2(-162, -184)
+
+[node name="AM_PauseMenu" instance=ExtResource("1_ejwgg")]
+script = ExtResource("2_fob5h")
+
+[node name="PauseMenuMesh" parent="PauseMenu/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="AnimationPlayer" parent="." index="1"]
+speed_scale = 1.5
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_b1mq0")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/dismiss = false
+parameters/conditions/roll = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=31 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
+[ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -288,6 +289,9 @@ spot_angle = 43.2052
 
 [node name="SM_Rug2" parent="Stage/StageBody" instance=ExtResource("15_wvhxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279752, -1.91063, 9.07173)
+
+[node name="AM_PauseMenu2" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
+transform = Transform3D(-2.49205, 0, -2.17862e-07, 0, 2.49205, 0, 2.17862e-07, 0, -2.49205, -0.347108, -1.93184, 8.62256)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhl3dby1g4fyh"]
+[gd_scene load_steps=8 format=3 uid="uid://bhl3dby1g4fyh"]
 
 [ext_resource type="PackedScene" uid="uid://bd5qini8qs3h8" path="res://assets/pause_menu/AM_PauseMenu.glb" id="1_ejwgg"]
 [ext_resource type="Script" uid="uid://7h1p82yligtg" path="res://ui/pause_menu.gd" id="2_fob5h"]
+[ext_resource type="Script" uid="uid://bkxpj73vi025b" path="res://ui/pause_menu_selector.gd" id="3_avurv"]
+[ext_resource type="Script" uid="uid://btvg3n38d22mb" path="res://ui/pause_menu_button.gd" id="3_fob5h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avurv"]
+albedo_color = Color(0.997619, 0, 0.214608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_npydk"]
+material = SubResource("StandardMaterial3D_avurv")
+size = Vector3(1.22, 0.014, 0.177)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ap7o"]
+size = Vector3(1.42578, 0.441162, 0.154297)
 
 [node name="AM_PauseMenu" instance=ExtResource("1_ejwgg")]
 script = ExtResource("2_fob5h")
@@ -13,3 +25,67 @@ cast_shadow = 0
 unique_name_in_owner = true
 autoplay = "RESET"
 speed_scale = 1.5
+
+[node name="Selector" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+script = ExtResource("3_avurv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Selector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.213138, -0.200121)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_npydk")
+
+[node name="Buttons" type="Node3D" parent="." index="3"]
+unique_name_in_owner = true
+
+[node name="ResumeAttachment" type="BoneAttachment3D" parent="Buttons" index="0"]
+transform = Transform3D(1, 5.49086e-05, 4.39597e-07, 5.49015e-05, -0.999665, -0.0258931, -9.82303e-07, 0.0258931, -0.999665, 4.48601e-05, 2.03287, 0.0604597)
+bone_name = "Bone.003"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../../PauseMenu/Skeleton3D")
+
+[node name="ResumeButton" type="Area3D" parent="Buttons/ResumeAttachment" index="0"]
+transform = Transform3D(1, 5.48818e-05, -9.81865e-07, 5.48887e-05, -0.999665, 0.0258931, 4.39521e-07, -0.0258931, -0.999665, -5.46867e-05, 0.178899, 0.0651137)
+script = ExtResource("3_fob5h")
+
+[node name="ResumeCollision" type="CollisionShape3D" parent="Buttons/ResumeAttachment/ResumeButton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0473756, 0, 0)
+shape = SubResource("BoxShape3D_6ap7o")
+
+[node name="OptionsAttachment" type="BoneAttachment3D" parent="Buttons" index="1"]
+transform = Transform3D(1, -9.62367e-08, -6.29573e-07, -3.35987e-07, 0.760056, -0.649857, 5.41052e-07, 0.649857, 0.760057, 4.51869e-09, 3.07151, 0.575179)
+bone_name = "Bone.005"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../../PauseMenu/Skeleton3D")
+
+[node name="OptionsButton" type="Area3D" parent="Buttons/OptionsAttachment" index="0"]
+transform = Transform3D(1, 9.08113e-05, -2.25614e-06, 9.08394e-05, -0.999728, 0.0233071, -1.38975e-07, -0.0233071, -0.999728, -0.000140579, 0.164503, 0.0766561)
+script = ExtResource("3_fob5h")
+
+[node name="OptionsCollision" type="CollisionShape3D" parent="Buttons/OptionsAttachment/OptionsButton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0473756, 0, 0)
+shape = SubResource("BoxShape3D_6ap7o")
+
+[node name="ExitAttachment" type="BoneAttachment3D" parent="Buttons" index="2"]
+transform = Transform3D(1, 2.08616e-07, -6.4075e-07, 4.17233e-07, 0.365567, 0.930785, 4.47035e-07, -0.930785, 0.365567, 1.41588e-07, 3.47803, 0.922753)
+bone_name = "Bone.007"
+bone_idx = 7
+use_external_skeleton = true
+external_skeleton = NodePath("../../PauseMenu/Skeleton3D")
+
+[node name="ExitButton" type="Area3D" parent="Buttons/ExitAttachment" index="0"]
+transform = Transform3D(1, 0.000348887, -5.0804e-07, 0.000348657, -0.999393, -0.0348486, -1.27838e-05, 0.0348487, -0.999393, -0.000222879, 0.142188, 0.0803609)
+script = ExtResource("3_fob5h")
+
+[node name="ExitCollision" type="CollisionShape3D" parent="Buttons/ExitAttachment/ExitButton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047, 0, 0)
+shape = SubResource("BoxShape3D_6ap7o")
+
+[connection signal="button_clicked" from="Buttons/ResumeAttachment/ResumeButton" to="." method="_on_resume_button_button_clicked"]
+[connection signal="button_hovered" from="Buttons/ResumeAttachment/ResumeButton" to="Selector" method="_on_button_hovered"]
+[connection signal="button_clicked" from="Buttons/OptionsAttachment/OptionsButton" to="." method="_on_options_button_button_clicked"]
+[connection signal="button_hovered" from="Buttons/OptionsAttachment/OptionsButton" to="Selector" method="_on_button_hovered"]
+[connection signal="button_clicked" from="Buttons/ExitAttachment/ExitButton" to="." method="_on_exit_button_button_clicked"]
+[connection signal="button_hovered" from="Buttons/ExitAttachment/ExitButton" to="Selector" method="_on_button_hovered"]

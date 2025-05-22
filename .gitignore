@@ -1,4 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+<<<<<<< HEAD
 addons/fmod/libs/windows/~libGodotFmod.windows.editor.x86_64.dll
+=======
+*.tmp
+>>>>>>> 0c2975e (improve mode toggling functionality)

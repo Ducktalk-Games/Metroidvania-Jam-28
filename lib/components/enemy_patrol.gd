@@ -43,7 +43,6 @@ func patrol(delta: float) -> void:
 		point_a.name:
 			direction_vector = (point_a.global_position - patrol_agent.global_position).normalized()
 			distance = patrol_agent.global_position.x - point_a.global_position.x
-			print(distance)
 
 			#Set the direction vector to 0 and switch direction if we are close to the edge of point a
 			if distance < 1 || !can_move:
@@ -56,7 +55,6 @@ func patrol(delta: float) -> void:
 
 			if distance < 1 || !can_move:
 				#TODO:
-				print("weee")
 				wait(end_of_path_delay)
 				current_path = point_a.name
 

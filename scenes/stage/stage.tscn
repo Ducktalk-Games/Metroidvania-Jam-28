@@ -75,6 +75,7 @@ size = Vector3(16.013, 0.130249, 2.20679)
 size = Vector3(3.0638, 0.130249, 2.20679)
 
 [node name="Stage" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00273418, 0.0202117, 0.00874996)
 
 [node name="DebugLog" type="CanvasLayer" parent="."]
 
@@ -89,17 +90,24 @@ environment = SubResource("Environment_ecxui")
 
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106411, 0, 0.0194774)
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage"]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("map_body")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+collision_layer = 5
+collision_mask = 9
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
+map_body = NodePath("StageBodyCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
+
+[node name="StageBodyCollision" type="CollisionShape3D" parent="Stage/StageBody"]
+shape = SubResource("CapsuleShape3D_erodg")
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody"]
 script = ExtResource("2_3kwj0")
@@ -178,12 +186,15 @@ size = Vector3(20, 2.87421, 2.904)
 transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.00048849, 0.584955, -14.2319)
 size = Vector3(20, 3.90566, 0.688727)
 
-[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
+[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody" node_paths=PackedStringArray("map_body")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0832447, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+collision_layer = 4
+collision_mask = 2
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
+map_body = NodePath("PlayerHitArea/CollisionShape3D")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="PlayerChildMesh" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody"]
@@ -224,14 +235,21 @@ transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
 texture = SubResource("ViewportTexture_ljyi0")
 
 [node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+collision_layer = 4
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody/PlayerHitArea"]
 shape = SubResource("SphereShape3D_ljyi0")
 
+[node name="StageBody" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
+shape = SubResource("CapsuleShape3D_erodg")
+
 [node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0.709515, -0.0321641)
-collision_layer = 2
+collision_layer = 9
+collision_mask = 13
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -270,6 +288,8 @@ point_a = NodePath("../../PatrollingPoints/PointA")
 point_b = NodePath("../../PatrollingPoints/PointB")
 
 [node name="EnemyHitArea" type="Area3D" parent="Stage/StageBody/EnemyTemp"]
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp/EnemyHitArea"]
 shape = SubResource("SphereShape3D_kb6yy")
@@ -317,9 +337,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279752, -1.91063, 9.07173)
 [node name="AM_PauseMenu2" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
 transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.347108, -1.93184, 8.62256)
 
-[node name="StaticFloor" type="StaticBody3D" parent="."]
+[node name="StageFloor" type="StaticBody3D" parent="Stage/StageBody"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 3.016)
+collision_layer = 2
+collision_mask = 6
+
+[node name="Floor" type="CollisionShape3D" parent="Stage/StageBody/StageFloor"]
+shape = SubResource("BoxShape3D_erodg")
+
+[node name="Map" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112076, -1.17205, 0)
+collision_mask = 0
 
 [node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, -3.06454)
@@ -333,10 +363,17 @@ mesh = SubResource("BoxMesh_suqj7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, 0)
 shape = SubResource("BoxShape3D_wvhxk")
 
-[node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0257498, -3.06454)
+[node name="Floor2" type="CollisionShape3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.06454)
 shape = SubResource("BoxShape3D_wvhxk")
 
 [node name="Floor3" type="CollisionShape3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
+
+[node name="Floor3" type="CollisionShape3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.06454)
+shape = SubResource("BoxShape3D_erodg")
+
+[connection signal="relocating_complete" from="Stage/StageBody" to="Stage" method="_on_stage_body_relocating_complete"]
+[connection signal="relocating_complete" from="Stage/StageBody/PlayerChildBody" to="Stage" method="_on_player_child_body_relocating_complete"]

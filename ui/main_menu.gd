@@ -4,7 +4,7 @@ extends Node3D
 @onready var curtains_left_debug: MeshInstance3D = %CurtainsLeftDebug
 @onready var curtains_right_debug: MeshInstance3D = %CurtainsRightDebug
 @onready var main_ui: CanvasLayer = %MainUI
-@onready var play_button: Button = %PlayButton
+@onready var play_button: ActionButton = %PlayButton
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +24,7 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_credits_button_pressed() -> void:
-	print("Credits")
+	print("CREDITS")
 
 
 func _on_exit_button_pressed() -> void:

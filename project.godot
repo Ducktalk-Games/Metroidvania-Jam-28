@@ -26,6 +26,10 @@ DSP/dsp_buffer_count=4
 "3D Settings/distance_factor"=1.0
 "3D Settings/rolloff_scale"=1.0
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="The Play"
@@ -39,6 +43,7 @@ CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 Global="*res://lib/globals/Global.gd"
+ActionButtonAudio="*res://addons/action_button/action_button_autoload.gd"
 
 [debug]
 
@@ -55,7 +60,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/composition/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_vat/plugin.cfg")
+enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/action_button/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/composition/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_vat/plugin.cfg")
 
 [input]
 

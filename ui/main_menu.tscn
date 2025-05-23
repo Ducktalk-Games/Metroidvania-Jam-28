@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dppvi1vyg8dji"]
+[gd_scene load_steps=25 format=3 uid="uid://dppvi1vyg8dji"]
 
 [ext_resource type="Script" uid="uid://f85x4vebaw5k" path="res://ui/main_menu.gd" id="1_p8ri8"]
 [ext_resource type="Shader" uid="uid://bvppykyi3ougu" path="res://addons/godot_vat/shaders/vat_multiple_anims.gdshader" id="2_ubpvv"]
@@ -7,6 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bnksxhkflrevj" path="res://assets/main_menu/albedo.png" id="5_lsdqh"]
 [ext_resource type="ArrayMesh" uid="uid://cjg36er5i8u6e" path="res://assets/main_menu/SM_Curtains_Mesh.res" id="6_jiymt"]
 [ext_resource type="Script" uid="uid://cvuheskkmutg3" path="res://assets/main_menu/vat_multi_mesh_instance_3d.gd" id="7_bgtsx"]
+[ext_resource type="Animation" uid="uid://882qsqsmcxvw" path="res://ui/curtain_open.res" id="8_ubpvv"]
+[ext_resource type="Texture2D" uid="uid://b3bxrprblrjsd" path="res://assets/main_menu/Play_01.png" id="9_jiymt"]
+[ext_resource type="Script" uid="uid://di11q0mhb4hdo" path="res://addons/action_button/action_button.gd" id="9_kaxbk"]
+[ext_resource type="Texture2D" uid="uid://cv31o8qgqd0j" path="res://assets/main_menu/Options_01.png" id="10_bgtsx"]
+[ext_resource type="Resource" uid="uid://bf14mh5ibrtry" path="res://ui/main_menu_action_button.tres" id="10_kaxbk"]
+[ext_resource type="Texture2D" uid="uid://kkbr1oniltwk" path="res://assets/main_menu/Credits_01.png" id="11_kaxbk"]
+[ext_resource type="Texture2D" uid="uid://cs407v210vsuq" path="res://assets/main_menu/Exit_01.png" id="12_0nobx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qard3"]
 render_priority = 0
@@ -48,67 +55,23 @@ tracks/0/keys = {
 "values": [1.0]
 }
 
-[sub_resource type="Animation" id="Animation_0sb5g"]
-resource_name = "curtain_open"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../MainMenu/CurtainsLeft:material_override:shader_parameter/time_alpha")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../MainMenu/CurtainsLeft")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.85),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"hide"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../MainMenu/CurtainsRight:material_override:shader_parameter/time_alpha")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../MainMenu/CurtainsRight")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.86667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"hide"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hohle"]
 _data = {
 &"RESET": SubResource("Animation_qard3"),
-&"curtain_open": SubResource("Animation_0sb5g")
+&"curtain_open": ExtResource("8_ubpvv")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kaxbk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0nobx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgtsx"]
+
+[sub_resource type="Theme" id="Theme_kaxbk"]
+Button/styles/focus = SubResource("StyleBoxEmpty_kaxbk")
+Button/styles/hover = SubResource("StyleBoxEmpty_0nobx")
+Button/styles/normal = SubResource("StyleBoxEmpty_bgtsx")
+Button/styles/pressed = null
 
 [node name="MainMenu" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, 0, 0, 0)
@@ -155,13 +118,14 @@ unique_name_in_owner = true
 
 [node name="UI" type="Control" parent="MainUI"]
 modulate = Color(1, 1, 1, 0.843137)
-use_parent_material = true
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_kaxbk")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainUI/UI"]
 layout_mode = 1
@@ -188,20 +152,80 @@ horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="MainUI/UI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(102.515, 59.055)
 layout_mode = 2
-text = "Play"
+size_flags_horizontal = 4
+script = ExtResource("9_kaxbk")
+on_hover = ExtResource("10_kaxbk")
+metadata/_custom_type_script = "uid://di11q0mhb4hdo"
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_jiymt")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="OptionsButton" type="Button" parent="MainUI/UI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(157.6, 60)
 layout_mode = 2
-text = "Options"
+size_flags_horizontal = 4
+script = ExtResource("9_kaxbk")
+on_hover = ExtResource("10_kaxbk")
+metadata/_custom_type_script = "uid://di11q0mhb4hdo"
+
+[node name="TextureRect2" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/OptionsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_bgtsx")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="CreditsButton" type="Button" parent="MainUI/UI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(146.665, 60)
 layout_mode = 2
-text = "Credits"
+size_flags_horizontal = 4
+script = ExtResource("9_kaxbk")
+on_hover = ExtResource("10_kaxbk")
+metadata/_custom_type_script = "uid://di11q0mhb4hdo"
+
+[node name="TextureRect3" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/CreditsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_kaxbk")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="ExitButton" type="Button" parent="MainUI/UI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(91.63, 60)
 layout_mode = 2
-text = "Exit"
+size_flags_horizontal = 4
+script = ExtResource("9_kaxbk")
+on_hover = ExtResource("10_kaxbk")
+metadata/_custom_type_script = "uid://di11q0mhb4hdo"
+
+[node name="TextureRect4" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_0nobx")
+expand_mode = 3
+stretch_mode = 5
 
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

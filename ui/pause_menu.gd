@@ -33,10 +33,8 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			pause_game()
-			print("PAUSE")
 		else:
 			unpause_game()
-			print("UNPAUSE")
 
 
 func pause_game() -> void:

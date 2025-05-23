@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=32 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
+[ext_resource type="PackedScene" uid="uid://dppvi1vyg8dji" path="res://ui/main_menu.tscn" id="17_lv745"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -175,6 +176,9 @@ size = Vector3(20, 2.87421, 2.904)
 transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.00048849, 0.584955, -14.2319)
 size = Vector3(20, 3.90566, 0.688727)
 
+[node name="SM_Rug" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("15_wvhxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12904, 0.43305, -8.46557)
+
 [node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0832447, 3)
@@ -263,7 +267,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.9999
 fov = 29.5537
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0, 4.03158, 16.1734)
+transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0, 4.03158, 17.3484)
 light_energy = 0.077
 shadow_enabled = true
 shadow_bias = 0.095
@@ -279,19 +283,19 @@ spot_attenuation = -0.38
 spot_angle = 17.83
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Stage/StageBody"]
-transform = Transform3D(0.999268, 0.014149, -0.035535, 0.0302307, 0.276992, 0.960397, 0.0234316, -0.960768, 0.276361, -0.985508, 7.662, 13.2275)
+transform = Transform3D(0.920914, -0.188533, -0.341135, 0.312467, 0.880285, 0.357019, 0.232987, -0.435377, 0.869577, -4.15842, 3.24362, 22.104)
 light_energy = 0.163
 shadow_enabled = true
 shadow_bias = 1.125
-spot_range = 20.6077
+spot_range = 11.4877
 spot_attenuation = 0.5
 spot_angle = 43.2052
 
-[node name="SM_Rug2" parent="Stage/StageBody" instance=ExtResource("15_wvhxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279752, -1.91063, 9.07173)
-
-[node name="AM_PauseMenu2" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
+[node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
 transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.347108, -1.93184, 8.62256)
+
+[node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
+transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

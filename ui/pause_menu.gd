@@ -5,6 +5,9 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var buttons: Node3D = %Buttons
 
+@onready var selector: Selector = %Selector
+@onready var resume_button: Area3D = %ResumeButton
+
 var is_paused: bool = false
 
 
@@ -23,7 +26,7 @@ func show_buttons() -> void:
 		child.show()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			pause_game()
@@ -34,6 +37,7 @@ func _input(event: InputEvent) -> void:
 func pause_game() -> void:
 	animation_player.speed_scale = 1.5
 	animation_player.play("Unroll")
+	selector.current_button = resume_button
 	is_paused = true
 
 
@@ -59,13 +63,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		animation_player.play("Idle")
 
 
-func _on_resume_button_button_clicked(button: Area3D) -> void:
+func _on_resume_button_button_clicked(_button: Area3D) -> void:
 	unpause_game()
 
 
-func _on_options_button_button_clicked(button: Area3D) -> void:
+func _on_options_button_button_clicked(_button: Area3D) -> void:
 	print("OPTIONS MENU")
 
 
-func _on_exit_button_button_clicked(button: Area3D) -> void:
+func _on_exit_button_button_clicked(_button: Area3D) -> void:
 	get_tree().quit()

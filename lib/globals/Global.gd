@@ -20,10 +20,6 @@ const SCISSORS_FLAVOUR_TEXT = 		preload("res://dialogues/scissors_flavour_text.d
 var stage: Stage
 
 
-func _ready() -> void:
-	spawn_item_popup(Ability.POCKET_WATCH)
-
-
 func spawn_item_popup(item: Ability) -> ItemPopup:
 	var item_popup := ITEM_POPUP.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as ItemPopup
 
@@ -41,10 +37,12 @@ func spawn_item_popup(item: Ability) -> ItemPopup:
 
 
 func disable_player_input() -> void:
-	var can_receive_input := Component.find(stage.current_body, "CanReceiveInput") as CanReceiveInput
-	can_receive_input.disable()
+	if stage:
+		var can_receive_input := Component.find(stage.current_body, "CanReceiveInput") as CanReceiveInput
+		can_receive_input.disable()
 
 
 func enable_player_input() -> void:
-	var can_receive_input := Component.find(stage.current_body, "CanReceiveInput") as CanReceiveInput
-	can_receive_input.enable()
+	if stage:
+		var can_receive_input := Component.find(stage.current_body, "CanReceiveInput") as CanReceiveInput
+		can_receive_input.enable()

@@ -1,4 +1,5 @@
 extends Node3D
+class_name Selector
 
 @export var speed: float = 5.0
 var current_button: Area3D = null

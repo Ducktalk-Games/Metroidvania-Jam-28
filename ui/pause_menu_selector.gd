@@ -6,20 +6,23 @@ class_name Selector
 @onready var button_array: Array[PauseMenuButton] = [%ResumeButton,%OptionsButton,%ExitButton]
 var current_button: PauseMenuButton
 
+var is_paused: bool = false
 
-func _on_button_hovered(button: Area3D) -> void:
+
+func _on_button_hovered(button: PauseMenuButton) -> void:
 	current_button = button
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_down"):
-		current_button = button_array[(button_array.find(current_button) + 1) % 3]
+	if is_paused:
+		if Input.is_action_just_pressed("ui_down"):
+			current_button = button_array[(button_array.find(current_button) + 1) % 3]
 
-	if Input.is_action_just_pressed("ui_up"):
-		current_button = button_array[(button_array.find(current_button) - 1) % 3]
+		if Input.is_action_just_pressed("ui_up"):
+			current_button = button_array[(button_array.find(current_button) - 1) % 3]
 
-	if Input.is_action_just_pressed("ui_accept"):
-		current_button.button_clicked.emit(current_button)
+		if Input.is_action_just_pressed("ui_accept"):
+			current_button.button_clicked.emit(current_button)
 
 
 func _process(delta: float) -> void:

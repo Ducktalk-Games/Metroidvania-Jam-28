@@ -8,7 +8,10 @@ extends Node3D
 @onready var selector: Selector = %Selector
 @onready var resume_button: Area3D = %ResumeButton
 
-var is_paused: bool = false
+@onready var is_paused: bool = false:
+	set(value):
+		selector.is_paused = value
+		is_paused = value
 
 
 func _ready() -> void:
@@ -30,8 +33,10 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			pause_game()
+			print("PAUSE")
 		else:
 			unpause_game()
+			print("UNPAUSE")
 
 
 func pause_game() -> void:

@@ -13,6 +13,13 @@ var stage_body: Character = %StageBody
 @onready
 var player_child_body: Character = %PlayerChildBody
 
+var stage_relocating: bool = false
+var player_relocating: bool = false
+
+
+func _is_relocating() -> bool:
+	return stage_relocating or player_relocating
+
 
 func _ready() -> void:
 	update_controllers()
@@ -39,23 +46,46 @@ func _physics_process(_delta: float) -> void:
 	debug_log()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch"):
 		switch_current_body()
 
 
+func relocate_player() -> void:
+	# Move stage to wher the player is
+	stage_body.relocate(player_child_body.map_body.global_position)
+	stage_relocating = true
+
+	#Move the player back to the center of the stage
+	player_child_body.relocate(player_child_body.map_body.global_position + Vector3(0,0,3.0))
+	player_relocating = true
+
+	while _is_relocating():
+		await get_tree().create_timer(0.1).timeout
+
+
 func switch_current_body() -> void:
-	match current_body:
-		stage_body:
-			current_body = player_child_body
+	if (current_body.is_on_floor() and !_is_relocating()):
+		match current_body:
+			stage_body:
+				current_body = player_child_body
 
-		player_child_body:
-			current_body = stage_body
+			player_child_body:
+				await relocate_player()
+				current_body = stage_body
 
-	update_controllers()
+		update_controllers()
 
 
 # Logs debug information about the controller on the screen
 func debug_log() -> void:
 	if debug_label:
 		debug_label.text = "Mode: " + current_body.name
+
+
+func _on_stage_body_relocating_complete() -> void:
+	stage_relocating = false
+
+
+func _on_player_child_body_relocating_complete() -> void:
+	player_relocating = false

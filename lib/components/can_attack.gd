@@ -41,7 +41,7 @@ func _ready() -> void:
 		pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not controlled:
 		_npc_attack()
 
@@ -54,7 +54,7 @@ func _npc_attack() -> void:
 	if not can_attack:
 		return
 
-	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return not [get_object(), %StaticFloor, %StageBody].has(t))
+	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return not [get_object(), %Map, %StageBody, %StageFloor].has(t))
 
 	if len(targs) < 1:
 		return

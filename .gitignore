@@ -1,4 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-addons/fmod/libs/windows/~libGodotFmod.windows.editor.x86_64.dll
+*.tmp

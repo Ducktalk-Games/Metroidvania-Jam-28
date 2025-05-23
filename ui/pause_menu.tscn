@@ -63,6 +63,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../PauseMenu/Skeleton3D")
 
 [node name="OptionsButton" type="Area3D" parent="Buttons/OptionsAttachment" index="0"]
+unique_name_in_owner = true
 transform = Transform3D(1, 9.08113e-05, -2.25614e-06, 9.08394e-05, -0.999728, 0.0233071, -1.38975e-07, -0.0233071, -0.999728, -0.000140579, 0.164503, 0.0766561)
 script = ExtResource("3_fob5h")
 
@@ -78,6 +79,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../../PauseMenu/Skeleton3D")
 
 [node name="ExitButton" type="Area3D" parent="Buttons/ExitAttachment" index="0"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0.000348887, -5.0804e-07, 0.000348657, -0.999393, -0.0348486, -1.27838e-05, 0.0348487, -0.999393, -0.000222879, 0.142188, 0.0803609)
 script = ExtResource("3_fob5h")
 

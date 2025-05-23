@@ -1,7 +1,8 @@
 extends Area3D
+class_name PauseMenuButton
 
-signal button_hovered(button: Area3D)
-signal button_clicked(button: Area3D)
+signal button_hovered(button: PauseMenuButton)
+signal button_clicked(button: PauseMenuButton)
 
 
 func _ready() -> void:

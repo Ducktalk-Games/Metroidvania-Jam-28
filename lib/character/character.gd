@@ -32,8 +32,6 @@ func _process(delta: float) -> void:
 		global_position = lerp(reloc_start,(reloc_target), t)
 
 		if t >= 1:
-		#if velocity.is_zero_approx():
-			print("done moving")
 			relocating = false
 			relocating_complete.emit()
 			if move_comp:

@@ -1,0 +1,48 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bile8h670ymqj"
+path="res://.godot/imported/SM_Curtains.glb-3e358cd9909a1ba89c5f206cac808d38.scn"
+
+[deps]
+
+source_file="res://assets/main_menu/SM_Curtains.glb"
+dest_files=["res://.godot/imported/SM_Curtains.glb-3e358cd9909a1ba89c5f206cac808d38.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=false
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=true
+skins/use_named_skins=false
+animation/import=false
+animation/fps=24.0
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"meshes": {
+"SM_Curtains_mesh_047": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "uid://cjg36er5i8u6e"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

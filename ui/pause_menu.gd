@@ -5,7 +5,13 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var buttons: Node3D = %Buttons
 
-var is_paused: bool = false
+@onready var selector: Selector = %Selector
+@onready var resume_button: Area3D = %ResumeButton
+
+@onready var is_paused: bool = false:
+	set(value):
+		selector.is_paused = value
+		is_paused = value
 
 
 func _ready() -> void:
@@ -23,7 +29,7 @@ func show_buttons() -> void:
 		child.show()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_paused:
 			pause_game()
@@ -32,20 +38,26 @@ func _input(event: InputEvent) -> void:
 
 
 func pause_game() -> void:
-	animation_player.speed_scale = 1.5
-	animation_player.play("Unroll")
-	is_paused = true
+	if Global.current_menu_state == Global.MenuState.GAME:
+		Global.current_menu_state = Global.MenuState.PAUSE
+		Global.current_parent_menu_state = Global.MenuState.PAUSE
+		animation_player.speed_scale = 1.5
+		animation_player.play("Unroll")
+		selector.current_button = resume_button
+		is_paused = true
 
 
 func unpause_game() -> void:
-	animation_player.speed_scale = 1.5
+	if Global.current_menu_state == Global.MenuState.PAUSE:
+		Global.current_menu_state = Global.MenuState.GAME
+		animation_player.speed_scale = 1.5
 
-	if animation_player.current_animation == "Unroll":
-		animation_player.play_backwards("Unroll")
-	else:
-		animation_player.play("Dismiss")
+		if animation_player.current_animation == "Unroll":
+			animation_player.play_backwards("Unroll")
+		else:
+			animation_player.play("Dismiss")
 
-	is_paused = false
+		is_paused = false
 
 
 func _on_dismiss_finished() -> void:
@@ -59,13 +71,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		animation_player.play("Idle")
 
 
-func _on_resume_button_button_clicked(button: Area3D) -> void:
+func _on_resume_button_button_clicked(_button: Area3D) -> void:
 	unpause_game()
 
 
-func _on_options_button_button_clicked(button: Area3D) -> void:
+func _on_options_button_button_clicked(_button: Area3D) -> void:
 	print("OPTIONS MENU")
 
 
-func _on_exit_button_button_clicked(button: Area3D) -> void:
+func _on_exit_button_button_clicked(_button: Area3D) -> void:
 	get_tree().quit()

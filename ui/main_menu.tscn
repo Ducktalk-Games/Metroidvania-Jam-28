@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dppvi1vyg8dji"]
+[gd_scene load_steps=26 format=3 uid="uid://d1wwv7wnet3rg"]
 
 [ext_resource type="Script" uid="uid://f85x4vebaw5k" path="res://ui/main_menu.gd" id="1_p8ri8"]
 [ext_resource type="Shader" uid="uid://bvppykyi3ougu" path="res://addons/godot_vat/shaders/vat_multiple_anims.gdshader" id="2_ubpvv"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bnksxhkflrevj" path="res://assets/main_menu/albedo.png" id="5_lsdqh"]
 [ext_resource type="ArrayMesh" uid="uid://cjg36er5i8u6e" path="res://assets/main_menu/SM_Curtains_Mesh.res" id="6_jiymt"]
 [ext_resource type="Script" uid="uid://cvuheskkmutg3" path="res://assets/main_menu/vat_multi_mesh_instance_3d.gd" id="7_bgtsx"]
-[ext_resource type="Animation" uid="uid://882qsqsmcxvw" path="res://ui/curtain_open.res" id="8_ubpvv"]
+[ext_resource type="Animation" uid="uid://crh68swpqbs8l" path="res://ui/curtain_open.res" id="8_ubpvv"]
 [ext_resource type="Texture2D" uid="uid://b3bxrprblrjsd" path="res://assets/main_menu/Play_01.png" id="9_jiymt"]
 [ext_resource type="Script" uid="uid://di11q0mhb4hdo" path="res://addons/action_button/action_button.gd" id="9_kaxbk"]
 [ext_resource type="Texture2D" uid="uid://cv31o8qgqd0j" path="res://assets/main_menu/Options_01.png" id="10_bgtsx"]
@@ -67,11 +67,13 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgtsx"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iyrh0"]
+
 [sub_resource type="Theme" id="Theme_kaxbk"]
 Button/styles/focus = SubResource("StyleBoxEmpty_kaxbk")
 Button/styles/hover = SubResource("StyleBoxEmpty_0nobx")
 Button/styles/normal = SubResource("StyleBoxEmpty_bgtsx")
-Button/styles/pressed = null
+Button/styles/pressed = SubResource("StyleBoxEmpty_iyrh0")
 
 [node name="MainMenu" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, 0, 0, 0)

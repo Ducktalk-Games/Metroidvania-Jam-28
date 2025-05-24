@@ -6,6 +6,8 @@ extends Node3D
 @onready var main_ui: CanvasLayer = %MainUI
 @onready var play_button: ActionButton = %PlayButton
 
+signal options_clicked
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +22,8 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
-	print("OPTIONS")
+	main_ui.hide()
+	options_clicked.emit()
 
 
 func _on_credits_button_pressed() -> void:

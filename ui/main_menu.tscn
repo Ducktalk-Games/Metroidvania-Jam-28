@@ -32,7 +32,7 @@ transform_format = 1
 use_custom_data = true
 instance_count = 1
 mesh = ExtResource("6_jiymt")
-buffer = PackedFloat32Array(1.04694e-38, 9.64288e-39, 1.08367e-38, 1.0102e-38, 8.90819e-39, 6.79589e-39, 1.00102e-38, 4.59184e-39, 8.44894e-39, 9.64289e-39, 1.02857e-38, 1.07449e-38, 0, 0, 0, 0)
+buffer = PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 48, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8ri8"]
 albedo_texture = ExtResource("5_lsdqh")

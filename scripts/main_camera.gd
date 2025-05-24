@@ -5,7 +5,7 @@ extends Camera3D
 signal pivoted_to_parent_menu
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		match Global.current_menu_state:
 			Global.MenuState.CREDITS:

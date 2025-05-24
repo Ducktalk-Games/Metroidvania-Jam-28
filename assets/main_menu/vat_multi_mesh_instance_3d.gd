@@ -1,3 +1,4 @@
+@tool
 extends VATMultiMeshInstance3D
 
 

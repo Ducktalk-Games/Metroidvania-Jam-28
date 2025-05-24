@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 	debug_log()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch"):
 		switch_current_body()
 

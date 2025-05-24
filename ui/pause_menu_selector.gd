@@ -13,7 +13,7 @@ func _on_button_hovered(button: PauseMenuButton) -> void:
 	current_button = button
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if is_paused:
 		if Input.is_action_just_pressed("ui_down"):
 			current_button = button_array[(button_array.find(current_button) + 1) % 3]

@@ -1,5 +1,16 @@
 extends Node
 
+enum MenuState {
+	MAIN,
+	PAUSE,
+	OPTIONS,
+	CREDITS,
+	GAME
+}
+
+var current_menu_state: MenuState = MenuState.MAIN
+var current_parent_menu_state: Global.MenuState = Global.MenuState.MAIN
+
 enum Ability {
 	POCKET_WATCH,
 	SCISSORS

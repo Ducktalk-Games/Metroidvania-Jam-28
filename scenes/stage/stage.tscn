@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=42 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -141,14 +141,129 @@ tracks/2/keys = {
 "values": [Vector3(-0.00872665, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_y85n4"]
+resource_name = "pivot_to_credits"
+length = 0.800003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.800003),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.00872665, 0, 0), Vector3(-0.00877908, 0.000217256, 9.79891e-07), Vector3(-0.00914607, 0.00173805, 7.83913e-06), Vector3(-0.0101422, 0.00586591, 2.64571e-05), Vector3(-0.012082, 0.0139044, 6.2713e-05), Vector3(-0.0152801, 0.027157, 0.000122486), Vector3(-0.020051, 0.0469273, 0.000211657), Vector3(-0.0267094, 0.0745187, 0.000336103), Vector3(-0.0355696, 0.111235, 0.000501704), Vector3(-0.0469465, 0.15838, 0.000714341), Vector3(-0.0611544, 0.217256, 0.000979891), Vector3(-0.0785079, 0.289168, 0.00130424), Vector3(-0.0993217, 0.375418, 0.00169325), Vector3(-0.120136, 0.46167, 0.00208228), Vector3(-0.13749, 0.533583, 0.00240663), Vector3(-0.151698, 0.592461, 0.00267218), Vector3(-0.163075, 0.639606, 0.00288482), Vector3(-0.171936, 0.676324, 0.00305043), Vector3(-0.178594, 0.703916, 0.00317488), Vector3(-0.183365, 0.723687, 0.00326405), Vector3(-0.186563, 0.73694, 0.00332383), Vector3(-0.188503, 0.744979, 0.00336009), Vector3(-0.1895, 0.749107, 0.00337871), Vector3(-0.189867, 0.750628, 0.00338557), Vector3(-0.189919, 0.750846, 0.00338655)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.800003),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [29.5537, 29.5476, 29.5052, 29.39, 29.1657, 28.7958, 28.2441, 27.4741, 26.4495, 25.1338, 23.4908, 21.484, 19.077, 16.67, 14.6631, 13.02, 11.7043, 10.6797, 9.90966, 9.35791, 8.98806, 8.76372, 8.64851, 8.60607, 8.6]
+}
+
+[sub_resource type="Animation" id="Animation_henb2"]
+resource_name = "pivot_from_credits"
+length = 0.800003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333367, 0.06667, 0.100003, 0.133337, 0.16667, 0.200003, 0.233337, 0.26667, 0.300003, 0.333337, 0.36667, 0.400003, 0.433337, 0.46667, 0.500003, 0.533337, 0.56667, 0.600003, 0.633337, 0.66667, 0.700003, 0.733337, 0.76667, 0.800003),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.189919, 0.750846, 0.00338655), Vector3(-0.189867, 0.750628, 0.00338557), Vector3(-0.1895, 0.749107, 0.00337871), Vector3(-0.188503, 0.744979, 0.00336009), Vector3(-0.186563, 0.73694, 0.00332383), Vector3(-0.183365, 0.723687, 0.00326405), Vector3(-0.178594, 0.703916, 0.00317488), Vector3(-0.171936, 0.676324, 0.00305043), Vector3(-0.163075, 0.639606, 0.00288482), Vector3(-0.151698, 0.592461, 0.00267218), Vector3(-0.13749, 0.533583, 0.00240663), Vector3(-0.120136, 0.46167, 0.00208228), Vector3(-0.0993217, 0.375418, 0.00169325), Vector3(-0.0785079, 0.289168, 0.00130424), Vector3(-0.0611544, 0.217256, 0.000979891), Vector3(-0.0469465, 0.15838, 0.000714341), Vector3(-0.0355696, 0.111235, 0.000501704), Vector3(-0.0267094, 0.0745187, 0.000336103), Vector3(-0.020051, 0.0469273, 0.000211657), Vector3(-0.0152801, 0.027157, 0.000122486), Vector3(-0.012082, 0.0139044, 6.2713e-05), Vector3(-0.0101422, 0.00586591, 2.64571e-05), Vector3(-0.00914607, 0.00173805, 7.83913e-06), Vector3(-0.00877908, 0.000217256, 9.79891e-07), Vector3(-0.00872665, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333367, 0.06667, 0.100003, 0.133337, 0.16667, 0.200003, 0.233337, 0.26667, 0.300003, 0.333337, 0.36667, 0.400003, 0.433337, 0.46667, 0.500003, 0.533337, 0.56667, 0.600003, 0.633337, 0.66667, 0.700003, 0.733337, 0.76667, 0.800003),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [8.6, 8.60607, 8.64851, 8.76372, 8.98806, 9.35791, 9.90966, 10.6797, 11.7043, 13.02, 14.6631, 16.67, 19.077, 21.484, 23.4908, 25.1338, 26.4495, 27.4741, 28.2441, 28.7958, 29.1657, 29.39, 29.5052, 29.5476, 29.5537]
+}
+
+[sub_resource type="Animation" id="Animation_arv8b"]
+resource_name = "pivot_from_options"
+length = 0.800003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333334, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.903322, -0.188787, 23.2895), Vector3(0.903003, -0.188315, 23.2897), Vector3(0.900767, -0.185014, 23.2907), Vector3(0.894699, -0.176054, 23.2937), Vector3(0.882881, -0.158605, 23.2995), Vector3(0.863399, -0.129838, 23.309), Vector3(0.834335, -0.0869234, 23.3232), Vector3(0.793773, -0.0270314, 23.343), Vector3(0.739798, 0.0526674, 23.3694), Vector3(0.670492, 0.155003, 23.4033), Vector3(0.583938, 0.282804, 23.4456), Vector3(0.478223, 0.4389, 23.4973), Vector3(0.351427, 0.626122, 23.5592), Vector3(0.224632, 0.813343, 23.6212), Vector3(0.118916, 0.969439, 23.6729), Vector3(0.0323635, 1.09724, 23.7152), Vector3(-0.0369427, 1.19958, 23.7491), Vector3(-0.0909185, 1.27927, 23.7755), Vector3(-0.13148, 1.33917, 23.7953), Vector3(-0.160544, 1.38208, 23.8095), Vector3(-0.180026, 1.41085, 23.819), Vector3(-0.191844, 1.4283, 23.8248), Vector3(-0.197912, 1.43726, 23.8278), Vector3(-0.200148, 1.44056, 23.8288), Vector3(-0.200467, 1.44103, 23.829)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333334, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [17.7, 17.7034, 17.7274, 17.7926, 17.9195, 18.1287, 18.4409, 18.8765, 19.4561, 20.2004, 21.1299, 22.2652, 23.6268, 24.9885, 26.1238, 27.0533, 27.7976, 28.3772, 28.8128, 29.125, 29.3342, 29.4611, 29.5263, 29.5503, 29.5537]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333334, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.319189, -0.822818, -0.0109526), Vector3(-0.319099, -0.82258, -0.0109494), Vector3(-0.31847, -0.820913, -0.0109272), Vector3(-0.316764, -0.81639, -0.010867), Vector3(-0.31344, -0.807581, -0.0107498), Vector3(-0.30796, -0.793058, -0.0105565), Vector3(-0.299785, -0.771392, -0.0102681), Vector3(-0.288376, -0.741155, -0.00986558), Vector3(-0.273195, -0.700919, -0.00932999), Vector3(-0.253701, -0.649255, -0.00864229), Vector3(-0.229356, -0.584734, -0.00778344), Vector3(-0.199621, -0.505928, -0.00673446), Vector3(-0.163958, -0.411409, -0.0054763), Vector3(-0.128294, -0.31689, -0.00421815), Vector3(-0.0985595, -0.238084, -0.00316916), Vector3(-0.0742148, -0.173563, -0.00231031), Vector3(-0.0547211, -0.121899, -0.00162261), Vector3(-0.0395393, -0.0816628, -0.00108702), Vector3(-0.0281305, -0.0514261, -0.000684538), Vector3(-0.0199558, -0.0297605, -0.000396144), Vector3(-0.014476, -0.0152374, -0.000202826), Vector3(-0.0111521, -0.00642827, -8.55672e-05), Vector3(-0.00944531, -0.00190467, -2.53532e-05), Vector3(-0.00881648, -0.000238084, -3.16916e-06), Vector3(-0.00872665, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MainMenu")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_ui"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y85n4"]
 _data = {
 &"RESET": SubResource("Animation_5b43b"),
+&"pivot_from_credits": SubResource("Animation_henb2"),
+&"pivot_from_options": SubResource("Animation_arv8b"),
+&"pivot_to_credits": SubResource("Animation_y85n4"),
 &"pivot_to_options": SubResource("Animation_lv745")
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_henb2"]
 size = Vector3(1, 1, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0sb5g"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
 
@@ -398,20 +513,50 @@ spot_range = 4.04814
 spot_attenuation = 0.5
 spot_angle = 30.0546
 
+[node name="SpotLight3D5" type="SpotLight3D" parent="Stage/StageBody"]
+transform = Transform3D(0.842276, -0.259253, 0.472609, 0.159316, 0.957308, 0.241207, -0.514966, -0.127868, 0.84762, -2.59877, 1.18401, 22.2662)
+light_energy = 0.163
+shadow_enabled = true
+shadow_bias = 1.125
+spot_range = 4.04814
+spot_attenuation = 0.5
+spot_angle = 15.7139
+
 [node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
 transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.347108, -1.93184, 8.62256)
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
 
+[node name="Wall3" type="MeshInstance3D" parent="Stage/StageBody"]
+transform = Transform3D(-1.25147e-07, -8.87747, 0, 2.86303, -3.88047e-07, 0, 0, 0, 22.0398, -1.44915, -1.48396, 19.0158)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("../OptionsMenu")
+
+[node name="CreditsMenu" type="Node3D" parent="Stage/StageBody"]
+
+[node name="Wall4" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.977, 18.6306)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("../../root/@EditorNode@21273/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Stage/Stage/StageBody/OptionsMenu")
+
+[node name="Wall5" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(-1.30968e-07, 0, -2.19536, 0, 10.3263, 0, 2.9962, 0, -9.59624e-08, -4.912, 1.805, 20.2404)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("../../root/@EditorNode@21273/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Stage/Stage/StageBody/OptionsMenu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(0.830857, -0.103906, 0.0240281, 6.98387e-09, 0.717033, 0.0126473, -0.512106, -0.16858, 0.0389839, -4.26929, 0.308423, 19.4704)
+mesh = SubResource("BoxMesh_0sb5g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(-0.830857, 0.103906, -0.0240281, -5.39687e-09, 0.717033, 0.0126473, 0.512106, 0.16858, -0.0389839, -4.39303, 0.302746, 19.2633)
+mesh = SubResource("BoxMesh_0sb5g")
+
 [node name="OptionsMenu" type="Node3D" parent="Stage/StageBody"]
 
 [node name="Wall" type="MeshInstance3D" parent="Stage/StageBody/OptionsMenu"]
 transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 22.0398, 3.84055, 0.976626, 18.729)
-mesh = SubResource("BoxMesh_henb2")
-
-[node name="Wall3" type="MeshInstance3D" parent="Stage/StageBody/OptionsMenu"]
-transform = Transform3D(-1.25147e-07, -8.87747, 0, 2.86303, -3.88047e-07, 0, 0, 0, 22.0398, -1.44915, -1.48396, 19.0158)
 mesh = SubResource("BoxMesh_henb2")
 
 [node name="Wall2" type="MeshInstance3D" parent="Stage/StageBody/OptionsMenu"]
@@ -446,4 +591,6 @@ shape = SubResource("BoxShape3D_wvhxk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
 
+[connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
+[connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]

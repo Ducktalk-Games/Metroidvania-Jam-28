@@ -38,21 +38,26 @@ func _input(_event: InputEvent) -> void:
 
 
 func pause_game() -> void:
-	animation_player.speed_scale = 1.5
-	animation_player.play("Unroll")
-	selector.current_button = resume_button
-	is_paused = true
+	if Global.current_menu_state == Global.MenuState.GAME:
+		Global.current_menu_state = Global.MenuState.PAUSE
+		Global.current_parent_menu_state = Global.MenuState.PAUSE
+		animation_player.speed_scale = 1.5
+		animation_player.play("Unroll")
+		selector.current_button = resume_button
+		is_paused = true
 
 
 func unpause_game() -> void:
-	animation_player.speed_scale = 1.5
+	if Global.current_menu_state == Global.MenuState.PAUSE:
+		Global.current_menu_state = Global.MenuState.GAME
+		animation_player.speed_scale = 1.5
 
-	if animation_player.current_animation == "Unroll":
-		animation_player.play_backwards("Unroll")
-	else:
-		animation_player.play("Dismiss")
+		if animation_player.current_animation == "Unroll":
+			animation_player.play_backwards("Unroll")
+		else:
+			animation_player.play("Dismiss")
 
-	is_paused = false
+		is_paused = false
 
 
 func _on_dismiss_finished() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=43 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
 [ext_resource type="Script" uid="uid://ctn0wj4uksx34" path="res://scripts/main_camera.gd" id="16_5b43b"]
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
-[ext_resource type="PackedScene" path="res://ui/main_menu.tscn" id="17_lv745"]
+[ext_resource type="PackedScene" uid="uid://d1wwv7wnet3rg" path="res://ui/main_menu.tscn" id="17_lv745"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -267,6 +267,8 @@ size = Vector3(1, 1, 0.075)
 
 [sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_5b43b"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
 size = Vector3(16.013, 0.130249, 2.20679)
 
@@ -483,7 +485,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0, 4.03158, 17.3484)
 light_energy = 0.077
 shadow_enabled = true
-shadow_bias = 0.095
+shadow_bias = 0.651
 spot_range = 312.922
 spot_attenuation = -0.38
 
@@ -572,6 +574,10 @@ mesh = SubResource("BoxMesh_arv8b")
 skeleton = NodePath("")
 
 [node name="StageScaffolding" type="Node3D" parent="Stage/StageBody"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StageBody/StageScaffolding"]
+transform = Transform3D(16.098, 0, 0, 0, 0.0624632, 0, 0, 0, 1, 0, 0.0426067, 2.97948)
+mesh = SubResource("BoxMesh_5b43b")
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

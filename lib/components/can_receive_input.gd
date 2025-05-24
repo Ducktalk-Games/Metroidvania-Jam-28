@@ -12,10 +12,11 @@ func _node_ready() -> void:
 	movement_component = other("CanMove")
 
 
-func _input(event: InputEvent) -> void:
-	move_left_right_pressed.emit(Input.get_axis("move_left", "move_right"))
-	jump_pressed.emit(Input.is_action_just_pressed("jump"))
-	attack.emit(Input.is_action_just_pressed("attack"))
+func _input(_event: InputEvent) -> void:
+	if Global.current_menu_state == Global.MenuState.GAME:
+		move_left_right_pressed.emit(Input.get_axis("move_left", "move_right"))
+		jump_pressed.emit(Input.is_action_just_pressed("jump"))
+		attack.emit(Input.is_action_just_pressed("attack"))
 
 
 func reset_input() -> void:

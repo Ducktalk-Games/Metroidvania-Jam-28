@@ -19,7 +19,7 @@ func _node_ready() -> void:
 		printerr("CanReceiveInput not found in " + name)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if character.is_on_floor():
 		if jump_pressed:
 			character.velocity.y = jump_max

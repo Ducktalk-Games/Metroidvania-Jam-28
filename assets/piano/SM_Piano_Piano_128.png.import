@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da3rw57m25ckm"
-path.s3tc="res://.godot/imported/SM_Piano_Piano_128.png-bb3c186f74bde2aac97035559b3b6589.s3tc.ctex"
+path.s3tc="res://.godot/imported/SM_Piano_Piano_128.png-e98afb4e64f50f61ed93d2df90dbbda1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/piano/SM_Piano_Piano_128.png"
-dest_files=["res://.godot/imported/SM_Piano_Piano_128.png-bb3c186f74bde2aac97035559b3b6589.s3tc.ctex"]
+source_file="res://assets/Piano/SM_Piano_Piano_128.png"
+dest_files=["res://.godot/imported/SM_Piano_Piano_128.png-e98afb4e64f50f61ed93d2df90dbbda1.s3tc.ctex"]
 
 [params]
 

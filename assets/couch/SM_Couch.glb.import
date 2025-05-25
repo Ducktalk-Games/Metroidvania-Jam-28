@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c08adq1pgjaml"
-path="res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"
+uid="uid://cecmsmc824vw4"
+path="res://.godot/imported/SM_Couch.glb-055e6c53f909ba584bc38cf632315042.scn"
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano.glb"
-dest_files=["res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"]
+source_file="res://assets/couch/SM_Couch.glb"
+dest_files=["res://.godot/imported/SM_Couch.glb-055e6c53f909ba584bc38cf632315042.scn"]
 
 [params]
 

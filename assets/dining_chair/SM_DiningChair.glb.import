@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c08adq1pgjaml"
-path="res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"
+uid="uid://cbn8m41oyt8ad"
+path="res://.godot/imported/SM_DiningChair.glb-1da116947d67f037453832631c47eac8.scn"
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano.glb"
-dest_files=["res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"]
+source_file="res://assets/dining_chair/SM_DiningChair.glb"
+dest_files=["res://.godot/imported/SM_DiningChair.glb-1da116947d67f037453832631c47eac8.scn"]
 
 [params]
 

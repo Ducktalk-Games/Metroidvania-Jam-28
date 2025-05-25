@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bsigrmdwpfe3s"
+path="res://.godot/imported/act_4_narrator.dialogue-546a68a3575c761b936b4c540c666314.tres"
+
+[deps]
+
+source_file="res://dialogues/act_4_narrator.dialogue"
+dest_files=["res://.godot/imported/act_4_narrator.dialogue-546a68a3575c761b936b4c540c666314.tres"]
+
+[params]
+
+defaults=true

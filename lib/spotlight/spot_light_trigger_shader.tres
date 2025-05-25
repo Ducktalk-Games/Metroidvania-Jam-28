@@ -1,0 +1,43 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://tjoodjppblok"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_mbr3u"]
+parameter_name = "Alpha"
+default_value_enabled = true
+default_value = 0.3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hobah"]
+parameter_name = "Emission"
+default_value_enabled = true
+default_value = 1.0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
+
+uniform float Alpha = 0.30000001192093;
+uniform float Emission = 1.0;
+
+
+
+void fragment() {
+// FloatParameter:2
+	float n_out2p0 = Alpha;
+
+
+// FloatParameter:3
+	float n_out3p0 = Emission;
+
+
+// Output:0
+	ALPHA = n_out2p0;
+	EMISSION = vec3(n_out3p0);
+
+
+}
+"
+modes/cull = 2
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatParameter_mbr3u")
+nodes/fragment/2/position = Vector2(-100, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_hobah")
+nodes/fragment/3/position = Vector2(-100, 440)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1, 3, 0, 0, 5)

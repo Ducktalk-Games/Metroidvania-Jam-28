@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dqflgmeqhbffg"]
+
+[ext_resource type="Shader" uid="uid://tjoodjppblok" path="res://lib/spotlight/spot_light_trigger_shader.tres" id="1_mkmh2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mkmh2")
+shader_parameter/Alpha = 0.0
+shader_parameter/Emission = 1.0

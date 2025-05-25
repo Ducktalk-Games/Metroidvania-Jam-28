@@ -10,6 +10,7 @@ var movement_component: CanMove
 
 func _node_ready() -> void:
 	movement_component = other("CanMove")
+	disable()
 
 
 func _input(_event: InputEvent) -> void:

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckqwlmi5fy7g7"
-path.s3tc="res://.godot/imported/SM_Piano_BC_Piano_128x128.png-155e4e6838f27f8b144665fbbe8f9cc8.s3tc.ctex"
+uid="uid://jq16wx1r7hqr"
+path.s3tc="res://.godot/imported/SM_CreditsBaord_credits_chalk_fixed_res.png-90ffbf21954fd465e1df33aef21d5101.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1cda642245dea8b4577b27497704808"
+"md5": "a8d35e1b6beca28f78fa18a63bdc891c"
 }
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano_BC_Piano_128x128.png"
-dest_files=["res://.godot/imported/SM_Piano_BC_Piano_128x128.png-155e4e6838f27f8b144665fbbe8f9cc8.s3tc.ctex"]
+source_file="res://assets/credits_board/SM_CreditsBaord_credits_chalk_fixed_res.png"
+dest_files=["res://.godot/imported/SM_CreditsBaord_credits_chalk_fixed_res.png-90ffbf21954fd465e1df33aef21d5101.s3tc.ctex"]
 
 [params]
 

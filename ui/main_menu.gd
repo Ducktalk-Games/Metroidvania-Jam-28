@@ -8,6 +8,7 @@ extends Node3D
 
 signal options_clicked
 signal credits_clicked
+signal curtains_opened
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,3 +43,8 @@ func _on_exit_button_pressed() -> void:
 func show_ui() -> void:
 	main_ui.show()
 	play_button.grab_focus()
+
+
+func _on_curtain_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "curtain_open":
+		curtains_opened.emit()

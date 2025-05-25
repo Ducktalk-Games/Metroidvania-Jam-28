@@ -39,6 +39,6 @@ func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 
-# Don't touch this, this is for AnimNotify
 func show_ui() -> void:
 	main_ui.show()
+	play_button.grab_focus()

@@ -23,8 +23,7 @@ func pivot_to_options() -> void:
 func pivot_from_options() -> void:
 	Global.current_menu_state = Global.current_parent_menu_state
 	camera_animation_player.play("pivot_to_options", -1, -1, true)
-	await camera_animation_player.animation_finished
-	pivoted_to_parent_menu.emit()
+	wait_for_from_anim_to_finish()
 
 
 func pivot_to_credits() -> void:
@@ -35,5 +34,9 @@ func pivot_to_credits() -> void:
 func pivot_from_credits() -> void:
 	Global.current_menu_state = Global.current_parent_menu_state
 	camera_animation_player.play("pivot_to_credits", -1, -1, true)
+	wait_for_from_anim_to_finish()
+
+
+func wait_for_from_anim_to_finish() -> void:
 	await camera_animation_player.animation_finished
 	pivoted_to_parent_menu.emit()

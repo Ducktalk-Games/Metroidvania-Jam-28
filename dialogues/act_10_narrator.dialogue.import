@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://djt3w2uh2t8wq"
+path="res://.godot/imported/act_10_narrator.dialogue-bc7b9e9247bbfd0781dfb4d1dc3f4236.tres"
+
+[deps]
+
+source_file="res://dialogues/act_10_narrator.dialogue"
+dest_files=["res://.godot/imported/act_10_narrator.dialogue-bc7b9e9247bbfd0781dfb4d1dc3f4236.tres"]
+
+[params]
+
+defaults=true

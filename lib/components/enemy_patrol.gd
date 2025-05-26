@@ -1,93 +1,88 @@
 class_name EnemyPatrol
 extends Component
+
 const E = preload("res://lib/shared/enums.gd")
 
 @export
-var point_a: Node3D
+var point_a: Area3D
 
 @export
-var point_b: Node3D
+var point_b: Area3D
 
 @export
-var patrol_speed: float = 10.0
+var patrol_speed: float = 2.0
 
 @export
-var end_of_path_delay: float = 0.1
+var end_of_path_delay: float = 0.0
 
-@onready
-var points_node: Node3D = $PatrollingPoints
-
-@onready
-var patrol_agent := Component.component_owner(self)
+var patrol_agent: Character
 
 @onready
 var stage := %Stage
 
+var collision_raycast:RayCast3D
+
 var fsm: FiniteStateMachine
 
-var is_waiting: bool
-
 var current_path: String
-
-var current_state: E.FSMState
 
 signal reached_patrol_endpoint(new_target: String)
 
 
 func _ready() -> void:
+	# Get the component owner node
+	var component_owner := get_parent()
 
-	print(fsm)
-	is_waiting = false
+	if component_owner == null:
+		push_error("Component owner not found.")
+		return
+
+	#Obtain all the references
 	current_path = point_a.name
+	var componentOwner := get_parent()
+	fsm = componentOwner.get_node_or_null("FiniteStateMachine") as FiniteStateMachine
+	patrol_agent = componentOwner.get_parent() as Character
+	collision_raycast = patrol_agent.get_node("RayCast") as RayCast3D
 	fsm.connect("state_changed", Callable(self, "_on_state_changed"))
+	reached_patrol_endpoint.connect(_on_reach_patrol_point)
 	pass
 
 
 func _on_state_changed(state: E.FSMState) -> void:
-	current_state = state
 
 	match state:
 		E.FSMState.PATROLLING:
 			print("patrolling")
 
-		E.FSMState.ATTACKING:
-			print("Engage attack")
-
 		E.FSMState.WAITING:
-			wait(end_of_path_delay)
 			print("waiting...")
+			await wait(end_of_path_delay)
+			fsm.call("change_state", E.FSMState.PATROLLING)
 
 
 func patrol(_delta: float) -> void:
-	var direction_vector: Vector3
-	var can_move: bool = !patrol_agent.is_on_wall()
-	var distance: float
-
 	match current_path:
 		point_a.name:
-			direction_vector = (point_a.global_position - patrol_agent.global_position).normalized()
-			distance = patrol_agent.global_position.x - point_a.global_position.x
-			print(distance)
-
-			#Set the direction vector to 0 and switch direction if we are close to the edge of point a
-			if distance < 1 || !can_move:
-				fsm.call("change_state", E.FSMState.WAITING)
-				emit_signal("reached_patrol_endpoint", point_b.name)
-				current_path = point_b.name
+			#Handle the direction towards point a
+			patrol_to_destination(point_a, point_b)
 
 		point_b.name:
-			direction_vector = (point_b.global_position - patrol_agent.global_position).normalized()
-			distance = patrol_agent.global_position.x - point_b.global_position.x
+			#Handle the direction towards the opposite (point b)
+			patrol_to_destination(point_b, point_a)
 
-			if distance < 1 || !can_move:
-				fsm.call("change_state", E.FSMState.WAITING)
-				emit_signal("reached_patrol_endpoint", point_b.name)
-				current_path = point_a.name
 
-	#character.velocity.y += character.get_gravity().y * delta
-	# Move the character by its velocity
-	if !is_waiting:
-		#Start movement
+func patrol_to_destination(destination: Node3D, inverse: Node3D) -> void:
+	var direction_vector: Vector3 = (destination.global_position - patrol_agent.global_position).normalized()
+	collision_raycast.target_position = direction_vector
+	collision_raycast.force_raycast_update()
+#
+	##Set the direction vector to 0 and switch direction if we are close to the edge of point a
+	if collision_raycast.is_colliding() || patrol_agent.is_on_wall():
+		emit_signal("reached_patrol_endpoint", inverse.name)
+		fsm.call("change_state", E.FSMState.WAITING)
+
+	## Move the character by its velocity
+	if fsm.current_state == E.FSMState.PATROLLING:
 		patrol_agent.velocity.x = direction_vector.x * patrol_speed
 		patrol_agent.move_and_slide()
 
@@ -98,32 +93,15 @@ func wait(seconds: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if (!stage.current_body.name == "StageBody"):
+	#Early exit to prevent null ref error
+	if (!stage.current_body.name == "StageBody" || !patrol_agent):
 		return
 
-	match current_state:
-		E.FSMState.PATROLLING:
-			patrol(delta)
-
-		E.FSMState.WAITING:
-			pass
-
-		E.FSMState.ATTACKING:
-			pass
+	if (fsm.current_state == E.FSMState.PATROLLING):
+		patrol(delta)
 
 
-func _on_reach_patrol_point() -> void:
-	#patrol_speed = Vector3.ZERO
-	#move_and_slide()
-	#await get_tree().create_timer(wait_time).timeout
-	#current_target_idx = (current_target_idx + 1) % patrol_points.size()
-	#_set_new_path()
+func _on_reach_patrol_point(new_path: String) -> void:
+	current_path = new_path
+	print("on reach patrol point" + current_path)
 	pass
-
-
-func _set_new_path() -> void:
-	pass
-	#var start = global_position
-	#var end = patrol_points[current_target_idx]
-	#path = nav.map_get_path(nav_map, start, end, false)
-	#path_index = 0

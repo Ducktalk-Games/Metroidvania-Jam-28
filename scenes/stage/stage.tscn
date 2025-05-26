@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=30 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -60,6 +60,12 @@ radius = 1.84929
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kb6yy"]
 radius = 0.982268
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_suqj7"]
+size = Vector3(0.671021, 4.4082, 1.80591)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lv745"]
+size = Vector3(0.334961, 3.37639, 2.1958)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
 size = Vector3(16.013, 0.130249, 2.20679)
@@ -231,63 +237,85 @@ texture = SubResource("ViewportTexture_ljyi0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody/PlayerHitArea"]
 shape = SubResource("SphereShape3D_ljyi0")
 
-[node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52532, 0.709515, -0.0321641)
+[node name="PatrollingEnemy" type="Node" parent="Stage/StageBody"]
+
+[node name="EnemyTemp" type="CharacterBody3D" parent="Stage/StageBody/PatrollingEnemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.525, 0, -3)
 collision_layer = 2
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="EnemyChildMesh" type="MeshInstance3D" parent="Stage/StageBody/EnemyTemp"]
+[node name="EnemyChildMesh" type="MeshInstance3D" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52334, 0)
 mesh = SubResource("CapsuleMesh_ecxui")
 
-[node name="EnemyChildCollision" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp"]
+[node name="EnemyChildCollision" type="CollisionShape3D" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp"]
 shape = SubResource("CapsuleShape3D_ecxui")
 debug_color = Color(0, 0.6, 0.701961, 0.72549)
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/EnemyTemp" node_paths=PackedStringArray("hit_area", "point_a", "point_b")]
+[node name="RayCast" type="RayCast3D" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp"]
+target_position = Vector3(-1, 0, 0)
+collision_mask = 5
+collide_with_areas = true
+debug_shape_custom_color = Color(0, 0.760784, 0, 1)
+debug_shape_thickness = 3
+
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp" node_paths=PackedStringArray("hit_area", "point_a", "point_b")]
 script = ExtResource("2_3kwj0")
 value = 10.0
 delay_seconds = 1.0
 continuous = true
 hit_area = NodePath("../EnemyHitArea")
 health = 100.0
-point_a = NodePath("../PatrollingPoints/PointA")
-point_b = NodePath("../PatrollingPoints/PointB")
-patrol_speed = 2.0
-end_of_path_delay = 0.1
-current_state = null
+point_a = NodePath("../../PatrollingPoints/PointA")
+point_b = NodePath("../../PatrollingPoints/PointB")
+patrol_speed = 5.0
+end_of_path_delay = 2.0
+current_state = 0
 
-[node name="CanAttack" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("hit_area")]
+[node name="CanAttack" type="Node" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("7_ljyi0")
 hit_area = NodePath("../../EnemyHitArea")
 
-[node name="HasHealth" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner"]
+[node name="HasHealth" type="Node" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
-[node name="EnemyPatrol" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("point_a", "point_b")]
+[node name="EnemyPatrol" type="Node" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp/ComponentOwner" node_paths=PackedStringArray("point_a", "point_b")]
 script = ExtResource("15_wvhxk")
-point_a = NodePath("../../PatrollingPoints/PointA")
-point_b = NodePath("../../PatrollingPoints/PointB")
-patrol_speed = 2.0
+point_a = NodePath("../../../PatrollingPoints/PointA")
+point_b = NodePath("../../../PatrollingPoints/PointB")
+patrol_speed = 5.0
+end_of_path_delay = 2.0
 
-[node name="FiniteStateMachine" type="Node" parent="Stage/StageBody/EnemyTemp/ComponentOwner"]
+[node name="FiniteStateMachine" type="Node" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp/ComponentOwner"]
 script = ExtResource("14_suqj7")
 
-[node name="EnemyHitArea" type="Area3D" parent="Stage/StageBody/EnemyTemp"]
+[node name="EnemyHitArea" type="Area3D" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/EnemyTemp/EnemyHitArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PatrollingEnemy/EnemyTemp/EnemyHitArea"]
 shape = SubResource("SphereShape3D_kb6yy")
 
-[node name="PatrollingPoints" type="Node3D" parent="Stage/StageBody/EnemyTemp"]
+[node name="PatrollingPoints" type="Node" parent="Stage/StageBody/PatrollingEnemy"]
 
-[node name="PointA" type="Node3D" parent="Stage/StageBody/EnemyTemp/PatrollingPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3221, 0, 0)
+[node name="PointA" type="Area3D" parent="Stage/StageBody/PatrollingEnemy/PatrollingPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.189, 0, -3)
+collision_layer = 4
+collision_mask = 0
 
-[node name="PointB" type="Node3D" parent="Stage/StageBody/EnemyTemp/PatrollingPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88015, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PatrollingEnemy/PatrollingPoints/PointA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42909, 0.851563, 0.069458)
+shape = SubResource("BoxShape3D_suqj7")
+
+[node name="PointB" type="Area3D" parent="Stage/StageBody/PatrollingEnemy/PatrollingPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.352, 0, -3)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PatrollingEnemy/PatrollingPoints/PointB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33252, 0.498528, -0.0915527)
+shape = SubResource("BoxShape3D_lv745")
 
 [node name="Camera3D" type="Camera3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58566, 34.4428)

@@ -39,16 +39,23 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/MarginContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
@@ -59,7 +66,7 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/VBoxContainer" instance=ExtResource("4_u78lh")]
+[node name="DialogueLabel" parent="Balloon/Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_u78lh")]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2

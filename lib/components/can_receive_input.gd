@@ -4,6 +4,7 @@ extends Component
 signal move_left_right_pressed(left_right: float)
 signal jump_pressed(just_pressed: bool)
 signal attack(just_pressed: bool)
+signal interact_pressed(just_pressed: bool)
 
 var movement_component: CanMove
 
@@ -18,6 +19,7 @@ func _input(_event: InputEvent) -> void:
 		move_left_right_pressed.emit(Input.get_axis("move_left", "move_right"))
 		jump_pressed.emit(Input.is_action_just_pressed("jump"))
 		attack.emit(Input.is_action_just_pressed("attack"))
+		interact_pressed.emit(Input.is_action_just_pressed("interact"))
 
 
 func on_game_start() -> void:

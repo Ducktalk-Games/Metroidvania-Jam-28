@@ -7,13 +7,15 @@ var balloon: DialogueManagerExampleBalloon
 
 
 func _input(event: InputEvent) -> void:
-	if balloon:
-		balloon._input(event)
+	if Input.is_action_just_pressed("next_line") and balloon:
+		balloon.next_line()
 
 
 func _ready() -> void:
-	if flavour_text and item:
+	if item:
 		%ItemParent.add_child(item.instantiate())
+
+	if flavour_text:
 		balloon = DialogueManager.show_dialogue_balloon_scene(%FlavourTextBalloon, flavour_text)
 		DialogueManager.dialogue_ended.connect(_on_dialogue_end)
 

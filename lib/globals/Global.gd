@@ -8,15 +8,14 @@ enum MenuState {
 	GAME
 }
 
-var kill_dialog: bool
-
-var current_menu_state: MenuState = MenuState.MAIN
-var current_parent_menu_state: Global.MenuState = Global.MenuState.MAIN
-
 enum Ability {
 	POCKET_WATCH,
 	SCISSORS
 }
+
+var kill_dialog: bool
+var current_menu_state: MenuState = MenuState.MAIN
+var current_parent_menu_state: Global.MenuState = Global.MenuState.MAIN
 
 const ITEM_POPUP = 					preload("res://ui/item_popup.tscn")
 

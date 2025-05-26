@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=52 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
 [ext_resource type="PackedScene" uid="uid://d1wwv7wnet3rg" path="res://ui/main_menu.tscn" id="17_lv745"]
 [ext_resource type="PackedScene" uid="uid://5d8j6yr1m5qn" path="res://assets/credits_board/SM_CreditsBaord.glb" id="21_arv8b"]
+[ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -65,6 +66,9 @@ radius = 0.294
 height = 1.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qard3"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ljyi0"]
 radius = 1.84929
@@ -281,6 +285,9 @@ size = Vector3(1, 1, 0.075)
 radius = 0.285
 height = 1.2
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_hohle"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
 size = Vector3(16.013, 0.130249, 2.20679)
 
@@ -310,6 +317,7 @@ environment = SubResource("Environment_ecxui")
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
+kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage"]
 unique_name_in_owner = true
@@ -472,7 +480,7 @@ script = ExtResource("8_kb6yy")
 [node name="PlayerDialogueBubble" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
 unique_name_in_owner = true
 transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
-texture = SubResource("ViewportTexture_y85n4")
+texture = SubResource("ViewportTexture_qard3")
 
 [node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
 
@@ -626,8 +634,12 @@ mesh = SubResource("CapsuleMesh_henb2")
 
 [node name="NarratorDialogueBubble" parent="Stage/StageBody/Narrator" instance=ExtResource("7_d1yl1")]
 unique_name_in_owner = true
-transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, -0.0139775, 2.36018, -0.0189097)
-texture = SubResource("ViewportTexture_y85n4")
+transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0.0193961, 2.8345, -0.0189097)
+texture = SubResource("ViewportTexture_hohle")
+script = ExtResource("24_hohle")
+
+[node name="SubViewport" parent="Stage/StageBody/Narrator/NarratorDialogueBubble" index="0"]
+size = Vector2i(134, 113)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
@@ -654,10 +666,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
 
 [connection signal="act_1_ended" from="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" to="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" method="_on_matron_dialogue_bubble_act_1_ended"]
+[connection signal="patron_spoke" from="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" to="Stage/StageBody/Narrator/NarratorDialogueBubble" method="_on_patron_dialogue_bubble_patron_spoke"]
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
 [connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
+[connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" method="_on_main_menu_curtains_opened"]
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
 
 [editable path="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble"]
 [editable path="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble"]
+[editable path="Stage/StageBody/Narrator/NarratorDialogueBubble"]

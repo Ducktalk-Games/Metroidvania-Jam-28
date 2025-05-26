@@ -20,6 +20,11 @@ func _input(_event: InputEvent) -> void:
 		attack.emit(Input.is_action_just_pressed("attack"))
 
 
+func on_game_start() -> void:
+	if Global.kill_dialog:
+		enable()
+
+
 func reset_input() -> void:
 	move_left_right_pressed.emit(0.0)
 	jump_pressed.emit(false)

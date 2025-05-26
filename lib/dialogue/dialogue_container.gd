@@ -10,9 +10,18 @@ func _ready() -> void:
 	if debug:
 		show_dialogue(load("res://dialogues/test_dialogue.dialogue"))
 
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	pass
+
 
 # Shows the balloon dialogue
 func show_dialogue(resource: DialogueResource) -> DialogueManagerExampleBalloon:
+	if Global.kill_dialog:
+		return null
+
 	return DialogueManager.show_dialogue_balloon_scene(popup_balloon, resource)
 
 

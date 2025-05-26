@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://djqbgjeg3brj6"]
+
+[ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="1_d2nut"]
+[ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_tpx1x"]
+[ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="3_76dk1"]
+[ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="4_idg1d"]
+[ext_resource type="PackedScene" uid="uid://deqdc3vnv0a0e" path="res://lib/scenes/enemy_patrol.tscn" id="5_rtabb"]
+[ext_resource type="Script" uid="uid://bdum61cqmw377" path="res://lib/components/finite_state_machine.gd" id="6_4ulmo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ecxui"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
+radius = 0.504899
+height = 2.13342
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kb6yy"]
+radius = 0.982268
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+axis_lock_linear_z = true
+axis_lock_angular_z = true
+script = ExtResource("1_d2nut")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
+
+[node name="EnemyChildMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52334, 0)
+layers = 0
+mesh = SubResource("CapsuleMesh_ecxui")
+
+[node name="EnemyChildCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57715, 0)
+shape = SubResource("CapsuleShape3D_ecxui")
+debug_color = Color(0, 0.6, 0.701961, 0.72549)
+debug_fill = false
+
+[node name="ComponentOwner" type="Node" parent="." node_paths=PackedStringArray("hit_area")]
+script = ExtResource("2_tpx1x")
+value = 10.0
+delay_seconds = 1.0
+continuous = true
+hit_area = NodePath("../EnemyHitArea")
+health = 100.0
+patrol_speed = 0.25
+end_of_path_delay = 0.0
+debug_fsm = false
+current_state = 0
+
+[node name="CanAttack" type="Node" parent="ComponentOwner" node_paths=PackedStringArray("hit_area")]
+script = ExtResource("3_76dk1")
+hit_area = NodePath("../../EnemyHitArea")
+
+[node name="HasHealth" type="Node" parent="ComponentOwner"]
+script = ExtResource("4_idg1d")
+
+[node name="EnemyPatrol" parent="ComponentOwner" instance=ExtResource("5_rtabb")]
+patrol_speed = 0.25
+end_of_path_delay = 0.0
+
+[node name="PointA" parent="ComponentOwner/EnemyPatrol" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62645, 0, -3.12672)
+
+[node name="PointB" parent="ComponentOwner/EnemyPatrol" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61294, 0, -3.07915)
+
+[node name="FiniteStateMachine" type="Node" parent="ComponentOwner"]
+script = ExtResource("6_4ulmo")
+
+[node name="EnemyHitArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitArea"]
+shape = SubResource("SphereShape3D_kb6yy")
+
+[editable path="ComponentOwner/EnemyPatrol"]

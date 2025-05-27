@@ -1,7 +1,5 @@
 extends Component
 
-signal interacted
-
 var character: Character
 
 
@@ -11,4 +9,4 @@ func _node_ready() -> void:
 
 func _on_can_receive_input_interact_pressed(just_pressed: bool) -> void:
 	if just_pressed and character.nearby_interactable:
-		interacted.emit()
+		character.nearby_interactable.interacted.emit()

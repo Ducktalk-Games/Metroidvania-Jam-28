@@ -1,8 +1,5 @@
-extends Area3D
+extends Interactable
 class_name ItemPickup
-
-signal character_entered
-signal character_exited
 
 @export var ability: Global.Ability
 

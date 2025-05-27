@@ -3,9 +3,6 @@ extends Component
 var character: Character
 var inventory: Array[Global.Ability]
 
-@onready var ui: CanvasLayer = %UI
-const ITEM_POPUP = preload("res://ui/item_popup.tscn")
-
 
 func _node_ready() -> void:
 	character = get_object() as Character

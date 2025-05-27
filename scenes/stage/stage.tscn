@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=60 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://dnykb1xrf2jh4" path="res://lib/components/can_loot.gd" id="7_oq7t8"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
+[ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
@@ -28,6 +29,7 @@
 [ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
 [ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
+[ext_resource type="PackedScene" uid="uid://dlk4uiur5i62i" path="res://lib/interactable/interactable.tscn" id="29_ra5e8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -409,6 +411,9 @@ script = ExtResource("6_d1yl1")
 [node name="CanLoot" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("7_oq7t8")
 
+[node name="CanInteract" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("8_nrxvr")
+
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07062, 0)
 shape = SubResource("CapsuleShape3D_erodg")
@@ -687,7 +692,7 @@ texture = SubResource("ViewportTexture_hohle")
 script = ExtResource("24_hohle")
 
 [node name="SubViewport" parent="Stage/StageBody/Narrator/NarratorDialogueBubble" index="0"]
-size = Vector2i(173, 87)
+size = Vector2i(173, 106)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
@@ -716,8 +721,11 @@ shape = SubResource("BoxShape3D_erodg")
 [node name="PocketWatchPickup" parent="StaticFloor" instance=ExtResource("28_oq7t8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91962, -0.0257498, -3.06454)
 
+[node name="Interactable" parent="StaticFloor" instance=ExtResource("29_ra5e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70252, 0.0393747, -3.17331)
+
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
-[connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_can_receive_input_interact_pressed"]
+[connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
 [connection signal="act_1_ended" from="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" to="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" method="_on_matron_dialogue_bubble_act_1_ended"]
 [connection signal="patron_spoke" from="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" to="Stage/StageBody/Narrator/NarratorDialogueBubble" method="_on_patron_dialogue_bubble_patron_spoke"]
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
@@ -727,6 +735,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91962, -0.0257498, -3.06454
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
 [connection signal="body_entered" from="StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
 [connection signal="body_exited" from="StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
+[connection signal="body_entered" from="StaticFloor/Interactable" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
+[connection signal="body_exited" from="StaticFloor/Interactable" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
 
 [editable path="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble"]
 [editable path="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble"]

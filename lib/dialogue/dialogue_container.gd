@@ -3,10 +3,12 @@ extends Sprite3D
 
 @export var debug := false
 
-@onready var popup_balloon: DialogueManagerExampleBalloon = %PopupBalloon
+const FLOATING_BALLOON = preload("res://dialogue_balloons/floating_balloon.tscn")
+var popup_balloon: DialogueManagerExampleBalloon
 
 
 func _ready() -> void:
+
 	if debug:
 		show_dialogue(load("res://dialogues/test_dialogue.dialogue"))
 
@@ -19,6 +21,9 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 
 # Shows the balloon dialogue
 func show_dialogue(resource: DialogueResource) -> DialogueManagerExampleBalloon:
+	popup_balloon = FLOATING_BALLOON.instantiate()
+	%SubViewport.add_child(popup_balloon)
+
 	if Global.kill_dialog:
 		return null
 

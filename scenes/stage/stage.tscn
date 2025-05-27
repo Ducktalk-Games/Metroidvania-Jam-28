@@ -382,7 +382,6 @@ environment = SubResource("Environment_ecxui")
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
-kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage"]
 unique_name_in_owner = true
@@ -688,7 +687,7 @@ texture = SubResource("ViewportTexture_hohle")
 script = ExtResource("24_hohle")
 
 [node name="SubViewport" parent="Stage/StageBody/Narrator/NarratorDialogueBubble" index="0"]
-size = Vector2i(134, 113)
+size = Vector2i(173, 87)
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

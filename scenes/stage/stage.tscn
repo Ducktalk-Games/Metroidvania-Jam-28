@@ -6,13 +6,14 @@
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
 [ext_resource type="Script" uid="uid://bn7or7ah5u3gm" path="res://lib/components/can_receive_input.gd" id="6_d1yl1"]
-[ext_resource type="PackedScene" uid="uid://dmsdctniaxke5" path="res://dialogue_balloons/dialogue_container.tscn" id="7_d1yl1"]
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://dnykb1xrf2jh4" path="res://lib/components/can_loot.gd" id="7_oq7t8"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
+[ext_resource type="Script" uid="uid://b62v3ui3ggklm" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
+[ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
@@ -21,13 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://d3f1o0xymfu7t" path="res://assets/piano_stool/SM_Piano_Stool.glb" id="15_henb2"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
 [ext_resource type="Script" uid="uid://ctn0wj4uksx34" path="res://scripts/main_camera.gd" id="16_5b43b"]
-[ext_resource type="Script" uid="uid://i16in1f1odu7" path="res://dialogue_balloons/patron_dialogue.gd" id="16_qard3"]
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
 [ext_resource type="PackedScene" uid="uid://d1wwv7wnet3rg" path="res://ui/main_menu.tscn" id="17_lv745"]
 [ext_resource type="Texture2D" uid="uid://dmfmvso78yxai" path="res://ui/pick_up_buttons.png" id="20_400yc"]
 [ext_resource type="PackedScene" uid="uid://5d8j6yr1m5qn" path="res://assets/credits_board/SM_CreditsBaord.glb" id="21_arv8b"]
 [ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
-[ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
+[ext_resource type="Script" uid="uid://st3hphq6cb2b" path="res://lib/dialogue/dialogue_mgr.gd" id="27_kdtcl"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
 [ext_resource type="PackedScene" uid="uid://dlk4uiur5i62i" path="res://lib/interactable/interactable.tscn" id="29_ra5e8"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
@@ -62,11 +62,11 @@ adjustment_saturation = 0.75
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erodg"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ljyi0"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_kdtcl"]
+viewport_path = NodePath("Stage/StageBody/OffStageEnv/Matron/DialogueContainer/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_y85n4"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_oq7t8"]
+viewport_path = NodePath("Stage/StageBody/OffStageEnv/Patron/DialogueContainer/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_henb2"]
 size = Vector3(1, 1, 0.075)
@@ -81,9 +81,6 @@ height = 1.2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_qard3"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ljyi0"]
 radius = 1.84929
@@ -148,6 +145,9 @@ _data = {
 &"RESET": SubResource("Animation_nrxvr"),
 &"pop_in": SubResource("Animation_oq7t8")
 }
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nrxvr"]
+viewport_path = NodePath("Stage/StageBody/PlayerChildBody/DialogueContainer/SubViewport")
 
 [sub_resource type="Animation" id="Animation_5b43b"]
 length = 0.001
@@ -355,8 +355,8 @@ _data = {
 radius = 0.285
 height = 1.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hohle"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_ra5e8"]
+viewport_path = NodePath("Stage/StageBody/Narrator/DialogueContainer/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
 size = Vector3(16.013, 0.130249, 2.20679)
@@ -431,16 +431,20 @@ transform = Transform3D(-1.15452, 0, -0.580561, 0, 1.29227, 0, 0.580561, 0, -1.1
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
 transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14657, 0.445348, -5.33926)
 
-[node name="Matron" type="Node3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14657, 3.48738, -5.33926)
-
-[node name="MatronDialogueBubble" parent="Stage/StageBody/OffStageEnv/Matron" instance=ExtResource("7_d1yl1")]
+[node name="Matron" type="CharacterBody3D" parent="Stage/StageBody/OffStageEnv"]
 unique_name_in_owner = true
-transform = Transform3D(1.3963, 0, 0, 0, 1.3963, 0, 0, 0, 1.3963, 0.210806, -0.208539, 0)
-texture = SubResource("ViewportTexture_ljyi0")
-script = ExtResource("10_0sb5g")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14657, 0.974555, -5.33926)
+script = ExtResource("10_nrxvr")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="SubViewport" parent="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" index="0"]
+[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Matron"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95113, 0)
+texture = SubResource("ViewportTexture_kdtcl")
+script = ExtResource("11_400yc")
+metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
+
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/OffStageEnv/Matron/DialogueContainer"]
+transparent_bg = true
 size = Vector2i(167, 103)
 
 [node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
@@ -495,17 +499,22 @@ size = Vector3(20, 3.90566, 0.688727)
 [node name="SM_Rug" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("15_wvhxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12904, 0.43305, -8.46557)
 
-[node name="SM_Patron" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_y85n4")]
-transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)
-
-[node name="PatronDialogueBubble" parent="Stage/StageBody/OffStageEnv/SM_Patron" instance=ExtResource("7_d1yl1")]
+[node name="Patron" type="CharacterBody3D" parent="Stage/StageBody/OffStageEnv"]
 unique_name_in_owner = true
-transform = Transform3D(-1.05024, 0, -1.99052, 0, 2.25059, 0, 1.99052, 0, -1.05024, 0, 2.8531, 0)
-texture = SubResource("ViewportTexture_y85n4")
-script = ExtResource("16_qard3")
+transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)
+script = ExtResource("2_a221a")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="SubViewport" parent="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" index="0"]
-size = Vector2i(130, 68)
+[node name="SM_Patron2" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("13_y85n4")]
+
+[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Patron"]
+transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -0.36264, 2.6668, 0.687311)
+texture = SubResource("ViewportTexture_oq7t8")
+script = ExtResource("11_400yc")
+metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
+
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/OffStageEnv/Patron/DialogueContainer"]
+transparent_bg = true
 
 [node name="SM_Piano_Stool" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("15_henb2")]
 transform = Transform3D(0.934192, 0, -0.356771, 0, 1, 0, 0.356771, 0, 0.934192, 3.46859, 0.415069, -9.03286)
@@ -610,11 +619,6 @@ hit_area = NodePath("../../PlayerHitArea")
 [node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
-[node name="PlayerDialogueBubble" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
-unique_name_in_owner = true
-transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
-texture = SubResource("ViewportTexture_qard3")
-
 [node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody/PlayerHitArea"]
@@ -634,6 +638,15 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ra5e8")
 }
+
+[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/PlayerChildBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754471, 0)
+texture = SubResource("ViewportTexture_nrxvr")
+script = ExtResource("11_400yc")
+metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
+
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/PlayerChildBody/DialogueContainer"]
+transparent_bg = true
 
 [node name="MainCamera" type="Camera3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
@@ -691,21 +704,24 @@ transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0
 transform = Transform3D(16.098, 0, 0, 0, 0.0624632, 0, 0, 0, 1, 0, 0.0426067, 2.97948)
 mesh = SubResource("BoxMesh_5b43b")
 
-[node name="Narrator" type="Node3D" parent="Stage/StageBody"]
+[node name="Narrator" type="CharacterBody3D" parent="Stage/StageBody"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 4.07621)
+script = ExtResource("2_a221a")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StageBody/Narrator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683949, 0)
 mesh = SubResource("CapsuleMesh_henb2")
 
-[node name="NarratorDialogueBubble" parent="Stage/StageBody/Narrator" instance=ExtResource("7_d1yl1")]
-unique_name_in_owner = true
-transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0.0193961, 2.8345, -0.0189097)
-texture = SubResource("ViewportTexture_hohle")
-script = ExtResource("24_hohle")
+[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/Narrator"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1.25342, 1.52712)
+texture = SubResource("ViewportTexture_ra5e8")
+script = ExtResource("11_400yc")
+metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 
-[node name="SubViewport" parent="Stage/StageBody/Narrator/NarratorDialogueBubble" index="0"]
-size = Vector2i(173, 106)
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/Narrator/DialogueContainer"]
+transparent_bg = true
 
 [node name="PlatformLevel" type="Node3D" parent="."]
 
@@ -754,10 +770,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
 [connection signal="act_1_ended" from="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" to="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" method="_on_matron_dialogue_bubble_act_1_ended"]
 [connection signal="patron_spoke" from="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" to="Stage/StageBody/Narrator/NarratorDialogueBubble" method="_on_patron_dialogue_bubble_patron_spoke"]
+
+[node name="DialogueMgr" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("27_kdtcl")
+metadata/_custom_type_script = "uid://st3hphq6cb2b"
+
+[connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
+[connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_can_receive_input_interact_pressed"]
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
 [connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]
-[connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" method="_on_main_menu_curtains_opened"]
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
 [connection signal="body_entered" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
 [connection signal="body_exited" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
@@ -767,3 +790,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
 [editable path="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble"]
 [editable path="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble"]
 [editable path="Stage/StageBody/Narrator/NarratorDialogueBubble"]
+[connection signal="body_entered" from="StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
+[connection signal="body_exited" from="StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]

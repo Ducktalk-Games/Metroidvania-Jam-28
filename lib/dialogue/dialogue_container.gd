@@ -8,28 +8,34 @@ var popup_balloon: DialogueManagerExampleBalloon
 
 
 func _ready() -> void:
-
-	if debug:
-		show_dialogue(load("res://dialogues/test_dialogue.dialogue"))
-
+	Global.dialogue_mgr.set(get_parent().name.to_lower() + "_bubble", self)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	Global.dialogue_mgr.show_dialog.connect(_handle_dialog)
 
 
-func _on_dialogue_ended(resource: DialogueResource) -> void:
-	pass
+func _handle_tags(tags: PackedStringArray) -> void:
+	for tag: String in tags:
+		match tag:
+			"angry":
+				#do animation things/maybe popup borders?
+				pass
+
+			_:
+				printerr("Got uncaught tag: ", tag)
 
 
-# Shows the balloon dialogue
-func show_dialogue(resource: DialogueResource) -> DialogueManagerExampleBalloon:
-	popup_balloon = FLOATING_BALLOON.instantiate()
-	%SubViewport.add_child(popup_balloon)
+func _handle_dialog(cont: DialogueContainer = null, line: DialogueLine = null) -> void:
 
-	if Global.kill_dialog:
-		return null
+	if cont == self:
+		if not popup_balloon:
+			popup_balloon = FLOATING_BALLOON.instantiate()
+			$SubViewport.add_child(popup_balloon)
 
-	return DialogueManager.show_dialogue_balloon_scene(popup_balloon, resource)
+		_handle_tags(line.tags)
+		popup_balloon.dialogue_line = line
+	elif popup_balloon:
+		popup_balloon.queue_free()
 
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_line") and popup_balloon:
-		popup_balloon.next_line()
+func _on_dialogue_ended(_resource: DialogueResource) -> void:
+	_handle_dialog()

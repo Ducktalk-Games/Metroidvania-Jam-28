@@ -1,0 +1,9 @@
+~ start
+do wait(1)
+# Matron swings her arms around
+Matron: Places, everyone! And no mistakes this time or there WILL be consequences
+Matron: The Mayor isn't going to cough up if he realises this place is full of imbeciles!
+# Looks at Patron
+Matron: [#angry] Wake up, half-wit, start the music!
+# Throws something at the patron to wake him up, like a shoe or a book?
+=> END

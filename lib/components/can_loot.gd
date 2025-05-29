@@ -1,7 +1,8 @@
+class_name CanLoot
 extends Component
 
 var character: Character
-var inventory: Array[Global.Ability]
+@export var inventory: Array[Global.Ability]
 
 
 func _node_ready() -> void:

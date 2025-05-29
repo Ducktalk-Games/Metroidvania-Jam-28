@@ -1,3 +1,4 @@
+class_name KeyDialog
 extends Sprite3D
 @onready var key_animation_player: AnimationPlayer = %KeyAnimationPlayer
 

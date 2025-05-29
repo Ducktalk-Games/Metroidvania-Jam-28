@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=62 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
 [ext_resource type="PackedScene" uid="uid://dlk4uiur5i62i" path="res://lib/interactable/interactable.tscn" id="29_ra5e8"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
+[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="32_evq1l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -401,6 +402,7 @@ metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 script = ExtResource("2_3kwj0")
 jump_max = 6.0
 speed = 2.0
+inventory = Array[int]([])
 
 [node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("3_a221a")
@@ -621,6 +623,7 @@ texture = SubResource("ViewportTexture_qard3")
 shape = SubResource("SphereShape3D_ljyi0")
 
 [node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/PlayerChildBody"]
+unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.02176, 0)
 visible = false
 billboard = 1
@@ -737,18 +740,21 @@ mesh = SubResource("BoxMesh_suqj7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
 
-[node name="PocketWatchPickup" parent="PlatformLevel/StaticFloor" instance=ExtResource("28_oq7t8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91962, -0.0257498, -3.06454)
-
-[node name="Interactable" parent="PlatformLevel/StaticFloor" instance=ExtResource("29_ra5e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70252, 0.0393747, -3.17331)
-
 [node name="Floor" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00629806, 0.0505899, -0.0542502)
 shape = SubResource("BoxShape3D_wvhxk")
 
 [node name="FallingPlatform" parent="PlatformLevel" instance=ExtResource("31_m1tyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
+
+[node name="RippableDoor" parent="PlatformLevel" instance=ExtResource("32_evq1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69649, 1.0338, -4.02478)
+
+[node name="PocketWatchPickup" parent="PlatformLevel" instance=ExtResource("28_oq7t8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93083, -0.0439386, -3.06454)
+
+[node name="Interactable" parent="PlatformLevel" instance=ExtResource("29_ra5e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69131, 0.0211859, -3.17331)
 
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
@@ -759,10 +765,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" method="_on_main_menu_curtains_opened"]
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
-[connection signal="body_entered" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
-[connection signal="body_exited" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
-[connection signal="body_entered" from="PlatformLevel/StaticFloor/Interactable" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
-[connection signal="body_exited" from="PlatformLevel/StaticFloor/Interactable" to="Stage/StageBody/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
 
 [editable path="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble"]
 [editable path="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble"]

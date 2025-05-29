@@ -1,0 +1,173 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0ueki0jlp5fe"]
+
+[ext_resource type="Script" uid="uid://gcfk1mfuwlmv" path="res://scenes/platform/falling_platform.gd" id="1_2fhj7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7r88"]
+size = Vector3(1, 0.1, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2fhj7"]
+size = Vector3(1, 0.1, 1.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cncco"]
+size = Vector3(1, 0.113055, 1.8)
+
+[sub_resource type="Animation" id="Animation_x5e5x"]
+resource_name = "fall"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlatformCollision/PlatformMesh:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 3, 3, 3, 3, 3, 3, 3, 3, 3),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.0166667, 0.0125, 0.0166667, -0.0125, -0.05, -0.0166667, 0, 0.0166667, 0, 0, -0.0166667, -0.025, 0.0166667, 0.025, 0.05, -0.00833333, 0, 0.00833333, 0, 0, -0.00833333, 0.0125, 0.00833333, -0.0125, -0.05, -0.00833333, 0, 0.00833333, 0, 0, -0.0166667, -0.025, 0.0166667, 0.025, 0.05, -0.0166667, 0, 0.0166667, 0, 0, -0.0166667, 0.0125, 0.0166667, -0.0125),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.366667, 0.433333, 0.5, 0.566667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlatformCollision/PlatformMesh:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlatformCollision/PlatformMesh:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:freeze")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_q7r88"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlatformCollision/PlatformMesh:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlatformCollision/PlatformMesh:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlatformCollision/PlatformMesh:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:freeze")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjarj"]
+_data = {
+&"RESET": SubResource("Animation_q7r88"),
+&"fall": SubResource("Animation_x5e5x")
+}
+
+[node name="FallingPlatformBody" type="RigidBody3D"]
+input_ray_pickable = false
+freeze = true
+max_contacts_reported = 1
+script = ExtResource("1_2fhj7")
+
+[node name="PlatformCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q7r88")
+
+[node name="PlatformMesh" type="MeshInstance3D" parent="PlatformCollision"]
+mesh = SubResource("BoxMesh_2fhj7")
+
+[node name="HitDetection" type="Area3D" parent="."]
+
+[node name="HitCollision" type="CollisionShape3D" parent="HitDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0295319, 0)
+shape = SubResource("BoxShape3D_cncco")
+
+[node name="PlatformAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_qjarj")
+}
+
+[connection signal="body_entered" from="HitDetection" to="." method="_on_hit_detection_body_entered"]

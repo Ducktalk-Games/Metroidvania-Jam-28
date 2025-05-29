@@ -13,10 +13,13 @@ var stage_body: Character = %StageBody
 @onready
 var player_child_body: Character = %PlayerChildBody
 
+@export var kill_dialog := false
+
 
 func _ready() -> void:
 	update_controllers()
 	Global.stage = self
+	Global.kill_dialog = kill_dialog
 
 
 # Enable and disable the stage and player components according to the current body

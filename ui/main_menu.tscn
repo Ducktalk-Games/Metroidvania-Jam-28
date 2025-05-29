@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dwumn24lcstx0" path="res://assets/main_menu/normals.png" id="3_arv2f"]
 [ext_resource type="Texture2D" uid="uid://dykc1wjrik6og" path="res://assets/main_menu/offsets.exr" id="4_5klac"]
 [ext_resource type="Texture2D" uid="uid://bnksxhkflrevj" path="res://assets/main_menu/albedo.png" id="5_lsdqh"]
+[ext_resource type="MultiMesh" uid="uid://cxku5oqrp5o2u" path="res://ui/curtain_instance.tres" id="6_0nobx"]
 [ext_resource type="ArrayMesh" uid="uid://cjg36er5i8u6e" path="res://assets/main_menu/SM_Curtains_Mesh.res" id="6_jiymt"]
 [ext_resource type="Script" uid="uid://cvuheskkmutg3" path="res://assets/main_menu/vat_multi_mesh_instance_3d.gd" id="7_bgtsx"]
 [ext_resource type="Animation" uid="uid://crh68swpqbs8l" path="res://ui/curtain_open.res" id="8_ubpvv"]
@@ -26,13 +27,6 @@ shader_parameter/time_alpha = 1.0
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.0
-
-[sub_resource type="MultiMesh" id="MultiMesh_bbyji"]
-transform_format = 1
-use_custom_data = true
-instance_count = 1
-mesh = ExtResource("6_jiymt")
-buffer = PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 48, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8ri8"]
 albedo_texture = ExtResource("5_lsdqh")
@@ -82,7 +76,7 @@ script = ExtResource("1_p8ri8")
 [node name="CurtainsLeft" type="MultiMeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75301, -1.4184, -5.31004)
 material_override = SubResource("ShaderMaterial_qard3")
-multimesh = SubResource("MultiMesh_bbyji")
+multimesh = ExtResource("6_0nobx")
 script = ExtResource("7_bgtsx")
 instance_count = 1
 rand_anim_offset = false
@@ -97,7 +91,7 @@ mesh = ExtResource("6_jiymt")
 [node name="CurtainsRight" type="MultiMeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 0, 0, 1, -8.75443e-08, 0, 8.75443e-08, 1, 1.77682, -1.418, -5.31)
 material_override = SubResource("ShaderMaterial_qard3")
-multimesh = SubResource("MultiMesh_bbyji")
+multimesh = ExtResource("6_0nobx")
 script = ExtResource("7_bgtsx")
 instance_count = 1
 rand_anim_offset = false
@@ -229,6 +223,7 @@ texture = ExtResource("12_0nobx")
 expand_mode = 3
 stretch_mode = 5
 
+[connection signal="animation_finished" from="CurtainAnimationPlayer" to="." method="_on_curtain_animation_player_animation_finished"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

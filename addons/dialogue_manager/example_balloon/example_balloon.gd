@@ -65,6 +65,7 @@ func _ready() -> void:
 	add_child(mutation_cooldown)
 
 
+#
 #func _unhandled_input(_event: InputEvent) -> void:
 	## Only the balloon is allowed to handle input while it's showing
 	#get_viewport().set_input_as_handled()
@@ -147,11 +148,6 @@ func _on_mutated(_mutation: Dictionary) -> void:
 	is_waiting_for_input = false
 	will_hide_balloon = true
 	mutation_cooldown.start(0.1)
-
-
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_line"):
-		next_line()
 
 
 # Goes to next line

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c4r8sbpmeje6n"
+path="res://.godot/imported/finds_scissors.dialogue-c8cde95202c7e7169b90dc9091249b3a.tres"
+
+[deps]
+
+source_file="res://dialogues/finds_scissors.dialogue"
+dest_files=["res://.godot/imported/finds_scissors.dialogue-c8cde95202c7e7169b90dc9091249b3a.tres"]
+
+[params]
+
+defaults=true

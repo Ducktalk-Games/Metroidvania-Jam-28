@@ -13,6 +13,7 @@ var stage_body: Character = %StageBody
 @onready
 var player_child_body: Character = %PlayerChildBody
 
+
 var stage_relocating: bool = false
 var player_relocating: bool = false
 
@@ -20,10 +21,14 @@ var player_relocating: bool = false
 func _is_relocating() -> bool:
 	return stage_relocating or player_relocating
 
+@export var kill_dialog := false
+
+
 
 func _ready() -> void:
 	update_controllers()
 	Global.stage = self
+	Global.kill_dialog = kill_dialog
 
 
 # Enable and disable the stage and player components according to the current body

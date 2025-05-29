@@ -1,6 +1,7 @@
 class_name Character
 extends CharacterBody3D
 
+
 @export
 var map_body: CollisionShape3D
 
@@ -38,3 +39,7 @@ func _process(delta: float) -> void:
 				move_comp.enable()
 	else:
 		t = delta
+
+var nearby_interactable: Interactable
+var nearby_item: ItemPickup
+

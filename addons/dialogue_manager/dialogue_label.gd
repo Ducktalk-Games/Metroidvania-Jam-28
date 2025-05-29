@@ -5,7 +5,6 @@
 ## A RichTextLabel specifically for use with [b]Dialogue Manager[/b] dialogue.
 class_name DialogueLabel extends RichTextLabel
 
-
 ## Emitted for each letter typed out.
 signal spoke(letter: String, letter_index: int, speed: float)
 
@@ -17,7 +16,6 @@ signal skipped_typing()
 
 ## Emitted when typing finishes.
 signal finished_typing()
-
 
 # The action to press to skip typing.
 @export var skip_action: StringName = &"ui_cancel"
@@ -41,7 +39,6 @@ signal finished_typing()
 
 var _already_mutated_indices: PackedInt32Array = []
 
-
 ## The current line of dialogue.
 var dialogue_line:
 	set(next_dialogue_line):
@@ -49,6 +46,7 @@ var dialogue_line:
 		custom_minimum_size = Vector2.ZERO
 		text = ""
 		text = dialogue_line.text
+
 	get:
 		return dialogue_line
 
@@ -57,8 +55,10 @@ var is_typing: bool = false:
 	set(value):
 		var is_finished: bool = is_typing != value and value == false
 		is_typing = value
+
 		if is_finished:
 			finished_typing.emit()
+
 	get:
 		return is_typing
 
@@ -75,6 +75,7 @@ func _process(delta: float) -> void:
 			# See if we are waiting
 			if _waiting_seconds > 0:
 				_waiting_seconds = _waiting_seconds - delta
+
 			# If we are no longer waiting then keep typing
 			if _waiting_seconds <= 0:
 				_type_next(delta, _waiting_seconds)
@@ -149,10 +150,13 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		paused_typing.emit(_get_pause(visible_characters))
 	else:
 		visible_characters += 1
+
 		if visible_characters <= get_total_character_count():
 			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
+
 		# See if there's time to type out some more in this frame
 		seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
+
 		if seconds_needed > delta:
 			_waiting_seconds += seconds_needed
 		else:
@@ -167,10 +171,13 @@ func _get_pause(at_index: int) -> float:
 # Get the speed for the current typing position
 func _get_speed(at_index: int) -> float:
 	var speed: float = 1
+
 	for index in dialogue_line.speeds:
 		if index > at_index:
 			return speed
+
 		speed = dialogue_line.speeds[index]
+
 	return speed
 
 
@@ -186,6 +193,7 @@ func _mutate_inline_mutations(index: int) -> void:
 		# inline mutations are an array of arrays in the form of [character index, resolvable function]
 		if inline_mutation[0] > index:
 			return
+
 		if inline_mutation[0] == index and not _already_mutated_indices.has(index):
 			_is_awaiting_mutation = true
 			# The DialogueManager can't be referenced directly here so we need to get it by its path
@@ -212,6 +220,7 @@ func _should_auto_pause() -> bool:
 	# Ignore "." if it's between two numbers
 	if visible_characters > 3 and parsed_text[visible_characters - 1] == ".":
 		var possible_number: String = parsed_text.substr(visible_characters - 2, 3)
+
 		if str(float(possible_number)).pad_decimals(1) == possible_number:
 			return false
 
@@ -221,11 +230,13 @@ func _should_auto_pause() -> bool:
 		for abbreviation in skip_pause_at_abbreviations:
 			if visible_characters >= abbreviation.length():
 				var previous_characters: String = parsed_text.substr(visible_characters - abbreviation.length() - 1, abbreviation.length())
+
 				if previous_characters == abbreviation:
 					return false
 
 	# Ignore two non-"." characters next to each other
 	var other_pause_characters: PackedStringArray = pause_at_characters.replace(".", "").split()
+
 	if visible_characters > 1 and parsed_text[visible_characters - 1] in other_pause_characters and parsed_text[visible_characters] in other_pause_characters:
 		return false
 

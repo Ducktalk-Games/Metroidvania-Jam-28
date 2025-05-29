@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlk4uiur5i62i"]
+
+[ext_resource type="Script" uid="uid://v874nmgymp0o" path="res://lib/interactable/interactable.gd" id="1_ekwly"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oq7t8"]
+radius = 1.07902
+
+[node name="Interactable" type="Area3D"]
+script = ExtResource("1_ekwly")
+
+[node name="InteractableCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oq7t8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

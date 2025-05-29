@@ -473,6 +473,7 @@ func show_dialogue_balloon_scene(balloon_scene, resource: DialogueResource, titl
 		balloon_scene = balloon_scene.instantiate()
 
 	var balloon: Node = balloon_scene
+
 	_start_balloon.call_deferred(balloon, resource, title, extra_game_states)
 	return balloon
 

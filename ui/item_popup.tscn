@@ -72,13 +72,13 @@ fov = 23.0375
 transform = Transform3D(0.83826, -0.521104, 0.160533, 0.512073, 0.853492, 0.0966001, -0.187352, 0.00122857, 0.982292, 0, 0, 0)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 65.7)
+custom_minimum_size = Vector2(0, 56.235)
 layout_mode = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(2, 65)
+size = Vector2i(200, 56)
 render_target_update_mode = 4
 
 [node name="FlavourTextBalloon" parent="CenterContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_mx3dx")]

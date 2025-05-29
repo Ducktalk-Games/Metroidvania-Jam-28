@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=62 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://dnykb1xrf2jh4" path="res://lib/components/can_loot.gd" id="7_oq7t8"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
+[ext_resource type="Script" uid="uid://cq0pfupyvbkdo" path="res://lib/components/can_respawn.gd" id="8_m1tyx"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
@@ -29,6 +30,7 @@
 [ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
 [ext_resource type="Script" uid="uid://b3h3th1cajqi2" path="res://lib/item_pickup/item_pickup.gd" id="27_kdtcl"]
 [ext_resource type="Resource" uid="uid://bnntkffx0w4cm" path="res://dialogues/pocket_watch_flavour_text.dialogue" id="29_nrxvr"]
+[ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="30_ra5e8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -400,6 +402,7 @@ metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 script = ExtResource("2_3kwj0")
 jump_max = 6.0
 speed = 2.0
+fall_death_offset = -2.0
 
 [node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("3_a221a")
@@ -413,6 +416,10 @@ script = ExtResource("6_d1yl1")
 
 [node name="CanLoot" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("7_oq7t8")
+
+[node name="CanRespawn" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("8_m1tyx")
+fall_death_offset = -2.0
 
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07062, 0)
@@ -717,6 +724,9 @@ shape = SubResource("BoxShape3D_wvhxk")
 [node name="Floor3" type="CollisionShape3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
+
+[node name="Checkpoint" parent="StaticFloor" instance=ExtResource("30_ra5e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20135, 1.96642, -3.12015)
 
 [node name="PocketWatchPickup" type="Area3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91962, -0.0257498, -3.06454)

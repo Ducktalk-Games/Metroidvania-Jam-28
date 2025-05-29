@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8n7vcmsnmuwi"]
+
+[ext_resource type="PackedScene" uid="uid://cgj3wvjtwi0u3" path="res://assets/broom/SM_Broom.glb" id="1_x8jjp"]
+
+[sub_resource type="GDScript" id="GDScript_x8jjp"]
+script/source = "@icon(\"res://lib/icons/checkpoint-icon.svg\")
+class_name CheckPoint
+extends Area3D
+
+@export
+var is_used: bool = false
+signal set_respawn_point(point: Vector3)
+
+func _ready() -> void:
+	pass 
+
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_body_entered(body: Node3D) -> void:
+	print(\"checkpoint Reached:\" + body.name)
+	# Try cast into character
+	if(body == %StageBody):
+		print(\"checkpoint Reached:\" + self.id)
+		is_used = true
+		set_respawn_point.emit(self.global_position)
+		pass
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m0q3v"]
+radius = 0.485721
+height = 2.77198
+
+[node name="Checkpoint" type="Area3D"]
+script = SubResource("GDScript_x8jjp")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.165884)
+shape = SubResource("CapsuleShape3D_m0q3v")
+debug_color = Color(0, 0.627451, 0.494118, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="SM_Broom2" parent="MeshInstance3D" instance=ExtResource("1_x8jjp")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.00955386, 0.89972, -0.00910759)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

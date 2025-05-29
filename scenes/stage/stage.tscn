@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=63 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
-[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
+[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
 [ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
@@ -31,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
 [ext_resource type="PackedScene" uid="uid://dlk4uiur5i62i" path="res://lib/interactable/interactable.tscn" id="29_ra5e8"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
+[ext_resource type="PackedScene" uid="uid://8oqqrr5vh6h" path="res://assets/wall/SM_Wall_A.glb" id="32_7a2kr"]
+[ext_resource type="PackedScene" uid="uid://dc43gk4ll20bn" path="res://assets/wall/SM_Wall_B.glb" id="33_1sasl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -749,6 +751,12 @@ shape = SubResource("BoxShape3D_wvhxk")
 
 [node name="FallingPlatform" parent="PlatformLevel" instance=ExtResource("31_m1tyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
+
+[node name="SM_Wall_A2" parent="." instance=ExtResource("32_7a2kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35867, 1.39097, 5.57028)
+
+[node name="SM_Wall_B2" parent="." instance=ExtResource("33_1sasl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89735, 1.08951, 5.59383)
 
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]

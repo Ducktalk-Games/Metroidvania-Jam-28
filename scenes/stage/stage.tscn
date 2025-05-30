@@ -770,7 +770,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5019, 1.19209e-07, 0.401356
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6658, 1.19209e-07, 0.401356)
 
 [node name="Checkpoint2" parent="PlatformLevel" instance=ExtResource("30_ra5e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93903, -1.19209e-07, -3.48088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17163, -1.19209e-07, -3.48088)
 
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]

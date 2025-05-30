@@ -1,7 +1,12 @@
 extends DialogueContainer
+class_name NarratorDialogueBubble
 
 const ACT_4_NARRATOR = preload("res://dialogues/act_4_narrator.dialogue")
 signal act_4_finished
+
+
+func _ready() -> void:
+	Global.narrator_bubble = self
 
 
 func _on_patron_dialogue_bubble_patron_spoke() -> void:

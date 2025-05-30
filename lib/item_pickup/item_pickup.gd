@@ -1,11 +1,6 @@
-extends Area3D
+extends Interactable
 class_name ItemPickup
 
-signal character_entered
-signal character_exited
-
-@export var flavour_text: DialogueResource
-@export var item: PackedScene
 @export var ability: Global.Ability
 
 

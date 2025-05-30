@@ -726,7 +726,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
 
 [node name="Checkpoint" parent="StaticFloor" instance=ExtResource("30_ra5e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20135, 1.05431, -3.12015)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68038, 1.07074, -2.74492)
 
 [node name="PocketWatchPickup" type="Area3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91962, -0.0257498, -3.06454)

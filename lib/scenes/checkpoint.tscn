@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cgj3wvjtwi0u3" path="res://assets/broom/SM_Broom.glb" id="1_x8jjp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jie1d"]
-size = Vector3(0.515, 3.47894, 1)
+size = Vector3(0.515, 3.47894, 2.11719)
 
 [node name="Checkpoint" type="Area3D"]
 script = ExtResource("1_jie1d")

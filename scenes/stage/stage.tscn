@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=64 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -10,9 +10,10 @@
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://dnykb1xrf2jh4" path="res://lib/components/can_loot.gd" id="7_oq7t8"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
-[ext_resource type="Script" path="res://lib/components/can_respawn.gd" id="8_m1tyx"]
+[ext_resource type="Script" uid="uid://cq0pfupyvbkdo" path="res://lib/components/can_respawn.gd" id="8_m1tyx"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
+[ext_resource type="Script" uid="uid://ceknlyib7kfcy" path="res://lib/components/can_die.gd" id="10_1sasl"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
@@ -399,11 +400,16 @@ axis_lock_angular_z = true
 script = ExtResource("2_a221a")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody"]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("2_3kwj0")
 jump_max = 6.0
 speed = 2.0
-fall_death_offset = -2.0
+fall_death_offset = -10.0
+health = null
+value = 50.0
+delay_seconds = 1.0
+continuous = false
+hit_area = NodePath("../PlayerChildBody/PlayerHitArea")
 
 [node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("3_a221a")
@@ -420,10 +426,24 @@ script = ExtResource("7_oq7t8")
 
 [node name="CanRespawn" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("8_m1tyx")
-fall_death_offset = -2.0
 
 [node name="CanInteract" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("8_nrxvr")
+
+[node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("10_1sasl")
+fall_death_offset = -10.0
+metadata/_custom_type_script = "uid://c6qpeui8vrucl"
+
+[node name="HasHealth" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("8_kb6yy")
+health = null
+
+[node name="CanAttack" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("hit_area")]
+script = ExtResource("7_ljyi0")
+value = 50.0
+continuous = false
+hit_area = NodePath("../../PlayerChildBody/PlayerHitArea")
 
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05386, 0)
@@ -592,14 +612,9 @@ mesh = SubResource("CapsuleMesh_ecxui")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.399415, 0)
 shape = SubResource("CapsuleShape3D_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody" node_paths=PackedStringArray("hit_area")]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody"]
 script = ExtResource("2_3kwj0")
 speed = 2.0
-value = 50.0
-delay_seconds = 1.0
-continuous = false
-hit_area = NodePath("../PlayerHitArea")
-health = 100.0
 
 [node name="CanMove" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("5_pf3bu")
@@ -607,15 +622,6 @@ speed = 2.0
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
-
-[node name="CanAttack" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner" node_paths=PackedStringArray("hit_area")]
-script = ExtResource("7_ljyi0")
-value = 50.0
-continuous = false
-hit_area = NodePath("../../PlayerHitArea")
-
-[node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
-script = ExtResource("8_kb6yy")
 
 [node name="PlayerDialogueBubble" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
 unique_name_in_owner = true
@@ -745,7 +751,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
 shape = SubResource("BoxShape3D_erodg")
 
 [node name="PocketWatchPickup" parent="PlatformLevel/StaticFloor" instance=ExtResource("28_oq7t8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91962, -0.0257498, -3.06454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00725, -0.0257498, -3.06454)
 
 [node name="Interactable" parent="PlatformLevel/StaticFloor" instance=ExtResource("29_ra5e8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70252, 0.0393747, -3.17331)
@@ -754,14 +760,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70252, 0.0393747, -3.17331
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00629806, 0.0505899, -0.0542502)
 shape = SubResource("BoxShape3D_wvhxk")
 
-[node name="FallingPlatform" parent="PlatformLevel" instance=ExtResource("31_m1tyx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
+[node name="Checkpoint" parent="PlatformLevel" instance=ExtResource("30_ra5e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.435368, -1.19209e-07, -3.48088)
 
-[node name="StaticFloor#Checkpoint" parent="." instance=ExtResource("30_ra5e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68038, 1.07074, -2.74492)
+[node name="FallingPlatform" parent="PlatformLevel/Checkpoint" instance=ExtResource("31_m1tyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5019, 1.19209e-07, 0.401356)
+
+[node name="FallingPlatform2" parent="PlatformLevel/Checkpoint" instance=ExtResource("31_m1tyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6658, 1.19209e-07, 0.401356)
+
+[node name="Checkpoint2" parent="PlatformLevel" instance=ExtResource("30_ra5e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93903, -1.19209e-07, -3.48088)
 
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
+[connection signal="has_died" from="Stage/StageBody/ComponentOwner/CanDie" to="Stage/StageBody/ComponentOwner/CanRespawn" method="respawn"]
 [connection signal="act_1_ended" from="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble" to="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" method="_on_matron_dialogue_bubble_act_1_ended"]
 [connection signal="patron_spoke" from="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble" to="Stage/StageBody/Narrator/NarratorDialogueBubble" method="_on_patron_dialogue_bubble_patron_spoke"]
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]

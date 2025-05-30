@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0ueki0jlp5fe"]
+[gd_scene load_steps=10 format=3 uid="uid://d0ueki0jlp5fe"]
 
 [ext_resource type="Script" uid="uid://gcfk1mfuwlmv" path="res://scenes/platform/falling_platform.gd" id="1_2fhj7"]
+[ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_x5e5x"]
+[ext_resource type="Script" path="res://lib/components/can_reset.gd" id="3_qjarj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q7r88"]
 size = Vector3(1, 0.1, 1.8)
@@ -136,5 +138,14 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_qjarj")
 }
+
+[node name="ComponentOwner" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
+script = ExtResource("2_x5e5x")
+animation_player = NodePath("../PlatformAnimation")
+
+[node name="CanReset" type="Node" parent="ComponentOwner" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("3_qjarj")
+animation_player = NodePath("../../PlatformAnimation")
+metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
 [connection signal="body_entered" from="HitDetection" to="." method="_on_hit_detection_body_entered"]

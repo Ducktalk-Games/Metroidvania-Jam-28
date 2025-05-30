@@ -2,6 +2,21 @@
 class_name CheckPoint
 extends Area3D
 
+var resettables: Array[CanReset]
+
+
+func _ready() -> void:
+	for child in get_children():
+		var resettable: CanReset = Component.find(child, "CanReset") as CanReset
+
+		if resettable:
+			resettables.append(resettable)
+
+
+func reset_all() -> void:
+	for resetter in resettables:
+		resetter.reset()
+
 
 func _on_body_entered(body: Node3D) -> void:
 	# Try cast into character

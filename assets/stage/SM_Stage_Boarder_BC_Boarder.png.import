@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckqwlmi5fy7g7"
-path.s3tc="res://.godot/imported/SM_Piano_BC_Piano_128x128.png-52ae9ad98c8889f3af94ceaa48dd7282.s3tc.ctex"
+uid="uid://qigs4oo73kc8"
+path.s3tc="res://.godot/imported/SM_Stage_Boarder_BC_Boarder.png-e5ae8e50c4e153019d3bf2fc0434b899.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1cda642245dea8b4577b27497704808"
+"md5": "c8b26d8c58734051cf177d6ad7139b08"
 }
 
 [deps]
 
-source_file="res://assets/piano/SM_Piano_BC_Piano_128x128.png"
-dest_files=["res://.godot/imported/SM_Piano_BC_Piano_128x128.png-52ae9ad98c8889f3af94ceaa48dd7282.s3tc.ctex"]
+source_file="res://assets/stage/SM_Stage_Boarder_BC_Boarder.png"
+dest_files=["res://.godot/imported/SM_Stage_Boarder_BC_Boarder.png-e5ae8e50c4e153019d3bf2fc0434b899.s3tc.ctex"]
 
 [params]
 

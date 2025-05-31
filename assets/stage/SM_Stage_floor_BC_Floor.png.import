@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckqwlmi5fy7g7"
-path.s3tc="res://.godot/imported/SM_Piano_BC_Piano_128x128.png-52ae9ad98c8889f3af94ceaa48dd7282.s3tc.ctex"
+uid="uid://bude8eom4ff0p"
+path.s3tc="res://.godot/imported/SM_Stage_floor_BC_Floor.png-c20ccb2dc59f1eb129c2439d2796eb09.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1cda642245dea8b4577b27497704808"
+"md5": "e91e43e02ba6c9fdd154788c37a9040a"
 }
 
 [deps]
 
-source_file="res://assets/piano/SM_Piano_BC_Piano_128x128.png"
-dest_files=["res://.godot/imported/SM_Piano_BC_Piano_128x128.png-52ae9ad98c8889f3af94ceaa48dd7282.s3tc.ctex"]
+source_file="res://assets/stage/SM_Stage_floor_BC_Floor.png"
+dest_files=["res://.godot/imported/SM_Stage_floor_BC_Floor.png-c20ccb2dc59f1eb129c2439d2796eb09.s3tc.ctex"]
 
 [params]
 

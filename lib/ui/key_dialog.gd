@@ -5,12 +5,7 @@ extends Sprite3D
 var char_in_area: bool = false
 var key_tween: Tween
 
-var is_joy: bool = false:
-	set(value):
-		if value != is_joy:
-			frame = int(not value)
-
-		is_joy = value
+var is_joy: bool = false
 
 
 func pop_in_key() -> void:
@@ -22,7 +17,7 @@ func pop_out_key() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	is_joy = event is InputEventJoypadButton or event is InputEventJoypadMotion
+	frame = int(not(event is InputEventJoypadButton or event is InputEventJoypadMotion))
 
 
 func _on_item_pickup_body_entered(body: Node3D) -> void:

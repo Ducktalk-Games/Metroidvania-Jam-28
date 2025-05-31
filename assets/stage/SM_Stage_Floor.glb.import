@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c08adq1pgjaml"
-path="res://.godot/imported/SM_Piano.glb-7a06fba6286c22b2d5d086c6a0b047ea.scn"
+uid="uid://c2uhc4p833ylr"
+path="res://.godot/imported/SM_Stage_Floor.glb-73e254a1f51497fbfa2ca97d452ab2bf.scn"
 
 [deps]
 
-source_file="res://assets/piano/SM_Piano.glb"
-dest_files=["res://.godot/imported/SM_Piano.glb-7a06fba6286c22b2d5d086c6a0b047ea.scn"]
+source_file="res://assets/stage/SM_Stage_Floor.glb"
+dest_files=["res://.godot/imported/SM_Stage_Floor.glb-73e254a1f51497fbfa2ca97d452ab2bf.scn"]
 
 [params]
 

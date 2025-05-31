@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c08adq1pgjaml"
-path="res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"
+uid="uid://dhx8cy6q2cyo5"
+path="res://.godot/imported/SM_Spotlight_Base.glb-bc37c2e0f5c768f669029085933c759b.scn"
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano.glb"
-dest_files=["res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"]
+source_file="res://assets/spotlight/SM_Spotlight_Base.glb"
+dest_files=["res://.godot/imported/SM_Spotlight_Base.glb-bc37c2e0f5c768f669029085933c759b.scn"]
 
 [params]
 

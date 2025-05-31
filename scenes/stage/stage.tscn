@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=69 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -12,14 +12,12 @@
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
-[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/piano/SM_Piano.glb" id="10_gf271"]
+[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
-[ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="13_lv745"]
 [ext_resource type="PackedScene" uid="uid://do1hrja723at8" path="res://assets/Patron/SM_Patron.glb" id="13_y85n4"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="PackedScene" uid="uid://d3f1o0xymfu7t" path="res://assets/piano_stool/SM_Piano_Stool.glb" id="15_henb2"]
-[ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_wvhxk"]
 [ext_resource type="Script" uid="uid://ctn0wj4uksx34" path="res://scripts/main_camera.gd" id="16_5b43b"]
 [ext_resource type="Script" uid="uid://i16in1f1odu7" path="res://dialogue_balloons/patron_dialogue.gd" id="16_qard3"]
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
@@ -27,15 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://dmfmvso78yxai" path="res://ui/pick_up_buttons.png" id="20_400yc"]
 [ext_resource type="PackedScene" uid="uid://5d8j6yr1m5qn" path="res://assets/credits_board/SM_CreditsBaord.glb" id="21_arv8b"]
 [ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
+[ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="23_lr1w7"]
 [ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
+[ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://c2uhc4p833ylr" path="res://assets/stage/SM_Stage_Floor.glb" id="25_8pkue"]
+[ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
-[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="32_evq1l"]
-[ext_resource type="PackedScene" uid="uid://8oqqrr5vh6h" path="res://assets/wall/SM_Wall_A.glb" id="32_7a2kr"]
-[ext_resource type="PackedScene" uid="uid://dc43gk4ll20bn" path="res://assets/wall/SM_Wall_B.glb" id="33_1sasl"]
-[ext_resource type="PackedScene" uid="uid://uqkck2p5ftsm" path="res://assets/stage/SM_Stage_Base.glb" id="34_oomxc"]
+[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="34_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://87v3ipuaikii" path="res://assets/stage/SM_Stage_Frame.glb" id="36_8pkue"]
+[ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://d0yl2blobd07g" path="res://assets/stage/SM_Stage_Boarder.glb" id="37_634kf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
@@ -64,7 +63,7 @@ glow_hdr_threshold = 1.01
 adjustment_enabled = true
 adjustment_brightness = 0.8
 adjustment_contrast = 1.18
-adjustment_saturation = 0.75
+adjustment_saturation = 0.44
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erodg"]
 
@@ -77,17 +76,46 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="BoxMesh" id="BoxMesh_henb2"]
 size = Vector3(1, 1, 0.075)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lr1w7"]
+albedo_color = Color(0.29219, 0.29219, 0.29219, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvhxk"]
 size = Vector3(16.013, 0.0736389, 1.11273)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ecxui"]
-radius = 0.294
-height = 1.2
+[sub_resource type="Animation" id="Animation_8pkue"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_StageCurtains:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, 0, 0, 0, 0),
+"times": PackedFloat32Array(0)
+}
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_evq1l"]
-top_radius = 0.0
-bottom_radius = 0.25
-height = 0.722
+[sub_resource type="Animation" id="Animation_lr1w7"]
+resource_name = "close_curtain"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_StageCurtains:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(1, -0.633333, -0.00382364, 0.633333, 0.00382364, 0, -1.33333, -0.00382365, 0.566667, -0.00517321),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_634kf"]
+_data = {
+&"RESET": SubResource("Animation_8pkue"),
+&"close_curtain": SubResource("Animation_lr1w7")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
@@ -159,6 +187,8 @@ _data = {
 &"RESET": SubResource("Animation_nrxvr"),
 &"pop_in": SubResource("Animation_oq7t8")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_5b43b"]
 
 [sub_resource type="Animation" id="Animation_5b43b"]
 length = 0.001
@@ -360,8 +390,6 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5b43b"]
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_henb2"]
 radius = 0.285
 height = 1.2
@@ -401,7 +429,7 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.626262)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_a221a")
@@ -430,7 +458,7 @@ script = ExtResource("7_oq7t8")
 script = ExtResource("8_nrxvr")
 
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05386, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05386, 1.55514)
 shape = SubResource("CapsuleShape3D_erodg")
 
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
@@ -457,12 +485,6 @@ size = Vector2i(167, 103)
 [node name="SM_Stage_LightStrip2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("12_suqj7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0295825, 7.69871, -8.80123)
 
-[node name="SM_Spotlight" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(0.896417, 0, 0.578299, 0, 1.06677, 0, -0.578299, 0, 0.896417, 3.29527, 0.41537, -5.43047)
-
-[node name="SM_Spotlight2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_lv745")]
-transform = Transform3D(1.00783, 0, -0.709869, 0, 1.23274, 0, 0.709869, 0, 1.00783, -5.66724, 0.434908, -10.2016)
-
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
 transform = Transform3D(-0.984879, 0.00119097, 0.173235, 0.00108576, 0.999999, -0.000702051, -0.173235, -0.000503341, -0.98488, -1.80635, 0.439881, -4.6462)
 
@@ -480,9 +502,6 @@ size = Vector2i(130, 68)
 
 [node name="SM_Piano_Stool" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("15_henb2")]
 transform = Transform3D(0.934192, 0, -0.356771, 0, 1, 0, 0.356771, 0, 0.934192, 3.46859, 0.415069, -9.03286)
-
-[node name="SM_Rug2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("15_wvhxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.369706, 0.453317, -8.55107)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0.150712, 6.37526, -0.1889)
@@ -531,6 +550,7 @@ spot_angle = 15.7139
 transform = Transform3D(-1.25147e-07, -8.87747, 0, 2.86303, -3.88047e-07, 0, 0, 0, 22.0398, -1.29844, 0.85972, 1.4785)
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_lr1w7")
 
 [node name="StaticFloor2" type="StaticBody3D" parent="Stage/StageBody/OffStageEnv"]
 unique_name_in_owner = true
@@ -540,46 +560,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16192, 2.32549, -14.5373)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00629806, 0.0505899, -0.0542502)
 shape = SubResource("BoxShape3D_wvhxk")
 
-[node name="SM_Stage_Base2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("34_oomxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38222, 0.406778, -15.6166)
-
 [node name="SM_Stage_Frame2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("36_8pkue")]
 transform = Transform3D(1.06653, 0, 0, 0, 1.04385, 0, 0, 0, 1, -3.22549, 0.515759, -15.8727)
 
 [node name="SM_Stage_Boarder" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_634kf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73161, 0.765812, -15.9245)
 
-[node name="SM_Wall_A2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("32_7a2kr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3823, 2.92202, -8.00239)
-
-[node name="SM_Wall_B2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("33_1sasl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.46385, 3.17435, -7.85167)
-
 [node name="SM_Stage_Floor" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("25_8pkue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55661, 0.0748422, -15.8578)
 
-[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody"]
+[node name="SM_Spotlight_Base2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("25_634kf")]
+transform = Transform3D(0.480888, 0, 0.751074, 0, 0.830553, 0, -0.711311, 0, 0.50777, 2.92079, 1.31558, -5.49088)
+
+[node name="SM_Spotlight_Base" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("25_634kf")]
+transform = Transform3D(0.899955, 0, -0.296874, 0, 0.890661, 0, 0.264001, 0, 1.01202, -5.65923, 1.40938, -10.1652)
+
+[node name="SM_Stage_BaseTest2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_8pkue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05533, -0.0685453, -17.3737)
+
+[node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("23_lr1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149288, 1.44368, -11.711)
+
+[node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains" index="0"]
+"blend_shapes/Key 1" = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
+libraries = {
+&"": SubResource("AnimationLibrary_634kf")
+}
+
+[node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 2.95417)
+
+[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08601, 3)
-axis_lock_linear_z = true
-axis_lock_angular_z = true
 script = ExtResource("2_a221a")
-metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="PlayerChildMesh" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody"]
+[node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/PlayerChildBody" instance=ExtResource("24_lr1w7")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.400886, 0)
-mesh = SubResource("CapsuleMesh_ecxui")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="ViewCone" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody/PlayerChildMesh"]
-transform = Transform3D(-4.37114e-08, 1.31134e-07, 1, -1, -3.82137e-15, -4.37114e-08, 0, -1, 1.31134e-07, 0, 0.315, 0.131)
-mesh = SubResource("CylinderMesh_evq1l")
-
-[node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.399415, 0)
+[node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/PlayerChildBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/PlayerChildBody" node_paths=PackedStringArray("hit_area")]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("2_3kwj0")
 speed = 2.0
 value = 50.0
@@ -588,35 +613,35 @@ continuous = false
 hit_area = NodePath("../PlayerHitArea")
 health = 100.0
 
-[node name="CanMove" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
+[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
 script = ExtResource("5_pf3bu")
 speed = 2.0
 
-[node name="CanReceiveInput" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
+[node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
-[node name="CanAttack" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner" node_paths=PackedStringArray("hit_area")]
+[node name="CanAttack" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner" node_paths=PackedStringArray("hit_area")]
 script = ExtResource("7_ljyi0")
 value = 50.0
 continuous = false
 hit_area = NodePath("../../PlayerHitArea")
 
-[node name="HasHealth" type="Node" parent="Stage/StageBody/PlayerChildBody/ComponentOwner"]
+[node name="HasHealth" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
-[node name="PlayerDialogueBubble" parent="Stage/StageBody/PlayerChildBody" instance=ExtResource("7_d1yl1")]
+[node name="PlayerDialogueBubble" parent="Stage/StageBody/ChildLevel/PlayerChildBody" instance=ExtResource("7_d1yl1")]
 unique_name_in_owner = true
-transform = Transform3D(2.6103, 0, 0, 0, 2.6103, 0, 0, 0, 2.6103, 0, 1.81406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 texture = SubResource("ViewportTexture_qard3")
 
-[node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/PlayerChildBody"]
+[node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/ChildLevel/PlayerChildBody"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody/PlayerHitArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/PlayerChildBody/PlayerHitArea"]
 shape = SubResource("SphereShape3D_ljyi0")
 
-[node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/PlayerChildBody"]
+[node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/ChildLevel/PlayerChildBody"]
 unique_name_in_owner = true
-transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.02176, 0)
+transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.6, 0)
 visible = false
 billboard = 1
 texture_filter = 0
@@ -624,11 +649,16 @@ texture = ExtResource("20_400yc")
 vframes = 2
 script = ExtResource("21_kdtcl")
 
-[node name="KeyAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/PlayerChildBody/KeyDialog"]
+[node name="KeyAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/ChildLevel/PlayerChildBody/KeyDialog"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ra5e8")
 }
+
+[node name="StageScaffolding" type="MeshInstance3D" parent="Stage/StageBody/ChildLevel"]
+transform = Transform3D(16.098, 0, 0, 0, 0.0624632, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_5b43b")
+skeleton = NodePath("")
 
 [node name="MainCamera" type="Camera3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
@@ -643,7 +673,7 @@ libraries = {
 }
 
 [node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
-transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.347108, -1.93184, 8.62256)
+transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 4.97357)
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
@@ -680,12 +710,6 @@ skeleton = NodePath("")
 [node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
 
-[node name="StageScaffolding" type="Node3D" parent="Stage/StageBody"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StageBody/StageScaffolding"]
-transform = Transform3D(16.098, 0, 0, 0, 0.0624632, 0, 0, 0, 1, 0, 0.0426067, 2.97948)
-mesh = SubResource("BoxMesh_5b43b")
-
 [node name="Narrator" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 4.07621)
 
@@ -703,13 +727,12 @@ script = ExtResource("24_hohle")
 size = Vector2i(173, 106)
 
 [node name="PlatformLevel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)
 
 [node name="StaticFloor" type="StaticBody3D" parent="PlatformLevel"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112076, -0.0181888, 0)
 
 [node name="Floor2" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86176, -0.0257498, -3.06454)
 shape = SubResource("BoxShape3D_wvhxk")
 
 [node name="FloorMesh" type="MeshInstance3D" parent="PlatformLevel/StaticFloor/Floor2"]
@@ -717,7 +740,7 @@ mesh = SubResource("BoxMesh_wvhxk")
 skeleton = NodePath("../..")
 
 [node name="Floor4" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6533, -0.0257498, -3.06454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5151, 0, 0)
 shape = SubResource("BoxShape3D_wvhxk")
 
 [node name="FloorMesh" type="MeshInstance3D" parent="PlatformLevel/StaticFloor/Floor4"]
@@ -725,22 +748,21 @@ mesh = SubResource("BoxMesh_wvhxk")
 skeleton = NodePath("../..")
 
 [node name="PlatformMesh" type="MeshInstance3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
 mesh = SubResource("BoxMesh_suqj7")
 
 [node name="Floor3" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77702, 0.986864, -3.06454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
 shape = SubResource("BoxShape3D_erodg")
 
-[node name="Floor" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00629806, 0.0505899, -0.0542502)
-shape = SubResource("BoxShape3D_wvhxk")
+[node name="PocketWatchPickup" parent="PlatformLevel/StaticFloor" instance=ExtResource("28_oq7t8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7814, 0, 0)
 
 [node name="FallingPlatform" parent="PlatformLevel" instance=ExtResource("31_m1tyx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93727, 0, -3.07952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78782, 0.0439386, 0.0974145)
 
-[node name="RippableDoor" parent="PlatformLevel" instance=ExtResource("32_evq1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69649, 1.0338, -4.02478)
+[node name="RippableDoor" parent="PlatformLevel" instance=ExtResource("34_lr1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.773238)
 
 [node name="PocketWatchPickup" parent="PlatformLevel" instance=ExtResource("28_oq7t8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93083, -0.0439386, -3.06454)
@@ -757,4 +779,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93083, -0.0439386, -3.06454
 
 [editable path="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble"]
 [editable path="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble"]
+[editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
 [editable path="Stage/StageBody/Narrator/NarratorDialogueBubble"]

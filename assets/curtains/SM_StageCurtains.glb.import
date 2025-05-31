@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c08adq1pgjaml"
-path="res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"
+uid="uid://c4l25jhh8ukvr"
+path="res://.godot/imported/SM_StageCurtains.glb-3a131568d6a3147924c0d75f32946f8f.scn"
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano.glb"
-dest_files=["res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"]
+source_file="res://assets/curtains/SM_StageCurtains.glb"
+dest_files=["res://.godot/imported/SM_StageCurtains.glb-3a131568d6a3147924c0d75f32946f8f.scn"]
 
 [params]
 

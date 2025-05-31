@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c08adq1pgjaml"
-path="res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"
+uid="uid://o7155dbkvygk"
+path="res://.godot/imported/SK_PlayerCharacter.glb-967af6a3d134312bf6739ed4e389a3e0.scn"
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano.glb"
-dest_files=["res://.godot/imported/SM_Piano.glb-a9ebb91f8340592c986f6cc94c43412a.scn"]
+source_file="res://assets/character/SK_PlayerCharacter.glb"
+dest_files=["res://.godot/imported/SK_PlayerCharacter.glb-967af6a3d134312bf6739ed4e389a3e0.scn"]
 
 [params]
 

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckqwlmi5fy7g7"
-path.s3tc="res://.godot/imported/SM_Piano_BC_Piano_128x128.png-155e4e6838f27f8b144665fbbe8f9cc8.s3tc.ctex"
+uid="uid://d0od3ljevpeih"
+path.s3tc="res://.godot/imported/curtains_albedo.png-029a43fa3f5a6d02a22e82143bbde6e6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "b1cda642245dea8b4577b27497704808"
-}
 
 [deps]
 
-source_file="res://assets/Piano/SM_Piano_BC_Piano_128x128.png"
-dest_files=["res://.godot/imported/SM_Piano_BC_Piano_128x128.png-155e4e6838f27f8b144665fbbe8f9cc8.s3tc.ctex"]
+source_file="res://assets/curtains/curtains_albedo.png"
+dest_files=["res://.godot/imported/curtains_albedo.png-029a43fa3f5a6d02a22e82143bbde6e6.s3tc.ctex"]
 
 [params]
 

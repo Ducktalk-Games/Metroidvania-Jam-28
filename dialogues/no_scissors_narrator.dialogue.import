@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dnvix443inpc"
+path="res://.godot/imported/no_scissors_narrator.dialogue-04c11d24f327f2c3cff379257c81cc26.tres"
+
+[deps]
+
+source_file="res://dialogues/no_scissors_narrator.dialogue"
+dest_files=["res://.godot/imported/no_scissors_narrator.dialogue-04c11d24f327f2c3cff379257c81cc26.tres"]
+
+[params]
+
+defaults=true

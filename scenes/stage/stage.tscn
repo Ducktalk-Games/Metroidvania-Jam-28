@@ -29,7 +29,6 @@
 [ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
 [ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
-[ext_resource type="PackedScene" uid="uid://dlk4uiur5i62i" path="res://lib/interactable/interactable.tscn" id="29_ra5e8"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
 [ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="32_evq1l"]
 
@@ -78,6 +77,11 @@ size = Vector3(16.013, 0.0736389, 1.11273)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ecxui"]
 radius = 0.294
 height = 1.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_evq1l"]
+top_radius = 0.0
+bottom_radius = 0.25
+height = 0.722
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
@@ -388,7 +392,6 @@ environment = SubResource("Environment_ecxui")
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
-kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage"]
 unique_name_in_owner = true
@@ -580,8 +583,13 @@ script = ExtResource("2_a221a")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="PlayerChildMesh" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.400886, 0)
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.400886, 0)
 mesh = SubResource("CapsuleMesh_ecxui")
+
+[node name="ViewCone" type="MeshInstance3D" parent="Stage/StageBody/PlayerChildBody/PlayerChildMesh"]
+transform = Transform3D(-4.37114e-08, 1.31134e-07, 1, -1, -3.82137e-15, -4.37114e-08, 0, -1, 1.31134e-07, 0, 0.315, 0.131)
+mesh = SubResource("CylinderMesh_evq1l")
 
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/PlayerChildBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.399415, 0)
@@ -752,9 +760,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69649, 1.0338, -4.02478)
 
 [node name="PocketWatchPickup" parent="PlatformLevel" instance=ExtResource("28_oq7t8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93083, -0.0439386, -3.06454)
-
-[node name="Interactable" parent="PlatformLevel" instance=ExtResource("29_ra5e8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69131, 0.0211859, -3.17331)
 
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]

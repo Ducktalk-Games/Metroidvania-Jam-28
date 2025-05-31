@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduqava7yo5e4"
-path.s3tc="res://.godot/imported/SM_Spotlight_Base_BC_Spotlight_Base.png-25c1f0e72ff3eea780715b2042659258.s3tc.ctex"
+uid="uid://bbknmfrthm42h"
+path.s3tc="res://.godot/imported/SM_Stage_BaseTest_BC_Base.png-be7a08947d984b709bd0d79271cc45eb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5497ed6a6fecf701882782ada3597777"
+"md5": "c8b26d8c58734051cf177d6ad7139b08"
 }
 
 [deps]
 
-source_file="res://assets/spotlight/SM_Spotlight_Base_BC_Spotlight_Base.png"
-dest_files=["res://.godot/imported/SM_Spotlight_Base_BC_Spotlight_Base.png-25c1f0e72ff3eea780715b2042659258.s3tc.ctex"]
+source_file="res://assets/stage/SM_Stage_BaseTest_BC_Base.png"
+dest_files=["res://.godot/imported/SM_Stage_BaseTest_BC_Base.png-be7a08947d984b709bd0d79271cc45eb.s3tc.ctex"]
 
 [params]
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy0je00bymr2j"]
+[gd_scene load_steps=5 format=3 uid="uid://dy0je00bymr2j"]
 
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="1_jgkgp"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="2_tov73"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="3_jotw6"]
-[ext_resource type="PackedScene" uid="uid://dusqqicf4vr4m" path="res://assets/spotlight/SM_Spotlight.glb" id="4_0gppc"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="5_0l4gw"]
 
 [node name="Node3D" type="Node3D"]
@@ -16,12 +15,6 @@ transform = Transform3D(0.314721, 0, 0.949184, 0, 1, 0, -0.949184, 0, 0.314721, 
 
 [node name="SM_Stage_LightStrip2" parent="." instance=ExtResource("3_jotw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295825, 8.30059, -15.2791)
-
-[node name="SM_Spotlight" parent="." instance=ExtResource("4_0gppc")]
-transform = Transform3D(0.840311, 0, 0.542104, 0, 1, 0, -0.542104, 0, 0.840311, 6.37878, 0.300874, -5.47467)
-
-[node name="SM_Spotlight2" parent="." instance=ExtResource("4_0gppc")]
-transform = Transform3D(0.817557, 0, -0.575848, 0, 1, 0, 0.575848, 0, 0.817557, -8.23595, 0.411227, -10.6177)
 
 [node name="SM_FilmCamera2" parent="." instance=ExtResource("5_0l4gw")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -3.76094, 0.439881, -4.60989)

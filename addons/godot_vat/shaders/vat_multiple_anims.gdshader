@@ -1,11 +1,11 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_always,depth_prepass_alpha,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode blend_mix,depth_draw_always,depth_prepass_alpha,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
 
 //depth_draw_opaque
 
 uniform sampler2D offset_map;
 uniform sampler2D normal_map;
-uniform sampler2D texture_albedo;
+uniform sampler2D texture_albedo: filter_nearest;
 
 uniform float fps = 24.0; // change this to what the fps is in Blender
 
@@ -14,6 +14,8 @@ uniform float time_alpha : hint_range(0,1);
 uniform float specular : hint_range(0,1);
 uniform float metallic : hint_range(0,1);
 uniform float roughness : hint_range(0,1);
+
+uniform vec2 uv_offset;
 
 varying flat vec4 custom_data;
 
@@ -62,11 +64,10 @@ void vertex(){
 }
 
 void fragment(){
-	vec3 albedo_col = texture(texture_albedo, UV).rgb;
+	vec4 albedo_col = texture(texture_albedo, UV + uv_offset).rgba;
 
-	ALPHA = custom_data.a;  // fader
+	ALPHA = albedo_col.a;  // fader
 	ALBEDO = albedo_col.rgb;
-
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;

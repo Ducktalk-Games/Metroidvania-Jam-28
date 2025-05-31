@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cy2ofmn45mhjc"]
+
+[ext_resource type="Texture2D" uid="uid://l80wjtf2lt2g" path="res://assets/character/SK_PlayerCharacter_Kid.png" id="1_b886x"]
+
+[resource]
+resource_name = "M_PlayerCharacter"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_b886x")
+texture_filter = 2

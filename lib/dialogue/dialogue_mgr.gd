@@ -21,14 +21,16 @@ func _on_dialogue_ended(_res: DialogueResource) -> void:
 	current_dialogue = null
 
 
-func set_dialogue_resource_text(name: String) -> void:
-	var res := load("res://dialogues/"+name+".dialogue")
+func set_dialogue_resource(res_path: String) -> DialogueMgr:
+	var res := load(res_path)
 	current_dialogue = res
+	return self
 
 
-func set_dialogue_resource_act(number: int) -> void:
-	var res := load("res://dialogues/act_"+str(number)+".dialogue")
-	current_dialogue = res
+func start_dialog(res_path: String) -> DialogueMgr:
+	var mgr := set_dialogue_resource(res_path)
+	mgr._process_dialogue()
+	return mgr
 
 
 func _process_dialogue() -> void:

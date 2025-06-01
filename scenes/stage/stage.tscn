@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=67 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
-[ext_resource type="Script" uid="uid://b62v3ui3ggklm" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
+[ext_resource type="Script" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
@@ -179,6 +179,9 @@ _data = {
 &"RESET": SubResource("Animation_nrxvr"),
 &"pop_in": SubResource("Animation_oq7t8")
 }
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
+viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
 
 [sub_resource type="Animation" id="Animation_5b43b"]
 length = 0.001
@@ -643,6 +646,17 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ra5e8")
 }
+
+[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
+transform = Transform3D(1.74027, 0, 3.0428e-07, 0, 1.74027, 0, -3.0428e-07, 0, 1.74027, 0.0165422, 2.09291, 0.014899)
+billboard = 1
+texture = SubResource("ViewportTexture_1sasl")
+script = ExtResource("11_400yc")
+metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
+
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/ChildLevel/Player/DialogueContainer"]
+transparent_bg = true
+size = Vector2i(131, 87)
 
 [node name="MainCamera" type="Camera3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)

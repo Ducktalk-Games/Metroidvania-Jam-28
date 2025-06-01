@@ -10,6 +10,7 @@ billboard = 1
 texture_filter = 0
 texture = SubResource("ViewportTexture_6bo5h")
 script = ExtResource("1_6bo5h")
+debug = null
 
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true

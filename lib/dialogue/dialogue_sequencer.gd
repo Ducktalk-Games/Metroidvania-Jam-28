@@ -1,4 +1,3 @@
-class_name DialogueMgr
 extends Node
 
 var narrator_bubble: DialogueContainer
@@ -21,13 +20,14 @@ func _on_dialogue_ended(_res: DialogueResource) -> void:
 	current_dialogue = null
 
 
-func set_dialogue_resource(res_path: String) -> DialogueMgr:
+func set_dialogue_resource(res_path: String) -> DialogueSequencer:
 	var res := load(res_path)
 	current_dialogue = res
 	return self
 
 
-func start_dialog(res_path: String) -> DialogueMgr:
+func start_dialog(res_path: String) -> DialogueSequencer:
+	Global.disable_player_input()
 	var mgr := set_dialogue_resource(res_path)
 	mgr._process_dialogue()
 	return mgr

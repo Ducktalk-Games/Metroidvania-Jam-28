@@ -21,13 +21,6 @@ var stage: Stage
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
 
-var dialogue_mgr: DialogueMgr
-
-
-func _ready() -> void:
-	dialogue_mgr = DialogueMgr.new()
-	add_child(dialogue_mgr)
-
 
 func spawn_item_popup(item: Ability) -> ItemPopup:
 	var item_popup := ITEM_POPUP.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as ItemPopup

@@ -8,9 +8,9 @@ var popup_balloon: DialogueManagerExampleBalloon
 
 
 func _ready() -> void:
-	Global.dialogue_mgr.set(get_parent().name.to_lower() + "_bubble", self)
+	DialogueSequencer.set(get_parent().name.to_lower() + "_bubble", self)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
-	Global.dialogue_mgr.show_dialog.connect(_handle_dialog)
+	DialogueSequencer.show_dialog.connect(_handle_dialog)
 
 
 func _handle_tags(tags: PackedStringArray) -> void:

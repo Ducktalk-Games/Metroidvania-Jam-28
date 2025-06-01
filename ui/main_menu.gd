@@ -48,4 +48,5 @@ func show_ui() -> void:
 func _on_curtain_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "curtain_open":
 		curtains_opened.emit()
-		Global.dialogue_mgr.start_dialog("res://dialogues/act_1.dialogue")
+		# 010_intro
+		DialogueSequencer.start_dialog("uid://cqs1s27w3ad8t")

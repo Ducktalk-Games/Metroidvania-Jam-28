@@ -1,4 +1,4 @@
-extends Character
+extends Node3D
 
 
 # One option, discreet animations

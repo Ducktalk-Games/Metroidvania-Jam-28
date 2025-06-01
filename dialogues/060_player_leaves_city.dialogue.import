@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dihna32b60oqa"
+path="res://.godot/imported/060_player_leaves_city.dialogue-a6c6ce7cdce2011419450750f8e8a0f6.tres"
+
+[deps]
+
+source_file="res://dialogues/060_player_leaves_city.dialogue"
+dest_files=["res://.godot/imported/060_player_leaves_city.dialogue-a6c6ce7cdce2011419450750f8e8a0f6.tres"]
+
+[params]
+
+defaults=true

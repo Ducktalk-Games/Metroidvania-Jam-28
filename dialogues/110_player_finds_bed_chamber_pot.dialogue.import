@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://db8vqvrt6x7de"
+path="res://.godot/imported/110_player_finds_bed_chamber_pot.dialogue-65346c4736de9e9abb7d1cbb951b0ebb.tres"
+
+[deps]
+
+source_file="res://dialogues/110_player_finds_bed_chamber_pot.dialogue"
+dest_files=["res://.godot/imported/110_player_finds_bed_chamber_pot.dialogue-65346c4736de9e9abb7d1cbb951b0ebb.tres"]
+
+[params]
+
+defaults=true

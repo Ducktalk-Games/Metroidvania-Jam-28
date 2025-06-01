@@ -16,7 +16,8 @@ const POCKET_WATCH_FLAVOUR_TEXT: DialogueResource = (
 	)
 
 const POCKETWATCH_NARRATOR_BLURB: DialogueResource = (
-	preload("res://dialogues/finds_pocketwatch.dialogue")
+	# 030_player_finds_pocketwatch
+	preload("uid://dqs7hvx6lukw4")
 	)
 
 # TODO Assign this to scissors scene
@@ -25,7 +26,8 @@ const SCISSORS = preload("res://assets/chair/SM_Chair.glb")
 const SCISSORS_FLAVOUR_TEXT = preload("res://dialogues/scissors_flavour_text.dialogue")
 
 const SCISSORS_NARRATOR_BLURB: DialogueResource = (
-	preload("res://dialogues/finds_scissors.dialogue")
+	# 050_player_finds_scissors
+	preload("uid://c4r8sbpmeje6n")
 	)
 
 

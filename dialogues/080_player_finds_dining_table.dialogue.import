@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://djt3w2uh2t8wq"
+path="res://.godot/imported/080_player_finds_dining_table.dialogue-c3116cfdf75f7eae876e3e2366364c22.tres"
+
+[deps]
+
+source_file="res://dialogues/080_player_finds_dining_table.dialogue"
+dest_files=["res://.godot/imported/080_player_finds_dining_table.dialogue-c3116cfdf75f7eae876e3e2366364c22.tres"]
+
+[params]
+
+defaults=true

@@ -81,6 +81,9 @@ func _attack() -> void:
 func damage() -> void:
 	# All bodies in hitbox, but filter out self, stage, and floor
 	# Should instead do this using collision layers or similar
+	if not hit_area:
+		return
+
 	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return not [get_object(), %StaticFloor, %StageBody].has(t))
 
 	for target in targs:

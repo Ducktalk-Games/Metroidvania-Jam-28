@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=65 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://dnykb1xrf2jh4" path="res://lib/components/can_loot.gd" id="7_oq7t8"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
+[ext_resource type="Script" uid="uid://cq0pfupyvbkdo" path="res://lib/components/can_respawn.gd" id="8_m1tyx"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
+[ext_resource type="Script" uid="uid://ceknlyib7kfcy" path="res://lib/components/can_die.gd" id="10_1sasl"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="Script" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
@@ -28,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://c2uhc4p833ylr" path="res://assets/stage/SM_Stage_Floor.glb" id="25_8pkue"]
 [ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
-[ext_resource type="PackedScene" uid="uid://dltem3v423hfj" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
+[ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://87v3ipuaikii" path="res://assets/stage/SM_Stage_Frame.glb" id="36_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://d0yl2blobd07g" path="res://assets/stage/SM_Stage_Boarder.glb" id="37_634kf"]
@@ -62,6 +64,8 @@ adjustment_contrast = 1.18
 adjustment_saturation = 0.44
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erodg"]
+radius = 0.275116
+height = 1.2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kdtcl"]
 viewport_path = NodePath("Stage/StageBody/OffStageEnv/Matron/DialogueContainer/SubViewport")
@@ -190,10 +194,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.200467, 1.44103, 23.829)]
+"values": [Vector3(-0.200467, 1.44103, 22.529), Vector3(-0.2, 1.441, 22.529)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -420,9 +424,7 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player", "map_body")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.626262)
-collision_layer = 5
-collision_mask = 9
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.673738)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_oomxc")
@@ -432,14 +434,17 @@ curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlaye
 map_body = NodePath("StageBodyCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="StageBodyCollision" type="CollisionShape3D" parent="Stage/StageBody"]
-shape = SubResource("CapsuleShape3D_erodg")
-
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody"]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("can_respawn")]
 script = ExtResource("2_3kwj0")
 jump_max = 6.0
 speed = 2.0
 inventory = Array[int]([1])
+fall_death_offset = -10.0
+can_respawn = NodePath("CanRespawn")
+health = null
+value = 50.0
+delay_seconds = 1.0
+continuous = false
 
 [node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("3_a221a")
@@ -455,15 +460,33 @@ script = ExtResource("6_d1yl1")
 script = ExtResource("7_oq7t8")
 inventory = Array[int]([1])
 
+[node name="CanRespawn" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("8_m1tyx")
+
 [node name="CanInteract" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("8_nrxvr")
 
+[node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("can_respawn")]
+script = ExtResource("10_1sasl")
+fall_death_offset = -10.0
+can_respawn = NodePath("../CanRespawn")
+metadata/_custom_type_script = "uid://c6qpeui8vrucl"
+
+[node name="HasHealth" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("8_kb6yy")
+health = null
+
+[node name="CanAttack" type="Node" parent="Stage/StageBody/ComponentOwner"]
+script = ExtResource("7_ljyi0")
+value = 50.0
+continuous = false
+
 [node name="StageCollision" type="CollisionShape3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05386, 1.55514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_erodg")
 
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 17.5373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 16.2373)
 
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
 transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14657, 0.445348, -5.33926)
@@ -597,7 +620,7 @@ libraries = {
 }
 
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 2.95417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 1.65417)
 
 [node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("map_body")]
 unique_name_in_owner = true
@@ -621,10 +644,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.72549)
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/Player"]
 script = ExtResource("2_3kwj0")
 speed = 2.0
-value = 50.0
-delay_seconds = 1.0
-continuous = false
-health = 100.0
 
 [node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("5_pf3bu")
@@ -632,21 +651,6 @@ speed = 2.0
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("6_d1yl1")
-
-[node name="CanAttack" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
-script = ExtResource("7_ljyi0")
-value = 50.0
-continuous = false
-
-[node name="HasHealth" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
-script = ExtResource("8_kb6yy")
-
-[node name="PlayerHitArea" type="Area3D" parent="Stage/StageBody/ChildLevel/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
-collision_layer = 4
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/Player/PlayerHitArea"]
 
 [node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.6, 0)
@@ -723,7 +727,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3221, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88015, 0, 0)
 
 [node name="MainCamera" type="Camera3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
+transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
 current = true
 fov = 29.5537
 script = ExtResource("16_5b43b")
@@ -769,12 +773,13 @@ collision_layer = 2
 collision_mask = 6
 
 [node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
-transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 4.97357)
+transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 3.67357)
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
-transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
+transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 
 [node name="Wall5" type="MeshInstance3D" parent="Stage/StageBody/Options"]
 transform = Transform3D(-1.30968e-07, 0, -2.19536, 0, 10.3263, 0, 2.9962, 0, -9.59624e-08, -4.912, 1.805, 20.2404)
@@ -791,6 +796,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.9999
 fov = 29.5537
 
 [node name="CreditsMenu" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 
 [node name="Wall" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
 transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 22.0398, 3.84055, 0.976626, 18.729)
@@ -811,7 +817,7 @@ skeleton = NodePath("")
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
 
 [node name="StageScaffolding" type="StaticBody3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.93445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.63445)
 
 [node name="ScaffoldingCollision" type="CollisionShape3D" parent="Stage/StageBody/StageScaffolding"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0036957, 0)
@@ -821,7 +827,7 @@ shape = SubResource("BoxShape3D_oomxc")
 mesh = SubResource("BoxMesh_lr1w7")
 
 [node name="Narrator" type="Node3D" parent="Stage/StageBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 4.07621)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 2.77621)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StageBody/Narrator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683949, 0)
@@ -848,7 +854,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.57323
 [connection signal="relocating_complete" from="Stage/StageBody" to="Stage" method="_on_stage_body_relocating_complete"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
-[connection signal="relocating_complete" from="Stage/StageBody/ChildLevel/Player" to="Stage" method="_on_player_child_body_relocating_complete"]
+[connection signal="has_died" from="Stage/StageBody/ComponentOwner/CanDie" to="Stage/StageBody/ComponentOwner/CanRespawn" method="respawn"]
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
 [connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]

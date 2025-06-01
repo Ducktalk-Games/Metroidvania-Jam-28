@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8n7vcmsnmuwi"]
+
+[ext_resource type="Script" uid="uid://dmnfm5y6kop0n" path="res://lib/checkpoint/checkpoint.gd" id="1_jie1d"]
+[ext_resource type="PackedScene" uid="uid://cgj3wvjtwi0u3" path="res://assets/broom/SM_Broom.glb" id="1_x8jjp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jie1d"]
+size = Vector3(0.515, 3.47894, 2.11719)
+
+[node name="Checkpoint" type="Area3D"]
+script = ExtResource("1_jie1d")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73947, 0)
+shape = SubResource("BoxShape3D_jie1d")
+debug_color = Color(0, 0.627451, 0.494118, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04999, 0)
+
+[node name="SM_Broom2" parent="MeshInstance3D" instance=ExtResource("1_x8jjp")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.9, -0.212)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

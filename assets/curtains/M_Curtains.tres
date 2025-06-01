@@ -1,0 +1,10 @@
+[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://2qvkb0taecsv"]
+
+[ext_resource type="Texture2D" uid="uid://d0od3ljevpeih" path="res://assets/curtains/curtains_albedo.png" id="1_kr8q2"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_kr8q2")
+texture_filter = 0
+disable_receive_shadows = true

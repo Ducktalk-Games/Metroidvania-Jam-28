@@ -4,10 +4,11 @@
 [ext_resource type="Shader" uid="uid://bvppykyi3ougu" path="res://addons/godot_vat/shaders/vat_multiple_anims.gdshader" id="2_ubpvv"]
 [ext_resource type="Texture2D" uid="uid://dwumn24lcstx0" path="res://assets/main_menu/normals.png" id="3_arv2f"]
 [ext_resource type="Texture2D" uid="uid://dykc1wjrik6og" path="res://assets/main_menu/offsets.exr" id="4_5klac"]
-[ext_resource type="Texture2D" uid="uid://bnksxhkflrevj" path="res://assets/main_menu/albedo.png" id="5_lsdqh"]
+[ext_resource type="Texture2D" uid="uid://d0od3ljevpeih" path="res://assets/curtains/curtains_albedo.png" id="5_iyrh0"]
 [ext_resource type="MultiMesh" uid="uid://cxku5oqrp5o2u" path="res://ui/curtain_instance.tres" id="6_0nobx"]
 [ext_resource type="ArrayMesh" uid="uid://cjg36er5i8u6e" path="res://assets/main_menu/SM_Curtains_Mesh.res" id="6_jiymt"]
 [ext_resource type="Script" uid="uid://cvuheskkmutg3" path="res://assets/main_menu/vat_multi_mesh_instance_3d.gd" id="7_bgtsx"]
+[ext_resource type="Material" uid="uid://2qvkb0taecsv" path="res://assets/curtains/M_Curtains.tres" id="8_iyrh0"]
 [ext_resource type="Animation" uid="uid://crh68swpqbs8l" path="res://ui/curtain_open.res" id="8_ubpvv"]
 [ext_resource type="Texture2D" uid="uid://b3bxrprblrjsd" path="res://assets/main_menu/Play_01.png" id="9_jiymt"]
 [ext_resource type="Script" uid="uid://di11q0mhb4hdo" path="res://addons/action_button/action_button.gd" id="9_kaxbk"]
@@ -16,23 +17,31 @@
 [ext_resource type="Texture2D" uid="uid://kkbr1oniltwk" path="res://assets/main_menu/Credits_01.png" id="11_kaxbk"]
 [ext_resource type="Texture2D" uid="uid://cs407v210vsuq" path="res://assets/main_menu/Exit_01.png" id="12_0nobx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qard3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyrh0"]
 render_priority = 0
 shader = ExtResource("2_ubpvv")
 shader_parameter/offset_map = ExtResource("4_5klac")
 shader_parameter/normal_map = ExtResource("3_arv2f")
-shader_parameter/texture_albedo = ExtResource("5_lsdqh")
+shader_parameter/texture_albedo = ExtResource("5_iyrh0")
 shader_parameter/fps = 24.0
 shader_parameter/time_alpha = 1.0
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.0
+shader_parameter/uv_offset = Vector2(0.307, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8ri8"]
-albedo_texture = ExtResource("5_lsdqh")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubpvv"]
-albedo_texture = ExtResource("5_lsdqh")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qard3"]
+render_priority = 0
+shader = ExtResource("2_ubpvv")
+shader_parameter/offset_map = ExtResource("4_5klac")
+shader_parameter/normal_map = ExtResource("3_arv2f")
+shader_parameter/texture_albedo = ExtResource("5_iyrh0")
+shader_parameter/fps = 24.0
+shader_parameter/time_alpha = 1.0
+shader_parameter/specular = 0.048
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/uv_offset = Vector2(0.23, 0)
 
 [sub_resource type="Animation" id="Animation_qard3"]
 length = 0.001
@@ -75,7 +84,7 @@ script = ExtResource("1_p8ri8")
 
 [node name="CurtainsLeft" type="MultiMeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75301, -1.4184, -5.31004)
-material_override = SubResource("ShaderMaterial_qard3")
+material_override = SubResource("ShaderMaterial_iyrh0")
 multimesh = ExtResource("6_0nobx")
 script = ExtResource("7_bgtsx")
 instance_count = 1
@@ -85,7 +94,7 @@ metadata/_custom_type_script = "uid://damlqeu0m6ksk"
 
 [node name="CurtainsLeftDebug" type="MeshInstance3D" parent="CurtainsLeft"]
 unique_name_in_owner = true
-material_override = SubResource("StandardMaterial3D_p8ri8")
+material_override = ExtResource("8_iyrh0")
 mesh = ExtResource("6_jiymt")
 
 [node name="CurtainsRight" type="MultiMeshInstance3D" parent="."]
@@ -100,7 +109,7 @@ metadata/_custom_type_script = "uid://damlqeu0m6ksk"
 
 [node name="CurtainsRightDebug" type="MeshInstance3D" parent="CurtainsRight"]
 unique_name_in_owner = true
-material_override = SubResource("StandardMaterial3D_ubpvv")
+material_override = ExtResource("8_iyrh0")
 mesh = ExtResource("6_jiymt")
 
 [node name="CurtainAnimationPlayer" type="AnimationPlayer" parent="."]

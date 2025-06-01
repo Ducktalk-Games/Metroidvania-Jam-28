@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dltem3v423hfj"]
+
+[ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="1_1h3bw"]
+[ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
+[ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="2_jhs13"]
+[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="3_1dhn5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvhxk"]
+size = Vector3(16.013, 0.0736389, 1.11273)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
+size = Vector3(16.013, 0.130249, 2.20679)
+
+[sub_resource type="BoxMesh" id="BoxMesh_suqj7"]
+size = Vector3(3.0638, 0.130249, 2.20679)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
+size = Vector3(3.0638, 0.130249, 2.20679)
+
+[node name="PlatformLevel" type="Node3D"]
+script = ExtResource("1_jhs13")
+
+[node name="StaticFloor" type="StaticBody3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
+shape = SubResource("BoxShape3D_wvhxk")
+
+[node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor/Floor2"]
+mesh = SubResource("BoxMesh_wvhxk")
+skeleton = NodePath("../..")
+
+[node name="Floor4" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5151, 0, 0)
+shape = SubResource("BoxShape3D_wvhxk")
+
+[node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor/Floor4"]
+mesh = SubResource("BoxMesh_wvhxk")
+skeleton = NodePath("../..")
+
+[node name="PlatformMesh" type="MeshInstance3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
+mesh = SubResource("BoxMesh_suqj7")
+
+[node name="Floor3" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
+shape = SubResource("BoxShape3D_erodg")
+
+[node name="FallingPlatform" parent="." instance=ExtResource("2_jhs13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5763, 0.0439386, 0.0974145)
+
+[node name="RippableDoor" parent="." instance=ExtResource("3_1dhn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.773238)
+
+[node name="PocketWatchPickup" parent="." instance=ExtResource("1_1h3bw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63378, -0.0439386, -0.129658)

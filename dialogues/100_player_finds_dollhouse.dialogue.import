@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://8pdo2bltui6c"
+path="res://.godot/imported/100_player_finds_dollhouse.dialogue-6eab04e244137eeba3bf82eb4b656435.tres"
+
+[deps]
+
+source_file="res://dialogues/100_player_finds_dollhouse.dialogue"
+dest_files=["res://.godot/imported/100_player_finds_dollhouse.dialogue-6eab04e244137eeba3bf82eb4b656435.tres"]
+
+[params]
+
+defaults=true

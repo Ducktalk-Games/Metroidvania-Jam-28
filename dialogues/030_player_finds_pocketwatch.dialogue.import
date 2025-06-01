@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dqs7hvx6lukw4"
+path="res://.godot/imported/030_player_finds_pocketwatch.dialogue-9b64b84b61213cef624541fa704368d4.tres"
+
+[deps]
+
+source_file="res://dialogues/030_player_finds_pocketwatch.dialogue"
+dest_files=["res://.godot/imported/030_player_finds_pocketwatch.dialogue-9b64b84b61213cef624541fa704368d4.tres"]
+
+[params]
+
+defaults=true

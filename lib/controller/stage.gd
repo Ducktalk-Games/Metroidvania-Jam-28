@@ -11,7 +11,7 @@ var debug_label: Label
 var stage_body: Character = %StageBody
 
 @onready
-var player_child_body: Character = %PlayerChildBody
+var player_child_body: Character = %Player
 
 
 var stage_relocating: bool = false
@@ -22,6 +22,12 @@ func _is_relocating() -> bool:
 	return stage_relocating or player_relocating
 
 @export var kill_dialog := false
+var stage_relocating: bool = false
+var player_relocating: bool = false
+
+
+func _is_relocating() -> bool:
+	return stage_relocating or player_relocating
 
 
 

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bk4072tpnxh0p"
+path="res://.godot/imported/020_player_sees_first_enemy.dialogue-a49731768b4e60da2750176fc6d5a1a0.tres"
+
+[deps]
+
+source_file="res://dialogues/020_player_sees_first_enemy.dialogue"
+dest_files=["res://.godot/imported/020_player_sees_first_enemy.dialogue-a49731768b4e60da2750176fc6d5a1a0.tres"]
+
+[params]
+
+defaults=true

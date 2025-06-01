@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bptu7ihkrsjv1"
+path="res://.godot/imported/070_player_finds_lions.dialogue-5bd637078bbc88b0265f5bc70f5c8cdf.tres"
+
+[deps]
+
+source_file="res://dialogues/070_player_finds_lions.dialogue"
+dest_files=["res://.godot/imported/070_player_finds_lions.dialogue-5bd637078bbc88b0265f5bc70f5c8cdf.tres"]
+
+[params]
+
+defaults=true

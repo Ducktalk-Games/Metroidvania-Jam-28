@@ -11,7 +11,7 @@ var debug_label: Label
 var stage_body: Character = %StageBody
 
 @onready
-var player_child_body: Character = %PlayerChildBody
+var player_child_body: Character = %Player
 
 @export var kill_dialog := false
 

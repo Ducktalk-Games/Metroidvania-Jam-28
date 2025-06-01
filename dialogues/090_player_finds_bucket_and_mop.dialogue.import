@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c73wv4ce4de8t"
+path="res://.godot/imported/090_player_finds_bucket_and_mop.dialogue-c5465b90bb81258ee24dcfe0d4a09352.tres"
+
+[deps]
+
+source_file="res://dialogues/090_player_finds_bucket_and_mop.dialogue"
+dest_files=["res://.godot/imported/090_player_finds_bucket_and_mop.dialogue-c5465b90bb81258ee24dcfe0d4a09352.tres"]
+
+[params]
+
+defaults=true

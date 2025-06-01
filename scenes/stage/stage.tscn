@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=69 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dmfmvso78yxai" path="res://ui/pick_up_buttons.png" id="20_400yc"]
 [ext_resource type="PackedScene" uid="uid://5d8j6yr1m5qn" path="res://assets/credits_board/SM_CreditsBaord.glb" id="21_arv8b"]
 [ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
+[ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="23_lr1w7"]
 [ext_resource type="Script" uid="uid://c1usdjc3ci44g" path="res://dialogue_balloons/narrator_bubble.gd" id="24_hohle"]
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://c2uhc4p833ylr" path="res://assets/stage/SM_Stage_Floor.glb" id="25_8pkue"]
@@ -80,6 +81,41 @@ albedo_color = Color(0.29219, 0.29219, 0.29219, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvhxk"]
 size = Vector3(16.013, 0.0736389, 1.11273)
+
+[sub_resource type="Animation" id="Animation_8pkue"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_StageCurtains:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, 0, 0, 0, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_lr1w7"]
+resource_name = "close_curtain"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SM_StageCurtains:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(1, -0.633333, -0.00382364, 0.633333, 0.00382364, 0, -1.33333, -0.00382365, 0.566667, -0.00517321),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_634kf"]
+_data = {
+&"RESET": SubResource("Animation_8pkue"),
+&"close_curtain": SubResource("Animation_lr1w7")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
@@ -542,6 +578,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05533, -0.0685453, -17.373
 [node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
 transform = Transform3D(0.963504, 0, -0.267692, 0, 1, 0, 0.267692, 0, 0.963504, 4.35106, 0.844135, -9.55955)
 
+[node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("23_lr1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149288, 1.44368, -11.711)
+
+[node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains" index="0"]
+"blend_shapes/Key 1" = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
+libraries = {
+&"": SubResource("AnimationLibrary_634kf")
+}
+
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 2.95417)
 
@@ -624,7 +671,7 @@ libraries = {
 }
 
 [node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
-transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.353049, -1.26015, 6.46879)
+transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 4.97357)
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.829)
@@ -731,4 +778,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78782, 0.0439386, 0.0974145
 
 [editable path="Stage/StageBody/OffStageEnv/Matron/MatronDialogueBubble"]
 [editable path="Stage/StageBody/OffStageEnv/SM_Patron/PatronDialogueBubble"]
+[editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
 [editable path="Stage/StageBody/Narrator/NarratorDialogueBubble"]

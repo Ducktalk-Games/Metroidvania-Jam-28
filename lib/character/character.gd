@@ -42,4 +42,3 @@ func _process(delta: float) -> void:
 
 var nearby_interactable: Interactable
 var nearby_item: ItemPickup
-

@@ -447,7 +447,7 @@ size = Vector2i(167, 103)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0295825, 7.69871, -8.80123)
 
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
-transform = Transform3D(-0.984879, 0.00119097, 0.173235, 0.00108576, 0.999999, -0.000702051, -0.173235, -0.000503341, -0.98488, -1.80635, 0.439881, -4.6462)
+transform = Transform3D(0.993896, -0.0010017, 0.110307, 0.00108576, 0.999999, -0.000702051, -0.110307, 0.000817532, 0.993897, -1.47449, 1.40927, -4.56045)
 
 [node name="SM_Patron" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_y85n4")]
 transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)

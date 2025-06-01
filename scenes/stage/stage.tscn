@@ -1,8 +1,9 @@
-[gd_scene load_steps=69 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=65 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
+[ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
 [ext_resource type="Script" uid="uid://bn7or7ah5u3gm" path="res://lib/components/can_receive_input.gd" id="6_d1yl1"]
@@ -30,9 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://c2uhc4p833ylr" path="res://assets/stage/SM_Stage_Floor.glb" id="25_8pkue"]
 [ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
-[ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
-[ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
-[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="34_lr1w7"]
+[ext_resource type="PackedScene" uid="uid://dltem3v423hfj" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://87v3ipuaikii" path="res://assets/stage/SM_Stage_Frame.glb" id="36_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://d0yl2blobd07g" path="res://assets/stage/SM_Stage_Boarder.glb" id="37_634kf"]
@@ -397,15 +396,6 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_hohle"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
-size = Vector3(16.013, 0.130249, 2.20679)
-
-[sub_resource type="BoxMesh" id="BoxMesh_suqj7"]
-size = Vector3(3.0638, 0.130249, 2.20679)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
-size = Vector3(3.0638, 0.130249, 2.20679)
-
 [node name="Stage" type="Node3D"]
 
 [node name="DebugLog" type="CanvasLayer" parent="."]
@@ -427,12 +417,15 @@ script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage"]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.626262)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
-script = ExtResource("2_a221a")
+script = ExtResource("2_oomxc")
+key_dialog = NodePath("ChildLevel/PlayerChildBody/KeyDialog")
+character_mesh = NodePath("ChildLevel/PlayerChildBody/SK_PlayerCharacter")
+curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody"]
@@ -728,46 +721,8 @@ script = ExtResource("24_hohle")
 [node name="SubViewport" parent="Stage/StageBody/Narrator/NarratorDialogueBubble" index="0"]
 size = Vector2i(173, 106)
 
-[node name="PlatformLevel" type="Node3D" parent="."]
+[node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)
-
-[node name="StaticFloor" type="StaticBody3D" parent="PlatformLevel"]
-unique_name_in_owner = true
-
-[node name="Floor2" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-shape = SubResource("BoxShape3D_wvhxk")
-
-[node name="FloorMesh" type="MeshInstance3D" parent="PlatformLevel/StaticFloor/Floor2"]
-mesh = SubResource("BoxMesh_wvhxk")
-skeleton = NodePath("../..")
-
-[node name="Floor4" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5151, 0, 0)
-shape = SubResource("BoxShape3D_wvhxk")
-
-[node name="FloorMesh" type="MeshInstance3D" parent="PlatformLevel/StaticFloor/Floor4"]
-mesh = SubResource("BoxMesh_wvhxk")
-skeleton = NodePath("../..")
-
-[node name="PlatformMesh" type="MeshInstance3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
-mesh = SubResource("BoxMesh_suqj7")
-
-[node name="Floor3" type="CollisionShape3D" parent="PlatformLevel/StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
-shape = SubResource("BoxShape3D_erodg")
-
-[node name="PocketWatchPickup" parent="PlatformLevel/StaticFloor" instance=ExtResource("28_oq7t8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7814, 0, 0)
-
-[node name="FallingPlatform" parent="PlatformLevel" instance=ExtResource("31_m1tyx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78782, 0.0439386, 0.0974145)
-
-[node name="RippableDoor" parent="PlatformLevel" instance=ExtResource("34_lr1w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.773238)
-
-[node name="PocketWatchPickup" parent="PlatformLevel" instance=ExtResource("28_oq7t8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93083, -0.0439386, -3.06454)
 
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://dk4yrr0jqj01x" path="res://dialogue_balloons/matron_dialogue.gd" id="10_0sb5g"]
-[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
+[ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/piano/SM_Piano.glb" id="10_gf271"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
 [ext_resource type="PackedScene" uid="uid://do1hrja723at8" path="res://assets/Patron/SM_Patron.glb" id="13_y85n4"]
@@ -32,7 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/item_pickup/item_pickup.tscn" id="28_oq7t8"]
 [ext_resource type="PackedScene" uid="uid://dlk4uiur5i62i" path="res://lib/interactable/interactable.tscn" id="29_ra5e8"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="31_m1tyx"]
-[ext_resource type="PackedScene" uid="uid://uqkck2p5ftsm" path="res://assets/stage/SM_Stage_Base.glb" id="34_oomxc"]
 [ext_resource type="PackedScene" uid="uid://87v3ipuaikii" path="res://assets/stage/SM_Stage_Frame.glb" id="36_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://d0yl2blobd07g" path="res://assets/stage/SM_Stage_Boarder.glb" id="37_634kf"]
@@ -429,9 +428,6 @@ shape = SubResource("CapsuleShape3D_erodg")
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 17.5373)
 
-[node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
-transform = Transform3D(-1.15452, 0, -0.580561, 0, 1.29227, 0, 0.580561, 0, -1.15452, 4.61908, 0.452443, -9.66295)
-
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
 transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14657, 0.445348, -5.33926)
 
@@ -542,6 +538,10 @@ transform = Transform3D(0.899955, 0, -0.296874, 0, 0.890661, 0, 0.264001, 0, 1.0
 
 [node name="SM_Stage_BaseTest2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_8pkue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05533, -0.0685453, -17.3737)
+
+[node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
+transform = Transform3D(0.963504, 0, -0.267692, 0, 1, 0, 0.267692, 0, 0.963504, 4.35106, 0.844135, -9.55955)
+
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 2.95417)
 

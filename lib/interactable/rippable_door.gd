@@ -22,13 +22,13 @@ func _on_interacted() -> void:
 		animation_player.play("CutOpen")
 
 		# TODO Play walking forward anim but facing backwards to the audience
-		get_tree().create_timer(1.0).timeout.connect(curtains_fall)
+		get_tree().create_timer(3.0).timeout.connect(curtains_fall)
 	else:
 		Global.narrator_bubble.show_dialogue(no_scissors_dialogue)
 
 
 func curtains_fall() -> void:
-	pass
+	%StageAnimationPlayer.play("close_curtain")
 
 
 func move_to_door() -> PropertyTweener:

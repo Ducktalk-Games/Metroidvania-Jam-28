@@ -118,6 +118,7 @@ _data = {
 
 [node name="FallingPlatformBody" type="RigidBody3D"]
 input_ray_pickable = false
+lock_rotation = true
 freeze = true
 max_contacts_reported = 1
 script = ExtResource("1_2fhj7")

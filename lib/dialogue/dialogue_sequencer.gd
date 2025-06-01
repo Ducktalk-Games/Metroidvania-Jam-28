@@ -3,7 +3,7 @@ extends Node
 var narrator_bubble: DialogueContainer
 var matron_bubble: DialogueContainer
 var patron_bubble: DialogueContainer
-var playerchildbody_bubble: DialogueContainer
+var player_bubble: DialogueContainer
 
 var current_dialogue: DialogueResource = null
 

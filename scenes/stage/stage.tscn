@@ -595,18 +595,18 @@ libraries = {
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 2.95417)
 
-[node name="PlayerChildBody" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel"]
+[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel"]
 unique_name_in_owner = true
 script = ExtResource("2_a221a")
 
-[node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/PlayerChildBody" instance=ExtResource("24_lr1w7")]
+[node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/PlayerChildBody"]
+[node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody"]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/Player"]
 script = ExtResource("2_3kwj0")
 speed = 2.0
 value = 50.0
@@ -614,22 +614,22 @@ delay_seconds = 1.0
 continuous = false
 health = 100.0
 
-[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
+[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("5_pf3bu")
 speed = 2.0
 
-[node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
+[node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
-[node name="CanAttack" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
+[node name="CanAttack" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("7_ljyi0")
 value = 50.0
 continuous = false
 
-[node name="HasHealth" type="Node" parent="Stage/StageBody/ChildLevel/PlayerChildBody/ComponentOwner"]
+[node name="HasHealth" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("8_kb6yy")
 
-[node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/ChildLevel/PlayerChildBody"]
+[node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.6, 0)
 visible = false
 billboard = 1
@@ -638,7 +638,7 @@ texture = ExtResource("20_400yc")
 vframes = 2
 script = ExtResource("21_kdtcl")
 
-[node name="KeyAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/ChildLevel/PlayerChildBody/KeyDialog"]
+[node name="KeyAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/ChildLevel/Player/KeyDialog"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ra5e8")
@@ -764,9 +764,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15924, 0.0651245, -0.10877)
 [connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
-[connection signal="body_entered" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/ChildLevel/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
-[connection signal="body_exited" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/ChildLevel/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
-[connection signal="body_entered" from="PlatformLevel/StaticFloor/Interactable" to="Stage/StageBody/ChildLevel/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_entered"]
-[connection signal="body_exited" from="PlatformLevel/StaticFloor/Interactable" to="Stage/StageBody/ChildLevel/PlayerChildBody/KeyDialog" method="_on_item_pickup_body_exited"]
+[connection signal="body_entered" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/ChildLevel/Player/KeyDialog" method="_on_item_pickup_body_entered"]
+[connection signal="body_exited" from="PlatformLevel/StaticFloor/PocketWatchPickup" to="Stage/StageBody/ChildLevel/Player/KeyDialog" method="_on_item_pickup_body_exited"]
+[connection signal="body_entered" from="PlatformLevel/StaticFloor/Interactable" to="Stage/StageBody/ChildLevel/Player/KeyDialog" method="_on_item_pickup_body_entered"]
+[connection signal="body_exited" from="PlatformLevel/StaticFloor/Interactable" to="Stage/StageBody/ChildLevel/Player/KeyDialog" method="_on_item_pickup_body_exited"]
 
 [editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]

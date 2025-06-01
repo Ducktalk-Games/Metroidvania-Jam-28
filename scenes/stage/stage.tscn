@@ -497,49 +497,7 @@ size = Vector2i(167, 103)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0295825, 7.69871, -8.80123)
 
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
-transform = Transform3D(-0.984879, 0.00119097, 0.173235, 0.00108576, 0.999999, -0.000702051, -0.173235, -0.000503341, -0.98488, -1.55049, 0.439881, -4.6462)
-
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0782766, 0.184083, -5.14672)
-size = Vector3(20, 0.5, 18.53)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0782766, 10.4065, -6.094)
-size = Vector3(20, 0.5, 18.53)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.8089, 5.07541, -5.74004)
-size = Vector3(11.218, 0.5, 20.3956)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D2"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -8.06964, 5.15474, -5.96201)
-size = Vector3(11.218, 0.5, 19.9796)
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Stage/StageBody/OffStageEnv"]
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0692558, 5.12394, -15.4857)
-size = Vector3(20, 0.980349, 11.339)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.2886, -21.4498)
-operation = 2
-size = Vector3(15, 22.998, 7.72436)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.157202, -14.0244)
-size = Vector3(20, 2.87421, 2.904)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Stage/StageBody/OffStageEnv/CSGCombiner3D"]
-transform = Transform3D(1, 0.000401275, 0.000712543, 0.000712515, 6.46144e-05, -1, -0.000401324, 1, 6.43104e-05, -0.00048849, 0.584955, -14.2319)
-size = Vector3(20, 3.90566, 0.688727)
-
-
-[node name="SM_Rug" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("15_wvhxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12904, 0.43305, -8.46557)
-
+transform = Transform3D(-0.984879, 0.00119097, 0.173235, 0.00108576, 0.999999, -0.000702051, -0.173235, -0.000503341, -0.98488, -1.80769, 0.439881, -4.6462)
 
 [node name="SM_Patron" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_y85n4")]
 transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)

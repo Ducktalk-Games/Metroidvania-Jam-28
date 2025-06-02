@@ -8,7 +8,7 @@ var current_body: Character
 var debug_label: Label
 
 @onready
-var stage_body: Character = %StageBody
+var stage_body: StageCharacter = %StageBody
 
 @onready
 var player_child_body: Character = %Player

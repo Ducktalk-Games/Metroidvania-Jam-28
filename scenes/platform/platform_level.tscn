@@ -46,8 +46,9 @@ mesh = SubResource("BoxMesh_suqj7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
 shape = SubResource("BoxShape3D_erodg")
 
-[node name="RippableDoor" parent="." instance=ExtResource("3_1dhn5")]
+[node name="RippableDoor" parent="." node_paths=PackedStringArray("current_level") instance=ExtResource("3_1dhn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.773238)
+current_level = NodePath("..")
 
 [node name="Checkpoint" parent="." instance=ExtResource("4_1dhn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53755, 0.0824553, -0.328518)

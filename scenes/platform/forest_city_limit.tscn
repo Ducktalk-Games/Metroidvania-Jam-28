@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mr1qsg287uj"]
+
+[ext_resource type="Script" uid="uid://dvvmly31yju" path="res://scenes/platform/forest_city_limit.gd" id="1_y31w4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
+size = Vector3(0.3, 3.47894, 2.11719)
+
+[node name="ForestCityLimit" type="Area3D" node_paths=PackedStringArray("LimitLabel")]
+script = ExtResource("1_y31w4")
+LimitLabel = NodePath("LimitLabel")
+
+[node name="ForestCityLimitCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("BoxShape3D_yb01c")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="LimitLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+text = "Forest -> City Limits
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+"
+vertical_alignment = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

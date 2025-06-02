@@ -3,8 +3,8 @@ extends Component
 
 @onready var character := get_object() as CharacterBody3D
 
-@export
-var speed: float = 1.0
+@export var speed: float = 1.0
+@export var animation_tree: AnimationTree
 
 var character_direction: float
 
@@ -20,6 +20,9 @@ func _node_ready() -> void:
 
 func move(delta: float) -> void:
 	character.velocity.x = character_direction * speed
+
+	if animation_tree:
+		animation_tree["parameters/WalkInPlace/blend_position"] = abs(character.velocity.x)
 
 	# Make the character fall
 	character.velocity.y += character.get_gravity().y * delta

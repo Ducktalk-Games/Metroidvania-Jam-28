@@ -2,6 +2,8 @@ class_name CanJump
 extends Component
 
 @export var jump_max: float = 6.0
+@export var animation_tree: AnimationTree
+@onready var tree_playback: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 
 var can_receive_input: CanReceiveInput
 
@@ -22,9 +24,11 @@ func _node_ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if character.is_on_floor():
 		if jump_pressed:
+			tree_playback.travel("Jump")
 			character.velocity.y = jump_max
 			jump_pressed = false
 		else:
+			tree_playback.travel("WalkInPlace")
 			character.velocity.y = 0.0
 
 

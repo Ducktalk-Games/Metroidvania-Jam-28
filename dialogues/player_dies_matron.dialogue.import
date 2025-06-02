@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://1wyveoo4p3km"
+path="res://.godot/imported/player_dies_matron.dialogue-7d8d88d47c3d0cd30fda512fc2009fe0.tres"
+
+[deps]
+
+source_file="res://dialogues/player_dies_matron.dialogue"
+dest_files=["res://.godot/imported/player_dies_matron.dialogue-7d8d88d47c3d0cd30fda512fc2009fe0.tres"]
+
+[params]
+
+defaults=true

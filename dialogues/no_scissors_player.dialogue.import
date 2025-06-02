@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cfwpwiwxhnsli"
+path="res://.godot/imported/no_scissors_player.dialogue-6efd9f9c2382718dde7d0078d7c7bdd6.tres"
+
+[deps]
+
+source_file="res://dialogues/no_scissors_player.dialogue"
+dest_files=["res://.godot/imported/no_scissors_player.dialogue-6efd9f9c2382718dde7d0078d7c7bdd6.tres"]
+
+[params]
+
+defaults=true

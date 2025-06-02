@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=73 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -117,6 +117,39 @@ _data = {
 &"RESET": SubResource("Animation_8pkue"),
 &"close_curtain": SubResource("Animation_lr1w7")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pkue"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oomxc"]
+animation = &"WalkInPlace"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lr1w7"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8pkue"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_oomxc")
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_lr1w7")
+blend_point_1/pos = 0.0
+sync = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_634kf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dtws5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oomxc"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
+states/End/position = Vector2(543, 100)
+states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
+states/Jump/position = Vector2(350, -22)
+states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
+states/WalkInPlace/position = Vector2(350, 100)
+transitions = ["Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_634kf"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc")]
+graph_offset = Vector2(-269, -224)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
@@ -417,9 +450,9 @@ environment = SubResource("Environment_ecxui")
 
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
+kill_dialog = true
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
-kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player")]
 unique_name_in_owner = true
@@ -432,10 +465,12 @@ character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("can_respawn")]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("animation_tree", "animation_tree", "can_respawn")]
 script = ExtResource("2_3kwj0")
 jump_max = 6.0
+animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 speed = 2.0
+animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 inventory = Array[int]([1])
 fall_death_offset = -10.0
 can_respawn = NodePath("CanRespawn")
@@ -444,12 +479,14 @@ value = 50.0
 delay_seconds = 1.0
 continuous = false
 
-[node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
+[node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("3_a221a")
+animation_tree = NodePath("../../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 
-[node name="CanMove" type="Node" parent="Stage/StageBody/ComponentOwner"]
+[node name="CanMove" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("5_pf3bu")
 speed = 2.0
+animation_tree = NodePath("../../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
@@ -629,17 +666,48 @@ script = ExtResource("2_a221a")
 [node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
+[node name="Skeleton3D" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/SK_PlayerCharacter" index="0"]
+bones/0/position = Vector3(0.000283235, -2.18501e-15, -0.42185)
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/rotation = Quaternion(0.984808, 0.173648, 1.31101e-08, -7.43509e-08)
+bones/6/rotation = Quaternion(4.86971e-17, -4.66852e-10, 0.0715759, 0.997435)
+bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
+bones/8/rotation = Quaternion(-3.16417e-09, -1.66427e-09, 0.70824, 0.705971)
+bones/10/position = Vector3(-0.123545, 0.0243804, 4.64219e-09)
+bones/10/rotation = Quaternion(-0.984808, 0.173648, -8.16256e-08, -2.93174e-08)
+bones/11/position = Vector3(-0.0241534, 0.194952, -2.98263e-08)
+bones/11/rotation = Quaternion(-2.99241e-08, -3.22342e-08, -0.0825443, 0.996587)
+bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
+bones/13/rotation = Quaternion(3.52015e-09, 1.22823e-09, -0.640216, 0.768195)
+bones/15/position = Vector3(0.0902023, -0.0622695, -1.12325e-14)
+bones/16/rotation = Quaternion(-1.41576e-14, -7.10543e-15, -2.13774e-21, 1)
+bones/17/rotation = Quaternion(-0.707107, -5.30988e-08, -5.36714e-08, 0.707107)
+bones/19/position = Vector3(-0.0902025, -0.0622698, -1.20629e-14)
+bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
+bones/20/rotation = Quaternion(-1.41577e-14, -7.10543e-15, -2.13775e-21, 1)
+bones/21/rotation = Quaternion(-0.707107, -4.55131e-08, -2.68351e-08, 0.707107)
+
+[node name="AnimationTree" type="AnimationTree" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
+tree_root = SubResource("AnimationNodeStateMachine_dtws5")
+anim_player = NodePath("../AnimationPlayer")
+parameters/WalkInPlace/blend_position = 0.0
+
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/Player"]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/Player" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("2_3kwj0")
 speed = 2.0
+animation_tree = NodePath("../SK_PlayerCharacter/AnimationTree")
 
-[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
+[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("5_pf3bu")
 speed = 2.0
+animation_tree = NodePath("../../SK_PlayerCharacter/AnimationTree")
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("6_d1yl1")
@@ -761,3 +829,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.57323
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
 
 [editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
+[editable path="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]

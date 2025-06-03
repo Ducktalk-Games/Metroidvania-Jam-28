@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bns5622olb4q4"
-path.s3tc="res://.godot/imported/SM_Stage_Frame_BC_Frame.png-287740c28423dc68d4e72d489d2675ba.s3tc.ctex"
+uid="uid://duftt1eikvsgq"
+path.s3tc="res://.godot/imported/SM_Floor_Test_BC_Floor.png-7f5619217fa5b0bd92195f41846cbea2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9f77fb34a26b93bf8c1737c68f506e14"
+"md5": "a9e73e695eb18c7bb81e4a06982914da"
 }
 
 [deps]
 
-source_file="res://assets/stage/SM_Stage_Frame_BC_Frame.png"
-dest_files=["res://.godot/imported/SM_Stage_Frame_BC_Frame.png-287740c28423dc68d4e72d489d2675ba.s3tc.ctex"]
+source_file="res://assets/stage/SM_Floor_Test_BC_Floor.png"
+dest_files=["res://.godot/imported/SM_Floor_Test_BC_Floor.png-7f5619217fa5b0bd92195f41846cbea2.s3tc.ctex"]
 
 [params]
 

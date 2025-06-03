@@ -1,12 +1,14 @@
 class_name CanMove
 extends Component
 
-@onready var character := get_object() as CharacterBody3D
+@onready var character := get_object() as Character
 
 @export var speed: float = 1.0
 @export var animation_tree: AnimationTree
 
 var character_direction: float
+var rotation_offset := 0.01
+var rotation_snapped: bool = true
 
 
 func _node_ready() -> void:
@@ -20,6 +22,17 @@ func _node_ready() -> void:
 
 func move(delta: float) -> void:
 	character.velocity.x = character_direction * speed
+
+	if character.velocity.x != 0.0:
+		var target_angle := Vector3.BACK.signed_angle_to(Vector3(character.velocity.x, 0.0, 0.0), Vector3.UP)
+
+		if abs(target_angle - character.character_mesh.global_rotation.y) < 0.1 and not rotation_snapped:
+			rotation_snapped = true
+			character.character_mesh.global_rotation.y = target_angle
+			rotation_offset *= -1
+		else:
+			rotation_snapped = false
+			character.character_mesh.global_rotation.y = lerp_angle(character.character_mesh.global_rotation.y + rotation_offset, target_angle, delta * 10)
 
 	if animation_tree:
 		animation_tree["parameters/WalkInPlace/blend_position"] = abs(character.velocity.x)

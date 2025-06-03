@@ -472,7 +472,7 @@ animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree
 speed = 2.0
 animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 inventory = Array[int]([1])
-fall_death_offset = -10.0
+fall_death_offset = -5.0
 can_respawn = NodePath("CanRespawn")
 health = null
 value = 50.0
@@ -503,7 +503,7 @@ script = ExtResource("8_nrxvr")
 
 [node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("can_respawn")]
 script = ExtResource("10_1sasl")
-fall_death_offset = -10.0
+fall_death_offset = -5.0
 can_respawn = NodePath("../CanRespawn")
 metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 

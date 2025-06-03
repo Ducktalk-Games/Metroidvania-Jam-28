@@ -132,7 +132,7 @@ func apply_dialogue_line() -> void:
 
 ## Go to the next line
 func next(next_id: String) -> void:
-	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+	self.dialogue_line = await DialogueSequencer.current_dialogue.get_next_dialogue_line(next_id, temporary_game_states)
 
 #region Signals
 

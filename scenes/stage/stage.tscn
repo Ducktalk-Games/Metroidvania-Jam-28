@@ -450,9 +450,9 @@ environment = SubResource("Environment_ecxui")
 
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
-kill_dialog = true
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
+kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player")]
 unique_name_in_owner = true

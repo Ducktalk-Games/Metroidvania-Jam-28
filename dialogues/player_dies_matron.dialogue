@@ -1,5 +1,5 @@
 ~ start
-% Matron: Wrong! Do it again!
-% Matron: Let's try that again, but good this time
-% Matron: Why do I even bother?
+% Matron: Wrong! Do it again! [next=auto]
+% Matron: Let's try that again, but good this time [next=auto]
+% Matron: Why do I even bother? [next=auto]
 => END

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnf24mg5ngb1g"
-path="res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"
+uid="uid://cqo0r4aqfcpn8"
+path="res://.godot/imported/LvlBlockout.glb-15794ac097fee00b2b6b62040c38369b.scn"
 
 [deps]
 
-source_file="res://assets/stage/SM_Stage_Boarder.glb"
-dest_files=["res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"]
+source_file="res://assets/level_blockout/LvlBlockout.glb"
+dest_files=["res://.godot/imported/LvlBlockout.glb-15794ac097fee00b2b6b62040c38369b.scn"]
 
 [params]
 

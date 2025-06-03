@@ -458,15 +458,15 @@ current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 kill_dialog = true
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player")]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "character_mesh")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.673738)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_oomxc")
 key_dialog = NodePath("ChildLevel/Player/KeyDialog")
-character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
+character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("animation_tree", "animation_tree", "can_respawn")]
@@ -476,7 +476,7 @@ animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree
 speed = 2.0
 animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 inventory = Array[int]([1])
-fall_death_offset = -10.0
+fall_death_offset = -5.0
 can_respawn = NodePath("CanRespawn")
 health = null
 value = 50.0
@@ -507,7 +507,7 @@ script = ExtResource("8_nrxvr")
 
 [node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("can_respawn")]
 script = ExtResource("10_1sasl")
-fall_death_offset = -10.0
+fall_death_offset = -5.0
 can_respawn = NodePath("../CanRespawn")
 metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
@@ -673,9 +673,10 @@ libraries = {
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 1.65417)
 
-[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel"]
+[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("character_mesh")]
 unique_name_in_owner = true
 script = ExtResource("2_a221a")
+character_mesh = NodePath("SK_PlayerCharacter")
 
 [node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

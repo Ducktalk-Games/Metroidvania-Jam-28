@@ -14,7 +14,7 @@ var stage_character: StageCharacter
 
 func _on_interacted(interactor: StageCharacter) -> void:
 	stage_character = interactor
-	player_og_quat = Quaternion(stage_character.character_mesh.global_basis)
+	player_og_quat = stage_character.character_mesh.global_basis.get_rotation_quaternion()
 	var can_loot: CanLoot = Component.find(Global.stage.stage_body, "CanLoot") as CanLoot
 	Global.disable_player_input()
 	move_to_door()

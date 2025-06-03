@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gcfk1mfuwlmv" path="res://scenes/platform/falling_platform.gd" id="1_2fhj7"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_x5e5x"]
-[ext_resource type="Script" path="res://lib/components/can_reset.gd" id="3_qjarj"]
+[ext_resource type="Script" uid="uid://c87ywthbtjb1s" path="res://lib/components/can_reset.gd" id="3_qjarj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q7r88"]
 size = Vector3(1, 0.1, 1.8)
@@ -15,6 +15,7 @@ size = Vector3(1, 0.113055, 1.8)
 
 [sub_resource type="Animation" id="Animation_q7r88"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -116,12 +117,14 @@ _data = {
 &"fall": SubResource("Animation_x5e5x")
 }
 
-[node name="FallingPlatformBody" type="RigidBody3D"]
+[node name="FallingPlatformBody" type="RigidBody3D" node_paths=PackedStringArray("can_reset", "platform_animation")]
 input_ray_pickable = false
 lock_rotation = true
 freeze = true
 max_contacts_reported = 1
 script = ExtResource("1_2fhj7")
+can_reset = NodePath("ComponentOwner/CanReset")
+platform_animation = NodePath("PlatformAnimation")
 
 [node name="PlatformCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_q7r88")

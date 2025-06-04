@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://pb73ouwr1sif"
+path="res://.godot/imported/120_matron_song_request.dialogue-15048b9ab278e21253e720e9c7e42941.tres"
+
+[deps]
+
+source_file="res://dialogues/120_matron_song_request.dialogue"
+dest_files=["res://.godot/imported/120_matron_song_request.dialogue-15048b9ab278e21253e720e9c7e42941.tres"]
+
+[params]
+
+defaults=true

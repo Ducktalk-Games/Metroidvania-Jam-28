@@ -5,10 +5,12 @@ class_name ItemPickup
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is Character:
+	super._on_body_entered(body)
+	if body is StageCharacter:
 		body.nearby_item = self
 
 
 func _on_body_exited(body: Node3D) -> void:
-	if body is Character:
+	super._on_body_exited(body)
+	if body is StageCharacter:
 		body.nearby_item = null

@@ -35,16 +35,9 @@ func reset_input() -> void:
 
 func disable() -> void:
 	reset_input()
-	if movement_component:
-		movement_component.disable()
-
 	super.disable()
 
 
 func enable() -> void:
-	if movement_component:
-		movement_component.enable()
-
 	reset_input()
-
 	super.enable()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hbr873nc66vk"]
+
+[ext_resource type="PackedScene" uid="uid://ta0ylc2cepi" path="res://scenes/platform/spotlight_dialogue_trigger.tscn" id="1_7bsml"]
+[ext_resource type="Resource" uid="uid://bptu7ihkrsjv1" path="res://dialogues/070_player_finds_lions.dialogue" id="2_konxx"]
+
+[node name="SimpleDialogueTrigger" instance=ExtResource("1_7bsml")]
+dialogue_resource = ExtResource("2_konxx")
+label_string = "Player Finds Lions Trigger"
+
+[node name="TriggerLabel" parent="." index="1"]
+text = "Player Finds Lions Trigger"

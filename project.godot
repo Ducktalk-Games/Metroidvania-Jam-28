@@ -63,6 +63,12 @@ window/stretch/aspect="keep_width"
 
 enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/action_button/plugin.cfg", "res://addons/anim_track_converter/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/composition/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot_vat/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://dialogues/": "yellow"
+}
+
 [input]
 
 ui_accept={

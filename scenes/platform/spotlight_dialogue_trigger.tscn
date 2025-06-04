@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ta0ylc2cepi"]
+
+[ext_resource type="PackedScene" uid="uid://c7mr1qsg287uj" path="res://scenes/platform/dialogue_trigger.tscn" id="1_r5otr"]
+[ext_resource type="Script" uid="uid://bwa44qcfc6d18" path="res://scenes/platform/spotlight_dialogue_trigger.gd" id="2_5bfqb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bfqb"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.160784)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r5otr"]
+material = SubResource("StandardMaterial3D_5bfqb")
+top_radius = 0.0
+bottom_radius = 1.267
+height = 3.612
+
+[node name="SpotlightDialogueTrigger" instance=ExtResource("1_r5otr")]
+script = ExtResource("2_5bfqb")
+spotlight_alpha = 0.15
+spotlight_energy = 10.0
+dialogue_resource = null
+
+[node name="Spotlight" type="SpotLight3D" parent="." index="2"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.6, 3.5, 0)
+light_energy = 5.0
+spot_range = 4.7
+spot_angle = 19.7849
+
+[node name="SpotlightMesh" type="MeshInstance3D" parent="." index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.7, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_r5otr")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnt77blimhms4"]
+
+[ext_resource type="Script" uid="uid://b3h3th1cajqi2" path="res://lib/interactable/item_pickup.gd" id="1_maleu"]
+[ext_resource type="ArrayMesh" uid="uid://cpxnqocqxcsyb" path="res://assets/fugit_watch/SM_Item_Fugit_watch_Plane_019.res" id="2_vycv3"]
+[ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="3_md6dm"]
+[ext_resource type="Script" uid="uid://b0q4tujrxaxdc" path="res://lib/components/can_rotate.gd" id="4_1apru"]
+[ext_resource type="Script" uid="uid://c3uqofysyh80t" path="res://lib/components/can_bob.gd" id="5_5oh0l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oq7t8"]
+radius = 1.07902
+
+[node name="ItemPickup" type="Area3D"]
+script = ExtResource("1_maleu")
+
+[node name="ItemCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70503, 0)
+shape = SubResource("SphereShape3D_oq7t8")
+
+[node name="ItemParent" type="Marker3D" parent="."]
+transform = Transform3D(0.617111, 0, 0, 0, 0.617111, 0, 0, 0, 0.617111, 0, 1.79918, 0)
+
+[node name="ItemMesh" type="MeshInstance3D" parent="ItemParent"]
+unique_name_in_owner = true
+transform = Transform3D(0.822045, 0.569423, 0, -0.569423, 0.822045, 0, 0, 0, 1, -0.152299, 0.219866, 0)
+mesh = ExtResource("2_vycv3")
+skeleton = NodePath("../..")
+
+[node name="ComponentOwner" type="Node" parent="ItemParent/ItemMesh"]
+script = ExtResource("3_md6dm")
+speed = 1.0
+speed = 1.0
+attenuation = 0.2
+
+[node name="CanRotate" type="Node" parent="ItemParent/ItemMesh/ComponentOwner"]
+script = ExtResource("4_1apru")
+
+[node name="CanBob" type="Node" parent="ItemParent/ItemMesh/ComponentOwner"]
+script = ExtResource("5_5oh0l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b63ctsul0tlsp"
-path="res://.godot/imported/LvlBlockout.glb-15794ac097fee00b2b6b62040c38369b.scn"
+uid="uid://drxcv0b5jxwf4"
+path="res://.godot/imported/SM_Circular_rug.glb-9e8a6b84bbef390b960d8c98daacaa18.scn"
 
 [deps]
 
-source_file="res://assets/level_blockout/LvlBlockout.glb"
-dest_files=["res://.godot/imported/LvlBlockout.glb-15794ac097fee00b2b6b62040c38369b.scn"]
+source_file="res://assets/rug/SM_Circular_rug.glb"
+dest_files=["res://.godot/imported/SM_Circular_rug.glb-9e8a6b84bbef390b960d8c98daacaa18.scn"]
 
 [params]
 

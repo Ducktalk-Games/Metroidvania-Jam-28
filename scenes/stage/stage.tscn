@@ -475,7 +475,7 @@ jump_max = 6.0
 animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 speed = 2.0
 animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
-inventory = Array[int]([1])
+inventory = Array[int]([])
 fall_death_offset = -5.0
 can_respawn = NodePath("CanRespawn")
 health = null
@@ -497,7 +497,6 @@ script = ExtResource("6_d1yl1")
 
 [node name="CanLoot" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("7_oq7t8")
-inventory = Array[int]([1])
 
 [node name="CanRespawn" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("8_m1tyx")

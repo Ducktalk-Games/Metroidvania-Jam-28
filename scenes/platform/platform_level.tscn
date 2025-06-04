@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://lib/interactable/rippable_door.tscn" id="3_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://cqf07dore1stb" path="res://assets/level_layout/LvlBlockout.glb" id="4_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
-[ext_resource type="PackedScene" uid="uid://c7mr1qsg287uj" path="res://scenes/platform/dialogue_trigger.tscn" id="6_yb01c"]
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
+[ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://scenes/platform/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -83,9 +83,8 @@ visible = false
 [node name="ItemPickup" parent="." instance=ExtResource("5_1dhn5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4692, 0.0275222, -0.0847793)
 
-[node name="ForestCityLimit" parent="." instance=ExtResource("6_yb01c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.97595, 0.0316471, 0.0809851)
-label_string = "Forest -> City Limits"
-
 [node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9527, 0.0322131, -0.814254)
+
+[node name="BedChamberPotTrigger" parent="." instance=ExtResource("7_ssfwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13896, 0.0351512, 0.00389761)

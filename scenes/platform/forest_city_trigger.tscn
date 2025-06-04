@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://gy8lxtr86ejd"]
+
+[ext_resource type="PackedScene" uid="uid://c7mr1qsg287uj" path="res://scenes/platform/dialogue_trigger.tscn" id="1_hnpf0"]
+[ext_resource type="Script" uid="uid://t58u1pb40dwl" path="res://scenes/platform/forest_city_trigger.gd" id="2_vqn8i"]
+
+[node name="ForestCityTrigger" instance=ExtResource("1_hnpf0")]
+script = ExtResource("2_vqn8i")
+label_string = "Forest -> City Trigger"
+
+[node name="TriggerLabel" parent="." index="1"]
+text = "Forest -> City Trigger"

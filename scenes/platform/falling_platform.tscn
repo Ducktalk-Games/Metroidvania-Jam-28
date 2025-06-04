@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="4_qjarj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cncco"]
-size = Vector3(1.4, 0.1, 3.5)
+size = Vector3(0.98999, 0.1, 2.44043)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qjarj"]
 top_radius = 0.02
@@ -69,9 +69,9 @@ string_mesh = SubResource("CylinderMesh_qjarj")
 string_offset = 0.058
 metadata/_custom_type_script = "uid://bybg6d10xsd13"
 
-[node name="HitDetection" type="Area3D" parent="."]
+[node name="HitDetection" type="Area3D" parent="ProceduralPlatform"]
 
-[node name="HitCollision" type="CollisionShape3D" parent="HitDetection"]
+[node name="HitCollision" type="CollisionShape3D" parent="ProceduralPlatform/HitDetection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0486864, 0)
 shape = SubResource("BoxShape3D_cncco")
 
@@ -90,4 +90,4 @@ script = ExtResource("3_qjarj")
 animation_player = NodePath("../../PlatformAnimation")
 metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
-[connection signal="body_entered" from="HitDetection" to="." method="_on_hit_detection_body_entered"]
+[connection signal="body_entered" from="ProceduralPlatform/HitDetection" to="." method="_on_hit_detection_body_entered"]

@@ -1,13 +1,8 @@
-extends Area3D
-
-@export var LimitLabel: Label3D
+@tool
+extends DialogueTrigger
 
 var player_gets_to_city := false
 var player_leaves_city := false
-
-
-func _ready() -> void:
-	LimitLabel.hide()
 
 
 func _on_body_entered(body: Node3D) -> void:

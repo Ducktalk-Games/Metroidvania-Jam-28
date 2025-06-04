@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=15 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
 [ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://scenes/platform/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
+[ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://scenes/platform/forest_city_trigger.tscn" id="7_unilm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -81,10 +82,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.929
 visible = false
 
 [node name="ItemPickup" parent="." instance=ExtResource("5_1dhn5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4692, 0.0275222, -0.0847793)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.1692, 0.0275222, -0.0847793)
 
 [node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9527, 0.0322131, -0.814254)
 
+[node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.839, 0.0351512, 0.00389761)
+
 [node name="BedChamberPotTrigger" parent="." instance=ExtResource("7_ssfwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13896, 0.0351512, 0.00389761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.839, 0.0351512, 0.00389761)

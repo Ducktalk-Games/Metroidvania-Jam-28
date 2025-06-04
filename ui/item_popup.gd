@@ -9,7 +9,7 @@ var narrator_blurb: String
 var balloon: DialogueManagerExampleBalloon
 
 # TODO Assign this to pocket watch scene
-const POCKETWATCH = preload("res://assets/duck_demo/SM_Duck.glb")
+const POCKETWATCH = preload("uid://r0osy54kqc35")
 
 const POCKET_WATCH_FLAVOUR_TEXT: DialogueResource = (
 	preload("res://dialogues/pocket_watch_flavour_text.dialogue")

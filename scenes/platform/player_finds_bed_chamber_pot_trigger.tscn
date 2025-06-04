@@ -4,8 +4,6 @@
 [ext_resource type="Resource" uid="uid://db8vqvrt6x7de" path="res://dialogues/110_player_finds_bed_chamber_pot.dialogue" id="2_qwxxw"]
 
 [node name="BedChamberPotTrigger" instance=ExtResource("1_a1e8m")]
-spotlight_alpha = 0.15
-spotlight_energy = 10.0
 dialogue_resource = ExtResource("2_qwxxw")
 label_string = "Bed and Chamber Pot Trigger"
 

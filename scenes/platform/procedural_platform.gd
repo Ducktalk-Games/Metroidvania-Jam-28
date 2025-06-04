@@ -60,6 +60,7 @@ func create_strings() -> void:
 
 
 func update_string_positions(string: MeshInstance3D, column: int, row: int) -> void:
+	if not string_mesh: return
 	string.position.y = string_mesh.get_aabb().size.y / 2.0
 	var mesh_aabb: AABB = platform_mesh.mesh.get_aabb()
 	string.position.x = string_offset + mesh_aabb.position.x + column * (mesh_aabb.size.x - string_offset * 2)/(string_count - 1)
@@ -67,6 +68,7 @@ func update_string_positions(string: MeshInstance3D, column: int, row: int) -> v
 
 
 func _process(delta: float) -> void:
+	if not platform_mesh: return
 	(platform_mesh.mesh as BoxMesh).size = (shape as BoxShape3D).size
 	update_all_strings()
 

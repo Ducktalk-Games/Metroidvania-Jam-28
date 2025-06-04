@@ -53,7 +53,7 @@ string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform3" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2276, 0.674999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8276, 1.175, 0)
 shape = SubResource("BoxShape3D_jhs13")
 script = ExtResource("2_jhs13")
 string_mesh = SubResource("CylinderMesh_jhs13")

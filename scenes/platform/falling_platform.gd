@@ -11,7 +11,9 @@ var is_falling: bool = false
 
 # When the player steps on the plaform
 func _on_hit_detection_body_entered(body: Node3D) -> void:
+	print("THIS")
 	if body is Character and not is_falling:
+		print("Falling")
 		is_falling = true
 		platform_animation.play("fall")
 

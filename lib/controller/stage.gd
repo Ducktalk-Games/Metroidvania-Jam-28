@@ -33,7 +33,7 @@ func _ready() -> void:
 func update_controllers() -> void:
 	var sb_can_move := Component.find(stage_body, "CanMove") as CanMove
 	var cb_can_move := Component.find(player_child_body, "CanMove") as CanMove
-
+	print("Enabling ", current_body.name)
 	if sb_can_move and cb_can_move:
 		match current_body:
 			stage_body:
@@ -56,11 +56,11 @@ func _input(_event: InputEvent) -> void:
 
 func relocate_player() -> void:
 	# Move stage to wher the player is
-	stage_body.relocate(player_child_body.map_body.global_position)
+	stage_body.relocate(player_child_body.map_body.global_position - Vector3(0,0,1.8))
 	stage_relocating = true
 
 	#Move the player back to the center of the stage
-	player_child_body.relocate(player_child_body.map_body.global_position + Vector3(0,0,3.0))
+	player_child_body.relocate(player_child_body.map_body.global_position)
 	player_relocating = true
 
 	while _is_relocating():
@@ -90,5 +90,5 @@ func _on_stage_body_relocating_complete() -> void:
 	stage_relocating = false
 
 
-func _on_player_child_body_relocating_complete() -> void:
+func _on_player_relocating_complete() -> void:
 	player_relocating = false

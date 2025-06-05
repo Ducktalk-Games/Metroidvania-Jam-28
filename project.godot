@@ -160,7 +160,7 @@ button_select={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/pocket_watch_flavour_text.dialogue", "res://dialogues/scissors_flavour_text.dialogue", "res://dialogues/010_intro.dialogue", "res://dialogues/020_player_sees_first_enemy.dialogue", "res://dialogues/030_player_finds_pocketwatch.dialogue", "res://dialogues/040_player_gets_to_city.dialogue", "res://dialogues/050_player_finds_scissors.dialogue", "res://dialogues/060_player_leaves_city.dialogue", "res://dialogues/070_player_finds_lions.dialogue", "res://dialogues/080_player_finds_dining_table.dialogue", "res://dialogues/090_player_finds_bucket_and_mop.dialogue", "res://dialogues/100_player_finds_dollhouse.dialogue", "res://dialogues/110_player_finds_bed_chamber_pot.dialogue", "res://dialogues/no_scissors_narrator.dialogue", "res://dialogues/act_10_narrator.dialogue", "res://dialogues/act_11_narrator.dialogue", "res://dialogues/act_12_narrator.dialogue", "res://dialogues/act_13_narrator.dialogue", "res://dialogues/act_1_matron.dialogue", "res://dialogues/act_3_patron.dialogue", "res://dialogues/act_4_narrator.dialogue", "res://dialogues/act_5_narrator.dialogue", "res://dialogues/act_6.5_narrator.dialogue", "res://dialogues/act_8_narrator.dialogue", "res://dialogues/act_9_narrator.dialogue", "res://dialogues/finds_pocketwatch.dialogue", "res://dialogues/finds_scissors.dialogue", "res://dialogues/test_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/pocket_watch_flavour_text.dialogue", "res://dialogues/scissors_flavour_text.dialogue", "res://dialogues/010_intro.dialogue", "res://dialogues/020_player_sees_first_enemy.dialogue", "res://dialogues/030_player_finds_pocketwatch.dialogue", "res://dialogues/040_player_gets_to_city.dialogue", "res://dialogues/050_player_finds_scissors.dialogue", "res://dialogues/060_player_leaves_city.dialogue", "res://dialogues/070_player_finds_lions.dialogue", "res://dialogues/080_player_finds_dining_table.dialogue", "res://dialogues/090_player_finds_bucket_and_mop.dialogue", "res://dialogues/100_player_finds_dollhouse.dialogue", "res://dialogues/110_player_finds_bed_chamber_pot.dialogue", "res://dialogues/no_scissors_narrator.dialogue")
 attack={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
@@ -170,6 +170,10 @@ attack={
 
 [layer_names]
 
+3d_render/layer_1="stage"
+3d_render/layer_2="map"
+3d_render/layer_3="player"
+3d_render/layer_4="enemy"
 3d_physics/layer_1="Map"
 3d_physics/layer_2="Stage"
 3d_physics/layer_3="Player"

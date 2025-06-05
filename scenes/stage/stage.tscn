@@ -10,11 +10,11 @@
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="7_ljyi0"]
 [ext_resource type="Script" uid="uid://dnykb1xrf2jh4" path="res://lib/components/can_loot.gd" id="7_oq7t8"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="8_kb6yy"]
-[ext_resource type="Script" path="res://lib/components/can_respawn.gd" id="8_m1tyx"]
+[ext_resource type="Script" uid="uid://cq0pfupyvbkdo" path="res://lib/components/can_respawn.gd" id="8_m1tyx"]
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
-[ext_resource type="Script" path="res://lib/components/can_die.gd" id="10_1sasl"]
+[ext_resource type="Script" uid="uid://ceknlyib7kfcy" path="res://lib/components/can_die.gd" id="10_1sasl"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
-[ext_resource type="Script" uid="uid://b62v3ui3ggklm" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
+[ext_resource type="Script" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
@@ -420,7 +420,7 @@ script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player")]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player", "map_body")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.673738)
 axis_lock_linear_z = true
@@ -429,6 +429,7 @@ script = ExtResource("2_oomxc")
 key_dialog = NodePath("ChildLevel/Player/KeyDialog")
 character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
+map_body = NodePath("StageCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("can_respawn")]
@@ -621,9 +622,12 @@ libraries = {
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 1.65417)
 
-[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel"]
+[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("map_body")]
 unique_name_in_owner = true
+collision_layer = 6
+collision_mask = 2
 script = ExtResource("2_a221a")
+map_body = NodePath("PlayerChildCollision")
 
 [node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -723,6 +727,8 @@ transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0
 
 [node name="StageScaffolding" type="StaticBody3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.63445)
+collision_layer = 3
+collision_mask = 7
 
 [node name="ScaffoldingCollision" type="CollisionShape3D" parent="Stage/StageBody/StageScaffolding"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0036957, 0)
@@ -751,9 +757,11 @@ size = Vector2i(213, 85)
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)
 
+[connection signal="relocating_complete" from="Stage/StageBody" to="Stage" method="_on_stage_body_relocating_complete"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
 [connection signal="has_died" from="Stage/StageBody/ComponentOwner/CanDie" to="Stage/StageBody/ComponentOwner/CanRespawn" method="respawn"]
+[connection signal="relocating_complete" from="Stage/StageBody/ChildLevel/Player" to="Stage" method="_on_player_relocating_complete"]
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
 [connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d3igqd7r52qjb"
+path="res://.godot/imported/matron_stop_singing.dialogue-607afb87433fa9dc0c03462d121049d2.tres"
+
+[deps]
+
+source_file="res://dialogues/matron_stop_singing.dialogue"
+dest_files=["res://.godot/imported/matron_stop_singing.dialogue-607afb87433fa9dc0c03462d121049d2.tres"]
+
+[params]
+
+defaults=true

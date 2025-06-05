@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=79 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -18,6 +18,9 @@
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="13_8pkue"]
+[ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="13_634kf"]
+[ext_resource type="PackedScene" uid="uid://b08myabg8u4sm" path="res://assets/storkpair/SM_Storkpair.glb" id="13_dtws5"]
 [ext_resource type="PackedScene" uid="uid://do1hrja723at8" path="res://assets/Patron/SM_Patron.glb" id="13_y85n4"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="PackedScene" uid="uid://d3f1o0xymfu7t" path="res://assets/piano_stool/SM_Piano_Stool.glb" id="15_henb2"]
@@ -29,12 +32,13 @@
 [ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
 [ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="23_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
-[ext_resource type="PackedScene" uid="uid://c2uhc4p833ylr" path="res://assets/stage/SM_Stage_Floor.glb" id="25_8pkue"]
 [ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
-[ext_resource type="PackedScene" uid="uid://dltem3v423hfj" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
-[ext_resource type="PackedScene" uid="uid://87v3ipuaikii" path="res://assets/stage/SM_Stage_Frame.glb" id="36_8pkue"]
-[ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_8pkue"]
-[ext_resource type="PackedScene" uid="uid://d0yl2blobd07g" path="res://assets/stage/SM_Stage_Boarder.glb" id="37_634kf"]
+[ext_resource type="PackedScene" uid="uid://drxcv0b5jxwf4" path="res://assets/rug/SM_Circular_rug.glb" id="29_634kf"]
+[ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
+[ext_resource type="PackedScene" uid="uid://byy4dwaaysy8g" path="res://assets/stage/SM_Floor_Test_B.glb" id="36_lr1w7"]
+[ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
+[ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
+[ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -96,6 +100,17 @@ tracks/0/keys = {
 "points": PackedFloat32Array(1, 0, 0, 0, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.239, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_lr1w7"]
 resource_name = "close_curtain"
@@ -112,11 +127,104 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2)
 }
 
+[sub_resource type="Animation" id="Animation_634kf"]
+resource_name = "dim_lights_show_narrator"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.239, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.466667)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Narrator/MeshInstance3D/Spotlight")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"turn_on_spotlight"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dtws5"]
+resource_name = "hide_narrator"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.466667, 0.8)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Narrator/MeshInstance3D/Spotlight")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"turn_off_spotlight"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_634kf"]
 _data = {
 &"RESET": SubResource("Animation_8pkue"),
-&"close_curtain": SubResource("Animation_lr1w7")
+&"close_curtain": SubResource("Animation_lr1w7"),
+&"dim_lights_show_narrator": SubResource("Animation_634kf"),
+&"hide_narrator": SubResource("Animation_dtws5")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pkue"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oomxc"]
+animation = &"WalkInPlace"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lr1w7"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8pkue"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_oomxc")
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_lr1w7")
+blend_point_1/pos = 0.0
+sync = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_634kf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dtws5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oomxc"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
+states/End/position = Vector2(543, 100)
+states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
+states/Jump/position = Vector2(350, -22)
+states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
+states/WalkInPlace/position = Vector2(350, 100)
+transitions = ["Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_634kf"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc")]
+graph_offset = Vector2(-269, -224)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
@@ -345,10 +453,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.001, 0.0343333, 0.0676667, 0.101, 0.134333, 0.167667, 0.201, 0.234333, 0.267667, 0.301, 0.334333, 0.367667, 0.401, 0.434333, 0.467667, 0.501, 0.534333, 0.567667, 0.601, 0.634333, 0.667667, 0.701, 0.734333, 0.767667, 0.800003),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.200467, 1.44103, 23.829), Vector3(-0.200148, 1.44056, 23.8288), Vector3(-0.197912, 1.43726, 23.8278), Vector3(-0.191844, 1.4283, 23.8248), Vector3(-0.180026, 1.41085, 23.819), Vector3(-0.160544, 1.38208, 23.8095), Vector3(-0.13148, 1.33917, 23.7953), Vector3(-0.0909185, 1.27927, 23.7755), Vector3(-0.0369427, 1.19958, 23.7491), Vector3(0.0323635, 1.09724, 23.7152), Vector3(0.118916, 0.969439, 23.6729), Vector3(0.224632, 0.813343, 23.6212), Vector3(0.351427, 0.626122, 23.5592), Vector3(0.478223, 0.4389, 23.4973), Vector3(0.583938, 0.282804, 23.4456), Vector3(0.670492, 0.155003, 23.4033), Vector3(0.739798, 0.0526674, 23.3694), Vector3(0.793773, -0.0270314, 23.343), Vector3(0.834335, -0.0869234, 23.3232), Vector3(0.863399, -0.129838, 23.309), Vector3(0.882881, -0.158605, 23.2995), Vector3(0.894699, -0.176054, 23.2937), Vector3(0.900767, -0.185014, 23.2907), Vector3(0.903003, -0.188315, 23.2897), Vector3(0.903322, -0.188787, 23.2895)]
+"values": [Vector3(-0.200467, 1.44103, 22.529), Vector3(-0.2, 1.441, 22.529), Vector3(-0.19968, 1.44053, 22.5292), Vector3(-0.197436, 1.43721, 22.5308), Vector3(-0.191348, 1.42822, 22.535), Vector3(-0.179492, 1.41071, 22.5431), Vector3(-0.159944, 1.38183, 22.5566), Vector3(-0.130784, 1.33876, 22.5767), Vector3(-0.0900874, 1.27864, 22.6048), Vector3(-0.0359322, 1.19864, 22.6421), Vector3(0.0336043, 1.09593, 22.69), Vector3(0.120445, 0.967651, 22.7499), Vector3(0.226512, 0.810972, 22.823), Vector3(0.353723, 0.62306, 22.9107), Vector3(0.48028, 0.436116, 22.9979), Vector3(0.585744, 0.280328, 23.0706), Vector3(0.672039, 0.152856, 23.1301), Vector3(0.741088, 0.0508596, 23.1777), Vector3(0.794812, -0.0285004, 23.2147), Vector3(0.835136, -0.088065, 23.2425), Vector3(0.863981, -0.130674, 23.2624), Vector3(0.88327, -0.159167, 23.2757), Vector3(0.894926, -0.176385, 23.2837), Vector3(0.900872, -0.185168, 23.2878), Vector3(0.90303, -0.188355, 23.2893), Vector3(0.903322, -0.188787, 23.2895)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -357,10 +465,10 @@ tracks/1/path = NodePath(".:fov")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.800003),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [29.5537, 29.5503, 29.5263, 29.4611, 29.3342, 29.125, 28.8128, 28.3772, 27.7976, 27.0533, 26.1238, 24.9885, 23.6268, 22.2652, 21.1299, 20.2004, 19.4561, 18.8765, 18.4409, 18.1287, 17.9195, 17.7926, 17.7274, 17.7034, 17.7]
+"values": [29.5537, 29.5492, 29.5175, 29.4314, 29.2638, 28.9875, 28.5754, 28.0001, 27.2347, 26.2518, 25.0243, 23.5251, 21.7269, 19.9287, 18.4295, 17.202, 16.2191, 15.4536, 14.8784, 14.4662, 14.1899, 14.0223, 13.9362, 13.9045, 13.9]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -369,10 +477,10 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.800003),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.00872665, 0, 0), Vector3(-0.00881648, -0.000238084, -3.16916e-06), Vector3(-0.00944531, -0.00190467, -2.53532e-05), Vector3(-0.0111521, -0.00642827, -8.55672e-05), Vector3(-0.014476, -0.0152374, -0.000202826), Vector3(-0.0199558, -0.0297605, -0.000396144), Vector3(-0.0281305, -0.0514261, -0.000684538), Vector3(-0.0395393, -0.0816628, -0.00108702), Vector3(-0.0547211, -0.121899, -0.00162261), Vector3(-0.0742148, -0.173563, -0.00231031), Vector3(-0.0985595, -0.238084, -0.00316916), Vector3(-0.128294, -0.31689, -0.00421815), Vector3(-0.163958, -0.411409, -0.0054763), Vector3(-0.199621, -0.505928, -0.00673446), Vector3(-0.229356, -0.584734, -0.00778344), Vector3(-0.253701, -0.649255, -0.00864229), Vector3(-0.273195, -0.700919, -0.00932999), Vector3(-0.288376, -0.741155, -0.00986558), Vector3(-0.299785, -0.771392, -0.0102681), Vector3(-0.30796, -0.793058, -0.0105565), Vector3(-0.31344, -0.807581, -0.0107498), Vector3(-0.316764, -0.81639, -0.010867), Vector3(-0.31847, -0.820913, -0.0109272), Vector3(-0.319099, -0.82258, -0.0109494), Vector3(-0.319189, -0.822818, -0.0109526)]
+"values": [Vector3(-0.00872665, 0, 0), Vector3(-0.00879879, -0.000182825, 5.49789e-07), Vector3(-0.00930376, -0.0014626, 4.39831e-06), Vector3(-0.0106744, -0.00493626, 1.48443e-05), Vector3(-0.0133435, -0.0117008, 3.51865e-05), Vector3(-0.017744, -0.0228531, 6.87236e-05), Vector3(-0.0243086, -0.0394901, 0.000118754), Vector3(-0.0334702, -0.0627088, 0.000188578), Vector3(-0.0456616, -0.0936062, 0.000281492), Vector3(-0.0613157, -0.133279, 0.000400796), Vector3(-0.0808653, -0.182825, 0.000549789), Vector3(-0.104743, -0.243339, 0.000731769), Vector3(-0.133382, -0.315921, 0.000950035), Vector3(-0.162022, -0.388503, 0.0011683), Vector3(-0.1859, -0.449019, 0.00135029), Vector3(-0.20545, -0.498566, 0.00149928), Vector3(-0.221104, -0.538239, 0.00161859), Vector3(-0.233296, -0.569138, 0.00171151), Vector3(-0.242458, -0.592357, 0.00178133), Vector3(-0.249023, -0.608994, 0.00183136), Vector3(-0.253423, -0.620147, 0.0018649), Vector3(-0.256093, -0.626912, 0.00188525), Vector3(-0.257463, -0.630386, 0.00189569), Vector3(-0.257968, -0.631666, 0.00189954), Vector3(-0.25804, -0.631849, 0.00190009)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y85n4"]
@@ -415,9 +523,13 @@ unique_name_in_owner = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ecxui")
 
-[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
+[node name="ComponentOwner" type="Node" parent="WorldEnvironment"]
+script = ExtResource("2_3kwj0")
+
+[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "narrator_spotlight", "debug_label")]
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
+narrator_spotlight = NodePath("StageBody/Narrator/MeshInstance3D/Spotlight")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player", "map_body")]
@@ -427,36 +539,39 @@ axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2_oomxc")
 key_dialog = NodePath("ChildLevel/Player/KeyDialog")
-character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
 map_body = NodePath("StageCollision")
+character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("can_respawn")]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("animation_tree", "animation_tree", "can_respawn")]
 script = ExtResource("2_3kwj0")
 jump_max = 6.0
+animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 speed = 2.0
-inventory = Array[int]([1])
-fall_death_offset = -10.0
+animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
+inventory = Array[int]([])
+fall_death_offset = -5.0
 can_respawn = NodePath("CanRespawn")
 health = null
 value = 50.0
 delay_seconds = 1.0
 continuous = false
 
-[node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner"]
+[node name="CanJump" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("3_a221a")
+animation_tree = NodePath("../../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 
-[node name="CanMove" type="Node" parent="Stage/StageBody/ComponentOwner"]
+[node name="CanMove" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("5_pf3bu")
 speed = 2.0
+animation_tree = NodePath("../../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
 [node name="CanLoot" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("7_oq7t8")
-inventory = Array[int]([1])
 
 [node name="CanRespawn" type="Node" parent="Stage/StageBody/ComponentOwner"]
 script = ExtResource("8_m1tyx")
@@ -466,7 +581,7 @@ script = ExtResource("8_nrxvr")
 
 [node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("can_respawn")]
 script = ExtResource("10_1sasl")
-fall_death_offset = -10.0
+fall_death_offset = -5.0
 can_respawn = NodePath("../CanRespawn")
 metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
@@ -486,8 +601,35 @@ shape = SubResource("CapsuleShape3D_erodg")
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 16.2373)
 
+[node name="SM_Circular_rug" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("29_634kf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40652, 0.201457, -16.6402)
+
+[node name="SM_Storkpair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_dtws5")]
+transform = Transform3D(-0.000680729, 0, -1, 0, 1, 0, 1, 0, -0.000680729, -12.5513, 0.33648, -5.51399)
+
+[node name="SM_Stage_BaseTest2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_dtws5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84641, 0.127977, -17.1922)
+
+[node name="SM_Stage_Frame" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_634kf")]
+transform = Transform3D(1.02591, 0, 0, 0, 1, 0, 0, 0, 1, -3.239, 0.998878, -15.8341)
+
+[node name="SM_Stage_boarder2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_8pkue")]
+transform = Transform3D(0.956674, 0, 0, 0, 1, 0, 0, 0, 1, -2.97557, -0.55926, -15.8225)
+
+[node name="SM_Item_Fugit_watch" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_8pkue")]
+transform = Transform3D(0.0763407, 0.0189585, -0.996901, -0.00525086, 0.999813, 0.0186118, 0.997068, 0.00381374, 0.0764262, -10.4512, 0.0190482, -5.07409)
+
+[node name="SM_Floor_Test_B" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("36_lr1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52989, 0.245787, -14.5723)
+
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
 transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14657, 0.445348, -5.33926)
+
+[node name="SM_Floor_Test_B2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("36_lr1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39281, 0.251715, -14.5819)
+
+[node name="SM_Floor_Test_B" parent="Stage/StageBody/OffStageEnv/SM_Floor_Test_B2" instance=ExtResource("36_lr1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9313, -0.0201046, -0.391531)
 
 [node name="Matron" type="Node3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14657, 0.974555, -5.33926)
@@ -586,31 +728,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16192, 2.32549, -14.5373)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00629806, 0.0505899, -0.0542502)
 shape = SubResource("BoxShape3D_wvhxk")
 
-[node name="SM_Stage_Frame2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("36_8pkue")]
-transform = Transform3D(1.06653, 0, 0, 0, 1.04385, 0, 0, 0, 1, -3.22549, 0.515759, -15.8727)
-
-[node name="SM_Stage_Boarder" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_634kf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73161, 0.765812, -15.9245)
-
-[node name="SM_Stage_Floor" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("25_8pkue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55661, 0.0748422, -15.8578)
-
 [node name="SM_Spotlight_Base2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("25_634kf")]
 transform = Transform3D(0.480888, 0, 0.751074, 0, 0.830553, 0, -0.711311, 0, 0.50777, 2.92079, 1.31558, -5.49088)
 
 [node name="SM_Spotlight_Base" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("25_634kf")]
-transform = Transform3D(0.899955, 0, -0.296874, 0, 0.890661, 0, 0.264001, 0, 1.01202, -5.65923, 1.40938, -10.1652)
-
-[node name="SM_Stage_BaseTest2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_8pkue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05533, -0.0685453, -17.3737)
+transform = Transform3D(0.899955, 0, -0.296874, 0, 0.890661, 0, 0.264001, 0, 1.01202, -5.65923, 1.37408, -10.1652)
 
 [node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
-transform = Transform3D(0.963504, 0, -0.267692, 0, 1, 0, 0.267692, 0, 0.963504, 4.35106, 0.844135, -9.55955)
+transform = Transform3D(0.963504, 0, -0.267692, 0, 1, 0, 0.267692, 0, 0.963504, 4.29537, 0.861854, -9.55955)
 
 [node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("23_lr1w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149288, 1.44368, -11.711)
 
 [node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.216928, -0.00492024, -0.00124454)
 "blend_shapes/Key 1" = 1.0
 
 [node name="StageAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
@@ -622,27 +753,64 @@ libraries = {
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, 0.0492409, 1.65417)
 
-[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("map_body")]
+[node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("map_body", "character_mesh")]
 unique_name_in_owner = true
 collision_layer = 6
 collision_mask = 2
 script = ExtResource("2_a221a")
 map_body = NodePath("PlayerChildCollision")
+character_mesh = NodePath("SK_PlayerCharacter")
 
 [node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/Armature" index="0"]
+bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
+bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
+bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
+bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
+bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
+bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
+bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
+bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
+bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
+bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
+bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
+bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
+bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
+bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
+bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
+bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
+bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
+bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
+bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+
+[node name="AnimationTree" type="AnimationTree" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
+tree_root = SubResource("AnimationNodeStateMachine_dtws5")
+anim_player = NodePath("../AnimationPlayer")
+parameters/WalkInPlace/blend_position = 0.0
 
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/Player"]
+[node name="ComponentOwner" type="Node" parent="Stage/StageBody/ChildLevel/Player" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("2_3kwj0")
 speed = 2.0
+animation_tree = NodePath("../SK_PlayerCharacter/AnimationTree")
 
-[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
+[node name="CanMove" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("5_pf3bu")
 speed = 2.0
+animation_tree = NodePath("../../SK_PlayerCharacter/AnimationTree")
 
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("6_d1yl1")
@@ -744,6 +912,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 2.77621)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683949, 0)
 mesh = SubResource("CapsuleMesh_henb2")
 
+[node name="Spotlight" parent="Stage/StageBody/Narrator/MeshInstance3D" instance=ExtResource("38_dtws5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.33854, -3.64489e-07)
+light_energy = 10.0
+spot_range = 11.1586
+spot_angle = 7.36489
+
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/Narrator"]
 transform = Transform3D(1.50674, 0, 2.63448e-07, 0, 1.50674, 0, -2.63448e-07, 0, 1.50674, 0.0165422, 2.02137, 0.014899)
 texture = SubResource("ViewportTexture_ra5e8")
@@ -768,3 +942,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.57323
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
 
 [editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
+[editable path="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]

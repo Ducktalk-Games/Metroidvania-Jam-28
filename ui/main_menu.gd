@@ -13,6 +13,7 @@ signal curtains_opened
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	show()
 	play_button.grab_focus()
 	curtains_left_debug.hide()
 	curtains_right_debug.hide()

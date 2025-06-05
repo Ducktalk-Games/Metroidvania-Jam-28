@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgy0euukak08u"]
+
+[ext_resource type="Script" uid="uid://bofdcq0r2586u" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
+size = Vector3(16.013, 0.0736389, 1.11273)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihf5a"]
+size = Vector3(16.013, 0.130249, 2.20679)
+
+[node name="HouseLevel" type="Node3D" node_paths=PackedStringArray("PlayerStart")]
+script = ExtResource("1_ihf5a")
+PlayerStart = NodePath("PlayerStart")
+
+[node name="StaticFloor" type="StaticBody3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
+shape = SubResource("BoxShape3D_s38hc")
+
+[node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor/Floor2"]
+mesh = SubResource("BoxMesh_ihf5a")
+skeleton = NodePath("../..")
+
+[node name="PlayerStart" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.46019, 0.0218527, 0)
+gizmo_extents = 1.26

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://buobta48c55i2"]
+
+[ext_resource type="Script" uid="uid://1grfyqs6wo6n" path="res://scenes/platform/simple_dialogue_trigger.gd" id="1_fs1kq"]
+[ext_resource type="Resource" uid="uid://bk4072tpnxh0p" path="res://dialogues/020_player_sees_first_enemy.dialogue" id="2_bbatt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
+size = Vector3(0.1, 3.47894, 2.11719)
+
+[node name="SimpleDialogueTrigger" type="Area3D"]
+script = ExtResource("1_fs1kq")
+dialogue_resource = ExtResource("2_bbatt")
+label_string = "Player Sees First Enemy Trigger"
+
+[node name="DialogueTriggerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("BoxShape3D_yb01c")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="TriggerLabel" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, -1)
+text = "Player Sees First Enemy Trigger"
+vertical_alignment = 2
+
+[node name="Line" type="Label3D" parent="TriggerLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2, 0)
+text = "|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|"
+vertical_alignment = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

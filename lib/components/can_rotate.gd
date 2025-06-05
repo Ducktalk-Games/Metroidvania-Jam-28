@@ -6,4 +6,4 @@ extends Component
 
 
 func _process(delta: float) -> void:
-	rotating_mesh.rotate_y(delta)
+	rotating_mesh.global_rotation.y += delta * speed

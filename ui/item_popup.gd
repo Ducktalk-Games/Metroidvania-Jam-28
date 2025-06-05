@@ -4,31 +4,27 @@ extends Control
 var ability: Global.Ability
 var item: PackedScene
 var flavour_text: DialogueResource
-var narrator_blurb: DialogueResource
+var narrator_blurb: String
 
 var balloon: DialogueManagerExampleBalloon
 
 # TODO Assign this to pocket watch scene
-const POCKETWATCH = preload("res://assets/duck_demo/SM_Duck.glb")
+const POCKETWATCH = preload("uid://r0osy54kqc35")
 
 const POCKET_WATCH_FLAVOUR_TEXT: DialogueResource = (
 	preload("res://dialogues/pocket_watch_flavour_text.dialogue")
 	)
 
-const POCKETWATCH_NARRATOR_BLURB: DialogueResource = (
-	# 030_player_finds_pocketwatch
-	preload("uid://dqs7hvx6lukw4")
-	)
+# 030_player_finds_pocketwatch
+const POCKETWATCH_NARRATOR_BLURB: String = "uid://dqs7hvx6lukw4"
 
 # TODO Assign this to scissors scene
 const SCISSORS = preload("res://assets/chair/SM_Chair.glb")
 
 const SCISSORS_FLAVOUR_TEXT = preload("res://dialogues/scissors_flavour_text.dialogue")
 
-const SCISSORS_NARRATOR_BLURB: DialogueResource = (
-	# 050_player_finds_scissors
-	preload("uid://c4r8sbpmeje6n")
-	)
+# 050_player_finds_scissors
+const SCISSORS_NARRATOR_BLURB: String = "uid://c4r8sbpmeje6n"
 
 
 func _input(event: InputEvent) -> void:
@@ -56,5 +52,7 @@ func _ready() -> void:
 func _on_dialogue_end(res: DialogueResource) -> void:
 	if res == flavour_text:
 		DialogueManager.dialogue_ended.disconnect(_on_dialogue_end)
-		Global.narrator_bubble.show_dialogue(narrator_blurb)
+
+		# 030_player_finds_pocketwatch
+		DialogueSequencer.start_dialog(narrator_blurb)
 		queue_free()

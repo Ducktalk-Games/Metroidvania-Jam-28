@@ -1,21 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://dltem3v423hfj"]
+[gd_scene load_steps=24 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
-[ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="2_jhs13"]
-[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://scenes/interactable/rippable_door.tscn" id="3_1dhn5"]
-[ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="4_1dhn5"]
+[ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
+[ext_resource type="PackedScene" uid="uid://wor50vfnncsm" path="res://lib/interactable/rippable_door.tscn" id="3_1dhn5"]
+[ext_resource type="PackedScene" uid="uid://cqf07dore1stb" path="res://assets/level_layout/LvlBlockout.glb" id="4_1dhn5"]
+[ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
+[ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
+[ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://scenes/platform/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
+[ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://scenes/platform/forest_city_trigger.tscn" id="7_unilm"]
+[ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wvhxk"]
-size = Vector3(16.013, 0.0736389, 1.11273)
+[sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
+size = Vector3(31.2072, 0.072876, 1.81445)
 
-[sub_resource type="BoxMesh" id="BoxMesh_wvhxk"]
-size = Vector3(16.013, 0.130249, 2.20679)
+[sub_resource type="CylinderMesh" id="CylinderMesh_jhs13"]
+top_radius = 0.02
+bottom_radius = 0.03
+height = 10.395
+radial_segments = 4
+rings = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_suqj7"]
-size = Vector3(3.0638, 0.130249, 2.20679)
+[sub_resource type="BoxShape3D" id="BoxShape3D_unilm"]
+size = Vector3(6.18359, 0.072876, 1.81445)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_erodg"]
-size = Vector3(3.0638, 0.130249, 2.20679)
+[sub_resource type="BoxShape3D" id="BoxShape3D_iriyj"]
+size = Vector3(6.18359, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ii7us"]
+size = Vector3(3.05225, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k3lh4"]
+size = Vector3(8.00305, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gmst"]
+size = Vector3(2.45874, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3s4p"]
+size = Vector3(1.64844, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2515i"]
+size = Vector3(5.22827, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62nr4"]
+size = Vector3(4.63843, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrteu"]
+size = Vector3(1.49408, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgbak"]
+size = Vector3(3.42578, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwg6q"]
+size = Vector3(3.63257, 1.06673, 1.44507)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhs13"]
+size = Vector3(1.14941, 0.072876, 1.81836)
 
 [node name="PlatformLevel" type="Node3D"]
 script = ExtResource("1_jhs13")
@@ -23,40 +62,422 @@ script = ExtResource("1_jhs13")
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
 
-[node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
-shape = SubResource("BoxShape3D_wvhxk")
+[node name="Platform" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90328, 0, 0)
+shape = SubResource("BoxShape3D_yb01c")
+script = ExtResource("2_jhs13")
+string_count = 6
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor/Floor2"]
-mesh = SubResource("BoxMesh_wvhxk")
-skeleton = NodePath("../..")
+[node name="Platform5" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.777, -0.00479087, 0)
+shape = SubResource("BoxShape3D_unilm")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="Floor4" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5151, 0, 0)
-shape = SubResource("BoxShape3D_wvhxk")
+[node name="Platform6" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3098, -0.00479087, 0)
+shape = SubResource("BoxShape3D_iriyj")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="FloorMesh" type="MeshInstance3D" parent="StaticFloor/Floor4"]
-mesh = SubResource("BoxMesh_wvhxk")
-skeleton = NodePath("../..")
+[node name="Platform12" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.491, -0.00479087, 0)
+shape = SubResource("BoxShape3D_iriyj")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="PlatformMesh" type="MeshInstance3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
-mesh = SubResource("BoxMesh_suqj7")
+[node name="Platform16" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.4858, -0.00479087, 0)
+shape = SubResource("BoxShape3D_iriyj")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="Floor3" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08474, 1.01261, 0)
-shape = SubResource("BoxShape3D_erodg")
+[node name="Platform18" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.614, -0.00479087, 0)
+shape = SubResource("BoxShape3D_iriyj")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="RippableDoor" parent="." instance=ExtResource("3_1dhn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.773238)
+[node name="Platform22" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, -0.00479087, 0)
+shape = SubResource("BoxShape3D_ii7us")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="Checkpoint" parent="." instance=ExtResource("4_1dhn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53755, 0.0824553, -0.328518)
+[node name="Platform27" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, 9.55285, 0)
+shape = SubResource("BoxShape3D_ii7us")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="FallingPlatform" parent="Checkpoint" instance=ExtResource("2_jhs13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23055, 0.00655314, 0.425933)
+[node name="Platform36" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, 18.9725, 0)
+shape = SubResource("BoxShape3D_ii7us")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="FallingPlatform2" parent="Checkpoint" instance=ExtResource("2_jhs13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42095, 0.00655314, 0.425933)
+[node name="Platform32" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 12.7415, 0)
+shape = SubResource("BoxShape3D_k3lh4")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
 
-[node name="Checkpoint2" parent="." instance=ExtResource("4_1dhn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9515, 0.0824553, -0.328518)
+[node name="Platform38" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 21.8628, 0)
+shape = SubResource("BoxShape3D_k3lh4")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform21" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.115, -0.00479087, 0)
+shape = SubResource("BoxShape3D_7gmst")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform7" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.995, 0.93846, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform13" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1517, 1.36299, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform14" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.799, 2.6236, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform15" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1051, 1.34246, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform17" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.299, 1.20681, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform20" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.728, 1.20681, 0)
+shape = SubResource("BoxShape3D_2515i")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform19" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.405, 1.20681, 0)
+shape = SubResource("BoxShape3D_62nr4")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform24" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.405, 1.20681, 0)
+shape = SubResource("BoxShape3D_62nr4")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform25" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 1.31255, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform26" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 2.89867, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform29" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 4.62377, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform30" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 7.93499, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform31" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.023, 11.1254, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform37" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.023, 20.5609, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform33" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 14.3134, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform28" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 6.20989, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform34" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 17.7993, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform43" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, 28.6931, 0)
+shape = SubResource("BoxShape3D_ii7us")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform44" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 31.5834, 0)
+shape = SubResource("BoxShape3D_k3lh4")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform52" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 42.0039, 0)
+shape = SubResource("BoxShape3D_k3lh4")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform45" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.023, 30.2814, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform46" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 27.5198, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform49" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 36.8567, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform35" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 16.0742, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform47" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 33.36, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform51" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 40.2633, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform48" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 35.0854, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform39" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 23.5717, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform40" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 25.2964, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform50" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 38.5673, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform41" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 26.5286, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform42" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 28.2098, 0)
+shape = SubResource("BoxShape3D_mrteu")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform11" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.2887, 1.97235, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform23" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.9168, 3.06546, 0)
+shape = SubResource("BoxShape3D_j3s4p")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform8" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.094, 3.817, 0)
+shape = SubResource("BoxShape3D_tgbak")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform9" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.416, 3.817, 0)
+shape = SubResource("BoxShape3D_tgbak")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform2" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92701, 0.565197, 0)
+shape = SubResource("BoxShape3D_hwg6q")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform3" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3407, 1.35852, 0)
+shape = SubResource("BoxShape3D_jhs13")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform4" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5278, 1.35852, 0)
+shape = SubResource("BoxShape3D_jhs13")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform10" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.2688, 2.16094, 0)
+shape = SubResource("BoxShape3D_jhs13")
+script = ExtResource("2_jhs13")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="RippableDoor" parent="." node_paths=PackedStringArray("current_level") instance=ExtResource("3_1dhn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.621856)
+current_level = NodePath("..")
+
+[node name="LvlBlockout" parent="." instance=ExtResource("4_1dhn5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.9291, -0.610204, -1.79148)
+visible = false
+
+[node name="ItemPickup" parent="." instance=ExtResource("5_1dhn5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.1692, 0.0275222, -0.0847793)
+
+[node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.953, 0.032, 0)
+
+[node name="FallingPlatformBody" parent="Checkpoint" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.3423, 1.12324, 0)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6527, 0.0322131, 0)
+
+[node name="FallingPlatformBody2" parent="Checkpoint2" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.2473, 3.81742, 0)
+
+[node name="FallingPlatformBody3" parent="Checkpoint2" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.9783, 3.81742, 0)
+
+[node name="Checkpoint3" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.8527, 3.93221, 0)
+
+[node name="Checkpoint4" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9527, 0.0322131, 0)
+
+[node name="FallingPlatformBody4" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33.399, 0, 0)
+
+[node name="FallingPlatformBody5" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.13, 0, 0)
+
+[node name="FallingPlatformBody6" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.78, 0, 0)
+
+[node name="FallingPlatformBody7" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48.611, 0, 0)
+
+[node name="Checkpoint6" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
+
+[node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.839, 0.0351512, 0.00389761)
+
+[node name="BedChamberPotTrigger" parent="." instance=ExtResource("7_ssfwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.839, 0.0351512, 0.00389761)
+spotlight_alpha = 0.15
+spotlight_energy = 10.0

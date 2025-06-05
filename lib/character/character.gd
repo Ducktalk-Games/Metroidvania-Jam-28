@@ -41,3 +41,4 @@ func _process(delta: float) -> void:
 				move_comp.enable()
 	else:
 		t = delta
+@export var character_mesh: Node3D

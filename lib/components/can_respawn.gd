@@ -9,11 +9,14 @@ var resetting: bool = false
 
 func respawn() -> void:
 	resetting = true
-	Global.disable_player_input()
+	DialogueSequencer.start_dialog("uid://1wyveoo4p3km")
 	var character: Character = get_object() as Character
-	get_tree()\
-		.create_tween()\
-		.tween_property(character, "global_position", current_checkpoint.global_position, 1.0)\
-		.finished.connect(func() -> void: resetting = false; Global.enable_player_input(); print("FINISHED"))
+	var tween: Tween = get_tree().create_tween().set_parallel()
+	tween.tween_method(func(_delta: float) -> void: Global.disable_player_input(), 0.0, 1.0, 1.0)
+	tween.tween_property(character, "global_position", current_checkpoint.global_position, 1.0)\
+		.set_trans(Tween.TRANS_EXPO)\
+		.set_ease(Tween.EASE_OUT)
+
+	tween.chain().tween_callback(func() -> void: resetting = false; Global.enable_player_input())
 
 	current_checkpoint.reset_all()

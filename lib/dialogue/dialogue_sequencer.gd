@@ -21,14 +21,16 @@ func _on_dialogue_ended(_res: DialogueResource) -> void:
 
 
 func set_dialogue_resource(res_path: String) -> DialogueSequencer:
-	var res := load(res_path)
+	var res: DialogueResource = load(res_path)
 	current_dialogue = res
 	return self
 
 
 func start_dialog(res_path: String) -> DialogueSequencer:
+	if Global.kill_dialog: return
 	Global.disable_player_input()
 	var mgr := set_dialogue_resource(res_path)
+	next_dialog_id = ""
 	mgr._process_dialogue()
 	return mgr
 

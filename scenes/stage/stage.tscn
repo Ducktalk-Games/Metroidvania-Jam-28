@@ -668,7 +668,7 @@ transform = Transform3D(0.963504, 0, -0.267692, 0, 1, 0, 0.267692, 0, 0.963504, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149288, 1.44368, -11.711)
 
 [node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218346, -0.00492013, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.216928, -0.00492024, -0.00124454)
 "blend_shapes/Key 1" = 1.0
 
 [node name="StageAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/OffStageEnv/SM_StageCurtains"]

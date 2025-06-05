@@ -10,3 +10,4 @@ spotlight = NodePath("Spotlight")
 dialogue_resource = null
 
 [node name="Spotlight" parent="." index="2" instance=ExtResource("3_5bfqb")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.9, 3.3, 0)

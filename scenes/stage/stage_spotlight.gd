@@ -2,7 +2,7 @@
 class_name StageSpotlight
 extends SpotLight3D
 
-@onready var spotlight_mesh: MeshInstance3D = %SpotlightMesh
+@export var spotlight_mesh: MeshInstance3D
 
 @export var spotlight_alpha: float = 0.15:
 	set(value):
@@ -19,6 +19,7 @@ var spotlight_cylinder: CylinderMesh
 
 func _ready() -> void:
 	create_spotlight_cylinder()
+	alpha_spotlight(0.0)
 
 
 func _process(delta: float) -> void:

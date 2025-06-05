@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtxw2v7el7rs8"]
+
+[ext_resource type="Texture2D" uid="uid://byc8f4tvpbfit" path="res://assets/stage/SM_Stage_BaseTest_SM_Stage_BaseTest_BC_Stage_Base.png" id="1_p0gse"]
+
+[resource]
+resource_name = "Material.005"
+cull_mode = 2
+albedo_texture = ExtResource("1_p0gse")
+uv1_scale = Vector3(0.985, 0.985, 0.985)
+texture_filter = 2

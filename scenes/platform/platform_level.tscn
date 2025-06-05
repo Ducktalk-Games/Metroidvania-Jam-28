@@ -230,28 +230,40 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.1692, 0.0275222, -0.0847793)
 
 [node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9527, 0.0322131, -0.814254)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.953, 0.032, 0)
 
 [node name="FallingPlatformBody" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.81, 0, 1, 0, 1.56, 0, -3.54062e-08, 17.3426, 1.12303, 0.814254)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.3423, 1.12324, 0)
 
-[node name="FallingPlatformBody2" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.6, 0, 1, 0, 1.56, 0, -2.62268e-08, 41.9473, 3.81742, 0.814254)
+[node name="Checkpoint2" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6527, 0.0322131, 0)
 
-[node name="FallingPlatformBody3" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.6, 0, 1, 0, 1.56, 0, -2.62268e-08, 44.6783, 3.81742, 0.814254)
+[node name="FallingPlatformBody2" parent="Checkpoint2" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.2473, 3.81742, 0)
 
-[node name="FallingPlatformBody4" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.6, 0, 1, 0, 1.56, 0, -2.62268e-08, 106.899, 0, 0.814254)
+[node name="FallingPlatformBody3" parent="Checkpoint2" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.9783, 3.81742, 0)
 
-[node name="FallingPlatformBody5" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.6, 0, 1, 0, 1.56, 0, -2.62268e-08, 109.63, 0, 0.814254)
+[node name="Checkpoint3" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.8527, 3.93221, 0)
 
-[node name="FallingPlatformBody6" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.6, 0, 1, 0, 1.56, 0, -2.62268e-08, 118.18, 0, 0.814254)
+[node name="Checkpoint4" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9527, 0.0322131, 0)
 
-[node name="FallingPlatformBody7" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-6.81898e-08, 0, -0.6, 0, 1, 0, 1.56, 0, -2.62268e-08, 120.911, 0, 0.814254)
+[node name="FallingPlatformBody4" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33.399, 0, 0)
+
+[node name="FallingPlatformBody5" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.13, 0, 0)
+
+[node name="FallingPlatformBody6" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.78, 0, 0)
+
+[node name="FallingPlatformBody7" parent="Checkpoint4" instance=ExtResource("9_unilm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48.611, 0, 0)
+
+[node name="Checkpoint6" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
 
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.839, 0.0351512, 0.00389761)

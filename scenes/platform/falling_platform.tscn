@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0ueki0jlp5fe"]
+[gd_scene load_steps=10 format=3 uid="uid://d0ueki0jlp5fe"]
 
 [ext_resource type="Script" uid="uid://gcfk1mfuwlmv" path="res://scenes/platform/falling_platform.gd" id="1_2fhj7"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_x5e5x"]
 [ext_resource type="Script" uid="uid://c87ywthbtjb1s" path="res://lib/components/can_reset.gd" id="3_qjarj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4npk2"]
-size = Vector3(0.961914, 0.1, 3.21094)
+size = Vector3(0.961914, 0.1, 1.96484)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x5e5x"]
-size = Vector3(0.961914, 0.1, 3.21094)
+size = Vector3(0.961914, 0.1, 1.96484)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjarj"]
 albedo_color = Color(0.832882, 0, 0.120556, 1)
@@ -51,9 +51,6 @@ _data = {
 &"fall": SubResource("Animation_x5e5x")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cncco"]
-size = Vector3(0.961914, 0.1, 3.21094)
-
 [node name="FallingPlatformBody" type="RigidBody3D" node_paths=PackedStringArray("can_reset", "platform_animation")]
 input_ray_pickable = false
 lock_rotation = true
@@ -90,6 +87,6 @@ metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
 [node name="HitCollision" type="CollisionShape3D" parent="HitDetection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0923037, 0)
-shape = SubResource("BoxShape3D_cncco")
+shape = SubResource("BoxShape3D_4npk2")
 
 [connection signal="body_entered" from="HitDetection" to="." method="_on_hit_detection_body_entered"]

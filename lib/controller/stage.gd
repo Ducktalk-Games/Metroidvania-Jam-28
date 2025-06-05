@@ -57,7 +57,14 @@ func _input(_event: InputEvent) -> void:
 func relocate_player() -> void:
 	var shape_delta: float = player_child_body.map_body.shape.height / 2
 	# Move stage to wher the player is
-	stage_body.relocate(player_child_body.map_body.global_position - Vector3(0,shape_delta,1.8)) # This offset is due to the player being "closer" than the stage
+	var player_to_stage_loc := Vector3(
+		player_child_body.map_body.global_position.x,
+		player_child_body.map_body.global_position.y - shape_delta,
+		stage_body.map_body.global_position.z
+
+	)
+
+	stage_body.relocate(player_to_stage_loc) # This offset is due to the player being "closer" than the stage
 	stage_relocating = true
 
 	#Move the player back to the center of the stage

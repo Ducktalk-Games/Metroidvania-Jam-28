@@ -479,5 +479,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.839, 0.0351512, 0.00389761
 
 [node name="BedChamberPotTrigger" parent="." instance=ExtResource("7_ssfwk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.839, 0.0351512, 0.00389761)
-spotlight_alpha = 0.15
-spotlight_energy = 10.0

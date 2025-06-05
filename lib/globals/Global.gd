@@ -73,3 +73,13 @@ func _curtains_rise() -> void:
 func _on_curtains_opened(_animation: String) -> void:
 	stage.stage_body.curtain_anim_player.animation_finished.disconnect(_on_curtains_opened)
 	enable_player_input()
+
+
+func dim_lights_and_spotlight_narrator(dim: bool = true) -> void:
+
+	if dim:
+		stage.stage_body.curtain_anim_player.play("dim_lights_show_narrator")
+	else:
+		stage.stage_body.curtain_anim_player.play("hide_narrator")
+
+	await stage.stage_body.curtain_anim_player.animation_finished

@@ -23,7 +23,8 @@ func _ready() -> void:
 
 func _stage_body_entered(body: StageCharacter) -> void:
 	super._stage_body_entered(body)
-	get_tree().create_tween().tween_method(turn_on_spotlight, 0.0, 1.0, 0.2)
+	if not triggered:
+		get_tree().create_tween().tween_method(turn_on_spotlight, 0.0, 1.0, 0.2)
 
 
 func turn_on_spotlight(alpha: float) -> void:

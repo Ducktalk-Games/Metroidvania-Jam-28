@@ -26,7 +26,7 @@ func _on_interacted(interactor: StageCharacter) -> void:
 		# TODO Play walking forward anim but facing backwards to the audience
 		get_tree().create_timer(3.5).timeout.connect(Global.curtains_fall.bind(HOUSE_LEVEL))
 	else:
-		Global.narrator_bubble.show_dialogue(no_scissors_dialogue)
+		DialogueSequencer.start_dialog("uid://cfwpwiwxhnsli")
 
 
 func move_to_door() -> PropertyTweener:

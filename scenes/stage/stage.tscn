@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://ccgbgbd7uq1mq" path="res://lib/components/can_interact.gd" id="8_nrxvr"]
 [ext_resource type="Script" uid="uid://ceknlyib7kfcy" path="res://lib/components/can_die.gd" id="10_1sasl"]
 [ext_resource type="PackedScene" uid="uid://c08adq1pgjaml" path="res://assets/Piano/SM_Piano.glb" id="10_gf271"]
-[ext_resource type="Script" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
+[ext_resource type="Script" uid="uid://b62v3ui3ggklm" path="res://scenes/stage/matron.gd" id="10_nrxvr"]
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
@@ -34,11 +34,11 @@
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
 [ext_resource type="PackedScene" uid="uid://drxcv0b5jxwf4" path="res://assets/rug/SM_Circular_rug.glb" id="29_634kf"]
-[ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
+[ext_resource type="PackedScene" uid="uid://dltem3v423hfj" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://byy4dwaaysy8g" path="res://assets/stage/SM_Floor_Test_B.glb" id="36_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
-[ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
+[ext_resource type="PackedScene" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -526,13 +526,12 @@ environment = SubResource("Environment_ecxui")
 [node name="ComponentOwner" type="Node" parent="WorldEnvironment"]
 script = ExtResource("2_3kwj0")
 
-[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "narrator_spotlight", "debug_label")]
+[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
-narrator_spotlight = NodePath("StageBody/Narrator/MeshInstance3D/Spotlight")
 debug_label = NodePath("../DebugLog/DebugLabel")
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "character_mesh", "curtain_anim_player", "map_body")]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "map_body", "character_mesh")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.673738)
 axis_lock_linear_z = true

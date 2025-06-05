@@ -22,10 +22,6 @@ var player_relocating: bool = false
 func _is_relocating() -> bool:
 	return stage_relocating or player_relocating
 
-@onready var stage_body: StageCharacter = %StageBody
-
-@onready var player_child_body: Character = %Player
-
 
 func _ready() -> void:
 	update_controllers()

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://p7r8brvjftg2"
+path="res://.godot/imported/player_execution_order.dialogue-6e52442f806c12f7e81911a618ef7ffe.tres"
+
+[deps]
+
+source_file="res://dialogues/player_execution_order.dialogue"
+dest_files=["res://.godot/imported/player_execution_order.dialogue-6e52442f806c12f7e81911a618ef7ffe.tres"]
+
+[params]
+
+defaults=true

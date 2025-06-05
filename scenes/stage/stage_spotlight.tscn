@@ -8,6 +8,7 @@ bottom_radius = 2.60563
 height = 7.808
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4752"]
+resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.15)

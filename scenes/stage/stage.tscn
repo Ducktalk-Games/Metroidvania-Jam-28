@@ -38,7 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://byy4dwaaysy8g" path="res://assets/stage/SM_Floor_Test_B.glb" id="36_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
-[ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
+[ext_resource type="PackedScene" uid="uid://cmbv48bx4hbmt" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -931,6 +931,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.57323
 [connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu" method="show_ui"]
 [connection signal="credits_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_credits"]
 [connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]
+[connection signal="curtains_opened" from="Stage/StageBody/MainMenu" to="Stage/StageBody/ChildLevel/Player/ComponentOwner/CanReceiveInput" method="on_game_start"]
 [connection signal="options_clicked" from="Stage/StageBody/MainMenu" to="Stage/StageBody/MainCamera" method="pivot_to_options"]
 
 [editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]

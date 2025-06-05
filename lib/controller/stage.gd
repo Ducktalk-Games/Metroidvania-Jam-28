@@ -1,14 +1,26 @@
 class_name Stage
 extends Node3D
 
-@export var current_body: Character
-@export var narrator_spotlight: StageSpotlight
-@export var debug_label: Label
+@export
+var current_body: Character
+
+@export
+var debug_label: Label
+
 @export var kill_dialog := false
 
-@onready var stage_body: StageCharacter = %StageBody
+@onready
+var stage_body: Character = %StageBody
 
-@onready var player_child_body: Character = %Player
+@onready
+var player_child_body: Character = %Player
+
+var stage_relocating: bool = false
+var player_relocating: bool = false
+
+
+func _is_relocating() -> bool:
+	return stage_relocating or player_relocating
 
 
 func _ready() -> void:
@@ -21,7 +33,7 @@ func _ready() -> void:
 func update_controllers() -> void:
 	var sb_can_move := Component.find(stage_body, "CanMove") as CanMove
 	var cb_can_move := Component.find(player_child_body, "CanMove") as CanMove
-
+	print("Enabling ", current_body.name)
 	if sb_can_move and cb_can_move:
 		match current_body:
 			stage_body:
@@ -42,18 +54,42 @@ func _input(_event: InputEvent) -> void:
 		switch_current_body()
 
 
+func relocate_player() -> void:
+	var shape_delta: float = player_child_body.map_body.shape.height / 2
+	# Move stage to wher the player is
+	stage_body.relocate(player_child_body.map_body.global_position - Vector3(0,shape_delta,1.8)) # This offset is due to the player being "closer" than the stage
+	stage_relocating = true
+
+	#Move the player back to the center of the stage
+	player_child_body.relocate(player_child_body.map_body.global_position - Vector3(0,shape_delta,0))
+	player_relocating = true
+
+	while _is_relocating():
+		await get_tree().create_timer(0.1).timeout
+
+
 func switch_current_body() -> void:
-	match current_body:
-		stage_body:
-			current_body = player_child_body
+	if (current_body.is_on_floor() and !_is_relocating()):
+		match current_body:
+			stage_body:
+				current_body = player_child_body
 
-		player_child_body:
-			current_body = stage_body
+			player_child_body:
+				await relocate_player()
+				current_body = stage_body
 
-	update_controllers()
+		update_controllers()
 
 
 # Logs debug information about the controller on the screen
 func debug_log() -> void:
 	if debug_label:
 		debug_label.text = "Mode: " + current_body.name
+
+
+func _on_stage_body_relocating_complete() -> void:
+	stage_relocating = false
+
+
+func _on_player_relocating_complete() -> void:
+	player_relocating = false

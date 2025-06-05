@@ -1,19 +1,14 @@
 class_name Stage
 extends Node3D
 
-@export
-var current_body: Character
-
-@export
-var debug_label: Label
-
-@onready
-var stage_body: StageCharacter = %StageBody
-
-@onready
-var player_child_body: Character = %Player
-
+@export var current_body: Character
+@export var narrator_spotlight: StageSpotlight
+@export var debug_label: Label
 @export var kill_dialog := false
+
+@onready var stage_body: StageCharacter = %StageBody
+
+@onready var player_child_body: Character = %Player
 
 
 func _ready() -> void:

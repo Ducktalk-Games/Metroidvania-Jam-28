@@ -33,15 +33,17 @@ func spawn_item_popup(item: Ability) -> ItemPopup:
 
 
 func disable_player_input() -> void:
-	if stage:
-		var can_receive_input := Component.find(stage.current_body, "CanReceiveInput") as CanReceiveInput
-		can_receive_input.disable()
+	for body: Character in [stage.player_child_body, stage.stage_body]:
+		if body:
+			var can_receive_input := Component.find(body, "CanReceiveInput") as CanReceiveInput
+			can_receive_input.disable()
 
 
 func enable_player_input() -> void:
-	if stage:
-		var can_receive_input := Component.find(stage.current_body, "CanReceiveInput") as CanReceiveInput
-		can_receive_input.enable()
+	for body: Character in [stage.player_child_body, stage.stage_body]:
+		if body:
+			var can_receive_input := Component.find(body, "CanReceiveInput") as CanReceiveInput
+			can_receive_input.enable()
 
 
 func curtains_fall(house_level: PackedScene) -> void:

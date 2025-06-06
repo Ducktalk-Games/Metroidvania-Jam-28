@@ -13,5 +13,6 @@ func _on_can_receive_input_interact_pressed(just_pressed: bool) -> void:
 	if just_pressed and character.nearby_item:
 		if not character.nearby_item.ability in inventory:
 			inventory.append(character.nearby_item.ability)
-			Global.spawn_item_popup(character.nearby_item.ability)
-			character.nearby_item.queue_free()
+
+		Global.spawn_item_popup(character.nearby_item.ability)
+		character.nearby_item.queue_free()

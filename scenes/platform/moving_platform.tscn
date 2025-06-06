@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://mfic544ut5bu"]
+
+[ext_resource type="Script" uid="uid://b8cimr6pw5up1" path="res://scenes/platform/moving_platform.gd" id="1_sguyq"]
+
+[sub_resource type="Curve3D" id="Curve3D_rnmga"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.11803, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ol14"]
+size = Vector3(0.961914, 0.1, 1.96484)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sguyq"]
+size = Vector3(0.961914, 0.1, 1.96484)
+
+[node name="MovingPlatform" type="Path3D"]
+curve = SubResource("Curve3D_rnmga")
+script = ExtResource("1_sguyq")
+
+[node name="MovingPlatformPathFollow" type="PathFollow3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+loop = false
+
+[node name="MovingPlatformBody" type="AnimatableBody3D" parent="MovingPlatformPathFollow"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, 0)
+sync_to_physics = false
+
+[node name="MovingPlatformCollision" type="CollisionShape3D" parent="MovingPlatformPathFollow/MovingPlatformBody"]
+shape = SubResource("BoxShape3D_3ol14")
+
+[node name="MovingPlatformMesh" type="MeshInstance3D" parent="MovingPlatformPathFollow/MovingPlatformBody/MovingPlatformCollision"]
+mesh = SubResource("BoxMesh_sguyq")

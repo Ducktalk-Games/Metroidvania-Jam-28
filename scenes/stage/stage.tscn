@@ -527,6 +527,7 @@ script = ExtResource("2_3kwj0")
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
+kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "map_body", "character_mesh")]
 unique_name_in_owner = true

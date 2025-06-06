@@ -1,19 +1,18 @@
 class_name Stage
 extends Node3D
 
-@export
-var current_body: Character
+@export var current_body: Character
 
-@export
-var debug_label: Label
+@export var debug_label: Label
 
+# DEBUG VARIABLES
 @export var kill_dialog := false
+@export var has_pocketwatch := false
+@export var has_scissors := false
 
-@onready
-var stage_body: Character = %StageBody
+@onready var stage_body: Character = %StageBody
 
-@onready
-var player_child_body: Character = %Player
+@onready var player_child_body: Character = %Player
 
 var stage_relocating: bool = false
 var player_relocating: bool = false
@@ -27,6 +26,15 @@ func _ready() -> void:
 	update_controllers()
 	Global.stage = self
 	Global.kill_dialog = kill_dialog
+
+	if has_pocketwatch or has_scissors:
+		var can_loot: CanLoot = Component.find(stage_body, "CanLoot") as CanLoot
+
+		if has_pocketwatch:
+			can_loot.inventory.append(Global.Ability.POCKET_WATCH)
+
+		if has_scissors:
+			can_loot.inventory.append(Global.Ability.SCISSORS)
 
 
 # Enable and disable the stage and player components according to the current body

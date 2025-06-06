@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=36 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://scenes/platform/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
 [ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://scenes/platform/forest_city_trigger.tscn" id="7_unilm"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
+[ext_resource type="PackedScene" uid="uid://mfic544ut5bu" path="res://scenes/platform/moving_platform.tscn" id="10_tgbak"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -602,16 +603,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 153.59
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.953, 0.032, 0)
 
 [node name="FallingPlatformBody" parent="Checkpoint" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 17.3422, 1.12557, -0.00833002)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 17.3422, 1.12557, -0.00833002)
 
 [node name="Checkpoint2" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6527, 0.0322131, 0)
 
 [node name="FallingPlatformBody2" parent="Checkpoint2" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 21.2472, 3.81896, -0.00576873)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 21.2472, 3.81896, -0.00576873)
 
 [node name="FallingPlatformBody3" parent="Checkpoint2" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 23.9782, 3.81887, -0.00541131)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 23.9782, 3.81887, -0.00541131)
 
 [node name="Checkpoint3" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.8527, 3.93221, 0)
@@ -620,16 +621,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.8527, 3.93221, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9527, 0.0322131, 0)
 
 [node name="FallingPlatformBody4" parent="Checkpoint4" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 33.3988, -0.000549205, 0.00360009)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 33.3988, -0.000549205, 0.00360009)
 
 [node name="FallingPlatformBody5" parent="Checkpoint4" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 37.1298, -0.000669844, 0.00408839)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 37.1298, -0.000669844, 0.00408839)
 
 [node name="FallingPlatformBody6" parent="Checkpoint4" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 44.7798, -0.000917323, 0.0050896)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 44.7798, -0.000917323, 0.0050896)
 
 [node name="FallingPlatformBody7" parent="Checkpoint4" instance=ExtResource("9_unilm")]
-transform = Transform3D(-0.000204873, 3.24025e-05, -1, 0.000382731, 1, 3.23535e-05, 1.565, -0.00024455, -0.000130921, 48.6108, -0.0010413, 0.00559099)
+transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 48.6108, -0.0010413, 0.00559099)
 
 [node name="Checkpoint6" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
@@ -642,3 +643,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.23, 32.9994, 0.00389761)
 
 [node name="BedChamberPotTrigger" parent="." instance=ExtResource("7_ssfwk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.839, 0.0351512, 0.00389761)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("10_tgbak")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.05836, 0, 5.81639e-08)

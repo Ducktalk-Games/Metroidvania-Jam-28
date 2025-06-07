@@ -9,11 +9,19 @@ var current_dialogue: DialogueResource = null
 
 var next_dialog_id: String = "start"
 
+signal dialogue_finished_typing()
+var dialog_ready: bool = true
+
 signal show_dialog(cont: DialogueContainer, line: DialogueLine)
 
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	dialogue_finished_typing.connect(_on_finished_typing)
+
+
+func _on_finished_typing() -> void:
+	dialog_ready = true
 
 
 func _on_dialogue_ended(_res: DialogueResource) -> void:
@@ -36,6 +44,7 @@ func start_dialog(res_path: String) -> DialogueSequencer:
 
 
 func _process_dialogue() -> void:
+	dialog_ready = false
 	var line := await current_dialogue.get_next_dialogue_line(next_dialog_id)
 
 	if not line:
@@ -51,5 +60,5 @@ func _process_dialogue() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_line") and not current_dialogue == null:
+	if Input.is_action_just_pressed("next_line") and not current_dialogue == null and dialog_ready == true:
 		_process_dialogue()

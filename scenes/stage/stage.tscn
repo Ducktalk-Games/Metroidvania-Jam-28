@@ -1,7 +1,6 @@
-[gd_scene load_steps=79 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=78 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
-[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
@@ -525,8 +524,6 @@ environment = SubResource("Environment_ecxui")
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
-kill_dialog = true
-startup_level = ExtResource("2_3ap4e")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "map_body", "character_mesh")]
 unique_name_in_owner = true
@@ -652,7 +649,6 @@ transform = Transform3D(0.993896, -0.0010017, 0.110307, 0.00108576, 0.999999, -0
 transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)
 
 [node name="SM_Patron2" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("13_y85n4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Patron"]
 transform = Transform3D(-0.999999, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -0.999999, -0.0964274, 2.42792, 0.0806508)

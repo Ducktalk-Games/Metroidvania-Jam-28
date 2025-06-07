@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://dxdsksddyhm02" path="res://scenes/stage/main_menu_ui.gd" id="37_opsrg"]
 [ext_resource type="PackedScene" uid="uid://cr8xqfr4g8j61" path="res://ui/options_menu.tscn" id="38_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
+[ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -853,6 +854,41 @@ libraries = {
 
 [node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
 transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 3.67357)
+
+[node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
+transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
+
+[node name="Options" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+
+[node name="Wall5" type="MeshInstance3D" parent="Stage/StageBody/Options"]
+transform = Transform3D(-1.30968e-07, 0, -2.19536, 0, 10.3263, 0, 2.9962, 0, -9.59624e-08, -4.912, 1.805, 20.2404)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("")
+
+[node name="Wall4" type="MeshInstance3D" parent="Stage/StageBody/Options"]
+transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.977, 18.6306)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("")
+
+[node name="CreditsMenu" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+
+[node name="Wall" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 22.0398, 3.84055, 0.976626, 18.729)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("")
+
+[node name="Wall2" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(-9.59624e-08, 0, -2.19536, 0, 10.3263, 0, 2.19536, 0, -9.59624e-08, 4.91246, 1.80498, 20.7151)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("")
+
+[node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("38_opsrg")]
+transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
+
+[node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
+transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
 
 [node name="Narrator" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 2.77621)

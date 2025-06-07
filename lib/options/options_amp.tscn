@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2ujw7vc162bx"]
+
+[ext_resource type="Script" uid="uid://dsgogk18w40wb" path="res://lib/options/options_amp.gd" id="1_kxyb1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lov1f"]
+size = Vector3(1, 1, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ntvs"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkgd3"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("slider", "debug_label")]
+script = ExtResource("1_kxyb1")
+slider = NodePath("Slider")
+debug_label = NodePath("DebugLabel")
+
+[node name="DebugLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.4)
+texture_filter = 0
+text = "0%"
+
+[node name="AmpBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_lov1f")
+
+[node name="PointA" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.7, 0.3)
+
+[node name="PointB" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.7, 0.3)
+
+[node name="Slider" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.7, 0.3)
+
+[node name="SliderCollision" type="CollisionShape3D" parent="Slider"]
+shape = SubResource("BoxShape3D_2ntvs")
+
+[node name="SliderMesh" type="MeshInstance3D" parent="Slider/SliderCollision"]
+mesh = SubResource("BoxMesh_jkgd3")
+
+[connection signal="mouse_entered" from="Slider" to="." method="_on_slider_mouse_entered"]
+[connection signal="mouse_exited" from="Slider" to="." method="_on_slider_mouse_exited"]

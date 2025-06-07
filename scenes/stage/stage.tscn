@@ -652,6 +652,7 @@ transform = Transform3D(0.993896, -0.0010017, 0.110307, 0.00108576, 0.999999, -0
 transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)
 
 [node name="SM_Patron2" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("13_y85n4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Patron"]
 transform = Transform3D(-0.999999, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -0.999999, -0.0964274, 2.42792, 0.0806508)
@@ -723,7 +724,7 @@ transform = Transform3D(0.480888, 0, 0.751074, 0, 0.830553, 0, -0.711311, 0, 0.5
 transform = Transform3D(0.899955, 0, -0.296874, 0, 0.890661, 0, 0.264001, 0, 1.01202, -5.65923, 1.37408, -10.1652)
 
 [node name="SM_Piano2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("10_gf271")]
-transform = Transform3D(0.963504, 0, -0.267692, 0, 1, 0, 0.267692, 0, 0.963504, 4.29537, 0.861854, -9.55955)
+transform = Transform3D(1.12299, 0, -0.312002, 0, 1.16553, 0, 0.312002, 0, 1.12299, 4.37489, 0.861854, -9.58618)
 
 [node name="SM_StageCurtains" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("23_lr1w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149288, 1.44368, -11.711)

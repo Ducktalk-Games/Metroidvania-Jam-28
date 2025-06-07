@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx2wwmhgw32v"]
+
+[ext_resource type="PackedScene" uid="uid://b463kitqiqvuw" path="res://lib/box_triggers/level_trigger.tscn" id="1_c0aa3"]
+[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_gsj64"]
+
+[node name="HouseLevelTrigger" instance=ExtResource("1_c0aa3")]
+level = ExtResource("2_gsj64")
+label_string = "House Level Trigger"
+
+[node name="TriggerLabel" parent="." index="1"]
+text = "House Level Trigger"

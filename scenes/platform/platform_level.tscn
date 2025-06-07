@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cqf07dore1stb" path="res://assets/level_layout/LvlBlockout.glb" id="4_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
-[ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://scenes/platform/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
-[ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://scenes/platform/forest_city_trigger.tscn" id="7_unilm"]
+[ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://lib/box_triggers/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
+[ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://lib/box_triggers/forest_city_trigger.tscn" id="7_unilm"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://mfic544ut5bu" path="res://scenes/platform/moving_platform.tscn" id="10_tgbak"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
@@ -657,7 +657,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.864
 curve = SubResource("Curve3D_tgbak")
 
 [node name="SM_BushProp2" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.54405, 0.0450185, -0.198232)
+transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.64989, 0.0450185, -0.198232)
 
 [node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
 transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.08998, 0.0450185, -2.81719)

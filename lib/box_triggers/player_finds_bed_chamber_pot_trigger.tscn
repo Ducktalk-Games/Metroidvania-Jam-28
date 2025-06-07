@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://di3m4g6y8tqtq"]
 
-[ext_resource type="PackedScene" uid="uid://ta0ylc2cepi" path="res://scenes/platform/spotlight_dialogue_trigger.tscn" id="1_a1e8m"]
+[ext_resource type="PackedScene" uid="uid://ta0ylc2cepi" path="res://lib/box_triggers/spotlight_dialogue_trigger.tscn" id="1_a1e8m"]
 [ext_resource type="Resource" uid="uid://db8vqvrt6x7de" path="res://dialogues/110_player_finds_bed_chamber_pot.dialogue" id="2_qwxxw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
@@ -15,5 +15,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 shape = SubResource("BoxShape3D_yb01c")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="TriggerLabel" parent="." index="1"]
+[node name="TriggerLabel" parent="." index="2"]
 text = "Bed and Chamber Pot Trigger"

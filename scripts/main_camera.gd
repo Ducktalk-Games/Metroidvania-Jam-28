@@ -1,18 +1,9 @@
 extends Camera3D
 
-@onready var camera_animation_player: AnimationPlayer = %CameraAnimationPlayer
+@onready
+var camera_animation_player: AnimationPlayer = %MenuCameraAnimationPlayer
 
 signal pivoted_to_parent_menu
-
-
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		match Global.current_menu_state:
-			Global.MenuState.CREDITS:
-				pivot_from_credits()
-
-			Global.MenuState.OPTIONS:
-				pivot_from_options()
 
 
 func pivot_to_options() -> void:

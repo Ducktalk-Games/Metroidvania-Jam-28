@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=80 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://byy4dwaaysy8g" path="res://assets/stage/SM_Floor_Test_B.glb" id="36_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
+[ext_resource type="Script" uid="uid://dxdsksddyhm02" path="res://scenes/stage/main_menu_ui.gd" id="37_opsrg"]
 [ext_resource type="PackedScene" uid="uid://cr8xqfr4g8j61" path="res://ui/options_menu.tscn" id="38_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 
@@ -408,7 +409,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../MainMenu/MainMenuStage")
+tracks/3/path = NodePath("../MainMenuUI/MainMenu")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -845,8 +846,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.9999
 fov = 29.5537
 script = ExtResource("16_5b43b")
 
-[node name="CameraAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/MainCamera"]
-unique_name_in_owner = true
+[node name="MainCameraAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/MainCamera"]
 libraries = {
 &"": SubResource("AnimationLibrary_y85n4")
 }
@@ -876,39 +876,41 @@ metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 transparent_bg = true
 size = Vector2i(213, 85)
 
-[node name="MainMenu" type="Node" parent="Stage/StageBody"]
+[node name="MainMenuUI" type="Node3D" parent="Stage/StageBody"]
+script = ExtResource("37_opsrg")
 
-[node name="MenuCamera" type="Camera3D" parent="Stage/StageBody/MainMenu"]
+[node name="MenuCamera" type="Camera3D" parent="Stage/StageBody/MainMenuUI"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
 current = true
 fov = 29.5537
 script = ExtResource("16_5b43b")
 
-[node name="CameraAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/MainMenu/MenuCamera"]
+[node name="MenuCameraAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/MainMenuUI/MenuCamera"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_y85n4")
 }
 
-[node name="MainMenuStage" parent="Stage/StageBody/MainMenu" instance=ExtResource("17_lv745")]
+[node name="MainMenu" parent="Stage/StageBody/MainMenuUI" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 23.2027)
 
-[node name="OptionsMenu" parent="Stage/StageBody/MainMenu" instance=ExtResource("38_3ap4e")]
+[node name="OptionsMenu" parent="Stage/StageBody/MainMenuUI" instance=ExtResource("38_3ap4e")]
 
-[node name="CreditsMenu" type="Node3D" parent="Stage/StageBody/MainMenu"]
+[node name="CreditsMenu" type="Node3D" parent="Stage/StageBody/MainMenuUI"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.626262)
 
-[node name="Wall5" type="MeshInstance3D" parent="Stage/StageBody/MainMenu/CreditsMenu"]
+[node name="Wall5" type="MeshInstance3D" parent="Stage/StageBody/MainMenuUI/CreditsMenu"]
 transform = Transform3D(-1.30968e-07, 0, -2.19536, 0, 10.3263, 0, 2.9962, 0, -9.59624e-08, -4.912, 1.805, 20.2404)
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
-[node name="Wall4" type="MeshInstance3D" parent="Stage/StageBody/MainMenu/CreditsMenu"]
+[node name="Wall4" type="MeshInstance3D" parent="Stage/StageBody/MainMenuUI/CreditsMenu"]
 transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.977, 18.6306)
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
-[node name="SM_CreditsBaord" parent="Stage/StageBody/MainMenu/CreditsMenu" instance=ExtResource("21_arv8b")]
+[node name="SM_CreditsBaord" parent="Stage/StageBody/MainMenuUI/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
@@ -919,10 +921,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.57323
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanInteract" method="_on_can_receive_input_interact_pressed"]
 [connection signal="has_died" from="Stage/StageBody/ComponentOwner/CanDie" to="Stage/StageBody/ComponentOwner/CanRespawn" method="respawn"]
 [connection signal="relocating_complete" from="Stage/StageBody/ChildLevel/Player" to="Stage" method="_on_player_relocating_complete"]
-[connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainCamera" to="Stage/StageBody/MainMenu/MainMenuStage" method="show_ui"]
-[connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainMenu/MenuCamera" to="Stage/StageBody/MainMenu/MainMenuStage" method="show_ui"]
-[connection signal="curtains_opened" from="Stage/StageBody/MainMenu/MainMenuStage" to="Stage/StageBody/ComponentOwner/CanReceiveInput" method="on_game_start"]
-[connection signal="curtains_opened" from="Stage/StageBody/MainMenu/MainMenuStage" to="Stage/StageBody/ChildLevel/Player/ComponentOwner/CanReceiveInput" method="on_game_start"]
+[connection signal="pivoted_to_parent_menu" from="Stage/StageBody/MainMenuUI/MenuCamera" to="Stage/StageBody/MainMenuUI/MainMenu" method="show_ui"]
 
 [editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
 [editable path="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]

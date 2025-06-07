@@ -1,6 +1,7 @@
-[gd_scene load_steps=78 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=79 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
+[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
@@ -504,7 +505,7 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_ra5e8"]
 viewport_path = NodePath("Stage/StageBody/Narrator/DialogueContainer/SubViewport")
 
-[node name="Stage" type="Node3D"]
+[node name="World" type="Node3D"]
 
 [node name="DebugLog" type="CanvasLayer" parent="."]
 
@@ -525,6 +526,7 @@ script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 kill_dialog = true
+startup_level = ExtResource("2_3ap4e")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "map_body", "character_mesh")]
 unique_name_in_owner = true

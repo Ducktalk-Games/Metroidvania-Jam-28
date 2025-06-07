@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjnfygikrnoe7"]
+
+[ext_resource type="Script" uid="uid://wqkf7evths38" path="res://lib/ui/slider_3d.gd" id="1_3bhtc"]
+[ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="1_jmc8b"]
+[ext_resource type="Script" uid="uid://deo8u2b18m4bq" path="res://lib/ui/slider_control.gd" id="2_3bhtc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_slu3g"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.8
+rings = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_slu3g"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="MusicSlider" type="MeshInstance3D"]
+transform = Transform3D(0.0139484, 0.726441, -0.687087, -0.999816, 0.0191974, 0, 0.0131903, 0.686961, 0.726575, 0, 0, 0)
+mesh = SubResource("CylinderMesh_slu3g")
+script = ExtResource("1_3bhtc")
+
+[node name="Knob" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 9.31323e-10, -9.31323e-10, -1.86265e-09, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = SubResource("BoxMesh_slu3g")
+
+[node name="Start" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 9.31323e-10, -9.31323e-10, -1.86265e-09, 1, 0, 0, 0, 1, -0.006, -0.301, 0.1)
+
+[node name="End" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 9.31323e-10, -9.31323e-10, -1.86265e-09, 1, 0, 0, 0, 1, 0.007, 0.376, 0.1)
+
+[node name="ComponentOwner" type="Node" parent="."]
+script = ExtResource("1_jmc8b")
+current_slider_offset = 0
+default_offset = 1
+
+[node name="SliderControl" type="Node" parent="ComponentOwner"]
+script = ExtResource("2_3bhtc")

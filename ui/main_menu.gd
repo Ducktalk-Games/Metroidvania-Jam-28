@@ -1,13 +1,28 @@
 extends Node3D
 
-@onready var curtain_animation_player: AnimationPlayer = %CurtainAnimationPlayer
-@onready var curtains_left_debug: MeshInstance3D = %CurtainsLeftDebug
-@onready var curtains_right_debug: MeshInstance3D = %CurtainsRightDebug
-@onready var main_ui: CanvasLayer = %MainUI
-@onready var play_button: ActionButton = %PlayButton
+@onready
+var curtain_animation_player: AnimationPlayer = %CurtainAnimationPlayer
 
-signal options_clicked
-signal credits_clicked
+@onready
+var curtains_left_debug: MeshInstance3D = %CurtainsLeftDebug
+
+@onready
+var curtains_right_debug: MeshInstance3D = %CurtainsRightDebug
+
+@onready
+var main_ui: CanvasLayer = %MainUI
+
+@onready
+var play_button: ActionButton = %PlayButton
+
+@onready
+var main_camera: Camera3D = %MainCamera
+
+@onready
+var menu_camera: Camera3D = %MenuCamera
+
+signal options_pressed
+signal credits_pressed
 signal curtains_opened
 
 
@@ -22,19 +37,21 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	Global.current_menu_state = Global.MenuState.GAME
 	curtain_animation_player.play("curtain_open")
+	main_camera.current = true
+	menu_camera.current = false
 	main_ui.hide()
 
 
 func _on_options_button_pressed() -> void:
 	Global.current_menu_state = Global.MenuState.OPTIONS
 	main_ui.hide()
-	options_clicked.emit()
+	options_pressed.emit()
 
 
 func _on_credits_button_pressed() -> void:
 	Global.current_menu_state = Global.MenuState.CREDITS
 	main_ui.hide()
-	credits_clicked.emit()
+	credits_pressed.emit()
 
 
 func _on_exit_button_pressed() -> void:

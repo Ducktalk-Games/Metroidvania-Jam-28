@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr8xqfr4g8j61"]
+
+[ext_resource type="Script" uid="uid://b2ybt6qkyn5i" path="res://ui/global_options.gd" id="1_aa3db"]
+[ext_resource type="PackedScene" uid="uid://bjnfygikrnoe7" path="res://lib/ui/slider_3d.tscn" id="1_ibk6l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_henb2"]
+size = Vector3(1, 1, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
+
+[node name="OptionsMenu" type="Node3D"]
+script = ExtResource("1_aa3db")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 22.0398, 3.84055, 0.976626, 18.729)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("")
+
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.59624e-08, 0, -2.19536, 0, 10.3263, 0, 2.19536, 0, -9.59624e-08, 4.91246, 1.80498, 20.7151)
+mesh = SubResource("BoxMesh_henb2")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.726419, 0, -0.687252, 0, 1, 0, 0.687252, 0, 0.726419, 4.01534, -1.60533, 20.4429)
+mesh = SubResource("BoxMesh_arv8b")
+skeleton = NodePath("")
+
+[node name="MusicSlider" parent="." instance=ExtResource("1_ibk6l")]
+unique_name_in_owner = true
+transform = Transform3D(0.0139484, 0.726441, -0.687087, -0.999816, 0.0191974, -3.11427e-08, 0.0131903, 0.686961, 0.726575, 3.67477, -1.26227, 20.8081)
+
+[node name="SFXSlider" parent="." instance=ExtResource("1_ibk6l")]
+unique_name_in_owner = true
+transform = Transform3D(-0.735176, -0.447924, -0.508804, -0.0331397, -0.725939, 0.686961, -0.677067, 0.521898, 0.518848, -11.4879, -4.9606, 35.1081)
+skeleton = NodePath("../MusicSlider")

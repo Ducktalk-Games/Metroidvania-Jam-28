@@ -234,6 +234,5 @@ stretch_mode = 5
 
 [connection signal="animation_finished" from="CurtainAnimationPlayer" to="." method="_on_curtain_animation_player_animation_finished"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MainUI/UI/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

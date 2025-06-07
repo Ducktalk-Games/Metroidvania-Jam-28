@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7mr1qsg287uj"]
 
-[ext_resource type="Script" uid="uid://dvvmly31yju" path="res://scenes/platform/dialogue_trigger.gd" id="1_r8mkh"]
+[ext_resource type="Script" uid="uid://dvvmly31yju" path="res://scenes/platform/box_trigger.gd" id="1_p7l57"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(0.1, 3.47894, 2.11719)
 
-[node name="DialogueTrigger" type="Area3D"]
-script = ExtResource("1_r8mkh")
+[node name="BoxTrigger" type="Area3D"]
+script = ExtResource("1_p7l57")
 
-[node name="DialogueTriggerCollision" type="CollisionShape3D" parent="."]
+[node name="BoxTriggerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 shape = SubResource("BoxShape3D_yb01c")
 debug_color = Color(0, 0.6, 0.701961, 1)

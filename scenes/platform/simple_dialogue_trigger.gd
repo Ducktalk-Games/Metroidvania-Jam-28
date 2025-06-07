@@ -1,6 +1,6 @@
 @tool
 class_name SimpleDialogueTrigger
-extends DialogueTrigger
+extends BoxTrigger
 
 @export var dialogue_resource: DialogueResource
 

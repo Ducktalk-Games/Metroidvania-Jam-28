@@ -121,7 +121,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(75.6844, -16.3729)
 flags/world_vertex_coords = true
 preview_params/triplanar_scale = "Vector3(1, 1, 1)"
 preview_params/DrawingOpacity = "0.0"

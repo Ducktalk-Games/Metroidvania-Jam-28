@@ -1,5 +1,5 @@
 @tool
-class_name DialogueTrigger
+class_name BoxTrigger
 extends Area3D
 
 @onready var trigger_label: Label3D = %TriggerLabel

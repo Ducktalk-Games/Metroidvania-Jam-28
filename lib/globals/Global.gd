@@ -46,8 +46,8 @@ func enable_player_input() -> void:
 			can_receive_input.enable()
 
 
-func curtains_fall(house_level: PackedScene) -> void:
-	target_scene = house_level
+func curtains_fall(target: PackedScene) -> void:
+	target_scene = target
 	stage.stage_body.curtain_anim_player.play("close_curtain")
 	stage.stage_body\
 		.curtain_anim_player\

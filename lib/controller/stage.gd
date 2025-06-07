@@ -9,6 +9,7 @@ extends Node3D
 @export var kill_dialog := false
 @export var has_pocketwatch := false
 @export var has_scissors := false
+@export var startup_level: PackedScene
 
 @onready var stage_body: Character = %StageBody
 
@@ -35,6 +36,9 @@ func _ready() -> void:
 
 		if has_scissors:
 			can_loot.inventory.append(Global.Ability.SCISSORS)
+
+	if startup_level:
+		Global.curtains_fall(startup_level)
 
 
 # Enable and disable the stage and player components according to the current body

@@ -520,9 +520,6 @@ unique_name_in_owner = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ecxui")
 
-[node name="ComponentOwner" type="Node" parent="WorldEnvironment"]
-script = ExtResource("2_3kwj0")
-
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")

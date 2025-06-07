@@ -1,5 +1,5 @@
 @tool
-extends DialogueTrigger
+extends BoxTrigger
 
 var player_gets_to_city := false
 var player_leaves_city := false

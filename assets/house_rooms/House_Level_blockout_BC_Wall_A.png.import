@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckqwlmi5fy7g7"
-path.s3tc="res://.godot/imported/SM_Piano_BC_Piano_128x128.png-52ae9ad98c8889f3af94ceaa48dd7282.s3tc.ctex"
+uid="uid://bqy4bgtkif5cu"
+path.s3tc="res://.godot/imported/House_Level_blockout_BC_Wall_A.png-f05be6e87dd9ee1ef57d3ba3153fea52.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d49f5e637c7bb8bd197f470ab824a3a8"
+"md5": "cb46a04c4e76cd304ec243de31dc0d66"
 }
 
 [deps]
 
-source_file="res://assets/piano/SM_Piano_BC_Piano_128x128.png"
-dest_files=["res://.godot/imported/SM_Piano_BC_Piano_128x128.png-52ae9ad98c8889f3af94ceaa48dd7282.s3tc.ctex"]
+source_file="res://assets/house_rooms/House_Level_blockout_BC_Wall_A.png"
+dest_files=["res://.godot/imported/House_Level_blockout_BC_Wall_A.png-f05be6e87dd9ee1ef57d3ba3153fea52.s3tc.ctex"]
 
 [params]
 

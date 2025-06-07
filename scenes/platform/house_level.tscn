@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgy0euukak08u"]
+[gd_scene load_steps=5 format=3 uid="uid://dgy0euukak08u"]
 
-[ext_resource type="Script" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
+[ext_resource type="Script" uid="uid://bofdcq0r2586u" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
+[ext_resource type="PackedScene" uid="uid://dnwtm1337xaha" path="res://assets/house_rooms/House_Level_blockout.glb" id="2_x4hqi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
 size = Vector3(16.013, 0.0736389, 1.11273)
@@ -24,3 +25,11 @@ skeleton = NodePath("../..")
 [node name="PlayerStart" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.46019, 0.0218527, 0)
 gizmo_extents = 1.26
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, 0)
+use_collision = true
+size = Vector3(75.1206, 1, 2.91113)
+
+[node name="House_Level_blockout" parent="." instance=ExtResource("2_x4hqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.985, -1.40866, 0.30251)

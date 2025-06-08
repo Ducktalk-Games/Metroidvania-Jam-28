@@ -45,7 +45,7 @@ func _ready() -> void:
 func update_controllers() -> void:
 	var sb_can_move := Component.find(stage_body, "CanMove") as CanMove
 	var cb_can_move := Component.find(player_child_body, "CanMove") as CanMove
-	print("Enabling ", current_body.name)
+
 	if sb_can_move and cb_can_move:
 		match current_body:
 			stage_body:

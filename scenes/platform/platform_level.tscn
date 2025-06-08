@@ -657,7 +657,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.864
 curve = SubResource("Curve3D_tgbak")
 
 [node name="SM_BushProp2" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.64989, 0.0450185, -0.198232)
+transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 5.8259, 0.0450185, -0.198232)
+
+[node name="SM_BushProp6" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(1.1346, 0, 0, 0, 1.1346, 0, 0, 0, 1.1346, 6.58746, 0.0450185, -0.254376)
 
 [node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
 transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.08998, 0.0450185, -2.81719)
@@ -666,4 +669,4 @@ transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.08998, 0.
 transform = Transform3D(1.85344, 0, 0, 0, 1.85344, 0, 0, 0, 1.85344, 7.10277, 0.0450185, -3.03461)
 
 [node name="SM_BushProp4" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.16465, 0, 0, 0, 1.16465, 0, 0, 0, 1.16465, 7.3783, 0.0485524, -0.373461)
+transform = Transform3D(1.16465, 0, 0, 0, 1.16465, 0, 0, 0, 1.16465, 7.22116, 0.0485524, -0.104727)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://byy4dwaaysy8g"
-path="res://.godot/imported/SM_Floor_Test_B.glb-42572803658baa76184d90b55e502bff.scn"
+uid="uid://babsrhu3cucox"
+path="res://.godot/imported/SM_Floor.glb-7bd5980e9086e5a36f03c4b5148006da.scn"
 
 [deps]
 
-source_file="res://assets/stage/SM_Floor_Test_B.glb"
-dest_files=["res://.godot/imported/SM_Floor_Test_B.glb-42572803658baa76184d90b55e502bff.scn"]
+source_file="res://assets/stage/SM_Floor.glb"
+dest_files=["res://.godot/imported/SM_Floor.glb-7bd5980e9086e5a36f03c4b5148006da.scn"]
 
 [params]
 
@@ -32,13 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"M_Floor_B": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/stage/M_Floor_B.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

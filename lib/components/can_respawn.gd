@@ -8,6 +8,7 @@ var resetting: bool = false
 
 
 func respawn() -> void:
+	if not current_checkpoint: return
 	resetting = true
 	DialogueSequencer.start_dialog("uid://1wyveoo4p3km")
 	var character: Character = get_object() as Character

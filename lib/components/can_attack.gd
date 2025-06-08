@@ -21,6 +21,8 @@ var cooldown: Timer
 
 var controlled := false
 
+var can_receive_input: CanReceiveInput
+
 
 func _ready() -> void:
 	cooldown = Timer.new()
@@ -31,7 +33,7 @@ func _ready() -> void:
 	cooldown.timeout.connect(_cooldown_timeout)
 
 	# If controllable (player)
-	var can_receive_input := other("CanReceiveInput") as CanReceiveInput
+	can_receive_input = other("CanReceiveInput") as CanReceiveInput
 
 	if can_receive_input:
 		can_receive_input.attack.connect(_player_attack)
@@ -42,6 +44,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+
 	if not controlled:
 		_npc_attack()
 

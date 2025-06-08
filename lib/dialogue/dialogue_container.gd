@@ -33,6 +33,8 @@ func _handle_dialog(cont: DialogueContainer = null, line: DialogueLine = null) -
 
 		_handle_tags(line.tags)
 		popup_balloon.dialogue_line = line
+		await popup_balloon.dialogue_label.finished_typing
+		DialogueSequencer.dialogue_finished_typing.emit()
 	elif popup_balloon:
 		popup_balloon.queue_free()
 

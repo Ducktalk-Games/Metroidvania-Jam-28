@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8w7pokbjey67"]
 
-[ext_resource type="PackedScene" uid="uid://ta0ylc2cepi" path="res://scenes/platform/spotlight_dialogue_trigger.tscn" id="1_ui2gt"]
+[ext_resource type="PackedScene" uid="uid://ta0ylc2cepi" path="res://lib/box_triggers/spotlight_dialogue_trigger.tscn" id="1_ui2gt"]
 [ext_resource type="Resource" uid="uid://8pdo2bltui6c" path="res://dialogues/100_player_finds_dollhouse.dialogue" id="2_t288a"]
 
 [node name="DollhouseTrigger" instance=ExtResource("1_ui2gt")]

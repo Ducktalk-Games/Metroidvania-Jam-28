@@ -1,7 +1,6 @@
-[gd_scene load_steps=79 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=74 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
-[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
@@ -28,13 +27,12 @@
 [ext_resource type="Script" uid="uid://ctn0wj4uksx34" path="res://scripts/main_camera.gd" id="16_5b43b"]
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
 [ext_resource type="PackedScene" uid="uid://d1wwv7wnet3rg" path="res://ui/main_menu.tscn" id="17_lv745"]
-[ext_resource type="Texture2D" uid="uid://dmfmvso78yxai" path="res://ui/pick_up_buttons.png" id="20_400yc"]
 [ext_resource type="PackedScene" uid="uid://5d8j6yr1m5qn" path="res://assets/credits_board/SM_CreditsBaord.glb" id="21_arv8b"]
-[ext_resource type="Script" uid="uid://rn15s5rpea57" path="res://lib/ui/key_dialog.gd" id="21_kdtcl"]
 [ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="23_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
 [ext_resource type="PackedScene" uid="uid://drxcv0b5jxwf4" path="res://assets/rug/SM_Circular_rug.glb" id="29_634kf"]
+[ext_resource type="PackedScene" uid="uid://bjg1qm2rlhmkk" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
 [ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://byy4dwaaysy8g" path="res://assets/stage/SM_Floor_Test_B.glb" id="36_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
@@ -227,67 +225,6 @@ graph_offset = Vector2(-269, -224)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="Animation" id="Animation_nrxvr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.18168, 2.18168, 2.18168)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_oq7t8"]
-resource_name = "pop_in"
-length = 0.133337
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2, 2, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ra5e8"]
-_data = {
-&"RESET": SubResource("Animation_nrxvr"),
-&"pop_in": SubResource("Animation_oq7t8")
-}
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
@@ -526,7 +463,6 @@ script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 kill_dialog = true
-startup_level = ExtResource("2_3ap4e")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "map_body", "character_mesh")]
 unique_name_in_owner = true
@@ -803,20 +739,8 @@ animation_tree = NodePath("../../SK_PlayerCharacter/AnimationTree")
 [node name="CanReceiveInput" type="Node" parent="Stage/StageBody/ChildLevel/Player/ComponentOwner"]
 script = ExtResource("6_d1yl1")
 
-[node name="KeyDialog" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
-transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.6, 0)
-visible = false
-billboard = 1
-texture_filter = 0
-texture = ExtResource("20_400yc")
-vframes = 2
-script = ExtResource("21_kdtcl")
-
-[node name="KeyAnimationPlayer" type="AnimationPlayer" parent="Stage/StageBody/ChildLevel/Player/KeyDialog"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_ra5e8")
-}
+[node name="KeyDialog" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("32_634kf")]
+transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(1.74027, 0, 3.0428e-07, 0, 1.74027, 0, -3.0428e-07, 0, 1.74027, 0.0165422, 2.09291, 0.014899)

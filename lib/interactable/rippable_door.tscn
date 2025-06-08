@@ -235,6 +235,9 @@ bones/120/rotation = Quaternion(-0.505382, -0.455054, 0.541226, -0.494559)
 bones/121/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -4.23516e-22, 1)
 bones/122/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -4.23516e-22, 1)
 
+[node name="SK_RippingDoorMesh" parent="SK_RippingDoor2/SK_RippingDoor/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.09457)
+
 [connection signal="interacted" from="." to="." method="_on_interacted"]
 
 [editable path="SK_RippingDoor2"]

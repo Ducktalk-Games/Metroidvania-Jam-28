@@ -728,7 +728,7 @@ libraries = {
 }
 
 [node name="SM_Rug2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("30_3ap4e")]
-transform = Transform3D(1.80698, 0, 0, 0, 1, 0, 0, 0, 2.07741, -0.0890108, 0.33987, -9.28051)
+transform = Transform3D(1.56953, 0, 0, 0, 1, 0, 0, 0, 1.79919, -0.0890108, 0.33987, -9.24366)
 
 [node name="ChildLevel" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, -0.0081576, -1.51959)

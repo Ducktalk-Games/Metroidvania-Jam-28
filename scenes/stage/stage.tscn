@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=81 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
@@ -41,6 +41,8 @@
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 [ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
+[ext_resource type="AudioStream" uid="uid://cnhpykb1hlh8q" path="res://assets/music/Shadow_In_The_Sand.ogg" id="41_n3cgd"]
+[ext_resource type="AudioStream" uid="uid://ciwqh5k78plnv" path="res://assets/sfx/snap_ui_click.wav" id="42_wnsif"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -497,8 +499,6 @@ _data = {
 &"pivot_to_options": SubResource("Animation_lv745")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_henb2"]
 radius = 0.285
 height = 1.2
@@ -913,6 +913,18 @@ metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 [node name="SubViewport" type="SubViewport" parent="Stage/StageBody/Narrator/DialogueContainer"]
 transparent_bg = true
 size = Vector2i(213, 85)
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
+unique_name_in_owner = true
+stream = ExtResource("41_n3cgd")
+bus = &"Music"
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
+unique_name_in_owner = true
+stream = ExtResource("42_wnsif")
+mix_target = 2
+max_polyphony = 8
+bus = &"SFX"
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)

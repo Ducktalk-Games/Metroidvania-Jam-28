@@ -14,7 +14,14 @@ signal curtains_opened
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show()
-	play_button.grab_focus()
+	#This is to ensure that the grab focus event triggers with the animation
+	#This is due to an internal bug with the ActionButton component
+	var delay_timer: Timer = Timer.new()
+	delay_timer.one_shot = true
+	delay_timer.wait_time = 0.16
+	self.add_child(delay_timer)
+	delay_timer.connect("timeout", _on_timer_timeout)
+	delay_timer.start()
 	curtains_left_debug.hide()
 	curtains_right_debug.hide()
 
@@ -51,3 +58,7 @@ func _on_curtain_animation_player_animation_finished(anim_name: StringName) -> v
 		curtains_opened.emit()
 		# 010_intro
 		DialogueSequencer.start_dialog("uid://cqs1s27w3ad8t")
+
+
+func _on_timer_timeout() -> void:
+	play_button.call_deferred("grab_focus")

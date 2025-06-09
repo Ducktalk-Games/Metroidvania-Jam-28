@@ -1,7 +1,8 @@
-[gd_scene load_steps=87 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=89 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
+[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_634kf"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
@@ -34,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://bjg1qm2rlhmkk" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
 [ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
+[ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="37_634kf"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 
@@ -138,7 +140,7 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_lr1w7"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_8pkue"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -528,6 +530,7 @@ script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
 kill_dialog = true
+startup_level = ExtResource("2_634kf")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -683,7 +686,7 @@ transparent_bg = true
 size = Vector2i(131, 87)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_lr1w7")
+stream = SubResource("AudioStreamPolyphonic_8pkue")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -702,6 +705,9 @@ mesh = SubResource("BoxMesh_lr1w7")
 
 [node name="OffStageEnv" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 16.2373)
+
+[node name="SM_Rug" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_634kf")]
+transform = Transform3D(1.75096, 0, 0, 0, 1, 0, 0, 0, 1.75096, -0.337871, 0.362866, -9.69583)
 
 [node name="SM_Floor" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_3ap4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127144, 0.281034, -7.63805)

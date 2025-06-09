@@ -38,7 +38,7 @@ func move(delta: float) -> void:
 			rotation_snapped = false
 			character.character_mesh.global_rotation.y = lerp_angle(character.character_mesh.global_rotation.y + rotation_offset, target_angle, delta * 10)
 
-	if animation_tree and state_machine.get_current_node():
+	if animation_tree and state_machine.get_current_node() in ["WalkInPlace", "WalkForward"]:
 		animation_tree["parameters/" + state_machine.get_current_node() + "/blend_position"] = abs(character.velocity.x)
 
 	# Make the character fall

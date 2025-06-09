@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=80 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
@@ -42,7 +42,6 @@
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 [ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
 [ext_resource type="AudioStream" uid="uid://cnhpykb1hlh8q" path="res://assets/music/Shadow_In_The_Sand.ogg" id="41_n3cgd"]
-[ext_resource type="AudioStream" uid="uid://ciwqh5k78plnv" path="res://assets/sfx/snap_ui_click.wav" id="42_wnsif"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -886,10 +885,9 @@ transform = Transform3D(-9.59624e-08, 0, -2.19536, 0, 10.3263, 0, 2.19536, 0, -9
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
-[node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" node_paths=PackedStringArray("music_stream", "audio_stream") instance=ExtResource("38_opsrg")]
+[node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("38_opsrg")]
 transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
-music_stream = NodePath("../../MusicStreamPlayer")
-audio_stream = NodePath("../../SFXStreamPlayer")
+has_mouse_input_enabled = true
 
 [node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
@@ -920,13 +918,6 @@ size = Vector2i(213, 85)
 unique_name_in_owner = true
 stream = ExtResource("41_n3cgd")
 bus = &"Music"
-
-[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
-unique_name_in_owner = true
-stream = ExtResource("42_wnsif")
-mix_target = 2
-max_polyphony = 8
-bus = &"SFX"
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)

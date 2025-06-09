@@ -19,6 +19,7 @@ size = Vector3(1.42578, 0.441162, 0.154297)
 script = ExtResource("2_fob5h")
 
 [node name="PauseMenuMesh" parent="PauseMenu/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39698e-07, 0, 4.17233e-07)
 cast_shadow = 0
 
 [node name="AnimationPlayer" parent="." index="1"]
@@ -32,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 script = ExtResource("3_avurv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Selector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.213138, -0.200121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35973e-07, -0.213138, -0.200121)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_npydk")
 
@@ -40,7 +41,7 @@ mesh = SubResource("BoxMesh_npydk")
 unique_name_in_owner = true
 
 [node name="ResumeAttachment" type="BoneAttachment3D" parent="Buttons" index="0"]
-transform = Transform3D(1, -5.27019e-08, -2.50726e-07, -2.49104e-07, -0.428813, -0.903393, -5.99041e-08, 0.903394, -0.428813, 2.75015e-08, 3.17349, 0.120664)
+transform = Transform3D(1, -5.2702e-08, -3.57952e-07, -3.45971e-07, -0.428813, -0.903393, -1.05884e-07, 0.903394, -0.428813, 2.75016e-08, 3.17349, 0.120663)
 bone_name = "Bone.003"
 bone_idx = 3
 use_external_skeleton = true
@@ -52,11 +53,11 @@ transform = Transform3D(1, 5.48818e-05, -9.81865e-07, 5.48887e-05, -0.999665, 0.
 script = ExtResource("3_fob5h")
 
 [node name="ResumeCollision" type="CollisionShape3D" parent="Buttons/ResumeAttachment/ResumeButton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0473756, 0, 0)
+transform = Transform3D(1, 3.63798e-12, 3.45608e-11, 3.63798e-12, 1, -9.23872e-07, -4.72937e-11, 1.07288e-06, 1, -0.0473757, 1.19209e-07, 0)
 shape = SubResource("BoxShape3D_6ap7o")
 
 [node name="OptionsAttachment" type="BoneAttachment3D" parent="Buttons" index="1"]
-transform = Transform3D(1, -9.62367e-08, -6.29573e-07, -3.35987e-07, 0.760056, -0.649857, 5.41052e-07, 0.649857, 0.760057, 4.51869e-09, 3.07151, 0.575179)
+transform = Transform3D(1, -9.62367e-08, -6.338e-07, -3.38734e-07, 0.760057, -0.649857, 5.44264e-07, 0.649857, 0.760057, 4.51849e-09, 3.07151, 0.575179)
 bone_name = "Bone.005"
 bone_idx = 5
 use_external_skeleton = true
@@ -68,11 +69,11 @@ transform = Transform3D(1, 9.08113e-05, -2.25614e-06, 9.08394e-05, -0.999728, 0.
 script = ExtResource("3_fob5h")
 
 [node name="OptionsCollision" type="CollisionShape3D" parent="Buttons/OptionsAttachment/OptionsButton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0473756, 0, 0)
+transform = Transform3D(1, -3.63798e-12, 3.63798e-12, -1.45519e-11, 1, 5.96046e-08, 7.27596e-12, -1.49012e-07, 1, -0.0473756, 2.38419e-07, 4.76837e-07)
 shape = SubResource("BoxShape3D_6ap7o")
 
 [node name="ExitAttachment" type="BoneAttachment3D" parent="Buttons" index="2"]
-transform = Transform3D(1, 2.08616e-07, -6.4075e-07, 4.17233e-07, 0.365567, 0.930785, 4.47035e-07, -0.930785, 0.365567, 1.41588e-07, 3.47803, 0.922753)
+transform = Transform3D(1, 4.47035e-07, -7.15256e-07, 4.47035e-07, 0.365567, 0.930785, 7.15256e-07, -0.930786, 0.365567, 3.17264e-07, 3.47803, 0.922753)
 bone_name = "Bone.007"
 bone_idx = 7
 use_external_skeleton = true
@@ -84,7 +85,7 @@ transform = Transform3D(1, 0.000348887, -5.0804e-07, 0.000348657, -0.999393, -0.
 script = ExtResource("3_fob5h")
 
 [node name="ExitCollision" type="CollisionShape3D" parent="Buttons/ExitAttachment/ExitButton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047, 0, 0)
+transform = Transform3D(1, 2.18279e-07, 6.18187e-07, -2.18337e-07, 1, 2.38419e-07, -6.18202e-07, 0, 1, -0.0469996, 1.78814e-07, -2.38419e-07)
 shape = SubResource("BoxShape3D_6ap7o")
 
 [connection signal="button_clicked" from="Buttons/ResumeAttachment/ResumeButton" to="." method="_on_resume_button_button_clicked"]

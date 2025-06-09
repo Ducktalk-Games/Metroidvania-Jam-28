@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="25_634kf"]
 [ext_resource type="PackedScene" uid="uid://drxcv0b5jxwf4" path="res://assets/rug/SM_Circular_rug.glb" id="29_634kf"]
-[ext_resource type="PackedScene" uid="uid://bjg1qm2rlhmkk" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
+[ext_resource type="PackedScene" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
 [ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://byy4dwaaysy8g" path="res://assets/stage/SM_Floor_Test_B.glb" id="36_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]

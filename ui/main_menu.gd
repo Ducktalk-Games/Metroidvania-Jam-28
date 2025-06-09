@@ -5,6 +5,8 @@ extends Node3D
 @onready var curtains_right_debug: MeshInstance3D = %CurtainsRightDebug
 @onready var main_ui: CanvasLayer = %MainUI
 @onready var play_button: ActionButton = %PlayButton
+@onready var music_player: AudioStreamPlayer = %MusicStreamPlayer
+@onready var sounds_effect_player: AudioStreamPlayer = %SFXStreamPlayer
 
 signal options_clicked
 signal credits_clicked
@@ -13,6 +15,8 @@ signal curtains_opened
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Play the default title music
+	music_player.play()
 	show()
 	#This is to ensure that the grab focus event triggers with the animation
 	#This is due to an internal bug with the ActionButton component

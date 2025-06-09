@@ -6,10 +6,13 @@ Matron: The Mayor isn't going to cough up if he realises this place is full of i
 # Looks at Patron
 Matron: [#angry] Wake up, half-wit, start the music!
 # Throws something at the patron to wake him up, like a shoe or a book?
+do Global.patron_animation_tree.patron_wakes_up()
 # Jolts awake, like sits up suddenly
 do wait(1)
 Patron: (Unintelligible drunk mumbling)
 do Global.dim_lights_and_spotlight_narrator()
+do wait(1)
+do Global.patron_animation_tree.patron_plays_piano()
 do wait(1)
 Narrator: Once upon a time there was a little mouse, abandoned in the forest by their mom
 Narrator: She didn’t want to be a parent, she wanted to do drugs!

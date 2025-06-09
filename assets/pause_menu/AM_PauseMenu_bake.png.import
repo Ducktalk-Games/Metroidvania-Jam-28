@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vuui57dvldb"
-path.s3tc="res://.godot/imported/key_buttons.png-071667be335c90a5524c944dac8a458f.s3tc.ctex"
+uid="uid://oq7hiiodpfur"
+path.s3tc="res://.godot/imported/AM_PauseMenu_bake.png-1e9697ec170ca23cf2f05ed61905dab9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "904afdbf7cb67ec4fa9ed06b3d2d02d0"
+}
 
 [deps]
 
-source_file="res://ui/key_buttons.png"
-dest_files=["res://.godot/imported/key_buttons.png-071667be335c90a5524c944dac8a458f.s3tc.ctex"]
+source_file="res://assets/pause_menu/AM_PauseMenu_bake.png"
+dest_files=["res://.godot/imported/AM_PauseMenu_bake.png-1e9697ec170ca23cf2f05ed61905dab9.s3tc.ctex"]
 
 [params]
 

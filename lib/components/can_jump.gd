@@ -24,11 +24,9 @@ func _node_ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if character.is_on_floor():
 		if jump_pressed:
-			tree_playback.travel("Jump")
 			character.velocity.y = jump_max
 			jump_pressed = false
 		else:
-			tree_playback.travel("WalkInPlace")
 			character.velocity.y = 0.0
 
 

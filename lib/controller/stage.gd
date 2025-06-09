@@ -12,7 +12,6 @@ extends Node3D
 @export var startup_level: PackedScene
 
 @onready var stage_body: Character = %StageBody
-
 @onready var player_child_body: Character = %Player
 
 var stage_relocating: bool = false
@@ -24,6 +23,7 @@ func _is_relocating() -> bool:
 
 
 func _ready() -> void:
+
 	update_controllers()
 	Global.stage = self
 	Global.kill_dialog = kill_dialog
@@ -104,6 +104,18 @@ func switch_current_body() -> void:
 func debug_log() -> void:
 	if debug_label:
 		debug_label.text = "Mode: " + current_body.name
+
+
+func is_current_body_child() -> bool:
+	return current_body == player_child_body and not player_relocating and not stage_relocating
+
+
+func is_stage_on_floor() -> bool:
+	return stage_body.is_on_floor()
+
+
+func is_jump_pressed() -> bool:
+	return stage_body.can_jump.jump_pressed
 
 
 func _on_stage_body_relocating_complete() -> void:

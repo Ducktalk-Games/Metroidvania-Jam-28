@@ -4,7 +4,9 @@ extends Component
 @onready var character := get_object() as Character
 
 @export var speed: float = 1.0
+
 @export var animation_tree: AnimationTree
+@onready var state_machine: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 
 var character_direction: float
 var rotation_offset := 0.01
@@ -12,6 +14,7 @@ var rotation_snapped: bool = true
 
 
 func _node_ready() -> void:
+
 	var can_receive_input := other("CanReceiveInput") as CanReceiveInput
 
 	if can_receive_input:
@@ -21,6 +24,7 @@ func _node_ready() -> void:
 
 
 func move(delta: float) -> void:
+
 	character.velocity.x = character_direction * speed
 
 	if character.velocity.x != 0.0:
@@ -34,8 +38,8 @@ func move(delta: float) -> void:
 			rotation_snapped = false
 			character.character_mesh.global_rotation.y = lerp_angle(character.character_mesh.global_rotation.y + rotation_offset, target_angle, delta * 10)
 
-	if animation_tree:
-		animation_tree["parameters/WalkInPlace/blend_position"] = abs(character.velocity.x)
+	if animation_tree and state_machine.get_current_node():
+		animation_tree["parameters/" + state_machine.get_current_node() + "/blend_position"] = abs(character.velocity.x)
 
 	# Make the character fall
 	character.velocity.y += character.get_gravity().y * delta

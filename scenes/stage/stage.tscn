@@ -140,7 +140,7 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_8pkue"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_634kf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -686,7 +686,7 @@ transparent_bg = true
 size = Vector2i(131, 87)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_8pkue")
+stream = SubResource("AudioStreamPolyphonic_634kf")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -707,7 +707,7 @@ mesh = SubResource("BoxMesh_lr1w7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150712, -2.34368, 16.2373)
 
 [node name="SM_Rug" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_634kf")]
-transform = Transform3D(1.75096, 0, 0, 0, 1, 0, 0, 0, 1.75096, -0.337871, 0.362866, -9.69583)
+transform = Transform3D(1.92661, 0, 0, 0, 1, 0, 0, 0, 1.92661, -0.37488, 0.362866, -9.38734)
 
 [node name="SM_Floor" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_3ap4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127144, 0.281034, -7.63805)

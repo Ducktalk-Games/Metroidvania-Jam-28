@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgy0euukak08u"]
+[gd_scene load_steps=8 format=3 uid="uid://dgy0euukak08u"]
 
 [ext_resource type="Script" uid="uid://bofdcq0r2586u" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
+[ext_resource type="PackedScene" uid="uid://c2gw83ua4d6f6" path="res://lib/box_triggers/player_finds_dining_table_trigger.tscn" id="2_vec2o"]
 [ext_resource type="PackedScene" uid="uid://cexxt8okfwu17" path="res://assets/house_rooms/House_Level_blockout.glb" id="2_x4hqi"]
+[ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://lib/box_triggers/player_finds_bed_chamber_pot_trigger.tscn" id="3_7sn60"]
+[ext_resource type="PackedScene" uid="uid://c8w7pokbjey67" path="res://lib/box_triggers/player_finds_dollhouse_trigger.tscn" id="4_njwc2"]
+[ext_resource type="PackedScene" uid="uid://hbr873nc66vk" path="res://lib/box_triggers/player_finds_lions_trigger.tscn" id="5_7sn60"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
 size = Vector3(80.7, 1, 1.1)
@@ -14,8 +18,33 @@ PlayerStart = NodePath("PlayerStart")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, -2.9)
 
 [node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7897, 0, 4.30556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65313, 0, 4.30556)
 shape = SubResource("BoxShape3D_s38hc")
+
+[node name="DiningTableTrigger" parent="StaticFloor" instance=ExtResource("2_vec2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33617, 0.407218, 3.82685)
+
+[node name="Spotlight" parent="StaticFloor/DiningTableTrigger" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.37817, -4.74205)
+spot_range = 5.57984
+
+[node name="BedChamberPotTrigger" parent="StaticFloor" instance=ExtResource("3_7sn60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03849, 0.407218, 3.82685)
+
+[node name="Spotlight" parent="StaticFloor/BedChamberPotTrigger" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.43653, -3.9)
+spot_range = 4.57922
+
+[node name="DollhouseTrigger" parent="StaticFloor" instance=ExtResource("4_njwc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3209, 0.407218, 3.82685)
+
+[node name="Spotlight" parent="StaticFloor/DollhouseTrigger" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.24412, -3.9)
+light_energy = 0.0
+spot_range = 6.6261
+
+[node name="PlayerFindsLionsTrigger" parent="StaticFloor" instance=ExtResource("5_7sn60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3008, 0.407218, 3.82685)
 
 [node name="PlayerStart" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.598, -0.008, 0)
@@ -23,3 +52,7 @@ gizmo_extents = 1.26
 
 [node name="House_Level_Blockout" parent="." instance=ExtResource("2_x4hqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64468, -1.33203, 1.4168)
+
+[editable path="StaticFloor/DiningTableTrigger"]
+[editable path="StaticFloor/BedChamberPotTrigger"]
+[editable path="StaticFloor/DollhouseTrigger"]

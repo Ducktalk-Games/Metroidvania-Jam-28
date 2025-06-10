@@ -24,7 +24,6 @@ func _on_body_entered(body: Node3D) -> void:
 	if Engine.is_editor_hint(): return
 	if body is StageCharacter:
 		_stage_body_entered(body)
-		triggered = true
 
 
 func _stage_body_entered(body: StageCharacter) -> void:

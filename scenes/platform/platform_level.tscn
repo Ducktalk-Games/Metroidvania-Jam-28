@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cqf07dore1stb" path="res://assets/level_layout/LvlBlockout.glb" id="4_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
-[ext_resource type="PackedScene" uid="uid://di3m4g6y8tqtq" path="res://lib/box_triggers/player_finds_bed_chamber_pot_trigger.tscn" id="7_ssfwk"]
 [ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://lib/box_triggers/forest_city_trigger.tscn" id="7_unilm"]
+[ext_resource type="Script" uid="uid://bmeid2lkyat51" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://mfic544ut5bu" path="res://scenes/platform/moving_platform.tscn" id="10_tgbak"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
@@ -608,7 +608,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 153.593, 30.585, -0.0847793)
 
 [node name="ItemPickup2" parent="." instance=ExtResource("5_1dhn5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.76005, -0.0573015, -0.084785)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 261.46, 43.8427, -0.084785)
 ability = 1
 
 [node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
@@ -651,10 +651,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.001, 34.9728, 0)
 
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.23, 32.9994, 0.00389761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.43, 34.9994, 0.00389761)
 
-[node name="BedChamberPotTrigger" parent="." instance=ExtResource("7_ssfwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.839, 0.0351512, 0.00389761)
+[node name="CityForestTrigger" parent="." instance=ExtResource("7_unilm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.33, 34.9994, 0.00389761)
+script = ExtResource("9_iriyj")
+label_string = "City -> Forest Trigger"
 
 [node name="MovingPlatform" parent="." instance=ExtResource("10_tgbak")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.86439, 0, 7.51218e-08)

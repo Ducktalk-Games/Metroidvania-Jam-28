@@ -7,7 +7,7 @@ extends Node3D
 
 @export var spotlight: StageSpotlight
 
-@export var patron: Node3D
+@export var patron: Patron
 @export var narrator: Node3D
 
 # DEBUG VARIABLES

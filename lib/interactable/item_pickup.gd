@@ -2,15 +2,16 @@
 extends Interactable
 class_name ItemPickup
 
-@onready var item: MeshInstance3D = %ItemMesh
+@export var item: MeshInstance3D
 @export var ability: Global.Ability:
 	set(value):
+		if not item: return
 		match value:
 			Global.Ability.POCKET_WATCH:
-				item.mesh = load("res://assets/fugit_watch/SM_Item_Fugit_watch_Plane_019.res")
+				item.mesh = load("uid://cpxnqocqxcsyb")
 
 			Global.Ability.SCISSORS:
-				item.mesh = load("res://assets/duck_demo/SM_Duck_Plane_001.res")
+				item.mesh = load("uid://bftytufqh0ov5")
 
 		ability = value
 

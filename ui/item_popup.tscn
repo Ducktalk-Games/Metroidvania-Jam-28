@@ -55,20 +55,23 @@ fov = 23.0375
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
 transform = Transform3D(0.83826, -0.521104, 0.160533, 0.512073, 0.853492, 0.0966001, -0.187352, 0.00122857, 0.982292, 0, 0, 0)
 
-[node name="ItemParent" type="Node3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
-transform = Transform3D(0.88861, 0.313823, -0.334496, -0.404422, 0.880126, -0.248641, 0.216369, 0.356222, 0.909005, 0, -0.4, 0)
+[node name="Pivot" type="Node3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
-[node name="ComponentOwner" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/ItemParent"]
+[node name="ItemParent" type="Node3D" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/Pivot"]
+unique_name_in_owner = true
+transform = Transform3D(0.88861, 0.313823, -0.334496, -0.404422, 0.880126, -0.248641, 0.216369, 0.356222, 0.909005, 0, 0, 0)
+
+[node name="ComponentOwner" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/Pivot/ItemParent"]
 script = ExtResource("2_1urga")
 speed = 1.0
 speed = 1.0
 attenuation = 0.2
 
-[node name="CanRotate" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/ItemParent/ComponentOwner"]
+[node name="CanRotate" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/Pivot/ItemParent/ComponentOwner"]
 script = ExtResource("3_1utkn")
 
-[node name="CanBob" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/ItemParent/ComponentOwner"]
+[node name="CanBob" type="Node" parent="CenterContainer/VBoxContainer/Panel/SubViewportContainer/SubViewport/Pivot/ItemParent/ComponentOwner"]
 script = ExtResource("4_1utkn")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/VBoxContainer"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5irbdwtapx3u"]
+
+[ext_resource type="PackedScene" uid="uid://ta0ylc2cepi" path="res://lib/box_triggers/spotlight_dialogue_trigger.tscn" id="1_lbw55"]
+[ext_resource type="Resource" uid="uid://c73wv4ce4de8t" path="res://dialogues/090_player_finds_bucket_and_mop.dialogue" id="2_dblbn"]
+
+[node name="SimpleDialogueTrigger" instance=ExtResource("1_lbw55")]
+dialogue_resource = ExtResource("2_dblbn")
+label_string = "Bucket And Mop Trigger"
+
+[node name="TriggerLabel" parent="." index="1"]
+text = "Bucket And Mop Trigger"

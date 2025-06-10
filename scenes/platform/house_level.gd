@@ -6,6 +6,7 @@ extends PlatformLevel
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var character: StageCharacter = Global.stage.stage_body
+	global_position = character.character_mesh.global_position
 	character.character_mesh.global_position = PlayerStart.global_position
 	(Component.find(character, "CanMove") as CanMove).speed *= 0.7
 	(Component.find(character, "CanJump") as CanJump).disable()

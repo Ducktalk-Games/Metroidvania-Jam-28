@@ -8,6 +8,9 @@ extends Node3D
 @onready var selector: Selector = %Selector
 @onready var resume_button: Area3D = %ResumeButton
 
+var original_node: String
+var original_song: StringName
+
 @onready var is_paused: bool = false:
 	set(value):
 		selector.is_paused = value
@@ -45,6 +48,14 @@ func pause_game() -> void:
 		animation_player.play("Unroll")
 		selector.current_button = resume_button
 		is_paused = true
+		Global.dim_lights_and_spotlight(Global.stage.patron)
+		original_node = Global.patron_animation_tree.state_machine.get_current_node()
+		Global.patron_animation_tree.state_machine.travel("PlayingPianoPause")
+		await get_tree().create_timer(0.5).timeout
+		#get_tree().create_tween().tween_property(music, "volume_db", -10.0, 0.3)
+		original_song = Global.stage.patron.music["parameters/switch_to_clip"]
+		Global.stage.patron.music.play()
+		Global.stage.patron.set_music_to("pause_theme")
 
 
 func unpause_game() -> void:
@@ -56,6 +67,11 @@ func unpause_game() -> void:
 			animation_player.play_backwards("Unroll")
 		else:
 			animation_player.play("Dismiss")
+
+		Global.stage.patron.set_music_to(original_song)
+
+		Global.patron_animation_tree.state_machine.travel(original_node)
+		Global.dim_lights_and_spotlight(Global.stage.patron, false)
 
 		is_paused = false
 

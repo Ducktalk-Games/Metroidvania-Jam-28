@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hbr873nc66vk"]
+
+[ext_resource type="PackedScene" uid="uid://buobta48c55i2" path="res://lib/box_triggers/simple_dialogue_trigger.tscn" id="1_du3en"]
+[ext_resource type="Resource" uid="uid://bptu7ihkrsjv1" path="res://dialogues/070_player_finds_lions.dialogue" id="2_konxx"]
+
+[node name="PlayerFindsLionsTrigger" instance=ExtResource("1_du3en")]
+dialogue_resource = ExtResource("2_konxx")
+label_string = "Player Finds Lions Trigger"
+
+[node name="TriggerLabel" parent="." index="1"]
+text = "Player Finds Lions Trigger"

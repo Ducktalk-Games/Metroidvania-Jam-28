@@ -1,8 +1,8 @@
 class_name Character
 extends CharacterBody3D
 
-@export
-var map_body: CollisionShape3D
+@export var character_mesh: Node3D
+@export var map_body: CollisionShape3D
 
 var relocating: bool = false
 var reloc_target: Vector3
@@ -41,4 +41,3 @@ func _process(delta: float) -> void:
 				move_comp.enable()
 	else:
 		t = delta
-@export var character_mesh: Node3D

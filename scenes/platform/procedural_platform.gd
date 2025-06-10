@@ -7,6 +7,9 @@ var mesh_ready: bool = false
 var platform_mesh: MeshInstance3D
 var string_meshes: Array[MeshInstance3D]
 
+@onready var wood_material: ShaderMaterial = preload("uid://msbbyee8tomr")
+var string_material: StandardMaterial3D
+
 @export_tool_button("Reset Platform", "Callable") var reset_action: Callable = reset_platform
 @export_range(2, 10, 1, "or_greater") var string_count: int = 2:
 	set(value):
@@ -24,6 +27,8 @@ var string_meshes: Array[MeshInstance3D]
 
 
 func _ready() -> void:
+	string_material = StandardMaterial3D.new()
+	string_material.albedo_color = Color.TAN
 	reset_platform()
 
 
@@ -42,6 +47,7 @@ func create_platform() -> void:
 	platform_mesh = MeshInstance3D.new()
 	platform_mesh.mesh = BoxMesh.new()
 	(platform_mesh.mesh as BoxMesh).size = (shape as BoxShape3D).size
+	platform_mesh.material_override = wood_material
 	add_child(platform_mesh)
 
 
@@ -55,6 +61,7 @@ func create_strings() -> void:
 			var string := MeshInstance3D.new()
 			update_string_positions(string, column, row)
 			string.mesh = string_mesh
+			string.material_override = string_material
 			add_child(string)
 			string_meshes.append(string)
 

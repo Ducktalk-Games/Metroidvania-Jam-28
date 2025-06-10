@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://msbbyee8tomr"]
+
+[ext_resource type="Shader" uid="uid://y3ujyrqq1tvv" path="res://assets/stage_props/stage_prop_shader.tres" id="1_62wm5"]
+[ext_resource type="Texture2D" uid="uid://byc8f4tvpbfit" path="res://assets/stage/SM_Stage_BaseTest_SM_Stage_BaseTest_BC_Stage_Base.png" id="2_ysgwk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_62wm5")
+shader_parameter/WoodTexture = ExtResource("2_ysgwk")
+shader_parameter/DrawingOpacity = 0.0
+shader_parameter/triplanar_scale = Vector3(0.5, 0.335, 0.235)
+shader_parameter/triplanar_offset = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 0.5

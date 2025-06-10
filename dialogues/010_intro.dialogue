@@ -15,8 +15,9 @@ do wait(1)
 do Global.patron_animation_tree.patron_plays_piano()
 do Global.stage.patron.set_music_to("forest_theme")
 do wait(1)
-Narrator: Once upon a time there was a little mouse, who was lot in the forest
+Narrator: Once upon a time there was a little mouse, who was lost in the forest
 Narrator: Their mom abandoned them, so they were all alone
 Narrator: She didn’t want to be a parent, she wanted to do drugs!
+Player: Maybe I can find a new family
 do Global.dim_lights_and_spotlight(Global.stage.narrator, false)
 => END

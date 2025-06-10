@@ -5,6 +5,8 @@ extends Node3D
 
 
 func set_music_to(song: StringName) -> void:
+	if music["parameters/switch_to_clip"] == song: return
+
 	if song:
 		music.set("parameters/switch_to_clip", song)
 	else:

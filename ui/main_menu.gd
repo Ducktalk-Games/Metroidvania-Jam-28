@@ -5,7 +5,6 @@ extends Node3D
 @onready var curtains_right_debug: MeshInstance3D = %CurtainsRightDebug
 @onready var main_ui: CanvasLayer = %MainUI
 @onready var play_button: ActionButton = %PlayButton
-@onready var music_player: AudioStreamPlayer = %MusicStreamPlayer
 @onready var sounds_effect_player: AudioStreamPlayer = %SFXStreamPlayer
 
 signal options_clicked

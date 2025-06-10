@@ -37,8 +37,9 @@ func spawn_item_popup(item: Ability) -> ItemPopup:
 func disable_player_input() -> void:
 	for body: Character in [stage.player_child_body, stage.stage_body]:
 		if body:
-			var can_receive_input := Component.find(body, "CanReceiveInput") as CanReceiveInput
+			var can_receive_input: CanReceiveInput = Component.find(body, "CanReceiveInput")
 			can_receive_input.disable()
+			
 
 
 func enable_player_input() -> void:

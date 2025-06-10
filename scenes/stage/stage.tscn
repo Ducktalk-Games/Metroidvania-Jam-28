@@ -1,7 +1,6 @@
-[gd_scene load_steps=101 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=100 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
-[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
@@ -143,7 +142,7 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_opsrg"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_3ap4e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -628,7 +627,6 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
-startup_level = ExtResource("2_3ap4e")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -644,6 +642,7 @@ map_body = NodePath("StageCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="StageBodyStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
+bus = &"SFX"
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("animation_tree", "animation_tree", "can_respawn")]
 script = ExtResource("2_3kwj0")
@@ -704,6 +703,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, -0.0081576, -1.51
 
 [node name="ChildStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody/ChildLevel"]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -785,7 +785,7 @@ transparent_bg = true
 size = Vector2i(131, 87)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_opsrg")
+stream = SubResource("AudioStreamPolyphonic_3ap4e")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -1053,10 +1053,6 @@ autoplay = "Idle"
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.09374, 7.88191, 2.77621)
 spot_range = 11.1586
 spot_angle = 7.36489
-
-[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
-unique_name_in_owner = true
-bus = &"Music"
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)

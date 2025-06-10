@@ -887,7 +887,6 @@ skeleton = NodePath("")
 
 [node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("38_opsrg")]
 transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
-has_mouse_input_enabled = true
 
 [node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)

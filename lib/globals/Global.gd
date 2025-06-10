@@ -85,3 +85,13 @@ func dim_lights_and_spotlight_narrator(dim: bool = true) -> void:
 		stage.stage_body.curtain_anim_player.play("hide_narrator")
 
 	await stage.stage_body.curtain_anim_player.animation_finished
+
+
+func disable_options_menu() -> void:
+	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
+	options_amp.has_input_enabled = false
+
+
+func enable_options_menu() -> void:
+	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
+	options_amp.has_input_enabled = true

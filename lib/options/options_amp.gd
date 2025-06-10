@@ -5,13 +5,28 @@ extends Node3D
 var has_mouse_input_enabled: bool = false
 
 @export
-var debug_label: Label3D
+var has_input_enabled: bool = false
+
+@export
+var debug_music_label: Label3D
+
+@export
+var debug_sfx_label: Label3D
+
+@export
+var debug_master_label: Label3D
 
 @onready
 var point_a: Marker3D = $PointA
 
 @onready 
 var point_b: Marker3D = $PointB
+
+@onready
+var point_c: Marker3D = $PointC
+
+@onready 
+var point_d: Marker3D = $PointD
 
 @onready
 var music_slider: Area3D = %MusicSlider
@@ -42,18 +57,18 @@ var music_volume: float:
 		var clamped_val: float = clampf(value, 0.0, 1.0)
 		music_slider.position = lerp(point_a.position, point_b.position, clamped_val)
 
-		if debug_label:
-			debug_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
+		if debug_music_label:
+			debug_music_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
 
 		music_volume = clamped_val
 
 var sfx_volume: float:
 	set(value):
 		var clamped_val: float = clampf(value, 0.0, 1.0)
-		music_slider.position = lerp(point_a.position, point_b.position, clamped_val)
+		sfx_slider.position = lerp(point_c.position, point_d.position, clamped_val)
 
-		if debug_label:
-			debug_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
+		if debug_sfx_label:
+			debug_sfx_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
 
 		sfx_volume = clamped_val
 
@@ -62,8 +77,8 @@ var master_volume: float:
 		var clamped_val: float = clampf(value, 0.0, 1.0)
 		music_slider.position = lerp(point_a.position, point_b.position, clamped_val)
 
-		if debug_label:
-			debug_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
+		if debug_master_label:
+			debug_master_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
 
 		master_volume = clamped_val
 
@@ -74,17 +89,17 @@ var slider_grabbed: bool = false
 
 
 func _ready() -> void:
+	sfx_slider_mat.emission_energy_multiplier = 0.0
+	music_slider_mat.emission_energy_multiplier = 2.0
+	focused_slider = %MusicSlider
 	master_volume = 1.0
 	music_volume = 1.0
 	sfx_volume = 1.0
-	#var music_slider_mat: StandardMaterial3D = music_slider_mesh.
-	var slider_tween := create_tween()
-	## TODO: TOM
-	#slider_tween.tween_property(music_slider_mat, "emission_energy_multiplier", 4.0, .2).as_relative()
-	#slider_tween.tween_property(music_slider_mat, "emission_energy_multiplier", -4.0, .2).set_delay(0.1).as_relative()
 
 
 func _process(delta: float) -> void:
+	if !has_input_enabled: return
+
 	AudioServer.set_bus_volume_linear(music_bus_i, music_volume)
 	AudioServer.set_bus_volume_linear(sfx_bus_i, sfx_volume)
 	AudioServer.set_bus_volume_linear(master_bus_i, master_volume)
@@ -92,20 +107,33 @@ func _process(delta: float) -> void:
 	#if (focused_slider == %MusicSlider):
 		#slider_tween.tween_property(music_slider_mat, "emission_energy_multiplier", 2.0, 0.1).as_relative()
 
-	if slider_grabbed:
+	if slider_grabbed and has_mouse_input_enabled:
 		var current_mouse_y_position: float = get_viewport().get_mouse_position().x
 		music_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
 
 
 func _input(event: InputEvent) -> void:
+	if !has_input_enabled: return
+
 	var direction_input: float = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 
-	if (focused_slider == %MusicSlider):
-		#var tween := create_tween()
-		##music_slider_mat.emission_energy = 1.0
-		#tween.tween_property(music_slider_mat, "emission_energy_multiplier", 2.0, 0.1).as_relative()
-		#tween.tween_property(music_slider_mat, "emission_energy_multiplier", 0.0, 2.0).as_relative().set_delay(0.2)
-		pass
+	if focused_slider == %MusicSlider:
+		sfx_slider_mat.emission_energy_multiplier = 0.0
+		music_slider_mat.emission_energy_multiplier = 2.0
+		music_volume+=direction_input * 0.01
+
+		if (Input.is_action_just_pressed("ui_down")):
+			focused_slider = %SfxSlider
+
+	if focused_slider == %SfxSlider:
+		music_slider_mat.emission_energy_multiplier = 0.0
+		sfx_slider_mat.emission_energy_multiplier = 2.0
+		sfx_volume+=direction_input * 0.01
+
+		if (Input.is_action_just_pressed("ui_up")):
+			focused_slider = %MusicSlider
+
+		print(music_volume)
 
 	if Input.is_action_just_pressed("button_select") and slider_hovered and has_mouse_input_enabled:
 		point_a_ss_loc = get_viewport().get_camera_3d().unproject_position(point_a.global_position)

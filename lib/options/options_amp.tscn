@@ -11,7 +11,7 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxyb1"]
 emission_enabled = true
 emission = Color(0.941176, 0.937255, 0.580392, 1)
-emission_energy_multiplier = 2.0
+emission_energy_multiplier = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jkgd3"]
 material = SubResource("StandardMaterial3D_kxyb1")
@@ -26,9 +26,11 @@ emission_energy_multiplier = 0.0
 material = SubResource("StandardMaterial3D_lov1f")
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("debug_label")]
+[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("debug_music_label", "debug_sfx_label", "debug_master_label")]
 script = ExtResource("1_kxyb1")
-debug_label = NodePath("MusicLabel")
+debug_music_label = NodePath("MusicLabel")
+debug_sfx_label = NodePath("SFXLabel")
+debug_master_label = NodePath("MasterLabel")
 
 [node name="MusicLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.4)
@@ -37,6 +39,12 @@ text = "0%"
 
 [node name="SFXLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489338, 0.4)
+texture_filter = 0
+text = "0%"
+
+[node name="MasterLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489338, 0.4)
+visible = false
 texture_filter = 0
 text = "0%"
 

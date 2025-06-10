@@ -1,7 +1,6 @@
-[gd_scene load_steps=101 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=100 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
-[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_3ap4e"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
@@ -36,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://beed338kpk22a" path="res://audio/music/Forest theme OGG.ogg" id="31_dtws5"]
 [ext_resource type="AudioStream" uid="uid://bmnschd2l703f" path="res://audio/music/Main Menu theme OGG.ogg" id="32_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://bjg1qm2rlhmkk" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
+[ext_resource type="AudioStream" uid="uid://b6bq81uypq027" path="res://audio/music/City Theme OGG.ogg" id="33_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="37_634kf"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
@@ -142,8 +142,6 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_opsrg"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
 
@@ -229,7 +227,7 @@ viewport_path = NodePath("Stage/StageBody/OffStageEnv/Patron/DialogueContainer/S
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_8pkue"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_634kf"]
-clip_count = 4
+clip_count = 5
 clip_0/name = &"main_menu"
 clip_0/stream = ExtResource("32_3ap4e")
 clip_0/auto_advance = 0
@@ -242,6 +240,9 @@ clip_2/auto_advance = 0
 clip_3/name = &"forest_theme"
 clip_3/stream = ExtResource("31_dtws5")
 clip_3/auto_advance = 0
+clip_4/name = &"city_theme"
+clip_4/stream = ExtResource("33_3ap4e")
+clip_4/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 0.5,
@@ -629,7 +630,6 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
-startup_level = ExtResource("2_3ap4e")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -786,7 +786,6 @@ transparent_bg = true
 size = Vector2i(131, 87)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_opsrg")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -968,6 +967,7 @@ transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
+visible = false
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)

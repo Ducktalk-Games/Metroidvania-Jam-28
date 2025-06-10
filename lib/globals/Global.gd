@@ -3,6 +3,7 @@ extends Node
 enum MenuState {
 	MAIN,
 	PAUSE,
+	TRANSITIONING,
 	OPTIONS,
 	CREDITS,
 	GAME
@@ -49,6 +50,7 @@ func enable_player_input() -> void:
 
 
 func curtains_fall(target: PackedScene) -> void:
+	Global.current_menu_state = Global.MenuState.TRANSITIONING
 	target_scene = target
 	stage.stage_body.curtain_anim_player.play("close_curtain")
 	stage.stage_body\
@@ -77,6 +79,7 @@ func _curtains_rise() -> void:
 func _on_curtains_opened(_animation: String) -> void:
 	stage.stage_body.curtain_anim_player.animation_finished.disconnect(_on_curtains_opened)
 	enable_player_input()
+	Global.current_menu_state = Global.MenuState.GAME
 
 
 func set_patron_animation_tree(animation_tree: PatronAnimationTree) -> void:

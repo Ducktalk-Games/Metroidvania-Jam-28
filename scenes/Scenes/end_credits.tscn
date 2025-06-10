@@ -1,0 +1,292 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj422f2eg6i7b"]
+
+[ext_resource type="Theme" uid="uid://dkitjhwbc0aul" path="res://scenes/Themes/theme.tres" id="1_i4lcs"]
+[ext_resource type="Script" uid="uid://hlqj8c1jbho5" path="res://scenes/Scenes/end_credits.gd" id="1_wva0v"]
+[ext_resource type="AudioStream" uid="uid://do5m85us4jwia" path="res://audio/music/Pause Theme OGG.ogg" id="3_1a2qj"]
+
+[sub_resource type="Animation" id="Animation_3beby"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_45dg3"]
+resource_name = "fade_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_qkanq"]
+resource_name = "fade_in_and_out"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3, 4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6s45y"]
+_data = {
+&"RESET": SubResource("Animation_3beby"),
+&"fade_in": SubResource("Animation_45dg3"),
+&"fade_in_and_out": SubResource("Animation_qkanq")
+}
+
+[node name="EndCredits" type="Control" node_paths=PackedStringArray("name_control", "name_ap")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i4lcs")
+script = ExtResource("1_wva0v")
+name_control = NodePath("CenterContainer/Control")
+name_ap = NodePath("CenterContainer/NameAnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.405, 1.405)
+
+[node name="Control" type="Control" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Thomas Paul" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.5
+offset_top = -22.5
+offset_right = 103.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Team Lead - Gameplay Programmer
+Thomas Paul"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Harry Caress" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -24.5
+offset_right = 75.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3D Environment Artist
+Harry Caress"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Alex Chadwick" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Narrative Designer - Writer
+Alex Chadwick"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mippo" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Concept Design - Animation
+Mippo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Livio Segnini" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Composer
+Livio Segnini"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Daniel _Phanatiik_ Taveras" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3D Environment Artist
+Daniel \"Phanatiik\" Taveras"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Daniela Rodriguez" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Illustrator
+Daniela Rodriguez"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Matthew Hough" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3D Character Artist
+Matthew Hough"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jacob Rodgers" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gameplay Programmer
+Jacob Rodgers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Eleonor Menendez" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gameplay Programmer
+Eleonor Menendez"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sunny" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level Designer
+Sunny"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Special Thanks" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Special Thanks
+Fraser Holmes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameAnimationPlayer" type="AnimationPlayer" parent="CenterContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_6s45y")
+}
+
+[node name="OffsetTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="CreditsMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1a2qj")
+autoplay = true
+
+[connection signal="animation_finished" from="CenterContainer/NameAnimationPlayer" to="." method="_on_name_animation_player_animation_finished"]
+[connection signal="timeout" from="OffsetTimer" to="." method="name_show"]

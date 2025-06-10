@@ -1,9 +1,6 @@
 @tool
 extends BoxTrigger
 
-var player_gets_to_city := false
-var player_leaves_city := false
-
 
 func _stage_body_entered(body: StageCharacter) -> void:
 

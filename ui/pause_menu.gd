@@ -8,6 +8,10 @@ extends Node3D
 @onready var selector: Selector = %Selector
 @onready var resume_button: Area3D = %ResumeButton
 
+@export var music: AudioStreamPlayer
+
+var original_node: String
+
 @onready var is_paused: bool = false:
 	set(value):
 		selector.is_paused = value
@@ -45,6 +49,11 @@ func pause_game() -> void:
 		animation_player.play("Unroll")
 		selector.current_button = resume_button
 		is_paused = true
+		music.play()
+		get_tree().create_tween().tween_property(music, "volume_db", -10.0, 0.3)
+		Global.dim_lights_and_spotlight(Global.stage.patron)
+		original_node = Global.patron_animation_tree.state_machine.get_current_node()
+		Global.patron_animation_tree.state_machine.travel("PlayingPiano")
 
 
 func unpause_game() -> void:
@@ -56,6 +65,13 @@ func unpause_game() -> void:
 			animation_player.play_backwards("Unroll")
 		else:
 			animation_player.play("Dismiss")
+
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(music, "volume_db", -30.0, 1.0)
+		tween.tween_callback(music.stop)
+
+		Global.patron_animation_tree.state_machine.travel(original_node)
+		Global.dim_lights_and_spotlight(Global.stage.patron, false)
 
 		is_paused = false
 

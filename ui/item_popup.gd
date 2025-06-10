@@ -19,7 +19,7 @@ const POCKET_WATCH_FLAVOUR_TEXT: DialogueResource = (
 const POCKETWATCH_NARRATOR_BLURB: String = "uid://dqs7hvx6lukw4"
 
 # TODO Assign this to scissors scene
-const SCISSORS = preload("res://assets/chair/SM_Chair.glb")
+const SCISSORS = preload("uid://b08myabg8u4sm")
 
 const SCISSORS_FLAVOUR_TEXT = preload("res://dialogues/scissors_flavour_text.dialogue")
 
@@ -55,4 +55,9 @@ func _on_dialogue_end(res: DialogueResource) -> void:
 
 		# 030_player_finds_pocketwatch
 		DialogueSequencer.start_dialog(narrator_blurb)
+
+		var key_dialog: KeyDialog = Global.stage.stage_body.key_dialog
+		key_dialog.key_action = [key_dialog.KeyAction.WATCH, key_dialog.KeyAction.SCISSORS][ability]
+		key_dialog.pop_in_key()
+
 		queue_free()

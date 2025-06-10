@@ -9,8 +9,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_oq7t8"]
 radius = 1.07902
 
-[node name="ItemPickup" type="Area3D"]
+[node name="ItemPickup" type="Area3D" node_paths=PackedStringArray("item")]
 script = ExtResource("1_maleu")
+item = NodePath("ItemParent/ItemMesh")
 
 [node name="ItemCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70503, 0)
@@ -20,7 +21,6 @@ shape = SubResource("SphereShape3D_oq7t8")
 transform = Transform3D(0.617111, 0, 0, 0, 0.617111, 0, 0, 0, 0.617111, 0, 1.79918, 0)
 
 [node name="ItemMesh" type="MeshInstance3D" parent="ItemParent"]
-unique_name_in_owner = true
 transform = Transform3D(0.822045, 0.569423, 0, -0.569423, 0.822045, 0, 0, 0, 1, -0.152299, 0.219866, 0)
 mesh = ExtResource("2_vycv3")
 skeleton = NodePath("../..")

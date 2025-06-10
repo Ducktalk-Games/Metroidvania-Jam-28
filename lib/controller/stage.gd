@@ -5,6 +5,11 @@ extends Node3D
 
 @export var debug_label: Label
 
+@export var spotlight: StageSpotlight
+
+@export var patron: Node3D
+@export var narrator: Node3D
+
 # DEBUG VARIABLES
 @export var kill_dialog := false
 @export var has_pocketwatch := false

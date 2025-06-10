@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=86 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -17,9 +17,8 @@
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
-[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_boarder.glb" id="13_8pkue"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="13_8pkue"]
 [ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="13_634kf"]
-[ext_resource type="PackedScene" uid="uid://b08myabg8u4sm" path="res://assets/storkpair/SM_Storkpair.glb" id="13_dtws5"]
 [ext_resource type="PackedScene" uid="uid://babsrhu3cucox" path="res://assets/stage/SM_Floor.glb" id="14_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="Script" uid="uid://ctn0wj4uksx34" path="res://scripts/main_camera.gd" id="16_5b43b"]
@@ -33,7 +32,6 @@
 [ext_resource type="Script" uid="uid://lo85hpl5ko86" path="res://lib/patron/patron_animation_tree.gd" id="26_634kf"]
 [ext_resource type="PackedScene" uid="uid://bjg1qm2rlhmkk" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
 [ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
-[ext_resource type="PackedScene" uid="uid://r0osy54kqc35" path="res://assets/fugit_watch/SM_Item_Fugit_watch.glb" id="37_8pkue"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="37_634kf"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
@@ -139,7 +137,7 @@ height = 1.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_8pkue"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_oomxc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -184,7 +182,7 @@ states/Start/position = Vector2(-136, 80)
 states/WakeUp/node = SubResource("AnimationNodeAnimation_634kf")
 states/WakeUp/position = Vector2(131, 80)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_n3cgd"), "PlayingPiano", "SlamLid", SubResource("AnimationNodeStateMachineTransition_lvwud"), "Idle", "WakeUp", SubResource("AnimationNodeStateMachineTransition_3ap4e"), "WakeUp", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_opsrg")]
-graph_offset = Vector2(-378, -85)
+graph_offset = Vector2(-296, -22)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_oq7t8"]
 viewport_path = NodePath("Stage/StageBody/OffStageEnv/Patron/DialogueContainer/SubViewport")
@@ -211,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../SpotLight3D:light_energy")
+tracks/1/path = NodePath("../MainSpotlight:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -241,7 +239,7 @@ length = 0.8
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../SpotLight3D:light_energy")
+tracks/0/path = NodePath("../MainSpotlight:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -252,7 +250,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Narrator/MeshInstance3D/Spotlight")
+tracks/1/path = NodePath("../../CharacterSpotlight")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -270,7 +268,7 @@ length = 0.8
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../SpotLight3D:light_energy")
+tracks/0/path = NodePath("../MainSpotlight:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -281,7 +279,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Narrator/MeshInstance3D/Spotlight")
+tracks/1/path = NodePath("../../CharacterSpotlight")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -297,8 +295,8 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_8pkue"),
 &"close_curtain": SubResource("Animation_lr1w7"),
-&"dim_lights_show_narrator": SubResource("Animation_634kf"),
-&"hide_narrator": SubResource("Animation_dtws5")
+&"dim_lights_spotlight_on": SubResource("Animation_634kf"),
+&"show_lights_spotlight_off": SubResource("Animation_dtws5")
 }
 
 [sub_resource type="Animation" id="Animation_5b43b"]
@@ -524,10 +522,13 @@ unique_name_in_owner = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ecxui")
 
-[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label")]
+[node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label", "spotlight", "patron", "narrator")]
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
+spotlight = NodePath("StageBody/CharacterSpotlight")
+patron = NodePath("StageBody/OffStageEnv/Patron/SK_Patron")
+narrator = NodePath("StageBody/Narrator")
 kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
@@ -670,6 +671,7 @@ animation_tree = NodePath("../../SK_PlayerCharacter/AnimationTree")
 script = ExtResource("6_d1yl1")
 
 [node name="KeyDialog" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("32_634kf")]
+unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
@@ -684,7 +686,7 @@ transparent_bg = true
 size = Vector2i(131, 87)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_8pkue")
+stream = SubResource("AudioStreamPolyphonic_oomxc")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -710,9 +712,6 @@ transform = Transform3D(1.92661, 0, 0, 0, 1, 0, 0, 0, 1.92661, -0.37488, 0.36286
 [node name="SM_Floor" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_3ap4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127144, 0.281034, -7.63805)
 
-[node name="SM_Storkpair" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_dtws5")]
-transform = Transform3D(-0.000680729, 0, -1, 0, 1, 0, 1, 0, -0.000680729, -12.5114, 0.33648, -5.51399)
-
 [node name="SM_Stage_BaseTest2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_dtws5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84641, 0.127977, -17.1922)
 
@@ -721,9 +720,6 @@ transform = Transform3D(1.02591, 0, 0, 0, 1, 0, 0, 0, 1, -3.239, 0.998878, -15.8
 
 [node name="SM_Stage_boarder2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("13_8pkue")]
 transform = Transform3D(0.956674, 0, 0, 0, 1, 0, 0, 0, 1, -2.97557, -0.55926, -15.8225)
-
-[node name="SM_Item_Fugit_watch" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("37_8pkue")]
-transform = Transform3D(0.0763407, 0.0189585, -0.996901, -0.00525086, 0.999813, 0.0186118, 0.997068, 0.00381374, 0.0764262, -10.4512, 0.999084, -5.07409)
 
 [node name="SM_Chair2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("11_wvhxk")]
 transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, -3.14657, 0.445348, -5.7346)
@@ -750,7 +746,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.029
 transform = Transform3D(0.993896, -0.0010017, 0.110307, 0.00108576, 0.999999, -0.000702051, -0.110307, 0.000817532, 0.993897, -1.47449, 1.40927, -4.95885)
 
 [node name="Patron" type="Node3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(-0.541233, 0, 1.0258, 0, 1.15983, 0, -1.0258, 0, -0.541233, 3.68362, 0.430891, -9.16243)
+transform = Transform3D(-0.788287, 0, 0.850765, 0, 1.15983, 0, -0.850765, 0, -0.788287, 3.68362, 0.430891, -9.16243)
 
 [node name="SK_Patron" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("25_8pkue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0171275, 0)
@@ -763,6 +759,11 @@ tree_root = SubResource("AnimationNodeStateMachine_x6r7u")
 anim_player = NodePath("../AnimationPlayer")
 script = ExtResource("26_634kf")
 
+[node name="SpotlightPatron" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("38_dtws5")]
+transform = Transform3D(-0.46665, 0.884442, 3.86602e-08, 0, -4.37114e-08, 1, 0.884442, 0.46665, 2.03979e-08, 0, 5.68597, 0)
+spot_range = 6.9
+spot_angle = 9.63035
+
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Patron"]
 transform = Transform3D(-0.999999, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -0.999999, -0.0964274, 2.42792, 0.0806508)
 billboard = 2
@@ -774,7 +775,7 @@ metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 transparent_bg = true
 size = Vector2i(220, 52)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
+[node name="MainSpotlight" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0.150712, 6.37526, -0.1889)
 light_energy = 0.239
 shadow_enabled = true
@@ -859,6 +860,7 @@ transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
+visible = false
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
@@ -901,11 +903,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 2.77621)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683949, 0)
 mesh = SubResource("CapsuleMesh_henb2")
 
-[node name="Spotlight" parent="Stage/StageBody/Narrator/MeshInstance3D" instance=ExtResource("38_dtws5")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.33854, -3.64489e-07)
-spot_range = 11.1586
-spot_angle = 7.36489
-
 [node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/Narrator"]
 transform = Transform3D(1.50674, 0, 2.63448e-07, 0, 1.50674, 0, -2.63448e-07, 0, 1.50674, 0.0165422, 2.02137, 0.014899)
 texture = SubResource("ViewportTexture_ra5e8")
@@ -915,6 +912,11 @@ metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 [node name="SubViewport" type="SubViewport" parent="Stage/StageBody/Narrator/DialogueContainer"]
 transparent_bg = true
 size = Vector2i(213, 85)
+
+[node name="CharacterSpotlight" parent="Stage/StageBody" instance=ExtResource("38_dtws5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.09374, 7.88191, 2.77621)
+spot_range = 11.1586
+spot_angle = 7.36489
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)

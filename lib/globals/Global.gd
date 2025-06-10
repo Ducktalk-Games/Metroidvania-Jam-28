@@ -83,11 +83,21 @@ func set_patron_animation_tree(animation_tree: PatronAnimationTree) -> void:
 	patron_animation_tree = animation_tree
 
 
-func dim_lights_and_spotlight_narrator(dim: bool = true) -> void:
+func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
+
+	var height_offset: float = 0.0
+
+	match who:
+		Global.stage.patron:
+			height_offset = 5.686
+
+		Global.stage.narrator:
+			height_offset = 7.882
 
 	if dim:
-		stage.stage_body.curtain_anim_player.play("dim_lights_show_narrator")
+		stage.spotlight.global_position = who.global_position + Vector3.UP * height_offset
+		stage.stage_body.curtain_anim_player.play("dim_lights_spotlight_on")
 	else:
-		stage.stage_body.curtain_anim_player.play("hide_narrator")
+		stage.stage_body.curtain_anim_player.play("show_lights_spotlight_off")
 
 	await stage.stage_body.curtain_anim_player.animation_finished

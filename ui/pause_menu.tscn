@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhl3dby1g4fyh"]
+[gd_scene load_steps=9 format=3 uid="uid://bhl3dby1g4fyh"]
 
 [ext_resource type="PackedScene" uid="uid://bd5qini8qs3h8" path="res://assets/pause_menu/AM_PauseMenu.glb" id="1_ejwgg"]
 [ext_resource type="Script" uid="uid://7h1p82yligtg" path="res://ui/pause_menu.gd" id="2_fob5h"]
 [ext_resource type="Script" uid="uid://bkxpj73vi025b" path="res://ui/pause_menu_selector.gd" id="3_avurv"]
 [ext_resource type="Script" uid="uid://btvg3n38d22mb" path="res://ui/pause_menu_button.gd" id="3_fob5h"]
+[ext_resource type="AudioStream" uid="uid://do5m85us4jwia" path="res://audio/music/Pause Theme OGG.ogg" id="5_npydk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avurv"]
 albedo_color = Color(0.997619, 0, 0.214608, 1)
@@ -15,8 +16,9 @@ size = Vector3(1.22, 0.014, 0.177)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ap7o"]
 size = Vector3(1.42578, 0.441162, 0.154297)
 
-[node name="AM_PauseMenu" instance=ExtResource("1_ejwgg")]
+[node name="AM_PauseMenu" node_paths=PackedStringArray("music") instance=ExtResource("1_ejwgg")]
 script = ExtResource("2_fob5h")
+music = NodePath("PauseMenuMusic")
 
 [node name="PauseMenuMesh" parent="PauseMenu/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39698e-07, 0, 4.17233e-07)
@@ -87,6 +89,11 @@ script = ExtResource("3_fob5h")
 [node name="ExitCollision" type="CollisionShape3D" parent="Buttons/ExitAttachment/ExitButton" index="0"]
 transform = Transform3D(1, 2.18279e-07, 6.18187e-07, -2.18337e-07, 1, 2.38419e-07, -6.18202e-07, 0, 1, -0.0469996, 1.78814e-07, -2.38419e-07)
 shape = SubResource("BoxShape3D_6ap7o")
+
+[node name="PauseMenuMusic" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("5_npydk")
+volume_db = -30.0
+parameters/looping = true
 
 [connection signal="button_clicked" from="Buttons/ResumeAttachment/ResumeButton" to="." method="_on_resume_button_button_clicked"]
 [connection signal="button_hovered" from="Buttons/ResumeAttachment/ResumeButton" to="Selector" method="_on_button_hovered"]

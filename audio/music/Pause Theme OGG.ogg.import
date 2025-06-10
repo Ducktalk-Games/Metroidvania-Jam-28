@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://do5m85us4jwia"
+path="res://.godot/imported/Pause Theme OGG.ogg-e454ba1f059a76cc0e04c22d7e51a843.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Pause Theme OGG.ogg"
+dest_files=["res://.godot/imported/Pause Theme OGG.ogg-e454ba1f059a76cc0e04c22d7e51a843.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

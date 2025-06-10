@@ -49,11 +49,12 @@ func pause_game() -> void:
 		animation_player.play("Unroll")
 		selector.current_button = resume_button
 		is_paused = true
-		music.play()
 		get_tree().create_tween().tween_property(music, "volume_db", -10.0, 0.3)
 		Global.dim_lights_and_spotlight(Global.stage.patron)
 		original_node = Global.patron_animation_tree.state_machine.get_current_node()
-		Global.patron_animation_tree.state_machine.travel("PlayingPiano")
+		Global.patron_animation_tree.state_machine.travel("PlayingPianoPause")
+		await get_tree().create_timer(0.5).timeout
+		music.play()
 
 
 func unpause_game() -> void:

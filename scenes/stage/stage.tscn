@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=95 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -154,6 +154,20 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ap4e"]
 animation = &"PlayingPiano"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lvwud"]
+animation = &"PlayingPiano"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_x6r7u"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v755w"]
+graph_offset = Vector2(-461, -20)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_lvwud")
+nodes/Animation/position = Vector2(-200, 180)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_x6r7u")
+nodes/TimeScale/position = Vector2(-40, 180)
+nodes/output/position = Vector2(140, 220)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_opsrg"]
 animation = &"SlamLid"
 
@@ -170,18 +184,38 @@ xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_opsrg"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t5v3n"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6uyam"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_624yl"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6a4sw"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dgy2l"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1edo"]
+xfade_time = 0.5
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x6r7u"]
 states/End/position = Vector2(581, 80)
 states/Idle/node = SubResource("AnimationNodeAnimation_dtws5")
 states/Idle/position = Vector2(-8, 80)
 states/PlayingPiano/node = SubResource("AnimationNodeAnimation_3ap4e")
 states/PlayingPiano/position = Vector2(286, 80)
+states/PlayingPianoPause/node = SubResource("AnimationNodeBlendTree_v755w")
+states/PlayingPianoPause/position = Vector2(131, 224)
 states/SlamLid/node = SubResource("AnimationNodeAnimation_opsrg")
 states/SlamLid/position = Vector2(450, 80)
 states/Start/position = Vector2(-136, 80)
 states/WakeUp/node = SubResource("AnimationNodeAnimation_634kf")
 states/WakeUp/position = Vector2(131, 80)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_n3cgd"), "PlayingPiano", "SlamLid", SubResource("AnimationNodeStateMachineTransition_lvwud"), "Idle", "WakeUp", SubResource("AnimationNodeStateMachineTransition_3ap4e"), "WakeUp", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_opsrg")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_n3cgd"), "PlayingPiano", "SlamLid", SubResource("AnimationNodeStateMachineTransition_lvwud"), "Idle", "WakeUp", SubResource("AnimationNodeStateMachineTransition_3ap4e"), "WakeUp", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_opsrg"), "Idle", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_t5v3n"), "PlayingPianoPause", "Idle", SubResource("AnimationNodeStateMachineTransition_6uyam"), "WakeUp", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_624yl"), "PlayingPianoPause", "WakeUp", SubResource("AnimationNodeStateMachineTransition_6a4sw"), "PlayingPiano", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_dgy2l"), "PlayingPianoPause", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_o1edo")]
 graph_offset = Vector2(-296, -22)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_oq7t8"]
@@ -529,7 +563,6 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron/SK_Patron")
 narrator = NodePath("StageBody/Narrator")
-kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -757,6 +790,7 @@ autoplay = "Idle"
 [node name="PatronAnimationTree" type="AnimationTree" parent="Stage/StageBody/OffStageEnv/Patron/SK_Patron"]
 tree_root = SubResource("AnimationNodeStateMachine_x6r7u")
 anim_player = NodePath("../AnimationPlayer")
+parameters/PlayingPianoPause/TimeScale/scale = 0.5
 script = ExtResource("26_634kf")
 
 [node name="SpotlightPatron" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("38_dtws5")]
@@ -860,7 +894,6 @@ transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
-visible = false
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)

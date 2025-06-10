@@ -17,5 +17,5 @@ do wait(1)
 Narrator: Once upon a time there was a little mouse, who lived in the forest
 Narrator: Their mom abandoned them, so they were all alone
 Narrator: She didn’t want to be a parent, she wanted to do drugs!
-do Global.dim_lights_and_spotlight_narrator(Global.stage.narrator, false)
+do Global.dim_lights_and_spotlight(Global.stage.narrator, false)
 => END

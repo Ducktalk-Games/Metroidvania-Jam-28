@@ -15,8 +15,6 @@ signal curtains_opened
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#Play the default title music
-	music_player.play()
 	show()
 	#This is to ensure that the grab focus event triggers with the animation
 	#This is due to an internal bug with the ActionButton component

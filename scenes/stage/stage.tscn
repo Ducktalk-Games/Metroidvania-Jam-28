@@ -41,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 [ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
-[ext_resource type="AudioStream" uid="uid://cnhpykb1hlh8q" path="res://assets/music/Shadow_In_The_Sand.ogg" id="41_n3cgd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -603,8 +602,6 @@ _data = {
 &"pivot_to_options": SubResource("Animation_lv745")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_ra5e8"]
 viewport_path = NodePath("Stage/StageBody/Narrator/DialogueContainer/SubViewport")
 
@@ -884,6 +881,7 @@ size = Vector2i(220, 52)
 stream = SubResource("AudioStreamInteractive_634kf")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="MainSpotlight" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0.150712, 6.37526, -0.1889)
@@ -1058,7 +1056,6 @@ spot_angle = 7.36489
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
 unique_name_in_owner = true
-stream = ExtResource("41_n3cgd")
 bus = &"Music"
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]

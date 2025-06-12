@@ -44,6 +44,7 @@ func pause_game() -> void:
 	if Global.current_menu_state == Global.MenuState.GAME:
 		Global.current_menu_state = Global.MenuState.PAUSE
 		Global.current_parent_menu_state = Global.MenuState.PAUSE
+		Global.disable_player_input()
 		animation_player.speed_scale = 1.5
 		animation_player.play("Unroll")
 		selector.current_button = resume_button
@@ -72,7 +73,7 @@ func unpause_game() -> void:
 
 		Global.patron_animation_tree.state_machine.travel(original_node)
 		Global.dim_lights_and_spotlight(Global.stage.patron, false)
-
+		Global.enable_player_input()
 		is_paused = false
 
 

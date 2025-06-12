@@ -968,6 +968,7 @@ transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204
 stage_camera = NodePath("../MainCamera")
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]

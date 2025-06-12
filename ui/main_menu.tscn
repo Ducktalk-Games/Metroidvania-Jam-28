@@ -146,7 +146,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainUI/UI/MarginContainer"]
 layout_mode = 2
-mouse_filter = 2
+focus_mode = 2
 mouse_force_pass_scroll_events = false
 alignment = 1
 
@@ -162,7 +162,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(102.515, 59.055)
 layout_mode = 2
 size_flags_horizontal = 4
-mouse_filter = 2
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
@@ -179,10 +178,10 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="OptionsButton" type="Button" parent="MainUI/UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(157.6, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-mouse_filter = 2
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
@@ -202,7 +201,6 @@ stretch_mode = 5
 custom_minimum_size = Vector2(146.665, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-mouse_filter = 2
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
@@ -222,7 +220,6 @@ stretch_mode = 5
 custom_minimum_size = Vector2(91.63, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-mouse_filter = 2
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"

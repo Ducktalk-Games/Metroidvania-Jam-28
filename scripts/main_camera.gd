@@ -3,6 +3,7 @@ class_name MainCamera
 extends Camera3D
 
 @onready var camera_animation_player: AnimationPlayer = %CameraAnimationPlayer
+@onready var main_menu: MainMenu = %MainMenu
 
 signal pivoted_to_parent_menu
 
@@ -58,3 +59,4 @@ func pivot_from_credits() -> void:
 func wait_for_from_anim_to_finish() -> void:
 	await camera_animation_player.animation_finished
 	pivoted_to_parent_menu.emit()
+	main_menu.options_button.call_deferred("grab_focus")

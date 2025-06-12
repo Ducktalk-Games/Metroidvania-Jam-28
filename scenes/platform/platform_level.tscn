@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=39 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
 [ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://lib/box_triggers/forest_city_trigger.tscn" id="7_unilm"]
-[ext_resource type="Script" uid="uid://bmeid2lkyat51" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
+[ext_resource type="Script" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://mfic544ut5bu" path="res://scenes/platform/moving_platform.tscn" id="10_tgbak"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
+[ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/background.tscn" id="12_7gmst"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -663,16 +664,28 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.864
 curve = SubResource("Curve3D_tgbak")
 
 [node name="SM_BushProp2" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 5.8259, 0.0450185, -0.198232)
+transform = Transform3D(1.33242, 0, -0.466919, 0, 1.41186, 0, 0.466919, 0, 1.33242, 4.84777, 0.0450185, 0.0149912)
 
 [node name="SM_BushProp6" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.1346, 0, 0, 0, 1.1346, 0, 0, 0, 1.1346, 6.58746, 0.0450185, -0.254376)
-
-[node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.08998, 0.0450185, -2.81719)
+transform = Transform3D(1.1346, 0, 0, 0, 1.1346, 0, 0, 0, 1.1346, 5.48474, 0.0450185, -0.254376)
 
 [node name="SM_BushProp5" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.85344, 0, 0, 0, 1.85344, 0, 0, 0, 1.85344, 7.10277, 0.0450185, -3.03461)
+transform = Transform3D(1.9624, 0, 0.349875, 0, 1.99335, 0, -0.349875, 0, 1.9624, 6.43029, 0.3041, -3.17777)
+
+[node name="SM_BushProp9" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(2.95309, 0, 0.765411, 0, 3.00963, 0, -0.587514, 0, 3.84728, -0.820322, 0.014778, -2.9494)
+
+[node name="SM_BushProp8" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(2.99681, 0, -1.77298, 0, 3.05595, 0, 0.658123, 0, 8.0734, -2.59052, -0.561941, -2.86761)
+
+[node name="SM_BushProp7" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(1.85344, 0, 0, 0, 1.85344, 0, 0, 0, 1.85344, 5.34467, 0.0450185, -3.03461)
+
+[node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(1.29464, -0.0110193, -0.563141, 0, 1.41159, -0.0276215, 0.563249, 0.0253283, 1.29439, 4.43199, 0.126085, -2.86735)
 
 [node name="SM_BushProp4" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.16465, 0, 0, 0, 1.16465, 0, 0, 0, 1.16465, 7.22116, 0.0485524, -0.104727)
+transform = Transform3D(0.980592, 0, 0.62837, 0, 1.16465, 0, -0.62837, 0, 0.980592, 6.07886, 0.0485524, -0.104727)
+
+[node name="Background" parent="." instance=ExtResource("12_7gmst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.19859, -0.167568, -3.844)

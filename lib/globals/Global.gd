@@ -4,6 +4,7 @@ enum MenuState {
 	MAIN,
 	PAUSE,
 	OPTIONS,
+	OPTIONS_INGAME,
 	CREDITS,
 	GAME
 }
@@ -21,7 +22,7 @@ var stage: Stage
 var current_platform_level: PlatformLevel
 var target_scene: PackedScene
 var target_platform_level: PlatformLevel
-
+var can_pause_game: bool = false
 var patron_animation_tree: PatronAnimationTree
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
@@ -39,7 +40,6 @@ func disable_player_input() -> void:
 		if body:
 			var can_receive_input: CanReceiveInput = Component.find(body, "CanReceiveInput")
 			can_receive_input.disable()
-			
 
 
 func enable_player_input() -> void:

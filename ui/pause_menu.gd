@@ -1,12 +1,22 @@
 extends Node3D
 
-@onready var original_position: Vector3 = position
+@onready
+var original_position: Vector3 = position
 
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var buttons: Node3D = %Buttons
+@onready
+var animation_player: AnimationPlayer = %AnimationPlayer
 
-@onready var selector: Selector = %Selector
-@onready var resume_button: Area3D = %ResumeButton
+@onready
+var buttons: Node3D = %Buttons
+
+@onready
+var selector: Selector = %Selector
+
+@onready
+var resume_button: Area3D = %ResumeButton
+
+@export
+var stage_camera: MainCamera
 
 var original_node: String
 var original_song: StringName
@@ -22,6 +32,14 @@ func _ready() -> void:
 	hide_buttons()
 
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause") && Global.can_pause_game:
+		if !is_paused:
+			pause_game()
+		else:
+			unpause_game()
+
+
 func hide_buttons() -> void:
 	for child in buttons.get_children() as Array[Node3D]:
 		child.hide()
@@ -30,14 +48,6 @@ func hide_buttons() -> void:
 func show_buttons() -> void:
 	for child in buttons.get_children() as Array[Node3D]:
 		child.show()
-
-
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"):
-		if not is_paused:
-			pause_game()
-		else:
-			unpause_game()
 
 
 func pause_game() -> void:
@@ -93,7 +103,8 @@ func _on_resume_button_button_clicked(_button: Area3D) -> void:
 
 
 func _on_options_button_button_clicked(_button: Area3D) -> void:
-	print("OPTIONS MENU")
+	stage_camera.pivot_to_options(true)
+	Global.enable_options_menu()
 
 
 func _on_exit_button_button_clicked(_button: Area3D) -> void:

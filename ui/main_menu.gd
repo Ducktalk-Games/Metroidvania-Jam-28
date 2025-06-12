@@ -52,8 +52,9 @@ func _on_exit_button_pressed() -> void:
 
 
 func show_ui() -> void:
-	main_ui.show()
-	play_button.grab_focus()
+	if Global.current_menu_state == Global.MenuState.MAIN:
+		main_ui.show()
+		play_button.grab_focus()
 
 
 func _on_curtain_animation_player_animation_finished(anim_name: StringName) -> void:

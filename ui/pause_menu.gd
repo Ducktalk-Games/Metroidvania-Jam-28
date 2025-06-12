@@ -108,4 +108,5 @@ func _on_options_button_button_clicked(_button: Area3D) -> void:
 
 
 func _on_exit_button_button_clicked(_button: Area3D) -> void:
-	get_tree().quit()
+	Global.close_game()
+	#get_tree().quit()

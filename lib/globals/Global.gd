@@ -104,6 +104,24 @@ func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
 	await stage.stage_body.curtain_anim_player.animation_finished
 
 
+func close_game() -> void:
+	disable_player_input()
+	var main_menu: MainMenu = stage.stage_body.get_node("MainMenu")
+
+	#stage.stage_body.curtain_anim_player.play("close_curtain", 1, 1.0, true)
+	#await stage.stage_body.curtain_anim_player.animation_finished
+
+	#main_menu.curtain_animation_player.play("curtain_open", 1, 1.0, false)
+	main_menu.curtain_animation_player.play("curtain_open")
+	await main_menu.curtain_animation_player.animation_finished
+
+	Global.stage.patron.set_music_to("main_menu")
+	stage.reset_global_state()
+	current_menu_state = MenuState.MAIN
+	main_menu.show()
+	pass
+
+
 func disable_options_menu() -> void:
 	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
 	options_amp.has_input_enabled = false

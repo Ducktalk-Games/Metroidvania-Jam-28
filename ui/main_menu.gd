@@ -1,3 +1,4 @@
+class_name MainMenu
 extends Node3D
 
 @onready var curtain_animation_player: AnimationPlayer = %CurtainAnimationPlayer

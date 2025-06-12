@@ -28,22 +28,7 @@ func _is_relocating() -> bool:
 
 
 func _ready() -> void:
-
-	update_controllers()
-	Global.stage = self
-	Global.kill_dialog = kill_dialog
-
-	if has_pocketwatch or has_scissors:
-		var can_loot: CanLoot = Component.find(stage_body, "CanLoot") as CanLoot
-
-		if has_pocketwatch:
-			can_loot.inventory.append(Global.Ability.POCKET_WATCH)
-
-		if has_scissors:
-			can_loot.inventory.append(Global.Ability.SCISSORS)
-
-	if startup_level:
-		Global.curtains_fall(startup_level)
+	reset_global_state()
 
 
 # Enable and disable the stage and player components according to the current body
@@ -69,6 +54,24 @@ func _physics_process(_delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch"):
 		switch_current_body()
+
+
+func reset_global_state() -> void:
+	update_controllers()
+	Global.stage = self
+	Global.kill_dialog = kill_dialog
+
+	if has_pocketwatch or has_scissors:
+		var can_loot: CanLoot = Component.find(stage_body, "CanLoot") as CanLoot
+
+		if has_pocketwatch:
+			can_loot.inventory.append(Global.Ability.POCKET_WATCH)
+
+		if has_scissors:
+			can_loot.inventory.append(Global.Ability.SCISSORS)
+
+	if startup_level:
+		Global.curtains_fall(startup_level)
 
 
 func relocate_player() -> void:

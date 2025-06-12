@@ -108,9 +108,9 @@ shape = SubResource("BoxShape3D_2ntvs")
 [node name="SliderMesh" type="MeshInstance3D" parent="SfxSlider/SliderCollision"]
 mesh = SubResource("BoxMesh_kxyb1")
 
-[connection signal="mouse_entered" from="MasterSlider" to="." method="_on_slider_mouse_entered"]
-[connection signal="mouse_exited" from="MasterSlider" to="." method="_on_slider_mouse_exited"]
-[connection signal="mouse_entered" from="MusicSlider" to="." method="_on_slider_mouse_entered"]
-[connection signal="mouse_exited" from="MusicSlider" to="." method="_on_slider_mouse_exited"]
-[connection signal="mouse_entered" from="SfxSlider" to="." method="_on_slider_mouse_entered"]
-[connection signal="mouse_exited" from="SfxSlider" to="." method="_on_slider_mouse_exited"]
+[connection signal="mouse_entered" from="MasterSlider" to="." method="_on_master_slider_mouse_entered"]
+[connection signal="mouse_exited" from="MasterSlider" to="." method="_on_master_slider_mouse_exited"]
+[connection signal="mouse_entered" from="MusicSlider" to="." method="_on_music_slider_mouse_entered"]
+[connection signal="mouse_exited" from="MusicSlider" to="." method="_on_music_slider_mouse_exited"]
+[connection signal="mouse_entered" from="SfxSlider" to="." method="_on_sfx_slider_mouse_entered"]
+[connection signal="mouse_exited" from="SfxSlider" to="." method="_on_sfx_slider_mouse_exited"]

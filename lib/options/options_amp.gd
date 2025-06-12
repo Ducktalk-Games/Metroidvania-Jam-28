@@ -118,7 +118,15 @@ func _process(delta: float) -> void:
 
 	if slider_grabbed and has_mouse_input_enabled:
 		var current_mouse_y_position: float = get_viewport().get_mouse_position().x
-		music_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
+
+		if focused_slider == %MasterSlider:
+			master_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
+
+		if focused_slider == %MusicSlider:
+			music_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
+
+		if focused_slider == %SfxSlider:
+			sfx_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
 
 
 func _input(event: InputEvent) -> void:
@@ -158,23 +166,61 @@ func _input(event: InputEvent) -> void:
 			call_deferred("set_focused_slider", %MusicSlider)
 
 	if Input.is_action_just_pressed("button_select") and slider_hovered and has_mouse_input_enabled:
-		point_a_ss_loc = get_viewport().get_camera_3d().unproject_position(point_a.global_position)
-		point_b_ss_loc = get_viewport().get_camera_3d().unproject_position(point_b.global_position)
+		var selected_point_a: Marker3D = null
+		var selected_point_b: Marker3D = null
+
+		if focused_slider == %MasterSlider:
+				selected_point_a = point_a
+				selected_point_b = point_b
+
+		if focused_slider == %MusicSlider:
+				selected_point_a = point_c
+				selected_point_b = point_d
+
+		if focused_slider == %SfxSlider:
+				selected_point_a = point_e
+				selected_point_b = point_f
+
+		point_a_ss_loc = get_viewport().get_camera_3d().unproject_position(selected_point_a.global_position)
+		point_b_ss_loc = get_viewport().get_camera_3d().unproject_position(selected_point_b.global_position)
 		slider_grabbed = true
 
 	if Input.is_action_just_released("button_select") and has_mouse_input_enabled:
 		slider_grabbed = false
 
 
-func _on_slider_mouse_entered() -> void:
+func set_focused_slider(slider: Area3D) -> void:
+	focused_slider = slider
+
+
+func _on_master_slider_mouse_entered() -> void:
 	if has_mouse_input_enabled:
+		call_deferred("set_focused_slider", %MasterSlider)
 		slider_hovered = true
 
 
-func _on_slider_mouse_exited() -> void:
+func _on_master_slider_mouse_exited() -> void:
 	if has_mouse_input_enabled:
 		slider_hovered = false
 
 
-func set_focused_slider(slider: Area3D) -> void:
-	focused_slider = slider
+func _on_music_slider_mouse_entered() -> void:
+	if has_mouse_input_enabled:
+		call_deferred("set_focused_slider", %MusicSlider)
+		slider_hovered = true
+
+
+func _on_music_slider_mouse_exited() -> void:
+	if has_mouse_input_enabled:
+		slider_hovered = false
+
+
+func _on_sfx_slider_mouse_entered() -> void:
+	if has_mouse_input_enabled:
+		call_deferred("set_focused_slider", %SfxSlider)
+		slider_hovered = true
+
+
+func _on_sfx_slider_mouse_exited() -> void:
+	if has_mouse_input_enabled:
+		slider_hovered = false

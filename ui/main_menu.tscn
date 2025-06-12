@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d1wwv7wnet3rg"]
+[gd_scene load_steps=27 format=3 uid="uid://d1wwv7wnet3rg"]
 
 [ext_resource type="Script" uid="uid://f85x4vebaw5k" path="res://ui/main_menu.gd" id="1_p8ri8"]
 [ext_resource type="Shader" uid="uid://bvppykyi3ougu" path="res://addons/godot_vat/shaders/vat_multiple_anims.gdshader" id="2_ubpvv"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://di11q0mhb4hdo" path="res://addons/action_button/action_button.gd" id="9_kaxbk"]
 [ext_resource type="Texture2D" uid="uid://cv31o8qgqd0j" path="res://assets/main_menu/Options_01.png" id="10_bgtsx"]
 [ext_resource type="Resource" uid="uid://bf14mh5ibrtry" path="res://ui/main_menu_action_button.tres" id="10_kaxbk"]
+[ext_resource type="Texture2D" uid="uid://deug35iid454o" path="res://ui/house_logo.png" id="11_8jgmr"]
 [ext_resource type="Texture2D" uid="uid://kkbr1oniltwk" path="res://assets/main_menu/Credits_01.png" id="11_kaxbk"]
 [ext_resource type="Texture2D" uid="uid://cs407v210vsuq" path="res://assets/main_menu/Exit_01.png" id="12_0nobx"]
 
@@ -37,7 +38,7 @@ shader_parameter/offset_map = ExtResource("4_5klac")
 shader_parameter/normal_map = ExtResource("3_arv2f")
 shader_parameter/texture_albedo = ExtResource("5_iyrh0")
 shader_parameter/fps = 24.0
-shader_parameter/time_alpha = 0.0
+shader_parameter/time_alpha = 1.0
 shader_parameter/specular = 0.048
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 1.0
@@ -134,13 +135,15 @@ theme = SubResource("Theme_kaxbk")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainUI/UI"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 101.0
-offset_right = -368.0
-offset_bottom = -101.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -201.0
+offset_right = 154.0
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -148,12 +151,12 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MainUI/UI/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 74.99)
+[node name="TextureRect" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 148.17)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "PlaceHolder Title"
-horizontal_alignment = 1
+texture = ExtResource("11_8jgmr")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="PlayButton" type="Button" parent="MainUI/UI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

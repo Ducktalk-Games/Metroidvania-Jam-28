@@ -4,6 +4,7 @@ enum MenuState {
 	MAIN,
 	PAUSE,
 	TRANSITIONING,
+	PERFORMANCE,
 	OPTIONS,
 	CREDITS,
 	GAME
@@ -26,6 +27,8 @@ var target_platform_level: PlatformLevel
 var patron_animation_tree: PatronAnimationTree
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
+
+signal curtains_opened
 
 
 func spawn_item_popup(item: Ability) -> ItemPopup:
@@ -80,6 +83,7 @@ func _on_curtains_opened(_animation: String) -> void:
 	stage.stage_body.curtain_anim_player.animation_finished.disconnect(_on_curtains_opened)
 	enable_player_input()
 	Global.current_menu_state = Global.MenuState.GAME
+	curtains_opened.emit()
 
 
 func set_patron_animation_tree(animation_tree: PatronAnimationTree) -> void:

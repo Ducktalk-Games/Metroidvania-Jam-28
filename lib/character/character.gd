@@ -41,3 +41,14 @@ func _process(delta: float) -> void:
 				move_comp.enable()
 	else:
 		t = delta
+
+
+func rotate_to_audience() -> MethodTweener:
+	var player_og_quat: Quaternion = character_mesh.global_basis.get_rotation_quaternion()
+	var tween_method: MethodTweener = get_tree().create_tween().tween_method(
+			func(delta: float) -> void:
+				var b := Basis(player_og_quat.slerp(Quaternion(Vector3.UP, TAU), delta))
+				character_mesh.global_basis = b, 0.0, 1.0, 0.2)
+	await tween_method.finished
+	return tween_method
+		

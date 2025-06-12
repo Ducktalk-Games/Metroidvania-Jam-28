@@ -16,7 +16,7 @@ extends Node3D
 @export var has_scissors := false
 @export var startup_level: PackedScene
 
-@onready var stage_body: Character = %StageBody
+@onready var stage_body: StageCharacter = %StageBody
 @onready var player_child_body: Character = %Player
 
 var stage_relocating: bool = false

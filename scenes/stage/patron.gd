@@ -14,3 +14,4 @@ func set_music_to(song: StringName) -> void:
 
 	if not music.playing:
 		music.play()
+		await music.finished

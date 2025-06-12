@@ -51,4 +51,5 @@ func _on_curtain_animation_player_animation_finished(anim_name: StringName) -> v
 	if anim_name == "curtain_open":
 		curtains_opened.emit()
 		# 010_intro
-		DialogueSequencer.start_dialog("uid://cqs1s27w3ad8t")
+		if not Global.stage.startup_level:
+			DialogueSequencer.start_dialog("uid://cqs1s27w3ad8t")

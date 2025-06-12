@@ -8,7 +8,7 @@ var popup_balloon: DialogueManagerExampleBalloon
 
 
 func _ready() -> void:
-	DialogueSequencer.set(get_parent().name.to_lower() + "_bubble", self)
+	DialogueSequencer.set(name, self)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	DialogueSequencer.show_dialog.connect(_handle_dialog)
 

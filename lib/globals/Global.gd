@@ -3,6 +3,8 @@ extends Node
 enum MenuState {
 	MAIN,
 	PAUSE,
+	TRANSITIONING,
+	PERFORMANCE,
 	OPTIONS,
 	OPTIONS_INGAME,
 	CREDITS,
@@ -27,6 +29,8 @@ var patron_animation_tree: PatronAnimationTree
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
 
+signal curtains_opened
+
 
 func spawn_item_popup(item: Ability) -> ItemPopup:
 	var item_popup := ITEM_POPUP.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as ItemPopup
@@ -50,6 +54,7 @@ func enable_player_input() -> void:
 
 
 func curtains_fall(target: PackedScene) -> void:
+	Global.current_menu_state = Global.MenuState.TRANSITIONING
 	target_scene = target
 	stage.stage_body.curtain_anim_player.play("close_curtain")
 	stage.stage_body\
@@ -78,6 +83,8 @@ func _curtains_rise() -> void:
 func _on_curtains_opened(_animation: String) -> void:
 	stage.stage_body.curtain_anim_player.animation_finished.disconnect(_on_curtains_opened)
 	enable_player_input()
+	Global.current_menu_state = Global.MenuState.GAME
+	curtains_opened.emit()
 
 
 func set_patron_animation_tree(animation_tree: PatronAnimationTree) -> void:

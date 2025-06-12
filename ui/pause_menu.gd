@@ -51,6 +51,7 @@ func show_buttons() -> void:
 
 
 func pause_game() -> void:
+	print(str(Global.MenuState.keys()[Global.current_menu_state]))
 	if Global.current_menu_state == Global.MenuState.GAME:
 		Global.current_menu_state = Global.MenuState.PAUSE
 		Global.current_parent_menu_state = Global.MenuState.PAUSE

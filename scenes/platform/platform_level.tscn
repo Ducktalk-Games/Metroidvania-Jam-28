@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=37 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -9,15 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://lib/box_triggers/forest_city_trigger.tscn" id="7_unilm"]
 [ext_resource type="Script" uid="uid://bmeid2lkyat51" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
-[ext_resource type="PackedScene" uid="uid://mfic544ut5bu" path="res://scenes/platform/moving_platform.tscn" id="10_tgbak"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
+[ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/Background.tscn" id="12_7gmst"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iriyj"]
+albedo_color = Color(0.608513, 0.443191, 0.294003, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_jhs13"]
-top_radius = 0.02
-bottom_radius = 0.03
+top_radius = 0.01
+bottom_radius = 0.01
 height = 10.395
 radial_segments = 4
 rings = 0
@@ -85,18 +88,8 @@ size = Vector3(6.06096, 0.072876, 1.81445)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgbak"]
 size = Vector3(3.42578, 0.072876, 1.81445)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hwg6q"]
-size = Vector3(3.63257, 1.06673, 1.44507)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jhs13"]
 size = Vector3(1.14941, 0.072876, 1.81836)
-
-[sub_resource type="Curve3D" id="Curve3D_tgbak"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.006, 0, 0, 0, 0, 0, 0, 0, 0, -0.0188235, 4.13726, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [node name="PlatformLevel" type="Node3D"]
 script = ExtResource("1_jhs13")
@@ -108,6 +101,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90328, 0, 0)
 shape = SubResource("BoxShape3D_yb01c")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_count = 6
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
@@ -116,6 +110,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.777, -0.00479087, 0)
 shape = SubResource("BoxShape3D_unilm")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -123,6 +118,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3098, -0.00479087, 0)
 shape = SubResource("BoxShape3D_iriyj")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -130,6 +126,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.491, -0.00479087, 0)
 shape = SubResource("BoxShape3D_iriyj")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -137,6 +134,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.4858, -0.00479087, 0)
 shape = SubResource("BoxShape3D_iriyj")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -144,6 +142,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.614, -0.00479087, 0)
 shape = SubResource("BoxShape3D_iriyj")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -151,6 +150,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, -0.00479087, 0)
 shape = SubResource("BoxShape3D_ii7us")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -158,6 +158,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, 9.55285, 0)
 shape = SubResource("BoxShape3D_ii7us")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -165,6 +166,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, 18.9725, 0)
 shape = SubResource("BoxShape3D_ii7us")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -172,6 +174,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 12.7415, 0)
 shape = SubResource("BoxShape3D_k3lh4")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -179,6 +182,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 21.8628, 0)
 shape = SubResource("BoxShape3D_k3lh4")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -186,6 +190,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.115, -0.00479087, 0)
 shape = SubResource("BoxShape3D_7gmst")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -193,6 +198,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.995, 0.93846, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -200,6 +206,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1517, 1.36299, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -207,6 +214,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.799, 2.6236, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -214,6 +222,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1051, 1.34246, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -221,6 +230,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.299, 1.20681, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -228,6 +238,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.728, 1.20681, 0)
 shape = SubResource("BoxShape3D_2515i")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -235,6 +246,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.405, 1.20681, 0)
 shape = SubResource("BoxShape3D_62nr4")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -242,6 +254,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.405, 1.20681, 0)
 shape = SubResource("BoxShape3D_62nr4")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -249,6 +262,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 1.31255, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -256,6 +270,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 2.89867, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -263,6 +278,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 4.62377, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -270,6 +286,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 7.93499, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -277,6 +294,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.023, 11.1254, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -284,6 +302,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.023, 20.5609, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -291,6 +310,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 14.3134, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -298,6 +318,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 6.20989, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -305,6 +326,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 17.7993, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -312,6 +334,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.533, 28.6931, 0)
 shape = SubResource("BoxShape3D_ii7us")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -319,6 +342,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.008, 31.5834, 0)
 shape = SubResource("BoxShape3D_k3lh4")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -326,6 +350,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.572, 34.9707, 0)
 shape = SubResource("BoxShape3D_xjm0t")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -333,6 +358,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.023, 30.2814, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -340,6 +366,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.993, 27.5198, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -347,6 +374,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 16.0742, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -354,6 +382,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 33.36, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -361,6 +390,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.197, 36.2872, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -368,6 +398,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.197, 36.2872, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -375,6 +406,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.35, 36.2872, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -382,6 +414,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.725, 36.2872, 0)
 shape = SubResource("BoxShape3D_uk108")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -389,6 +422,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.343, 37.892, 0)
 shape = SubResource("BoxShape3D_uk108")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -396,6 +430,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.281, 37.0587, 0)
 shape = SubResource("BoxShape3D_klwvr")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -403,6 +438,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.962, 35.9771, 0)
 shape = SubResource("BoxShape3D_7erix")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -410,6 +446,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216.45, 35.9771, 0)
 shape = SubResource("BoxShape3D_nhnqd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -417,6 +454,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.111, 37.5551, 0)
 shape = SubResource("BoxShape3D_nhnqd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -424,6 +462,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.368, 38.991, 0)
 shape = SubResource("BoxShape3D_nhnqd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -431,6 +470,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.158, 40.7465, 0)
 shape = SubResource("BoxShape3D_ur5yd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -438,6 +478,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.007, 42.3245, 0)
 shape = SubResource("BoxShape3D_7svi0")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -445,6 +486,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.422, 43.7604, 0)
 shape = SubResource("BoxShape3D_7svi0")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -452,6 +494,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.857, 37.5165, 0)
 shape = SubResource("BoxShape3D_nhnqd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -459,6 +502,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.518, 39.0945, 0)
 shape = SubResource("BoxShape3D_nhnqd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -466,6 +510,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.954, 39.0945, 0.000326157)
 shape = SubResource("BoxShape3D_g7wql")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_count = 3
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
@@ -474,6 +519,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232.912, 39.5356, 0.000326157)
 shape = SubResource("BoxShape3D_h336c")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -481,6 +527,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.525, 39.5356, 0.000326157)
 shape = SubResource("BoxShape3D_h336c")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -488,6 +535,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 237.083, 40.0299, 0.000326157)
 shape = SubResource("BoxShape3D_7ff8n")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -495,6 +543,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.776, 40.5304, 0)
 shape = SubResource("BoxShape3D_nhnqd")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -502,6 +551,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.516, 37.9722, 0)
 shape = SubResource("BoxShape3D_uk108")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -509,6 +559,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.942, 36.6972, 0)
 shape = SubResource("BoxShape3D_xmb3h")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -516,6 +567,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 23.5717, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -523,6 +575,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 25.2964, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -530,6 +583,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.729, 26.5286, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -537,6 +591,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.268, 28.2098, 0)
 shape = SubResource("BoxShape3D_mrteu")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -544,6 +599,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.2887, 1.97235, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -551,6 +607,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.9168, 3.06546, 0)
 shape = SubResource("BoxShape3D_j3s4p")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -558,6 +615,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.094, 3.817, 0)
 shape = SubResource("BoxShape3D_tgbak")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -565,13 +623,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.416, 3.817, 0)
 shape = SubResource("BoxShape3D_tgbak")
 script = ExtResource("2_jhs13")
-string_mesh = SubResource("CylinderMesh_jhs13")
-string_offset = 0.045
-
-[node name="Platform2" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92701, 0.565197, 0)
-shape = SubResource("BoxShape3D_hwg6q")
-script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -579,6 +631,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3407, 1.35852, 0)
 shape = SubResource("BoxShape3D_jhs13")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -586,6 +639,7 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5278, 1.35852, 0)
 shape = SubResource("BoxShape3D_jhs13")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
@@ -593,11 +647,12 @@ string_offset = 0.045
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.2688, 2.16094, 0)
 shape = SubResource("BoxShape3D_jhs13")
 script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="RippableDoor" parent="." node_paths=PackedStringArray("current_level") instance=ExtResource("3_1dhn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 1.07428, -0.621856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 0.07428, -0.621856)
 current_level = NodePath("..")
 
 [node name="LvlBlockout" parent="." instance=ExtResource("4_1dhn5")]
@@ -651,28 +706,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.001, 34.9728, 0)
 
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.43, 34.9994, 0.00389761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.13, 34.9994, 0.00389761)
 
 [node name="CityForestTrigger" parent="." instance=ExtResource("7_unilm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.33, 34.9994, 0.00389761)
 script = ExtResource("9_iriyj")
 label_string = "City -> Forest Trigger"
 
-[node name="MovingPlatform" parent="." instance=ExtResource("10_tgbak")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.86439, 0, 7.51218e-08)
-curve = SubResource("Curve3D_tgbak")
-
 [node name="SM_BushProp2" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 5.8259, 0.0450185, -0.198232)
+transform = Transform3D(1.33242, 0, -0.466919, 0, 1.41186, 0, 0.466919, 0, 1.33242, 4.84777, 0.0450185, 0.0149912)
 
 [node name="SM_BushProp6" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.1346, 0, 0, 0, 1.1346, 0, 0, 0, 1.1346, 6.58746, 0.0450185, -0.254376)
-
-[node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.41186, 0, 0, 0, 1.41186, 0, 0, 0, 1.41186, 6.08998, 0.0450185, -2.81719)
+transform = Transform3D(1.1346, 0, 0, 0, 1.1346, 0, 0, 0, 1.1346, 5.48474, 0.0450185, -0.254376)
 
 [node name="SM_BushProp5" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.85344, 0, 0, 0, 1.85344, 0, 0, 0, 1.85344, 7.10277, 0.0450185, -3.03461)
+transform = Transform3D(1.9624, 0, 0.349875, 0, 1.99335, 0, -0.349875, 0, 1.9624, 6.43029, 0.3041, -3.17777)
+
+[node name="SM_BushProp9" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(2.95309, 0, 0.765411, 0, 3.00963, 0, -0.587514, 0, 3.84728, -0.820322, 0.014778, -2.9494)
+
+[node name="SM_BushProp8" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(2.99681, 0, -1.77298, 0, 3.05595, 0, 0.658123, 0, 8.0734, -2.59052, -0.561941, -2.86761)
+
+[node name="SM_BushProp7" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(1.85344, 0, 0, 0, 1.85344, 0, 0, 0, 1.85344, 5.34467, 0.0450185, -3.03461)
+
+[node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
+transform = Transform3D(1.29464, -0.0110193, -0.563141, 0, 1.41159, -0.0276215, 0.563249, 0.0253283, 1.29439, 4.43199, 0.126085, -2.86735)
 
 [node name="SM_BushProp4" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.16465, 0, 0, 0, 1.16465, 0, 0, 0, 1.16465, 7.22116, 0.0485524, -0.104727)
+transform = Transform3D(0.980592, 0, 0.62837, 0, 1.16465, 0, -0.62837, 0, 0.980592, 6.07886, 0.0485524, -0.104727)
+
+[node name="Background" parent="." instance=ExtResource("12_7gmst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.19859, -0.167568, -3.844)

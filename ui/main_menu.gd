@@ -30,7 +30,9 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	Global.current_menu_state = Global.MenuState.GAME
+	if Global.current_menu_state == Global.MenuState.MAIN:
+		Global.current_menu_state = Global.MenuState.GAME
+
 	Global.stage.patron.set_music_to("silence")
 	curtain_animation_player.play("curtain_open")
 	main_ui.hide()
@@ -68,3 +70,5 @@ func _on_curtain_animation_player_animation_finished(anim_name: StringName) -> v
 
 func _on_timer_timeout() -> void:
 	play_button.call_deferred("grab_focus")
+		# if not Global.stage.startup_level:
+		# 	DialogueSequencer.start_dialog("uid://cqs1s27w3ad8t")

@@ -18,7 +18,7 @@ PlayerStart = NodePath("PlayerStart")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, -2.9)
 
 [node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65313, 0, 4.30556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65313, 0, 4.40556)
 shape = SubResource("BoxShape3D_s38hc")
 
 [node name="DiningTableTrigger" parent="StaticFloor" instance=ExtResource("2_vec2o")]

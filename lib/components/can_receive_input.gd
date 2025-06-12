@@ -15,6 +15,7 @@ func _node_ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
+	if Global.current_menu_state != Global.MenuState.GAME: return
 
 	move_left_right_pressed.emit(Input.get_axis("move_left", "move_right"))
 	jump_pressed.emit(Input.is_action_just_pressed("jump"))

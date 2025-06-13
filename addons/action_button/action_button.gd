@@ -30,7 +30,6 @@ var default_position: Vector2
 var default_z_index: int
 enum state {REST, HOVER, BUTTON_DOWN, BUTTON_UP}
 var current_state: state
-@onready var parent: Container = get_parent_control()
 var is_focused: bool
 var audio_manager: Node
 
@@ -53,7 +52,7 @@ func _ready() -> void:
 
 	toggled.connect(_on_toggle)
 
-	parent = get_parent_control()
+	var parent: Container = get_parent_control()
 
 	if parent is Container:
 		parent.sort_children.connect(_on_container_sort)

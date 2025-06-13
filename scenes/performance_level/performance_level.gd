@@ -16,6 +16,7 @@ func _ready() -> void:
 	# play patron slam -0.5 before audio ends
 	await DialogueManager.dialogue_ended
 	Global.stage.patron.set_music_to("of_mice_and_lions")
+	Global.stage.player_child_body.move_comp.state_machine.travel("Singing")
 	await get_tree().create_timer(OF_MICE_AND_LIONS_OGG.get_length() - 0.2).timeout
 	Global.patron_animation_tree.state_machine.travel("SlamLid")
 	await get_tree().create_timer(1.0).timeout

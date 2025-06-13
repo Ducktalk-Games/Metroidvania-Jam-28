@@ -49,6 +49,6 @@ func rotate_to_audience() -> MethodTweener:
 			func(delta: float) -> void:
 				var b := Basis(player_og_quat.slerp(Quaternion(Vector3.UP, TAU), delta))
 				character_mesh.global_basis = b, 0.0, 1.0, 0.2)
+
 	await tween_method.finished
 	return tween_method
-		

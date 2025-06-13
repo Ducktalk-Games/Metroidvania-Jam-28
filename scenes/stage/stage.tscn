@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=104 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -78,6 +78,9 @@ height = 1.2
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pkue"]
 animation = &"Jump"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x6r7u"]
+animation = &"Singing"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n3cgd"]
 animation = &"Idle"
 
@@ -125,17 +128,21 @@ advance_expression = "not stage_body.velocity.y"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8pkue"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i1iyb"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
-states/End/position = Vector2(804, 100)
+states/End/position = Vector2(870, 100)
 states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
 states/Jump/position = Vector2(364, -4)
-states/Start/position = Vector2(-17, 100)
+states/Singing/node = SubResource("AnimationNodeAnimation_x6r7u")
+states/Singing/position = Vector2(553, 100)
+states/Start/position = Vector2(153, 100)
 states/WalkForward/node = SubResource("AnimationNodeBlendSpace1D_lvwud")
 states/WalkForward/position = Vector2(364, 212)
 states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
 states/WalkInPlace/position = Vector2(364, 100)
-transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue")]
-graph_offset = Vector2(-237, -59)
+transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb")]
+graph_offset = Vector2(-371, -132)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n3cgd"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble/SubViewport")
@@ -143,8 +150,6 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -762,33 +767,36 @@ map_body = NodePath("PlayerChildCollision")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/Armature" index="0"]
-bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
-bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
-bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
-bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
-bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
-bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
-bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
-bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
-bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
-bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
-bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
-bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
+bones/0/position = Vector3(0.0018421, 0, -2.76439)
+bones/0/rotation = Quaternion(-0.705448, -0.0484027, 0.0484027, 0.705448)
+bones/1/rotation = Quaternion(0.0363848, -0.0430996, -0.00149083, 0.998407)
+bones/2/rotation = Quaternion(0.00224325, -0.0698142, -0.000157001, 0.997558)
+bones/3/rotation = Quaternion(-0.0137847, -0.000422832, -0.030656, 0.999435)
+bones/5/position = Vector3(0.783191, 0.2, 6.2557e-09)
+bones/5/rotation = Quaternion(0.752791, 0.522667, 0.156948, 0.368091)
+bones/6/rotation = Quaternion(-0.370428, -3.08382e-08, -7.34253e-09, 0.928861)
+bones/7/position = Vector3(0.100986, 1.03791, 4.07919e-07)
+bones/7/rotation = Quaternion(-0.00017368, -0.48801, 0.000132086, 0.872838)
+bones/8/rotation = Quaternion(-1.39698e-09, -2.79396e-09, 1.16415e-09, 1)
+bones/10/position = Vector3(-0.823833, 0.2, -6.58611e-08)
+bones/10/rotation = Quaternion(-0.915751, 0.345326, 0.0787231, -0.189611)
+bones/11/position = Vector3(-0.15709, 1.26793, 3.58847e-08)
+bones/11/rotation = Quaternion(-0.842223, -0.0798867, -0.0502384, 0.530806)
+bones/12/position = Vector3(-0.10099, 1.03791, -1.06171e-07)
+bones/12/rotation = Quaternion(0.0122394, 0.354094, -0.174704, 0.918665)
+bones/13/rotation = Quaternion(-7.45058e-09, -5.58794e-09, -2.79397e-08, 1)
+bones/15/position = Vector3(0.586658, -0.404988, 1.94996e-09)
 bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
-bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
-bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
-bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
-bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
-bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
-bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
-bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+bones/16/position = Vector3(-0.023131, 1.20506, 0.161165)
+bones/16/rotation = Quaternion(-3.00504e-23, -0.0697929, -6.77387e-24, 0.997562)
+bones/17/position = Vector3(4.28408e-08, 0.986938, 0.161991)
+bones/17/rotation = Quaternion(-0.707107, -3.04324e-08, -3.04324e-08, 0.707107)
+bones/19/position = Vector3(-0.586658, -0.40499, 3.60887e-09)
+bones/19/rotation = Quaternion(1, 0, 7.54979e-08, -1.22465e-16)
+bones/20/position = Vector3(0.000462767, 1.20506, 0.00320851)
+bones/20/rotation = Quaternion(-3.00669e-23, -0.0690893, -6.77941e-24, 0.997611)
+bones/21/position = Vector3(-2.79397e-08, 0.986935, 0.161991)
+bones/21/rotation = Quaternion(-0.707107, -3.0453e-08, -3.0453e-08, 0.707107)
 
 [node name="AnimationTree" type="AnimationTree" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
 tree_root = SubResource("AnimationNodeStateMachine_dtws5")
@@ -830,7 +838,6 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_n3cgd")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55

@@ -24,8 +24,14 @@ var stage: Stage
 var current_platform_level: PlatformLevel
 var target_scene: PackedScene
 var target_platform_level: PlatformLevel
-var can_pause_game: bool = false
+var can_pause_game: bool = true
 var patron_animation_tree: PatronAnimationTree
+var are_lights_dimmed: bool = false
+var is_paused_whilst_lights_dimmed: bool = false
+var last_dimmed: Node3D = null
+var who_is_dimmed: Node3D = null
+var was_input_disabled_before_pause: bool = false
+var is_input_disabled: bool = true
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
 
@@ -44,6 +50,7 @@ func disable_player_input() -> void:
 		if body:
 			var can_receive_input: CanReceiveInput = Component.find(body, "CanReceiveInput")
 			can_receive_input.disable()
+			is_input_disabled = true
 
 
 func enable_player_input() -> void:
@@ -51,6 +58,7 @@ func enable_player_input() -> void:
 		if body:
 			var can_receive_input := Component.find(body, "CanReceiveInput") as CanReceiveInput
 			can_receive_input.enable()
+			is_input_disabled = false
 
 
 func curtains_fall(target: PackedScene) -> void:
@@ -92,7 +100,8 @@ func set_patron_animation_tree(animation_tree: PatronAnimationTree) -> void:
 
 
 func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
-
+	who_is_dimmed = who
+	are_lights_dimmed = dim
 	var height_offset: float = 0.0
 
 	match who:

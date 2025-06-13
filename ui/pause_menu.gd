@@ -51,11 +51,20 @@ func show_buttons() -> void:
 
 
 func pause_game() -> void:
-	print(str(Global.MenuState.keys()[Global.current_menu_state]))
+	if Global.is_input_disabled: Global.was_input_disabled_before_pause = true
+	#print(str(Global.MenuState.keys()[Global.current_menu_state]))
 	if Global.current_menu_state == Global.MenuState.GAME:
 		Global.current_menu_state = Global.MenuState.PAUSE
 		Global.current_parent_menu_state = Global.MenuState.PAUSE
 		Global.disable_player_input()
+		if Global.are_lights_dimmed:
+			Global.dim_lights_and_spotlight(Global.who_is_dimmed, false)
+			Global.last_dimmed = Global.who_is_dimmed
+			Global.is_paused_whilst_lights_dimmed = true
+
+			#Wait for the lights to dim before pausing
+			await get_tree().create_timer(0.25).timeout
+
 		animation_player.speed_scale = 1.5
 		animation_player.play("Unroll")
 		selector.current_button = resume_button
@@ -84,7 +93,15 @@ func unpause_game() -> void:
 
 		Global.patron_animation_tree.state_machine.travel(original_node)
 		Global.dim_lights_and_spotlight(Global.stage.patron, false)
-		Global.enable_player_input()
+		if Global.is_paused_whilst_lights_dimmed:
+			Global.dim_lights_and_spotlight(Global.last_dimmed, true)
+			Global.is_paused_whilst_lights_dimmed = false
+			await get_tree().create_timer(0.25).timeout
+
+		if !Global.was_input_disabled_before_pause:
+			Global.enable_player_input()
+
+		Global.was_input_disabled_before_pause = false
 		is_paused = false
 
 
@@ -109,4 +126,16 @@ func _on_options_button_button_clicked(_button: Area3D) -> void:
 
 
 func _on_exit_button_button_clicked(_button: Area3D) -> void:
-	get_tree().quit()
+	Global.current_menu_state = Global.MenuState.MAIN
+	Global.current_parent_menu_state = Global.MenuState.MAIN
+	is_paused = false
+	#Reset Global State
+	Global.are_lights_dimmed = false
+	Global.is_paused_whilst_lights_dimmed = false
+	Global.was_input_disabled_before_pause = false
+	Global.was_input_disabled_before_pause = false
+	Global.last_dimmed = null
+	Global.who_is_dimmed = null
+	#target_platform_level
+	#current_platform_level
+	get_tree().reload_current_scene()

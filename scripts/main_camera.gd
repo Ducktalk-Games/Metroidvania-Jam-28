@@ -36,10 +36,10 @@ func pivot_from_options(ingame: bool = false) -> void:
 
 	if ingame:
 		Global.current_menu_state = Global.MenuState.PAUSE
-		Global.disable_options_menu()
-
-	if !ingame:
+	else:
 		Global.current_menu_state = Global.current_parent_menu_state
+
+	Global.disable_options_menu()
 
 	camera_animation_player.play("pivot_to_options", -1, -1, true)
 	wait_for_from_anim_to_finish()
@@ -59,4 +59,4 @@ func pivot_from_credits() -> void:
 func wait_for_from_anim_to_finish() -> void:
 	await camera_animation_player.animation_finished
 	pivoted_to_parent_menu.emit()
-	main_menu.options_button.call_deferred("grab_focus")
+	main_menu.play_button.call_deferred("grab_focus")

@@ -22,6 +22,8 @@ extends Node3D
 var stage_relocating: bool = false
 var player_relocating: bool = false
 
+@onready var can_loot: CanLoot = Component.find(stage_body, "CanLoot") as CanLoot
+
 
 func _is_relocating() -> bool:
 	return stage_relocating or player_relocating
@@ -34,7 +36,6 @@ func _ready() -> void:
 	Global.kill_dialog = kill_dialog
 
 	if has_pocketwatch or has_scissors:
-		var can_loot: CanLoot = Component.find(stage_body, "CanLoot") as CanLoot
 
 		if has_pocketwatch:
 			can_loot.inventory.append(Global.Ability.POCKET_WATCH)
@@ -48,6 +49,7 @@ func _ready() -> void:
 
 # Enable and disable the stage and player components according to the current body
 func update_controllers() -> void:
+
 	var sb_can_move := Component.find(stage_body, "CanMove") as CanMove
 	var cb_can_move := Component.find(player_child_body, "CanMove") as CanMove
 
@@ -72,6 +74,7 @@ func _input(_event: InputEvent) -> void:
 
 
 func relocate_player() -> void:
+
 	var shape_delta: float = player_child_body.map_body.shape.height / 2
 	# Move stage to wher the player is
 	var player_to_stage_loc := Vector3(
@@ -93,6 +96,7 @@ func relocate_player() -> void:
 
 
 func switch_current_body() -> void:
+	if not Global.Ability.POCKET_WATCH in can_loot.inventory: return
 	if (current_body.is_on_floor() and !_is_relocating()):
 		match current_body:
 			stage_body:

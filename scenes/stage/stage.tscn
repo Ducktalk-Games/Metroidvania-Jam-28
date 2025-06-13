@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=103 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -144,7 +144,7 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 radius = 0.321
 height = 1.2
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wnsif"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -335,6 +335,18 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0.239, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%StageBody/../../WorldEnvironment:environment:tonemap_exposure")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_lr1w7"]
 resource_name = "close_curtain"
@@ -380,6 +392,22 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_n3cgd"]
+resource_name = "flicker_lights"
+length = 0.86667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%StageBody/../../WorldEnvironment:environment:tonemap_exposure")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.333333, 0.366667, 0.533333, 0.6, 0.633333, 0.7, 0.733333, 0.766667, 0.833333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.62, 0.1, 0.67, 0.96, 0.1, 0.67, 0.67, 0.1, 0.67, 0.86, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_dtws5"]
 resource_name = "hide_narrator"
 length = 0.8
@@ -414,6 +442,7 @@ _data = {
 &"RESET": SubResource("Animation_8pkue"),
 &"close_curtain": SubResource("Animation_lr1w7"),
 &"dim_lights_spotlight_on": SubResource("Animation_634kf"),
+&"flicker_lights": SubResource("Animation_n3cgd"),
 &"show_lights_spotlight_off": SubResource("Animation_dtws5")
 }
 
@@ -800,7 +829,7 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_n3cgd")
+stream = SubResource("AudioStreamPolyphonic_wnsif")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -908,40 +937,13 @@ shadow_bias = 0.651
 spot_range = 312.922
 spot_attenuation = -0.38
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
+[node name="StageSpotlight" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(0.934248, 0.131924, -0.331326, 0.10109, 0.792989, 0.600791, 0.341996, -0.594781, 0.727512, -2.9341, 6.58383, -9.09619)
 light_energy = 0.357
 shadow_enabled = true
 spot_range = 176.005
 spot_attenuation = -0.38
 spot_angle = 17.83
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(0.920913, -0.188533, -0.341136, 0.312467, 0.880285, 0.357019, 0.232987, -0.435377, 0.869577, -4.00771, 5.5873, 4.5667)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 11.4877
-spot_attenuation = 0.5
-spot_angle = 43.2052
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(0.865244, -0.108624, -0.489442, 0.312467, 0.880285, 0.357019, 0.392067, -0.461843, 0.795603, 2.84677, 1.98971, 4.915)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 4.04814
-spot_attenuation = 0.5
-spot_angle = 30.0546
-
-[node name="SpotLight3D5" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(0.842276, -0.259253, 0.472609, 0.159316, 0.957308, 0.241206, -0.514966, -0.127868, 0.84762, -2.44806, 3.52769, 4.7289)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 4.04814
-spot_attenuation = 0.5
-spot_angle = 15.7139
 
 [node name="Wall3" type="MeshInstance3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(-1.25147e-07, -8.87747, 0, 2.86303, -3.88047e-07, 0, 0, 0, 22.0398, -1.29844, 0.85972, 1.4785)
@@ -987,7 +989,6 @@ stage_camera = NodePath("../MainCamera")
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
-visible = false
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
@@ -1001,6 +1002,15 @@ skeleton = NodePath("")
 transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.977, 18.6306)
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
+
+[node name="OptionsSpotlight" type="SpotLight3D" parent="Stage/StageBody/Options"]
+transform = Transform3D(0.865244, -0.108624, -0.489442, 0.312467, 0.880285, 0.357019, 0.392067, -0.461843, 0.795603, 2.69606, -0.35397, 22.4523)
+light_energy = 0.163
+shadow_enabled = true
+shadow_bias = 1.125
+spot_range = 4.04814
+spot_attenuation = 0.5
+spot_angle = 30.0546
 
 [node name="CreditsMenu" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
@@ -1019,8 +1029,17 @@ skeleton = NodePath("")
 transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
 has_mouse_input_enabled = true
 
-[node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
+[node name="SM_CreditsBoard" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
+
+[node name="CreditsSpotlight" type="SpotLight3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(0.842276, -0.259253, 0.472609, 0.159316, 0.957308, 0.241206, -0.514966, -0.127868, 0.84762, -2.59877, 1.18401, 22.2662)
+light_energy = 1.473
+shadow_enabled = true
+shadow_bias = 1.125
+spot_range = 4.04814
+spot_attenuation = 0.5
+spot_angle = 15.7139
 
 [node name="Narrator" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 2.77621)

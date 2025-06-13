@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b4cn1oytduge2"]
+
+[resource]
+resource_name = "M_BoardFrame"
+cull_mode = 2
+albedo_color = Color(0.196138, 0.11187, 0.0582403, 1)
+roughness = 0.84

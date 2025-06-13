@@ -715,6 +715,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
 [node name="Checkpoint7" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.001, 34.9728, 0)
 
+[node name="Checkpoint8" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 257.185, 43.8151, 0.18616)
+
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.13, 34.9994, 0.00389761)
 

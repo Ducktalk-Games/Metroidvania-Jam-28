@@ -109,4 +109,7 @@ func _on_options_button_button_clicked(_button: Area3D) -> void:
 
 
 func _on_exit_button_button_clicked(_button: Area3D) -> void:
-	get_tree().quit()
+	Global.current_menu_state = Global.MenuState.MAIN
+	Global.current_parent_menu_state = Global.MenuState.MAIN
+	is_paused = false
+	get_tree().reload_current_scene()

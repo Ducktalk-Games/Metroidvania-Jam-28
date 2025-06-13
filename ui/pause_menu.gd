@@ -57,6 +57,8 @@ func pause_game() -> void:
 		Global.current_menu_state = Global.MenuState.PAUSE
 		Global.current_parent_menu_state = Global.MenuState.PAUSE
 		Global.disable_player_input()
+		Global.lock_dialogue_input = true
+
 		if Global.are_lights_dimmed:
 			Global.dim_lights_and_spotlight(Global.who_is_dimmed, false)
 			Global.last_dimmed = Global.who_is_dimmed
@@ -102,7 +104,12 @@ func unpause_game() -> void:
 			Global.enable_player_input()
 
 		Global.was_input_disabled_before_pause = false
+		await call_deferred("enable_dialogue_input")
 		is_paused = false
+
+
+func enable_dialogue_input() -> void:
+		Global.lock_dialogue_input = false
 
 
 func _on_dismiss_finished() -> void:
@@ -136,6 +143,7 @@ func _on_exit_button_button_clicked(_button: Area3D) -> void:
 	Global.was_input_disabled_before_pause = false
 	Global.last_dimmed = null
 	Global.who_is_dimmed = null
+	Global.lock_dialogue_input = false
 	#target_platform_level
 	#current_platform_level
 	get_tree().reload_current_scene()

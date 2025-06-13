@@ -63,7 +63,7 @@ func _process_dialogue() -> void:
 
 func _input(event: InputEvent) -> void:
 	var has_to_process_dialog: bool = Input.is_action_just_pressed("next_line")
-	var is_paused: bool = Global.current_menu_state != Global.MenuState.GAME
+	var is_paused: bool = Global.current_menu_state != Global.MenuState.GAME || Global.lock_dialogue_input
 
 	if has_to_process_dialog && current_dialogue && dialog_ready && !is_paused:
 		_process_dialogue()

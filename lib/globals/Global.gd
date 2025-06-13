@@ -32,6 +32,7 @@ var last_dimmed: Node3D = null
 var who_is_dimmed: Node3D = null
 var was_input_disabled_before_pause: bool = false
 var is_input_disabled: bool = true
+var lock_dialogue_input: bool = false
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
 

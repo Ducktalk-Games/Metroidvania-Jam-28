@@ -144,7 +144,7 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 radius = 0.321
 height = 1.2
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wnsif"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -672,7 +672,7 @@ spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.673738)
 axis_lock_linear_z = true
@@ -681,6 +681,7 @@ script = ExtResource("2_oomxc")
 key_dialog = NodePath("ChildLevel/Player/KeyDialog")
 curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
 can_jump = NodePath("ComponentOwner/CanJump")
+can_die = NodePath("ComponentOwner/CanDie")
 character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 map_body = NodePath("StageCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
@@ -695,7 +696,7 @@ animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree
 speed = 2.0
 animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 inventory = Array[int]([])
-fall_death_offset = -5.0
+fall_death_offset = -15.0
 can_respawn = NodePath("CanRespawn")
 health = null
 value = 50.0
@@ -725,7 +726,7 @@ script = ExtResource("8_nrxvr")
 
 [node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("can_respawn")]
 script = ExtResource("10_1sasl")
-fall_death_offset = -5.0
+fall_death_offset = -15.0
 can_respawn = NodePath("../CanRespawn")
 metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
@@ -829,7 +830,7 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_wnsif")
+stream = SubResource("AudioStreamPolyphonic_n3cgd")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55

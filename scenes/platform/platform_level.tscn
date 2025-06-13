@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=40 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
 [ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/Background.tscn" id="12_7gmst"]
+[ext_resource type="Script" uid="uid://cswxly08gjpka" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -90,6 +91,12 @@ size = Vector3(3.42578, 0.072876, 1.81445)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jhs13"]
 size = Vector3(1.14941, 0.072876, 1.81836)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j285v"]
+size = Vector3(168.7, 2.3, 4.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmg3h"]
+size = Vector3(131.9, 37.5, 4.9)
 
 [node name="PlatformLevel" type="Node3D"]
 script = ExtResource("1_jhs13")
@@ -667,9 +674,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 261.46
 ability = 1
 
 [node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.032, 0)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.953, 0.032, 0)
 
-[node name="FallingPlatformBody" parent="Checkpoint" instance=ExtResource("9_unilm")]
+[node name="FallingPlatformBody" parent="Checkpoint1" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 17.3422, 1.12557, -0.00833002)
 
 [node name="Checkpoint2" parent="." instance=ExtResource("7_hwg6q")]
@@ -739,3 +749,16 @@ transform = Transform3D(0.980592, 0, 0.62837, 0, 1.16465, 0, -0.62837, 0, 0.9805
 
 [node name="Background" parent="." instance=ExtResource("12_7gmst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.19859, -0.167568, -3.844)
+
+[node name="KillArea" type="Area3D" parent="."]
+script = ExtResource("12_j3s4p")
+
+[node name="KillCollision" type="CollisionShape3D" parent="KillArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.35, -2.25, 0)
+shape = SubResource("BoxShape3D_j285v")
+
+[node name="KillCollision2" type="CollisionShape3D" parent="KillArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.05, 15.65, -0.1)
+shape = SubResource("BoxShape3D_wmg3h")
+
+[connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]

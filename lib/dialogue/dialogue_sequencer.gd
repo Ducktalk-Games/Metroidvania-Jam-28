@@ -37,6 +37,7 @@ func set_dialogue_resource(res_path: String) -> DialogueSequencer:
 func start_dialog(res_path: String) -> DialogueSequencer:
 	if Global.kill_dialog: return
 	Global.disable_player_input()
+	Global.can_pause_game = false
 	var mgr := set_dialogue_resource(res_path)
 	next_dialog_id = ""
 	mgr._process_dialogue()

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
-[ext_resource type="PackedScene" uid="uid://db38syn1ybps3" path="res://scenes/performance_level/performance_level.tscn" id="2_n3cgd"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
@@ -42,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="37_634kf"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
+[ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -137,12 +137,14 @@ states/WalkInPlace/position = Vector2(364, 100)
 transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue")]
 graph_offset = Vector2(-237, -59)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3cgd"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble/SubViewport")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -613,8 +615,6 @@ _data = {
 &"pivot_to_options": SubResource("Animation_lv745")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_ra5e8"]
 viewport_path = NodePath("Stage/StageBody/Narrator/narrator_bubble/SubViewport")
 
@@ -642,7 +642,6 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
-startup_level = ExtResource("2_n3cgd")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -658,6 +657,7 @@ map_body = NodePath("StageCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="StageBodyStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
+bus = &"SFX"
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("animation_tree", "animation_tree", "can_respawn")]
 script = ExtResource("2_3kwj0")
@@ -718,6 +718,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, -0.0081576, -1.51
 
 [node name="ChildStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody/ChildLevel"]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -769,7 +770,7 @@ parameters/WalkInPlace/blend_position = 0
 [node name="player_bubble" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
 transform = Transform3D(2.2821e-07, 0, -1.74027, 0, 1.74027, 0, 1.74027, 0, 2.2821e-07, -0.014899, 2.09291, 0.0165422)
 billboard = 1
-texture = SubResource("ViewportTexture_1sasl")
+texture = SubResource("ViewportTexture_n3cgd")
 script = ExtResource("11_400yc")
 metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 
@@ -799,6 +800,7 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
+stream = SubResource("AudioStreamPolyphonic_n3cgd")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -894,6 +896,7 @@ size = Vector2i(220, 52)
 stream = SubResource("AudioStreamInteractive_634kf")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="SFXAudioStream" type="AudioStreamPlayer" parent="Stage/StageBody/OffStageEnv/Patron"]
 
@@ -977,10 +980,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_y85n4")
 }
 
-[node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
+[node name="PauseMenu" parent="Stage/StageBody" node_paths=PackedStringArray("stage_camera") instance=ExtResource("16_suqj7")]
 transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 3.67357)
+stage_camera = NodePath("../MainCamera")
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
 visible = false
 
@@ -1010,10 +1015,9 @@ transform = Transform3D(-9.59624e-08, 0, -2.19536, 0, 10.3263, 0, 2.19536, 0, -9
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
-transform = Transform3D(0.726419, 0, -0.687252, 0, 1, 0, 0.687252, 0, 0.726419, 4.01534, -1.60533, 20.4429)
-mesh = SubResource("BoxMesh_arv8b")
-skeleton = NodePath("")
+[node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("38_opsrg")]
+transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
+has_mouse_input_enabled = true
 
 [node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)

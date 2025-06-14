@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
+[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_lvwud"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
@@ -160,8 +161,6 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wnsif"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -506,7 +505,7 @@ tracks/0/path = NodePath("%StageBody/../../WorldEnvironment:environment:tonemap_
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.333333, 0.366667, 0.533333, 0.6, 0.633333, 0.7, 0.733333, 0.766667, 0.833333, 0.866667, 1.9, 1.93333, 2.83333, 2.86667),
+"times": PackedFloat32Array(0, 0.266667, 0.333333, 0.366667, 0.533333, 0.6, 0.633333, 0.7, 0.733333, 0.766667, 0.833333, 0.866667, 1.76667, 1.8, 2.83333, 2.86667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.62, 0.1, 0.67, 0.96, 0.1, 0.67, 0.67, 0.1, 0.67, 0.86, 0.0, 0.0, 1.0, 0.8, 0.0]
@@ -518,7 +517,7 @@ tracks/1/path = NodePath("%StageBody/../../WorldEnvironment:environment:ambient_
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.9, 1.93333),
+"times": PackedFloat32Array(1.73334, 1.76667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.404511, 0.404511, 0.404511, 1), Color(0.576514, 0.128866, 0.225295, 1)]
@@ -542,7 +541,7 @@ tracks/3/path = NodePath("../../Witnesses:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.9, 1.93333),
+"times": PackedFloat32Array(0, 1.73334, 1.76667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -554,7 +553,7 @@ tracks/4/path = NodePath("../SM_Chair2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.9, 1.93333),
+"times": PackedFloat32Array(0, 1.73334, 1.76667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-3.14657, 0.445348, -5.7346), Vector3(-3.14657, 0.445348, -5.7346), Vector3(-3.41287, 1.24535, -6.20356)]
@@ -566,7 +565,7 @@ tracks/5/path = NodePath("../SM_Chair2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.9, 1.93333),
+"times": PackedFloat32Array(0, 1.73334, 1.76667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.13015, 0), Vector3(0, 1.13015, 0), Vector3(-1.5708, 1.13015, 0)]
@@ -578,7 +577,7 @@ tracks/6/path = NodePath("../SM_FilmCamera2:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.9, 1.93333),
+"times": PackedFloat32Array(0, 1.73334, 1.76667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-1.47449, 1.40927, -4.95885), Vector3(-1.47449, 1.40927, -4.95885), Vector3(-0.402777, 0.809865, -4.37392)]
@@ -590,7 +589,7 @@ tracks/7/path = NodePath("../SM_FilmCamera2:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.9, 1.93333),
+"times": PackedFloat32Array(0, 1.73334, 1.76667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.000702048, 0.110533, 0.00108576), Vector3(0.000702048, 0.110533, 0.00108576), Vector3(-0.000589229, 1.15773, -1.56965)]
@@ -860,6 +859,7 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
+startup_level = ExtResource("2_lvwud")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -1022,7 +1022,6 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 2.03261, -0.218168)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_wnsif")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55

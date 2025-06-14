@@ -73,7 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -175,7 +175,7 @@ Livio Segnini"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Daniel _Phanatiik_ Taveras" type="Label" parent="CenterContainer/Control"]
+[node name="Daniel Phanatiik Taveras" type="Label" parent="CenterContainer/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -189,6 +189,40 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "3D Environment Artist
 Daniel \"Phanatiik\" Taveras"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Elijah Taveras" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Voice Actor
+Elijah Taveras"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Azka" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -22.5
+offset_right = 75.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cover Artist
+Azka"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -287,6 +321,7 @@ autostart = true
 [node name="CreditsMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1a2qj")
 autoplay = true
+parameters/looping = true
 
 [connection signal="animation_finished" from="CenterContainer/NameAnimationPlayer" to="." method="_on_name_animation_player_animation_finished"]
 [connection signal="timeout" from="OffsetTimer" to="." method="name_show"]

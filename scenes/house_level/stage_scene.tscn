@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=3 uid="uid://pq83kor03e6a"]
+
+[ext_resource type="PackedScene" uid="uid://dnsuqc0b2w8w0" path="res://assets/house_rooms/SM_Stage_Room.glb" id="1_eankh"]
+[ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="2_c6s7y"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="3_tsfdx"]
+[ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="4_xxv0j"]
+[ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="5_w2gl8"]
+[ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="6_y2yic"]
+[ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="7_ydfr6"]
+[ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="8_f62m1"]
+[ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="9_yktt8"]
+[ext_resource type="PackedScene" uid="uid://bmrtun15vqyf6" path="res://assets/stage/Piano_Stool.glb" id="10_7shnx"]
+[ext_resource type="PackedScene" uid="uid://bdj2vm2ty0fcj" path="res://assets/stage/Piano.glb" id="11_ejtb7"]
+[ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="12_x2vfx"]
+
+[node name="Stage_Scene" type="Node3D"]
+
+[node name="SM_Stage_Room" parent="." instance=ExtResource("1_eankh")]
+
+[node name="SM_Stage_BaseTest2" parent="." instance=ExtResource("2_c6s7y")]
+transform = Transform3D(0.481501, 0, 0, 0, 0.373874, 0, 0, 0, 0.527478, -0.132599, 1.41258, -2.90982)
+
+[node name="SM_Stage_boarder2" parent="." instance=ExtResource("3_tsfdx")]
+transform = Transform3D(0.584021, 0, 0, 0, 0.584021, 0, 0, 0, 1, -0.6819, 1.03562, -2.57355)
+
+[node name="SM_Stage_LightStrip2" parent="." instance=ExtResource("4_xxv0j")]
+transform = Transform3D(-4.37114e-08, 0, 0.840971, 0, 0.840971, 0, -1, 0, -3.676e-08, 1.3502, 7.53053, 4.90262)
+
+[node name="SM_Chair2" parent="." instance=ExtResource("5_w2gl8")]
+transform = Transform3D(0.340089, 0, 0.970896, 0, 0.815997, 0, -0.747293, 0, 0.441849, -2.1453, 1.55268, 4.15234)
+
+[node name="SM_FilmCamera2" parent="." instance=ExtResource("6_y2yic")]
+transform = Transform3D(0.930103, 0, 0.0120727, 0, 0.868858, 0, -0.0104385, 0, 1.07572, -0.526001, 2.21888, 4.01811)
+
+[node name="SM_Rug2" parent="." instance=ExtResource("7_ydfr6")]
+transform = Transform3D(1.35765, 0, 0, 0, 1.53995, 0, 0, 0, 1.16289, 1.0673, 1.49881, 1.28077)
+
+[node name="SM_Stage_Frame" parent="." instance=ExtResource("8_f62m1")]
+transform = Transform3D(0.625754, 0, 0, 0, 0.617518, 0, 0, 0, 1, -0.8111, 0.836204, -2.59235)
+
+[node name="SM_Spotlight_Base" parent="." instance=ExtResource("9_yktt8")]
+transform = Transform3D(0.37084, 0, 0.534313, 0, 0.531915, 0, -0.592847, 0, 0.334226, 3.5723, 2.10891, 4.43226)
+
+[node name="SM_Spotlight_Base2" parent="." instance=ExtResource("9_yktt8")]
+transform = Transform3D(0.628114, 0, -0.182051, 0, 0.506334, 0, 0.153199, 0, 0.746406, -2.7013, 2.0502, 1.37391)
+
+[node name="Piano_Stool2" parent="." instance=ExtResource("10_7shnx")]
+transform = Transform3D(0.741614, 0, 0, 0, 0.667263, 0, 0, 0, 0.776451, 3.7469, 1.47079, 1.44937)
+
+[node name="Piano" parent="." instance=ExtResource("11_ejtb7")]
+transform = Transform3D(0.795084, 0, -0.221124, 0, 0.9338, 0, 0.234277, 0, 0.750446, 4.2073, 1.8679, 1.14463)
+
+[node name="SM_StageCurtains2" parent="." instance=ExtResource("12_x2vfx")]
+transform = Transform3D(0.678467, 0, 0, 0, 0.599552, 0, 0, 0, 1, 1.0464, 1.83042, -0.69359)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgqgd3jpadiit"]
+[gd_scene load_steps=9 format=3 uid="uid://bgqgd3jpadiit"]
 
 [ext_resource type="Theme" uid="uid://rji5vppge0oc" path="res://dialogue_balloons/floating_balloon_theme.tres" id="1_icgxd"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_1urga"]
 [ext_resource type="Script" uid="uid://cdcn4b3hbqv7y" path="res://ui/item_popup.gd" id="2_toqn8"]
 [ext_resource type="Script" uid="uid://b0q4tujrxaxdc" path="res://lib/components/can_rotate.gd" id="3_1utkn"]
+[ext_resource type="Resource" uid="uid://dqs7hvx6lukw4" path="res://dialogues/030_player_finds_pocketwatch.dialogue" id="3_cs4u5"]
 [ext_resource type="Script" uid="uid://c3uqofysyh80t" path="res://lib/components/can_bob.gd" id="4_1utkn"]
+[ext_resource type="Resource" uid="uid://c4r8sbpmeje6n" path="res://dialogues/050_player_finds_scissors.dialogue" id="4_hmydm"]
 [ext_resource type="PackedScene" uid="uid://bb4dhudim5062" path="res://dialogue_balloons/flavour_text_balloon.tscn" id="6_mx3dx"]
 
 [node name="ItemPopup" type="Control"]
@@ -16,6 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_icgxd")
 script = ExtResource("2_toqn8")
+pocketwatch_narrator_blurb = ExtResource("3_cs4u5")
+scissors_narrator_blurb = ExtResource("4_hmydm")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -81,7 +85,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(2, 56)
+size = Vector2i(200, 56)
 render_target_update_mode = 4
 
 [node name="FlavourTextBalloon" parent="CenterContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_mx3dx")]

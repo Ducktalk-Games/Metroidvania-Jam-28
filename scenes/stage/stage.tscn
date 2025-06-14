@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=108 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -17,13 +17,14 @@
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
-[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_boarder.glb" id="13_8pkue"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="13_8pkue"]
 [ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="13_634kf"]
 [ext_resource type="PackedScene" uid="uid://babsrhu3cucox" path="res://assets/stage/SM_Floor.glb" id="14_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
 [ext_resource type="Script" uid="uid://ctn0wj4uksx34" path="res://scripts/main_camera.gd" id="16_5b43b"]
 [ext_resource type="PackedScene" uid="uid://bhl3dby1g4fyh" path="res://ui/pause_menu.tscn" id="16_suqj7"]
 [ext_resource type="PackedScene" uid="uid://d1wwv7wnet3rg" path="res://ui/main_menu.tscn" id="17_lv745"]
+[ext_resource type="Material" uid="uid://c6pcwcradqspu" path="res://assets/stage/M_Floor_B.tres" id="17_wnsif"]
 [ext_resource type="PackedScene" uid="uid://5d8j6yr1m5qn" path="res://assets/credits_board/SM_CreditsBaord.glb" id="21_arv8b"]
 [ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="23_lr1w7"]
 [ext_resource type="PackedScene" uid="uid://o7155dbkvygk" path="res://assets/character/SK_PlayerCharacter.glb" id="24_lr1w7"]
@@ -74,6 +75,9 @@ adjustment_saturation = 0.44
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_erodg"]
 radius = 0.275116
 height = 1.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v755w"]
+animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pkue"]
 animation = &"Jump"
@@ -129,9 +133,15 @@ advance_expression = "not stage_body.velocity.y"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i1iyb"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g2y51"]
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
 states/End/position = Vector2(870, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_v755w")
+states/Idle/position = Vector2(685, 100)
 states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
 states/Jump/position = Vector2(364, -4)
 states/Singing/node = SubResource("AnimationNodeAnimation_x6r7u")
@@ -141,8 +151,8 @@ states/WalkForward/node = SubResource("AnimationNodeBlendSpace1D_lvwud")
 states/WalkForward/position = Vector2(364, 212)
 states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
 states/WalkInPlace/position = Vector2(364, 100)
-transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb")]
-graph_offset = Vector2(-371, -132)
+transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb"), "Singing", "Idle", SubResource("AnimationNodeStateMachineTransition_g2y51")]
+graph_offset = Vector2(-203, -41)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n3cgd"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble/SubViewport")
@@ -151,13 +161,16 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 radius = 0.321
 height = 1.2
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wnsif"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lr1w7"]
-size = Vector3(15.6741, 0.107074, 1)
+lightmap_size_hint = Vector2i(103, 101)
+material = ExtResource("17_wnsif")
+flip_faces = true
+size = Vector3(18.869, 0.107, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kdtcl"]
 viewport_path = NodePath("Stage/StageBody/OffStageEnv/Matron/matron_bubble/SubViewport")
@@ -825,6 +838,7 @@ viewport_path = NodePath("Stage/StageBody/Narrator/narrator_bubble/SubViewport")
 [node name="World" type="Node3D"]
 
 [node name="DebugLog" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="DebugLabel" type="Label" parent="DebugLog"]
 offset_right = 40.0
@@ -1005,10 +1019,10 @@ script = ExtResource("6_d1yl1")
 
 [node name="KeyDialog" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("32_634kf")]
 unique_name_in_owner = true
-transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
+transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 2.03261, -0.218168)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_n3cgd")
+stream = SubResource("AudioStreamPolyphonic_wnsif")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55

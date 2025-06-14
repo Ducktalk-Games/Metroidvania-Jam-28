@@ -20,4 +20,5 @@ func _ready() -> void:
 	await get_tree().create_timer(OF_MICE_AND_LIONS_OGG.get_length() - 0.2).timeout
 	Global.patron_animation_tree.state_machine.travel("SlamLid")
 	await get_tree().create_timer(1.0).timeout
+	Global.stage.player_child_body.move_comp.state_machine.travel("Idle")
 	Global.stage.stage_body.curtain_anim_player.play("flicker_lights")

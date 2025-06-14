@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bmrtun15vqyf6" path="res://assets/stage/Piano_Stool.glb" id="18_geaq2"]
 [ext_resource type="PackedScene" uid="uid://bdj2vm2ty0fcj" path="res://assets/stage/Piano.glb" id="19_bc3iu"]
 [ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="20_bc3iu"]
+[ext_resource type="PackedScene" uid="uid://dc43gk4ll20bn" path="res://assets/wall/SM_Wall_B.glb" id="22_a4jp6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
 size = Vector3(80.7, 1, 1.1)
@@ -91,40 +92,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1257, -1.25072, -6.08783)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1674, -1.20144, -5.40238)
 
 [node name="SM_Stage_BaseTest2" parent="." instance=ExtResource("10_hx43i")]
-transform = Transform3D(0.481501, 0, 0, 0, 0.373874, 0, 0, 0, 0.527478, 38.0348, 0.211141, -8.3122)
+transform = Transform3D(0.481501, 0, 0, 0, 0.373874, 0, 0, 0, 0.527478, 37.8483, 0.211141, -8.3122)
 
 [node name="SM_Stage_boarder2" parent="." instance=ExtResource("11_ddyxt")]
-transform = Transform3D(0.584021, 0, 0, 0, 0.584021, 0, 0, 0, 1, 37.4855, -0.165823, -7.97593)
+transform = Transform3D(0.584021, 0, 0, 0, 0.584021, 0, 0, 0, 1, 37.299, -0.165823, -7.97593)
 
 [node name="SM_Stage_LightStrip2" parent="." instance=ExtResource("12_f0xqw")]
-transform = Transform3D(-4.37114e-08, 0, 0.840971, 0, 0.840971, 0, -1, 0, -3.676e-08, 39.5176, 6.32909, -0.49976)
+transform = Transform3D(-4.37114e-08, 0, 0.840971, 0, 0.840971, 0, -1, 0, -3.676e-08, 39.3311, 6.32909, -0.49976)
 
 [node name="SM_Chair2" parent="." instance=ExtResource("13_w17w7")]
-transform = Transform3D(0.340089, 0, 0.970896, 0, 0.815997, 0, -0.747293, 0, 0.441849, 36.0221, 0.351243, -1.25004)
+transform = Transform3D(0.340089, 0, 0.970896, 0, 0.815997, 0, -0.747293, 0, 0.441849, 35.8356, 0.351243, -1.25004)
 
 [node name="SM_FilmCamera2" parent="." instance=ExtResource("14_geaq2")]
-transform = Transform3D(0.930103, 0, 0.0120727, 0, 0.868858, 0, -0.0104385, 0, 1.07572, 37.6414, 1.01744, -1.38427)
+transform = Transform3D(0.930103, 0, 0.0120727, 0, 0.868858, 0, -0.0104385, 0, 1.07572, 37.4549, 1.01744, -1.38427)
 
 [node name="SM_Rug2" parent="." instance=ExtResource("15_bc3iu")]
-transform = Transform3D(1.35765, 0, 0, 0, 1.53995, 0, 0, 0, 1.16289, 39.2347, 0.297372, -4.12161)
+transform = Transform3D(1.35765, 0, 0, 0, 1.53995, 0, 0, 0, 1.16289, 39.0482, 0.297372, -4.12161)
 
 [node name="SM_Stage_Frame" parent="." instance=ExtResource("16_f0xqw")]
-transform = Transform3D(0.625754, 0, 0, 0, 0.617518, 0, 0, 0, 1, 37.3563, -0.365236, -7.99473)
+transform = Transform3D(0.625754, 0, 0, 0, 0.617518, 0, 0, 0, 1, 37.1698, -0.365236, -7.99473)
 
 [node name="SM_Spotlight_Base" parent="." instance=ExtResource("17_w17w7")]
-transform = Transform3D(0.37084, 0, 0.534313, 0, 0.531915, 0, -0.592847, 0, 0.334226, 41.7397, 0.907472, -0.970115)
+transform = Transform3D(0.37084, 0, 0.534313, 0, 0.531915, 0, -0.592847, 0, 0.334226, 41.5532, 0.907472, -0.970115)
 
 [node name="SM_Spotlight_Base2" parent="." instance=ExtResource("17_w17w7")]
-transform = Transform3D(0.628114, 0, -0.182051, 0, 0.506334, 0, 0.153199, 0, 0.746406, 35.4661, 0.848762, -4.02847)
+transform = Transform3D(0.628114, 0, -0.182051, 0, 0.506334, 0, 0.153199, 0, 0.746406, 35.2796, 0.848762, -4.02847)
 
 [node name="Piano_Stool2" parent="." instance=ExtResource("18_geaq2")]
-transform = Transform3D(0.741614, 0, 0, 0, 0.667263, 0, 0, 0, 0.776451, 41.9143, 0.269348, -3.95301)
+transform = Transform3D(0.741614, 0, 0, 0, 0.667263, 0, 0, 0, 0.776451, 41.7278, 0.269348, -3.95301)
 
 [node name="Piano" parent="." instance=ExtResource("19_bc3iu")]
-transform = Transform3D(0.795084, 0, -0.221124, 0, 0.9338, 0, 0.234277, 0, 0.750446, 42.3747, 0.666461, -4.25775)
+transform = Transform3D(0.795084, 0, -0.221124, 0, 0.9338, 0, 0.234277, 0, 0.750446, 42.1883, 0.696402, -4.2622)
 
 [node name="SM_StageCurtains2" parent="." instance=ExtResource("20_bc3iu")]
-transform = Transform3D(0.678467, 0, 0, 0, 0.599552, 0, 0, 0, 1, 39.2138, 0.628983, -6.09597)
+transform = Transform3D(0.678467, 0, 0, 0, 0.599552, 0, 0, 0, 1, 39.0273, 0.628983, -6.09597)
+
+[node name="SM_Wall_B3" parent="." instance=ExtResource("22_a4jp6")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 30.7742, 3.14295, -6.23742)
+
+[node name="SM_Wall_B2" parent="." instance=ExtResource("22_a4jp6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 47.9187, 3.1039, -6.25049)
 
 [editable path="StaticFloor/DiningTableTrigger"]
 [editable path="StaticFloor/BucketMopTrigger"]

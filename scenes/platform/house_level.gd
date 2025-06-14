@@ -6,7 +6,6 @@ extends PlatformLevel
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	await Global.curtains_opened
 	var character: StageCharacter = Global.stage.stage_body
 	global_position = character.character_mesh.global_position
 	character.character_mesh.global_position = PlayerStart.global_position

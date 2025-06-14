@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cjjgdx1atxe56"]
+
+[ext_resource type="Texture2D" uid="uid://bauwinwuunrnt" path="res://assets/chair/SM_Chair_BC_Chair_128x128.png" id="1_e51tp"]
+
+[resource]
+resource_name = "M_Chair"
+cull_mode = 2
+albedo_texture = ExtResource("1_e51tp")
+texture_filter = 2

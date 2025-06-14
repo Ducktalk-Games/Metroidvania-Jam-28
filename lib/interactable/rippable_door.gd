@@ -5,8 +5,6 @@ extends Interactable
 
 const HOUSE_LEVEL: PackedScene = preload("res://scenes/platform/house_level.tscn")
 
-var player_og_quat: Quaternion
-
 var no_scissors_dialogue: DialogueResource = preload("res://dialogues/no_scissors_narrator.dialogue")
 
 var stage_character: StageCharacter
@@ -14,7 +12,6 @@ var stage_character: StageCharacter
 
 func _on_interacted(interactor: StageCharacter) -> void:
 	stage_character = interactor
-	player_og_quat = stage_character.character_mesh.global_basis.get_rotation_quaternion()
 	var can_loot: CanLoot = Component.find(Global.stage.stage_body, "CanLoot") as CanLoot
 	Global.disable_player_input()
 	move_to_door()
@@ -41,6 +38,7 @@ func move_to_door() -> PropertyTweener:
 
 
 func rotate_to_door() -> MethodTweener:
+	var player_og_quat: Quaternion = stage_character.character_mesh.global_basis.get_rotation_quaternion()
 	return get_tree()\
 		.create_tween()\
 		.tween_method(

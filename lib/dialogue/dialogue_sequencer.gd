@@ -37,6 +37,8 @@ func set_dialogue_resource(res_path: String) -> DialogueSequencer:
 func start_dialog(res_path: String) -> DialogueSequencer:
 	if Global.kill_dialog: return
 	Global.disable_player_input()
+	#Enable if you want to not allow pausing whilst dialog is playing
+	#Global.can_pause_game = false
 	var mgr := set_dialogue_resource(res_path)
 	next_dialog_id = ""
 	mgr._process_dialogue()
@@ -60,5 +62,8 @@ func _process_dialogue() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_line") and not current_dialogue == null and dialog_ready == true:
+	var has_to_process_dialog: bool = Input.is_action_just_pressed("next_line")
+	var is_paused: bool = Global.current_menu_state != Global.MenuState.GAME || Global.lock_dialogue_input
+
+	if has_to_process_dialog && current_dialogue && dialog_ready && !is_paused:
 		_process_dialogue()

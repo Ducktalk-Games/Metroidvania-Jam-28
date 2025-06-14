@@ -8,7 +8,7 @@ var platform_mesh: MeshInstance3D
 var string_meshes: Array[MeshInstance3D]
 
 @onready var wood_material: ShaderMaterial = preload("uid://msbbyee8tomr")
-var string_material: StandardMaterial3D
+@export var string_material: StandardMaterial3D
 
 @export_tool_button("Reset Platform", "Callable") var reset_action: Callable = reset_platform
 @export_range(2, 10, 1, "or_greater") var string_count: int = 2:
@@ -27,8 +27,10 @@ var string_material: StandardMaterial3D
 
 
 func _ready() -> void:
-	string_material = StandardMaterial3D.new()
-	string_material.albedo_color = Color.TAN
+	if not string_material:
+		string_material = StandardMaterial3D.new()
+		string_material.albedo_color = Color.SADDLE_BROWN
+
 	reset_platform()
 
 

@@ -5,3 +5,4 @@ extends Character
 @export var curtain_anim_player: AnimationPlayer
 
 @export var can_jump: CanJump
+@export var can_die: CanDie

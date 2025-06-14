@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=105 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -35,10 +35,13 @@
 [ext_resource type="AudioStream" uid="uid://beed338kpk22a" path="res://audio/music/Forest theme OGG.ogg" id="31_dtws5"]
 [ext_resource type="AudioStream" uid="uid://bmnschd2l703f" path="res://audio/music/Main Menu theme OGG.ogg" id="32_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://bjg1qm2rlhmkk" path="res://lib/ui/key_dialog.tscn" id="32_634kf"]
+[ext_resource type="AudioStream" uid="uid://b6bq81uypq027" path="res://audio/music/City Theme OGG.ogg" id="33_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://dr3jngosx1u3o" path="res://scenes/platform/platform_level.tscn" id="34_1sasl"]
+[ext_resource type="AudioStream" uid="uid://cdhmvoqac6ua0" path="res://audio/music/Of Mice and Lions OGG.ogg" id="35_n3cgd"]
 [ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="37_634kf"]
 [ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="37_dtws5"]
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
+[ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -74,6 +77,9 @@ height = 1.2
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pkue"]
 animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x6r7u"]
+animation = &"Singing"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n3cgd"]
 animation = &"Idle"
@@ -122,26 +128,30 @@ advance_expression = "not stage_body.velocity.y"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8pkue"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i1iyb"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
-states/End/position = Vector2(804, 100)
+states/End/position = Vector2(870, 100)
 states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
 states/Jump/position = Vector2(364, -4)
-states/Start/position = Vector2(-17, 100)
+states/Singing/node = SubResource("AnimationNodeAnimation_x6r7u")
+states/Singing/position = Vector2(553, 100)
+states/Start/position = Vector2(153, 100)
 states/WalkForward/node = SubResource("AnimationNodeBlendSpace1D_lvwud")
 states/WalkForward/position = Vector2(364, 212)
 states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
 states/WalkInPlace/position = Vector2(364, 100)
-transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue")]
-graph_offset = Vector2(-237, -59)
+transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb")]
+graph_offset = Vector2(-371, -132)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3cgd"]
+viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble/SubViewport")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1sasl"]
-viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/DialogueContainer/SubViewport")
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_dtws5"]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -150,7 +160,7 @@ size = Vector3(15.6741, 0.107074, 1)
 size = Vector3(15.6741, 0.107074, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kdtcl"]
-viewport_path = NodePath("Stage/StageBody/OffStageEnv/Matron/DialogueContainer/SubViewport")
+viewport_path = NodePath("Stage/StageBody/OffStageEnv/Matron/matron_bubble/SubViewport")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dtws5"]
 animation = &"Idle"
@@ -220,15 +230,15 @@ states/Start/position = Vector2(-136, 80)
 states/WakeUp/node = SubResource("AnimationNodeAnimation_634kf")
 states/WakeUp/position = Vector2(131, 80)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_n3cgd"), "PlayingPiano", "SlamLid", SubResource("AnimationNodeStateMachineTransition_lvwud"), "Idle", "WakeUp", SubResource("AnimationNodeStateMachineTransition_3ap4e"), "WakeUp", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_opsrg"), "Idle", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_t5v3n"), "PlayingPianoPause", "Idle", SubResource("AnimationNodeStateMachineTransition_6uyam"), "WakeUp", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_624yl"), "PlayingPianoPause", "WakeUp", SubResource("AnimationNodeStateMachineTransition_6a4sw"), "PlayingPiano", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_dgy2l"), "PlayingPianoPause", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_o1edo")]
-graph_offset = Vector2(-296, -22)
+graph_offset = Vector2(-261, 29)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_oq7t8"]
-viewport_path = NodePath("Stage/StageBody/OffStageEnv/Patron/DialogueContainer/SubViewport")
+viewport_path = NodePath("Stage/StageBody/OffStageEnv/Patron/patron_bubble/SubViewport")
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_8pkue"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_634kf"]
-clip_count = 4
+clip_count = 6
 clip_0/name = &"main_menu"
 clip_0/stream = ExtResource("32_3ap4e")
 clip_0/auto_advance = 0
@@ -241,6 +251,12 @@ clip_2/auto_advance = 0
 clip_3/name = &"forest_theme"
 clip_3/stream = ExtResource("31_dtws5")
 clip_3/auto_advance = 0
+clip_4/name = &"city_theme"
+clip_4/stream = ExtResource("33_3ap4e")
+clip_4/auto_advance = 0
+clip_5/name = &"of_mice_and_lions"
+clip_5/stream = ExtResource("35_n3cgd")
+clip_5/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 0.5,
@@ -274,6 +290,12 @@ Vector2i(-1, 3): {
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 0
+},
+Vector2i(-1, 5): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
 },
 Vector2i(1, 3): {
 "fade_beats": 0.5,
@@ -320,6 +342,102 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0.239, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%StageBody/../../WorldEnvironment:environment:tonemap_exposure")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%StageBody/../../WorldEnvironment:environment:ambient_light_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.404511, 0.404511, 0.404511, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Patron/SK_Patron/SK_Patron/Skeleton3D/SM_Piano:mesh:surface_1/material:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Witnesses:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../SM_Chair2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.14657, 0.445348, -5.7346)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../SM_Chair2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.13015, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../SM_FilmCamera2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.47449, 1.40927, -4.95885)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../SM_FilmCamera2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.000702048, 0.110533, 0.00108576)]
+}
 
 [sub_resource type="Animation" id="Animation_lr1w7"]
 resource_name = "close_curtain"
@@ -365,6 +483,106 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_n3cgd"]
+resource_name = "flicker_lights"
+length = 2.86667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%StageBody/../../WorldEnvironment:environment:tonemap_exposure")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.333333, 0.366667, 0.533333, 0.6, 0.633333, 0.7, 0.733333, 0.766667, 0.833333, 0.866667, 1.9, 1.93333, 2.83333, 2.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.62, 0.1, 0.67, 0.96, 0.1, 0.67, 0.67, 0.1, 0.67, 0.86, 0.0, 0.0, 1.0, 0.8, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%StageBody/../../WorldEnvironment:environment:ambient_light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.9, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.404511, 0.404511, 0.404511, 1), Color(0.576514, 0.128866, 0.225295, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Patron/SK_Patron/SK_Patron/Skeleton3D/SM_Piano:mesh:surface_1/material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.833333, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Witnesses:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.9, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SM_Chair2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.14657, 0.445348, -5.7346), Vector3(-3.14657, 0.445348, -5.7346), Vector3(-3.41287, 1.24535, -6.20356)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../SM_Chair2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.9, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.13015, 0), Vector3(0, 1.13015, 0), Vector3(-1.5708, 1.13015, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../SM_FilmCamera2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.9, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.47449, 1.40927, -4.95885), Vector3(-1.47449, 1.40927, -4.95885), Vector3(-0.402777, 0.809865, -4.37392)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../SM_FilmCamera2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.9, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.000702048, 0.110533, 0.00108576), Vector3(0.000702048, 0.110533, 0.00108576), Vector3(-0.000589229, 1.15773, -1.56965)]
+}
+
 [sub_resource type="Animation" id="Animation_dtws5"]
 resource_name = "hide_narrator"
 length = 0.8
@@ -399,6 +617,7 @@ _data = {
 &"RESET": SubResource("Animation_8pkue"),
 &"close_curtain": SubResource("Animation_lr1w7"),
 &"dim_lights_spotlight_on": SubResource("Animation_634kf"),
+&"flicker_lights": SubResource("Animation_n3cgd"),
 &"show_lights_spotlight_off": SubResource("Animation_dtws5")
 }
 
@@ -600,10 +819,8 @@ _data = {
 &"pivot_to_options": SubResource("Animation_lv745")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_arv8b"]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_ra5e8"]
-viewport_path = NodePath("Stage/StageBody/Narrator/DialogueContainer/SubViewport")
+viewport_path = NodePath("Stage/StageBody/Narrator/narrator_bubble/SubViewport")
 
 [node name="World" type="Node3D"]
 
@@ -622,6 +839,7 @@ unique_name_in_owner = true
 environment = SubResource("Environment_ecxui")
 
 [node name="Stage" type="Node3D" parent="." node_paths=PackedStringArray("current_body", "debug_label", "spotlight", "patron", "narrator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.824679)
 script = ExtResource("1_ecxui")
 current_body = NodePath("StageBody")
 debug_label = NodePath("../DebugLog/DebugLabel")
@@ -630,7 +848,7 @@ patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
 startup_level = null
 
-[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "character_mesh", "map_body")]
+[node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.673738)
 axis_lock_linear_z = true
@@ -639,11 +857,13 @@ script = ExtResource("2_oomxc")
 key_dialog = NodePath("ChildLevel/Player/KeyDialog")
 curtain_anim_player = NodePath("OffStageEnv/SM_StageCurtains/StageAnimationPlayer")
 can_jump = NodePath("ComponentOwner/CanJump")
+can_die = NodePath("ComponentOwner/CanDie")
 character_mesh = NodePath("ChildLevel/Player/SK_PlayerCharacter")
 map_body = NodePath("StageCollision")
 metadata/_custom_type_script = "uid://cpqk8hugr3cve"
 
 [node name="StageBodyStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody"]
+bus = &"SFX"
 
 [node name="ComponentOwner" type="Node" parent="Stage/StageBody" node_paths=PackedStringArray("animation_tree", "animation_tree", "can_respawn")]
 script = ExtResource("2_3kwj0")
@@ -652,7 +872,7 @@ animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree
 speed = 2.0
 animation_tree = NodePath("../ChildLevel/Player/SK_PlayerCharacter/AnimationTree")
 inventory = Array[int]([])
-fall_death_offset = -5.0
+fall_death_offset = -15.0
 can_respawn = NodePath("CanRespawn")
 health = null
 value = 50.0
@@ -682,7 +902,7 @@ script = ExtResource("8_nrxvr")
 
 [node name="CanDie" type="Node" parent="Stage/StageBody/ComponentOwner" node_paths=PackedStringArray("can_respawn")]
 script = ExtResource("10_1sasl")
-fall_death_offset = -5.0
+fall_death_offset = -15.0
 can_respawn = NodePath("../CanRespawn")
 metadata/_custom_type_script = "uid://c6qpeui8vrucl"
 
@@ -704,6 +924,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159144, -0.0081576, -1.51
 
 [node name="ChildStreamPlayer" type="AudioStreamPlayer" parent="Stage/StageBody/ChildLevel"]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="Player" type="CharacterBody3D" parent="Stage/StageBody/ChildLevel" node_paths=PackedStringArray("character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -722,14 +943,17 @@ bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
 bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
 bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
 bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
 bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
+bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
 bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
 bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
 bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
 bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
 bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
 bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
+bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
 bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
 bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
 bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
@@ -752,6 +976,17 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/WalkForward/blend_position = 0
 parameters/WalkInPlace/blend_position = 0
 
+[node name="player_bubble" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
+transform = Transform3D(2.2821e-07, 0, -1.74027, 0, 1.74027, 0, 1.74027, 0, 2.2821e-07, -0.014899, 2.09291, 0.0165422)
+billboard = 1
+texture = SubResource("ViewportTexture_n3cgd")
+script = ExtResource("11_400yc")
+metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
+
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble"]
+transparent_bg = true
+size = Vector2i(131, 87)
+
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ecxui")
@@ -773,19 +1008,8 @@ script = ExtResource("6_d1yl1")
 unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
-[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/ChildLevel/Player"]
-transform = Transform3D(1.74027, 0, 3.0428e-07, 0, 1.74027, 0, -3.0428e-07, 0, 1.74027, 0.0165422, 2.09291, 0.014899)
-billboard = 1
-texture = SubResource("ViewportTexture_1sasl")
-script = ExtResource("11_400yc")
-metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
-
-[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/ChildLevel/Player/DialogueContainer"]
-transparent_bg = true
-size = Vector2i(131, 87)
-
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_dtws5")
+stream = SubResource("AudioStreamPolyphonic_n3cgd")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -827,14 +1051,14 @@ transform = Transform3D(0.426521, 0, 0.904478, 0, 1, 0, -0.904478, 0, 0.426521, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14657, 0.974555, -5.33926)
 script = ExtResource("10_nrxvr")
 
-[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Matron"]
+[node name="matron_bubble" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Matron"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95113, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_kdtcl")
 script = ExtResource("11_400yc")
 metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 
-[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/OffStageEnv/Matron/DialogueContainer"]
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/OffStageEnv/Matron/matron_bubble"]
 transparent_bg = true
 size = Vector2i(167, 103)
 
@@ -842,7 +1066,7 @@ size = Vector2i(167, 103)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0295825, 7.69871, -8.80123)
 
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
-transform = Transform3D(0.993896, -0.0010017, 0.110307, 0.00108576, 0.999999, -0.000702051, -0.110307, 0.000817532, 0.993897, -1.47449, 1.40927, -4.95885)
+transform = Transform3D(0.993896, -0.00100169, 0.110308, 0.00108576, 0.999999, -0.000702048, -0.110307, 0.000817531, 0.993897, -1.47449, 1.40927, -4.95885)
 
 [node name="Patron" type="Node3D" parent="Stage/StageBody/OffStageEnv" node_paths=PackedStringArray("music")]
 transform = Transform3D(-0.788287, 0, 0.850765, 0, 1.15983, 0, -0.850765, 0, -0.788287, 3.68362, 0.430891, -9.16243)
@@ -866,14 +1090,14 @@ transform = Transform3D(-0.46665, 0.884442, 3.86602e-08, 0, -4.37114e-08, 1, 0.8
 spot_range = 6.9
 spot_angle = 9.63035
 
-[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Patron"]
+[node name="patron_bubble" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Patron"]
 transform = Transform3D(-0.999999, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -0.999999, -0.0964274, 2.42792, 0.0806508)
 billboard = 2
 texture = SubResource("ViewportTexture_oq7t8")
 script = ExtResource("11_400yc")
 metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 
-[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/OffStageEnv/Patron/DialogueContainer"]
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/OffStageEnv/Patron/patron_bubble"]
 transparent_bg = true
 size = Vector2i(220, 52)
 
@@ -881,6 +1105,9 @@ size = Vector2i(220, 52)
 stream = SubResource("AudioStreamInteractive_634kf")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
+
+[node name="SFXAudioStream" type="AudioStreamPlayer" parent="Stage/StageBody/OffStageEnv/Patron"]
 
 [node name="MainSpotlight" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(1, 0, 0, 0, 0.929062, 0.369925, 0, -0.369925, 0.929062, 0.150712, 6.37526, -0.1889)
@@ -890,40 +1117,13 @@ shadow_bias = 0.651
 spot_range = 312.922
 spot_attenuation = -0.38
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
+[node name="StageSpotlight" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(0.934248, 0.131924, -0.331326, 0.10109, 0.792989, 0.600791, 0.341996, -0.594781, 0.727512, -2.9341, 6.58383, -9.09619)
 light_energy = 0.357
 shadow_enabled = true
 spot_range = 176.005
 spot_attenuation = -0.38
 spot_angle = 17.83
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(0.920913, -0.188533, -0.341136, 0.312467, 0.880285, 0.357019, 0.232987, -0.435377, 0.869577, -4.00771, 5.5873, 4.5667)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 11.4877
-spot_attenuation = 0.5
-spot_angle = 43.2052
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(0.865244, -0.108624, -0.489442, 0.312467, 0.880285, 0.357019, 0.392067, -0.461843, 0.795603, 2.84677, 1.98971, 4.915)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 4.04814
-spot_attenuation = 0.5
-spot_angle = 30.0546
-
-[node name="SpotLight3D5" type="SpotLight3D" parent="Stage/StageBody/OffStageEnv"]
-transform = Transform3D(0.842276, -0.259253, 0.472609, 0.159316, 0.957308, 0.241206, -0.514966, -0.127868, 0.84762, -2.44806, 3.52769, 4.7289)
-light_energy = 0.163
-shadow_enabled = true
-shadow_bias = 1.125
-spot_range = 4.04814
-spot_attenuation = 0.5
-spot_angle = 15.7139
 
 [node name="Wall3" type="MeshInstance3D" parent="Stage/StageBody/OffStageEnv"]
 transform = Transform3D(-1.25147e-07, -8.87747, 0, 2.86303, -3.88047e-07, 0, 0, 0, 22.0398, -1.29844, 0.85972, 1.4785)
@@ -962,11 +1162,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_y85n4")
 }
 
-[node name="PauseMenu" parent="Stage/StageBody" instance=ExtResource("16_suqj7")]
+[node name="PauseMenu" parent="Stage/StageBody" node_paths=PackedStringArray("stage_camera") instance=ExtResource("16_suqj7")]
 transform = Transform3D(-2.49204, -0.00390569, -0.00566167, -0.00392204, 2.49204, 0.0071997, 0.00565035, 0.00720858, -2.49204, -0.356446, -1.25583, 3.67357)
+stage_camera = NodePath("../MainCamera")
 
 [node name="MainMenu" parent="Stage/StageBody" instance=ExtResource("17_lv745")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
+visible = false
 
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
@@ -981,6 +1184,15 @@ transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.9
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
+[node name="OptionsSpotlight" type="SpotLight3D" parent="Stage/StageBody/Options"]
+transform = Transform3D(0.865244, -0.108624, -0.489442, 0.312467, 0.880285, 0.357019, 0.392067, -0.461843, 0.795603, 2.69606, -0.35397, 22.4523)
+light_energy = 0.163
+shadow_enabled = true
+shadow_bias = 1.125
+spot_range = 4.04814
+spot_attenuation = 0.5
+spot_angle = 30.0546
+
 [node name="CreditsMenu" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 
@@ -994,24 +1206,149 @@ transform = Transform3D(-9.59624e-08, 0, -2.19536, 0, 10.3263, 0, 2.19536, 0, -9
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Stage/StageBody/CreditsMenu"]
-transform = Transform3D(0.726419, 0, -0.687252, 0, 1, 0, 0.687252, 0, 0.726419, 4.01534, -1.60533, 20.4429)
-mesh = SubResource("BoxMesh_arv8b")
-skeleton = NodePath("")
+[node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("38_opsrg")]
+transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
+has_mouse_input_enabled = true
 
-[node name="SM_CreditsBaord" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
+[node name="SM_CreditsBoard" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]
 transform = Transform3D(-0.304688, 0, 0.522604, 0, 0.604937, 0, -0.522604, 0, -0.304688, -4.35057, -0.0568817, 19.4062)
+
+[node name="CreditsSpotlight" type="SpotLight3D" parent="Stage/StageBody/CreditsMenu"]
+transform = Transform3D(0.842276, -0.259253, 0.472609, 0.159316, 0.957308, 0.241206, -0.514966, -0.127868, 0.84762, -2.59877, 1.18401, 22.2662)
+light_energy = 1.473
+shadow_enabled = true
+shadow_bias = 1.125
+spot_range = 4.04814
+spot_attenuation = 0.5
+spot_angle = 15.7139
+
+[node name="Witnesses" type="Node3D" parent="Stage/StageBody"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.72742, -1.9597, 5.73185)
+visible = false
+
+[node name="Witness1" parent="Stage/StageBody/Witnesses" instance=ExtResource("24_lr1w7")]
+
+[node name="Skeleton3D" parent="Stage/StageBody/Witnesses/Witness1/Armature" index="0"]
+bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
+bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
+bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
+bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
+bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
+bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
+bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
+bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
+bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
+bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
+bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
+bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
+bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
+bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
+bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
+bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
+bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
+bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
+bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
+bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
+bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
+bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+
+[node name="AnimationPlayer" parent="Stage/StageBody/Witnesses/Witness1" index="1"]
+autoplay = "Idle"
+
+[node name="Witness2" parent="Stage/StageBody/Witnesses" instance=ExtResource("24_lr1w7")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 1.2, 0, 0.200001)
+
+[node name="Skeleton3D" parent="Stage/StageBody/Witnesses/Witness2/Armature" index="0"]
+bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
+bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
+bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
+bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
+bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
+bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
+bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
+bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
+bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
+bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
+bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
+bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
+bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
+bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
+bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
+bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
+bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
+bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
+bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
+bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
+bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
+bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+
+[node name="AnimationPlayer" parent="Stage/StageBody/Witnesses/Witness2" index="1"]
+autoplay = "Idle"
+
+[node name="Witness3" parent="Stage/StageBody/Witnesses" instance=ExtResource("24_lr1w7")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.880677, 0, 3.53535)
+
+[node name="Skeleton3D" parent="Stage/StageBody/Witnesses/Witness3/Armature" index="0"]
+bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
+bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
+bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
+bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
+bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
+bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
+bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
+bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
+bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
+bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
+bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
+bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
+bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
+bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
+bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
+bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
+bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
+bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
+bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
+bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
+bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
+bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
+bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
+bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+
+[node name="AnimationPlayer" parent="Stage/StageBody/Witnesses/Witness3" index="1"]
+autoplay = "Idle"
 
 [node name="Narrator" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09374, -1.14058, 2.77621)
 
-[node name="DialogueContainer" type="Sprite3D" parent="Stage/StageBody/Narrator"]
+[node name="narrator_bubble" type="Sprite3D" parent="Stage/StageBody/Narrator"]
 transform = Transform3D(1.50674, 0, 2.63448e-07, 0, 1.50674, 0, -2.63448e-07, 0, 1.50674, 0.0165422, 2.02137, 0.014899)
 texture = SubResource("ViewportTexture_ra5e8")
 script = ExtResource("11_400yc")
 metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 
-[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/Narrator/DialogueContainer"]
+[node name="SubViewport" type="SubViewport" parent="Stage/StageBody/Narrator/narrator_bubble"]
 transparent_bg = true
 size = Vector2i(213, 85)
 
@@ -1024,14 +1361,17 @@ bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
 bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
 bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
+bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
 bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
 bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
+bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
 bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
 bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
 bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
 bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
 bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
 bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
+bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
 bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
 bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
 bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
@@ -1056,7 +1396,7 @@ spot_range = 11.1586
 spot_angle = 7.36489
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.573238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 1.39792)
 
 [connection signal="relocating_complete" from="Stage/StageBody" to="Stage" method="_on_stage_body_relocating_complete"]
 [connection signal="interact_pressed" from="Stage/StageBody/ComponentOwner/CanReceiveInput" to="Stage/StageBody/ComponentOwner/CanLoot" method="_on_can_receive_input_interact_pressed"]
@@ -1073,4 +1413,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 0.57323
 [editable path="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
 [editable path="Stage/StageBody/OffStageEnv/Patron/SK_Patron"]
 [editable path="Stage/StageBody/OffStageEnv/SM_StageCurtains"]
+[editable path="Stage/StageBody/Witnesses/Witness1"]
+[editable path="Stage/StageBody/Witnesses/Witness2"]
+[editable path="Stage/StageBody/Witnesses/Witness3"]
 [editable path="Stage/StageBody/Narrator/SK_PlayerCharacter"]

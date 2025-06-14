@@ -108,6 +108,7 @@ func get_next_dialogue_line(resource: DialogueResource, key: String = "", extra_
 	# If our dialogue is nothing then we hit the end
 	if not _is_valid(dialogue):
 		Global.enable_player_input()
+		Global.can_pause_game = true
 		dialogue_ended.emit.call_deferred(resource)
 		return null
 

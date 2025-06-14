@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2ujw7vc162bx"]
+
+[ext_resource type="Script" uid="uid://dsgogk18w40wb" path="res://lib/options/options_amp.gd" id="1_kxyb1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lov1f"]
+size = Vector3(1, 1, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ntvs"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ntvs"]
+emission_enabled = true
+emission = Color(0.941176, 0.937255, 0.580392, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_w113x"]
+material = SubResource("StandardMaterial3D_2ntvs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxyb1"]
+emission_enabled = true
+emission = Color(0.941176, 0.937255, 0.580392, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkgd3"]
+material = SubResource("StandardMaterial3D_kxyb1")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lov1f"]
+emission_enabled = true
+emission = Color(0.941176, 0.937255, 0.580392, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_kxyb1"]
+material = SubResource("StandardMaterial3D_lov1f")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("debug_music_label", "debug_sfx_label", "debug_master_label")]
+script = ExtResource("1_kxyb1")
+debug_music_label = NodePath("MusicLabel")
+debug_sfx_label = NodePath("SFXLabel")
+debug_master_label = NodePath("MasterLabel")
+
+[node name="MusicLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58286, 0.4)
+texture_filter = 0
+text = "0%"
+
+[node name="SFXLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.316857, 0.4)
+texture_filter = 0
+text = "0%"
+
+[node name="MasterLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852058, 0.4)
+texture_filter = 0
+text = "0%"
+
+[node name="AmpBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_lov1f")
+
+[node name="PointA" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.699264, 0.3)
+
+[node name="PointB" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.699264, 0.3)
+
+[node name="PointC" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.419264, 0.3)
+
+[node name="PointD" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.419264, 0.3)
+
+[node name="PointE" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.139264, 0.3)
+
+[node name="PointF" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.139264, 0.3)
+
+[node name="MasterSlider" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.699264, 0.3)
+
+[node name="SliderCollision" type="CollisionShape3D" parent="MasterSlider"]
+shape = SubResource("BoxShape3D_2ntvs")
+
+[node name="SliderMesh" type="MeshInstance3D" parent="MasterSlider/SliderCollision"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_w113x")
+
+[node name="MusicSlider" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.419264, 0.3)
+
+[node name="SliderCollision" type="CollisionShape3D" parent="MusicSlider"]
+shape = SubResource("BoxShape3D_2ntvs")
+
+[node name="SliderMesh" type="MeshInstance3D" parent="MusicSlider/SliderCollision"]
+mesh = SubResource("BoxMesh_jkgd3")
+
+[node name="SfxSlider" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.149514, 0.3)
+
+[node name="SliderCollision" type="CollisionShape3D" parent="SfxSlider"]
+shape = SubResource("BoxShape3D_2ntvs")
+
+[node name="SliderMesh" type="MeshInstance3D" parent="SfxSlider/SliderCollision"]
+mesh = SubResource("BoxMesh_kxyb1")
+
+[connection signal="mouse_entered" from="MasterSlider" to="." method="_on_master_slider_mouse_entered"]
+[connection signal="mouse_exited" from="MasterSlider" to="." method="_on_master_slider_mouse_exited"]
+[connection signal="mouse_entered" from="MusicSlider" to="." method="_on_music_slider_mouse_entered"]
+[connection signal="mouse_exited" from="MusicSlider" to="." method="_on_music_slider_mouse_exited"]
+[connection signal="mouse_entered" from="SfxSlider" to="." method="_on_sfx_slider_mouse_entered"]
+[connection signal="mouse_exited" from="SfxSlider" to="." method="_on_sfx_slider_mouse_exited"]

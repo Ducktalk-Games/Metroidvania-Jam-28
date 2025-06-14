@@ -1,12 +1,22 @@
 extends Node3D
 
-@onready var original_position: Vector3 = position
+@onready
+var original_position: Vector3 = position
 
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var buttons: Node3D = %Buttons
+@onready
+var animation_player: AnimationPlayer = %AnimationPlayer
 
-@onready var selector: Selector = %Selector
-@onready var resume_button: Area3D = %ResumeButton
+@onready
+var buttons: Node3D = %Buttons
+
+@onready
+var selector: Selector = %Selector
+
+@onready
+var resume_button: Area3D = %ResumeButton
+
+@export
+var stage_camera: MainCamera
 
 var original_node: String
 var original_song: StringName
@@ -22,6 +32,14 @@ func _ready() -> void:
 	hide_buttons()
 
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause") && Global.can_pause_game:
+		if !is_paused:
+			pause_game()
+		else:
+			unpause_game()
+
+
 func hide_buttons() -> void:
 	for child in buttons.get_children() as Array[Node3D]:
 		child.hide()
@@ -32,18 +50,23 @@ func show_buttons() -> void:
 		child.show()
 
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"):
-		if not is_paused:
-			pause_game()
-		else:
-			unpause_game()
-
-
 func pause_game() -> void:
+	if Global.is_input_disabled: Global.was_input_disabled_before_pause = true
+	#print(str(Global.MenuState.keys()[Global.current_menu_state]))
 	if Global.current_menu_state == Global.MenuState.GAME:
 		Global.current_menu_state = Global.MenuState.PAUSE
 		Global.current_parent_menu_state = Global.MenuState.PAUSE
+		Global.disable_player_input()
+		Global.lock_dialogue_input = true
+
+		if Global.are_lights_dimmed:
+			Global.dim_lights_and_spotlight(Global.who_is_dimmed, false)
+			Global.last_dimmed = Global.who_is_dimmed
+			Global.is_paused_whilst_lights_dimmed = true
+
+			#Wait for the lights to dim before pausing
+			await get_tree().create_timer(0.25).timeout
+
 		animation_player.speed_scale = 1.5
 		animation_player.play("Unroll")
 		selector.current_button = resume_button
@@ -72,8 +95,21 @@ func unpause_game() -> void:
 
 		Global.patron_animation_tree.state_machine.travel(original_node)
 		Global.dim_lights_and_spotlight(Global.stage.patron, false)
+		if Global.is_paused_whilst_lights_dimmed:
+			Global.dim_lights_and_spotlight(Global.last_dimmed, true)
+			Global.is_paused_whilst_lights_dimmed = false
+			await get_tree().create_timer(0.25).timeout
 
+		if !Global.was_input_disabled_before_pause:
+			Global.enable_player_input()
+
+		Global.was_input_disabled_before_pause = false
+		await call_deferred("enable_dialogue_input")
 		is_paused = false
+
+
+func enable_dialogue_input() -> void:
+		Global.lock_dialogue_input = false
 
 
 func _on_dismiss_finished() -> void:
@@ -92,8 +128,22 @@ func _on_resume_button_button_clicked(_button: Area3D) -> void:
 
 
 func _on_options_button_button_clicked(_button: Area3D) -> void:
-	print("OPTIONS MENU")
+	stage_camera.pivot_to_options(true)
+	Global.enable_options_menu()
 
 
 func _on_exit_button_button_clicked(_button: Area3D) -> void:
-	get_tree().quit()
+	Global.current_menu_state = Global.MenuState.MAIN
+	Global.current_parent_menu_state = Global.MenuState.MAIN
+	is_paused = false
+	#Reset Global State
+	Global.are_lights_dimmed = false
+	Global.is_paused_whilst_lights_dimmed = false
+	Global.was_input_disabled_before_pause = false
+	Global.was_input_disabled_before_pause = false
+	Global.last_dimmed = null
+	Global.who_is_dimmed = null
+	Global.lock_dialogue_input = false
+	#target_platform_level
+	#current_platform_level
+	get_tree().reload_current_scene()

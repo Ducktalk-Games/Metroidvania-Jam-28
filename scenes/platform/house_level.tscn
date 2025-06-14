@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgy0euukak08u"]
+[gd_scene load_steps=14 format=3 uid="uid://dgy0euukak08u"]
 
 [ext_resource type="Script" uid="uid://bofdcq0r2586u" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
 [ext_resource type="PackedScene" uid="uid://c2gw83ua4d6f6" path="res://lib/box_triggers/player_finds_dining_table_trigger.tscn" id="2_vec2o"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ddriajo3i8fqv" path="res://assets/house_rooms/SM_Kids_Room.glb" id="7_njwc2"]
 [ext_resource type="PackedScene" uid="uid://cj7ghabxtumb6" path="res://assets/house_rooms/SM_Kitchen_Room.glb" id="8_w83gc"]
 [ext_resource type="PackedScene" uid="uid://pq83kor03e6a" path="res://scenes/house_level/stage_scene.tscn" id="11_31yjs"]
+[ext_resource type="PackedScene" uid="uid://dc43gk4ll20bn" path="res://assets/wall/SM_Wall_B.glb" id="12_qfjab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
 size = Vector3(80.7, 1, 1.1)
@@ -78,6 +79,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1257, -1.25072, -6.08783)
 
 [node name="Stage_Scene" parent="." instance=ExtResource("11_31yjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1674, -1.20144, -5.40238)
+
+[node name="SM_Wall_B2" parent="." instance=ExtResource("12_qfjab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7068, 3.31691, -6.23007)
+
+[node name="SM_Wall_B2" parent="SM_Wall_B2" instance=ExtResource("12_qfjab")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.0033, -0.180903, -0.0201468)
 
 [editable path="StaticFloor/DiningTableTrigger"]
 [editable path="StaticFloor/BucketMopTrigger"]

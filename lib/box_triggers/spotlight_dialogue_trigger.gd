@@ -11,6 +11,8 @@ func _ready() -> void:
 
 
 func _stage_body_entered(body: StageCharacter) -> void:
-	super._stage_body_entered(body)
 	if not triggered:
 		spotlight.turn_on_spotlight()
+		super._stage_body_entered(body)
+		await DialogueManager.dialogue_ended
+		spotlight.turn_off_spotlight()

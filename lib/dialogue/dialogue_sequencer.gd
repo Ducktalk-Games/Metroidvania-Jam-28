@@ -25,6 +25,7 @@ func _on_finished_typing() -> void:
 
 
 func _on_dialogue_ended(_res: DialogueResource) -> void:
+	print("dialogue_end")
 	current_dialogue = null
 
 
@@ -63,7 +64,8 @@ func _process_dialogue() -> void:
 
 func _input(event: InputEvent) -> void:
 	var has_to_process_dialog: bool = Input.is_action_just_pressed("next_line")
-	var is_paused: bool = Global.current_menu_state != Global.MenuState.GAME || Global.lock_dialogue_input
+	var paused_menus: Array[Global.MenuState] = [Global.MenuState.OPTIONS, Global.MenuState.MAIN, Global.MenuState.CREDITS]
+	var is_paused: bool = Global.current_menu_state in paused_menus || Global.lock_dialogue_input
 
 	if has_to_process_dialog && current_dialogue && dialog_ready && !is_paused:
 		_process_dialogue()

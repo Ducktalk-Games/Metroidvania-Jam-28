@@ -2,6 +2,8 @@ extends PlatformLevel
 
 const OF_MICE_AND_LIONS_OGG: AudioStreamOggVorbis = preload("uid://cdhmvoqac6ua0")
 
+@export var end_credits_scene: PackedScene
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,4 +22,7 @@ func _ready() -> void:
 	await get_tree().create_timer(OF_MICE_AND_LIONS_OGG.get_length() - 0.2).timeout
 	Global.patron_animation_tree.state_machine.travel("SlamLid")
 	await get_tree().create_timer(1.0).timeout
+	Global.stage.player_child_body.move_comp.state_machine.travel("Idle")
 	Global.stage.stage_body.curtain_anim_player.play("flicker_lights")
+	await Global.stage.stage_body.curtain_anim_player.animation_finished
+	get_tree().change_scene_to_packed(end_credits_scene)

@@ -4,11 +4,10 @@ extends Control
 var ability: Global.Ability
 var item: PackedScene
 var flavour_text: DialogueResource
-var narrator_blurb: String
+var narrator_blurb: DialogueResource
 
 var balloon: DialogueManagerExampleBalloon
 
-# TODO Assign this to pocket watch scene
 const POCKETWATCH = preload("uid://r0osy54kqc35")
 
 const POCKET_WATCH_FLAVOUR_TEXT: DialogueResource = (
@@ -16,15 +15,14 @@ const POCKET_WATCH_FLAVOUR_TEXT: DialogueResource = (
 	)
 
 # 030_player_finds_pocketwatch
-const POCKETWATCH_NARRATOR_BLURB: String = "uid://dqs7hvx6lukw4"
+@export var pocketwatch_narrator_blurb: DialogueResource
 
-# TODO Assign this to scissors scene
 const SCISSORS = preload("uid://b08myabg8u4sm")
 
 const SCISSORS_FLAVOUR_TEXT = preload("res://dialogues/scissors_flavour_text.dialogue")
 
 # 050_player_finds_scissors
-const SCISSORS_NARRATOR_BLURB: String = "uid://c4r8sbpmeje6n"
+@export var scissors_narrator_blurb: DialogueResource
 
 
 func _input(event: InputEvent) -> void:
@@ -37,12 +35,12 @@ func _ready() -> void:
 		Global.Ability.POCKET_WATCH:
 			item = POCKETWATCH
 			flavour_text = POCKET_WATCH_FLAVOUR_TEXT
-			narrator_blurb = POCKETWATCH_NARRATOR_BLURB
+			narrator_blurb = pocketwatch_narrator_blurb
 
 		Global.Ability.SCISSORS:
 			item = SCISSORS
 			flavour_text = SCISSORS_FLAVOUR_TEXT
-			narrator_blurb = SCISSORS_NARRATOR_BLURB
+			narrator_blurb = scissors_narrator_blurb
 
 	%ItemParent.add_child(item.instantiate())
 	balloon = DialogueManager.show_dialogue_balloon_scene(%FlavourTextBalloon, flavour_text)
@@ -54,7 +52,7 @@ func _on_dialogue_end(res: DialogueResource) -> void:
 		DialogueManager.dialogue_ended.disconnect(_on_dialogue_end)
 
 		# 030_player_finds_pocketwatch
-		DialogueSequencer.start_dialog(narrator_blurb)
+		DialogueSequencer.start_dialog(narrator_blurb.resource_path)
 
 		var key_dialog: KeyDialog = Global.stage.stage_body.key_dialog
 		key_dialog.key_action = [key_dialog.KeyAction.WATCH, key_dialog.KeyAction.SCISSORS][ability]

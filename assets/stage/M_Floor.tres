@@ -1,10 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpivhtesqldtx"]
 
-[ext_resource type="Texture2D" uid="uid://bude8eom4ff0p" path="res://assets/stage/SM_Stage_floor_BC_Floor.png" id="1_qawxj"]
+[ext_resource type="Texture2D" uid="uid://byc8f4tvpbfit" path="res://assets/stage/SM_Stage_BaseTest_SM_Stage_BaseTest_BC_Stage_Base.png" id="1_qawxj"]
 
 [resource]
 resource_name = "M_Floor"
 cull_mode = 2
 albedo_texture = ExtResource("1_qawxj")
-uv1_scale = Vector3(6.35, 6.35, 6.35)
+uv1_scale = Vector3(0.755, 0.755, 0.755)
+uv1_triplanar = true
 texture_filter = 2

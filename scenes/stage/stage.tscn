@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
+[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_wnsif"]
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
 [ext_resource type="Script" uid="uid://cgigy313hqylw" path="res://lib/components/can_move.gd" id="5_pf3bu"]
 [ext_resource type="Script" uid="uid://bn7or7ah5u3gm" path="res://lib/components/can_receive_input.gd" id="6_d1yl1"]
@@ -150,8 +151,6 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -846,6 +845,7 @@ debug_label = NodePath("../DebugLog/DebugLabel")
 spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 narrator = NodePath("StageBody/Narrator")
+startup_level = ExtResource("2_wnsif")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -1008,7 +1008,6 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_n3cgd")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -1206,7 +1205,7 @@ mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
 
 [node name="OptionsAmp" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("38_opsrg")]
-transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01534, -2.10036, 20.4429)
+transform = Transform3D(0.357097, 0, -0.934067, 0, 1, 0, 0.934067, 0, 0.357097, 4.01558, -2.10047, 20.4432)
 has_mouse_input_enabled = true
 
 [node name="SM_CreditsBoard" parent="Stage/StageBody/CreditsMenu" instance=ExtResource("21_arv8b")]

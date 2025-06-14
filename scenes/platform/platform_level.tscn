@@ -673,9 +673,6 @@ visible = false
 [node name="ItemPickup" parent="." instance=ExtResource("5_1dhn5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 153.593, 30.585, -0.0847793)
 
-[node name="ItemPickup3" parent="." instance=ExtResource("5_1dhn5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.693, -0.0150005, -0.0847853)
-
 [node name="ItemPickup2" parent="." instance=ExtResource("5_1dhn5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 261.46, 43.8427, -0.084785)
 ability = 1

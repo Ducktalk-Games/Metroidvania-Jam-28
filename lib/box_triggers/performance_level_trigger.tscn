@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbsmurx870lwr"]
+
+[ext_resource type="PackedScene" uid="uid://c7mr1qsg287uj" path="res://lib/box_triggers/box_trigger.tscn" id="1_aq284"]
+[ext_resource type="Script" uid="uid://cqb27sx716nnq" path="res://lib/box_triggers/performance_level_trigger.gd" id="2_ix74c"]
+[ext_resource type="PackedScene" uid="uid://db38syn1ybps3" path="res://scenes/performance_level/performance_level.tscn" id="3_wmj7m"]
+
+[node name="PerformanceLevelTrigger" instance=ExtResource("1_aq284")]
+script = ExtResource("2_ix74c")
+performance_level = ExtResource("3_wmj7m")
+label_string = "Performance Level Trigger"
+
+[node name="TriggerLabel" parent="." index="1"]
+text = "Performance Level Trigger"

@@ -25,11 +25,6 @@ const SCISSORS_FLAVOUR_TEXT = preload("res://dialogues/scissors_flavour_text.dia
 @export var scissors_narrator_blurb: DialogueResource
 
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_line") and balloon:
-		balloon.next_line()
-
-
 func _ready() -> void:
 	match ability:
 		Global.Ability.POCKET_WATCH:

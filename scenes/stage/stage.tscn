@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=107 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
-[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_boarder.glb" id="13_8pkue"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="13_8pkue"]
 [ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="13_634kf"]
 [ext_resource type="PackedScene" uid="uid://babsrhu3cucox" path="res://assets/stage/SM_Floor.glb" id="14_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
@@ -160,8 +160,6 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_lvwud"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -1022,7 +1020,6 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 2.03261, -0.218168)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_lvwud")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55

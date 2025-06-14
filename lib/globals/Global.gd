@@ -63,6 +63,7 @@ func enable_player_input() -> void:
 
 
 func curtains_fall(target: PackedScene) -> void:
+	Global.disable_player_input()
 	Global.current_menu_state = Global.MenuState.TRANSITIONING
 	target_scene = target
 	stage.stage_body.curtain_anim_player.play("close_curtain")

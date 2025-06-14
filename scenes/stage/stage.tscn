@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=105 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -150,6 +150,8 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_n3cgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -838,6 +840,7 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 1.81444, 0)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
+stream = SubResource("AudioStreamPolyphonic_n3cgd")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55

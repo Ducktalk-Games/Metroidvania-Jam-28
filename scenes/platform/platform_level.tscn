@@ -719,6 +719,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
 [node name="Checkpoint7" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.001, 34.9728, 0)
 
+[node name="Checkpoint8" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.701, 34.9728, 0)
+
+[node name="Checkpoint9" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.501, 36.6728, 0)
+
+[node name="Checkpoint10" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.901, 35.9728, 0)
+
+[node name="Checkpoint11" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230.901, 39.0728, 0)
+
+[node name="Checkpoint12" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 246.801, 40.7728, 0)
+
+[node name="Checkpoint13" parent="." instance=ExtResource("7_hwg6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260.601, 43.7728, 0)
+
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.13, 34.9994, 0.00389761)
 

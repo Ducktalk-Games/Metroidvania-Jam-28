@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dnf24mg5ngb1g"
-path="res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"
+path="res://.godot/imported/SM_Stage_boarder.glb-3cec9e065c45822f9d1852008deb3333.scn"
 
 [deps]
 
-source_file="res://assets/stage/SM_Stage_Boarder.glb"
-dest_files=["res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"]
+source_file="res://assets/stage/SM_Stage_boarder.glb"
+dest_files=["res://.godot/imported/SM_Stage_boarder.glb-3cec9e065c45822f9d1852008deb3333.scn"]
 
 [params]
 

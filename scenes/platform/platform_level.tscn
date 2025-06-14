@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=44 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -11,7 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
 [ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/Background.tscn" id="12_7gmst"]
-[ext_resource type="Script" uid="uid://cswxly08gjpka" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
+[ext_resource type="Script" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
+[ext_resource type="PackedScene" uid="uid://d1g7i6cxsvw3f" path="res://assets/stage_props/SM_PlantProp_01.glb" id="13_ii7us"]
+[ext_resource type="PackedScene" uid="uid://cbbebxdauwgxl" path="res://assets/stage_props/SM_PlantProp_02.glb" id="14_mrteu"]
+[ext_resource type="PackedScene" uid="uid://b1h5lhyu0547u" path="res://assets/stage_props/SM_PlantProp_03.glb" id="15_k3lh4"]
+[ext_resource type="PackedScene" uid="uid://kd2q84rw6pel" path="res://assets/stage_props/SM_PlantProp_04.glb" id="16_xjm0t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -760,5 +764,20 @@ shape = SubResource("BoxShape3D_j285v")
 [node name="KillCollision2" type="CollisionShape3D" parent="KillArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.05, 15.65, -0.1)
 shape = SubResource("BoxShape3D_wmg3h")
+
+[node name="T_Plant_012" parent="." instance=ExtResource("13_ii7us")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 7.22, 0.1, 0)
+
+[node name="T_Plant_022" parent="." instance=ExtResource("14_mrteu")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 8.4, 0.1, 0.3)
+
+[node name="T_Plant_032" parent="." instance=ExtResource("15_k3lh4")]
+transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 9.19, 0.1, -0.1)
+
+[node name="T_Plant_042" parent="." instance=ExtResource("16_xjm0t")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 9.8, 0.1, 0.2)
+
+[node name="T_Plant_043" parent="." instance=ExtResource("16_xjm0t")]
+transform = Transform3D(-0.565685, 0, 0.565685, 0, 0.8, 0, -0.565685, 0, -0.565685, 10.0206, 0.1, 0.0868629)
 
 [connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]

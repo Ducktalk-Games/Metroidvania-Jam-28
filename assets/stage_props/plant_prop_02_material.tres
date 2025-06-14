@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dkl42kgnf6qef"]
+
+[ext_resource type="Shader" uid="uid://y3ujyrqq1tvv" path="res://assets/stage_props/stage_prop_shader.tres" id="1_0po8v"]
+[ext_resource type="Texture2D" uid="uid://be2im7uvh7t7h" path="res://assets/stage_props/SM_PlantProp_02_T_Plant_02.png" id="2_fomlf"]
+[ext_resource type="Texture2D" uid="uid://byc8f4tvpbfit" path="res://assets/stage/SM_Stage_BaseTest_SM_Stage_BaseTest_BC_Stage_Base.png" id="2_rm5a7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0po8v")
+shader_parameter/WoodTexture = ExtResource("2_rm5a7")
+shader_parameter/Drawing = ExtResource("2_fomlf")
+shader_parameter/DrawingOpacity = 0.5
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 0.5

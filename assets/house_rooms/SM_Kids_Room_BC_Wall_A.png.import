@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://wvc463kk4y1e"
+path.s3tc="res://.godot/imported/SM_Kids_Room_BC_Wall_A.png-7598edb6b4bf0ce6bf3c7995517effd8.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "8d8fe36b2b6a466ac65ea90126733cf4"
+}
+
+[deps]
+
+source_file="res://assets/house_rooms/SM_Kids_Room_BC_Wall_A.png"
+dest_files=["res://.godot/imported/SM_Kids_Room_BC_Wall_A.png-7598edb6b4bf0ce6bf3c7995517effd8.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

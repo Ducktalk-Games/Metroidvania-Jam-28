@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnf24mg5ngb1g"
-path="res://.godot/imported/SM_Stage_boarder.glb-3cec9e065c45822f9d1852008deb3333.scn"
+uid="uid://btlmult8b4avo"
+path="res://.godot/imported/SM_Black_background.glb-4e88f6562088491846047738ccbf1f39.scn"
 
 [deps]
 
-source_file="res://assets/stage/SM_Stage_boarder.glb"
-dest_files=["res://.godot/imported/SM_Stage_boarder.glb-3cec9e065c45822f9d1852008deb3333.scn"]
+source_file="res://assets/house_rooms/SM_Black_background.glb"
+dest_files=["res://.godot/imported/SM_Black_background.glb-4e88f6562088491846047738ccbf1f39.scn"]
 
 [params]
 

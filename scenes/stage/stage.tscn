@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=135 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -84,6 +84,9 @@ adjustment_saturation = 0.44
 radius = 0.0505981
 height = 0.280261
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o1edo"]
+animation = &"Attack"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_624yl"]
 animation = &"Fall"
 
@@ -164,10 +167,22 @@ xfade_time = 0.5
 advance_mode = 2
 advance_expression = "stage_body.velocity.y < -0.1"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t13q3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gg3i5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_puplk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sl4un"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
+states/Attack/node = SubResource("AnimationNodeAnimation_o1edo")
+states/Attack/position = Vector2(465, -25)
 states/End/position = Vector2(870, 100)
 states/Fall/node = SubResource("AnimationNodeAnimation_624yl")
-states/Fall/position = Vector2(443, -25)
+states/Fall/position = Vector2(364, -113)
 states/Idle/node = SubResource("AnimationNodeAnimation_v755w")
 states/Idle/position = Vector2(685, 100)
 states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
@@ -179,8 +194,8 @@ states/WalkForward/node = SubResource("AnimationNodeBlendSpace1D_lvwud")
 states/WalkForward/position = Vector2(364, 212)
 states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
 states/WalkInPlace/position = Vector2(364, 100)
-transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb"), "Singing", "Idle", SubResource("AnimationNodeStateMachineTransition_g2y51"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_2t6vl"), "Fall", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_g2yst"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_ckgkk"), "WalkInPlace", "Fall", SubResource("AnimationNodeStateMachineTransition_roenb")]
-graph_offset = Vector2(-224, -57)
+transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb"), "Singing", "Idle", SubResource("AnimationNodeStateMachineTransition_g2y51"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_2t6vl"), "Fall", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_g2yst"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_ckgkk"), "WalkInPlace", "Fall", SubResource("AnimationNodeStateMachineTransition_roenb"), "WalkInPlace", "Attack", SubResource("AnimationNodeStateMachineTransition_t13q3"), "Jump", "Attack", SubResource("AnimationNodeStateMachineTransition_gg3i5"), "Fall", "Attack", SubResource("AnimationNodeStateMachineTransition_puplk"), "Attack", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_sl4un")]
+graph_offset = Vector2(-208, -153)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lvwud"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble/SubViewport")

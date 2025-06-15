@@ -64,6 +64,8 @@ var sfx_slider_mat: StandardMaterial3D = $SfxSlider/SliderCollision/SliderMesh.g
 @onready
 var master_slider_mat: StandardMaterial3D = $MasterSlider/SliderCollision/SliderMesh.get_active_material(0)
 
+@export var options_audio_stream: AudioStreamPlayer
+
 var master_volume: float:
 	set(value):
 		var clamped_val: float = clampf(value, 0.0, 1.0)
@@ -101,12 +103,18 @@ var slider_grabbed: bool = false
 
 
 func _ready() -> void:
+	Global.options_amp = self
 	master_slider_mat.emission_energy_multiplier = 2.0
 	music_slider_mat.emission_energy_multiplier = 0.0
 	sfx_slider_mat.emission_energy_multiplier = 0.0
+
 	master_volume = 1.0
-	music_volume = 1.0
-	sfx_volume = 1.0
+	music_volume = 0.5
+	sfx_volume = 0.5
+
+	AudioServer.set_bus_volume_linear(music_bus_i, music_volume)
+	AudioServer.set_bus_volume_linear(sfx_bus_i, sfx_volume)
+	AudioServer.set_bus_volume_linear(master_bus_i, master_volume)
 
 
 func _process(delta: float) -> void:

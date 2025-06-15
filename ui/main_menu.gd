@@ -26,7 +26,7 @@ func _on_play_button_pressed() -> void:
 	if Global.current_menu_state == Global.MenuState.MAIN:
 		Global.current_menu_state = Global.MenuState.GAME
 
-	Global.stage.patron.set_music_to("silence")
+	Global.stage.patron.set_music_to("")
 	curtain_animation_player.play("curtain_open")
 	main_ui.hide()
 

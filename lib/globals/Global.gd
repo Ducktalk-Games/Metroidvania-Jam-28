@@ -34,7 +34,11 @@ var was_input_disabled_before_pause: bool = false
 var is_input_disabled: bool = true
 var lock_dialogue_input: bool = false
 
+var options_amp: OptionsAmp
+
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
+
+const STAGE = preload("res://scenes/stage/stage.tscn")
 
 signal curtains_opened
 
@@ -63,7 +67,9 @@ func enable_player_input() -> void:
 
 
 func curtains_fall(target: PackedScene) -> void:
+	Global.disable_player_input()
 	Global.current_menu_state = Global.MenuState.TRANSITIONING
+	Global.stage.patron.set_music_to("")
 	target_scene = target
 	stage.stage_body.curtain_anim_player.play("close_curtain")
 	stage.stage_body\
@@ -79,7 +85,7 @@ func _on_curtains_fall(_animation: String) -> void:
 
 func _change_level_and_open_curtains() -> void:
 	current_platform_level.queue_free()
-	var to_node: Node3D = target_scene.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
+	var to_node: Node = target_scene.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
 	to_node.ready.connect(_curtains_rise)
 	stage.add_child(to_node)
 
@@ -122,10 +128,19 @@ func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
 
 
 func disable_options_menu() -> void:
-	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
 	options_amp.has_input_enabled = false
 
 
 func enable_options_menu() -> void:
-	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
 	options_amp.has_input_enabled = true
+
+
+func reset_to_title() -> void:
+	are_lights_dimmed = false
+	is_paused_whilst_lights_dimmed = false
+	was_input_disabled_before_pause = false
+	was_input_disabled_before_pause = false
+	last_dimmed = null
+	who_is_dimmed = null
+	lock_dialogue_input = false
+	get_tree().change_scene_to_file("res://scenes/stage/stage.tscn")

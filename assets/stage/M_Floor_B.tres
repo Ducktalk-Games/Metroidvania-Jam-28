@@ -1,12 +1,13 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c6pcwcradqspu"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c6pcwcradqspu"]
 
-[ext_resource type="Texture2D" uid="uid://clvep4lvj0o0p" path="res://assets/stage/SM_Floor_Test_B_BC_Floor_B.png" id="1_un312"]
-[ext_resource type="Material" uid="uid://dpivhtesqldtx" path="res://assets/stage/M_Floor.tres" id="2_1ma8r"]
+[ext_resource type="Texture2D" uid="uid://byc8f4tvpbfit" path="res://assets/stage/SM_Stage_BaseTest_SM_Stage_BaseTest_BC_Stage_Base.png" id="1_un312"]
 
 [resource]
 resource_name = "M_Floor_B"
-next_pass = ExtResource("2_1ma8r")
 cull_mode = 2
+albedo_color = Color(0.98062, 0.587944, 0.556141, 1)
 albedo_texture = ExtResource("1_un312")
+uv1_scale = Vector3(0.67, 1, 0.32)
 uv1_offset = Vector3(-0.035, 0, 0)
+uv1_triplanar = true
 texture_filter = 2

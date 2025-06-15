@@ -69,7 +69,6 @@ func _player_attack(pressed:bool) -> void:
 	if not pressed or not can_attack:
 		return
 
-	print("ATTACK")
 	_attack()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgy0euukak08u"]
+[gd_scene load_steps=15 format=3 uid="uid://dgy0euukak08u"]
 
 [ext_resource type="Script" uid="uid://bofdcq0r2586u" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
 [ext_resource type="PackedScene" uid="uid://c2gw83ua4d6f6" path="res://lib/box_triggers/player_finds_dining_table_trigger.tscn" id="2_vec2o"]
@@ -16,6 +16,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
 size = Vector3(80.7, 1, 1.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfjab"]
+size = Vector3(3.65059, 6.6665, 1.1)
+
 [node name="HouseLevel" type="Node3D" node_paths=PackedStringArray("PlayerStart")]
 script = ExtResource("1_ihf5a")
 PlayerStart = NodePath("PlayerStart")
@@ -26,6 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, -2.9)
 [node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65313, 0, 4.40556)
 shape = SubResource("BoxShape3D_s38hc")
+
+[node name="Wall" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8716, 2.83325, 4.40556)
+shape = SubResource("BoxShape3D_qfjab")
 
 [node name="DiningTableTrigger" parent="StaticFloor" instance=ExtResource("2_vec2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48781, 0.407218, 3.82685)

@@ -226,7 +226,7 @@ Azka"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Daniela Rodriguez" type="Label" parent="CenterContainer/Control"]
+[node name="Buck" type="Label" parent="CenterContainer/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -236,6 +236,23 @@ offset_left = -75.5
 offset_top = -22.5
 offset_right = 75.5
 offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2D Artist
+Carl Björlin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Daniela Rodriguez" type="Label" parent="CenterContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -24.5
+offset_right = 75.5
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Illustrator

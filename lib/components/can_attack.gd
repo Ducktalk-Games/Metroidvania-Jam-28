@@ -69,6 +69,7 @@ func _player_attack(pressed:bool) -> void:
 	if not pressed or not can_attack:
 		return
 
+	Global.stage.player_child_body.move_comp.state_machine.travel("Attack")
 	_attack()
 
 

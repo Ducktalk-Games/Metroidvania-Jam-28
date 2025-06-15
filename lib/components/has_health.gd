@@ -21,6 +21,8 @@ var magnitude := 3
 
 var launch_direction: Vector3
 
+var char: Character
+
 
 func _physics_process(delta: float) -> void:
 	if can_be_launched and not waiting and not launch_direction.is_zero_approx():
@@ -32,9 +34,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _ready() -> void:
+	char = get_object()
 	launch_cooldown = Timer.new()
 	add_child(launch_cooldown)
-	launch_cooldown.wait_time = 3
+	launch_cooldown.wait_time = 0.5
 	launch_cooldown.autostart = false
 	launch_cooldown.one_shot = true
 	launch_cooldown.timeout.connect(_cooldown_timeout)
@@ -51,10 +54,11 @@ func reset_health() -> void:
 
 
 func take_damage(value: float, source: Vector3) -> void:
-	health -= value
+	if not char.is_player:
+		health -= value
 
-	if health <= 0:
-		(other("CanDie") as CanDie).die()
+		if health <= 0:
+			(other("CanDie") as CanDie).die()
 
 	if can_be_launched and not waiting:
 		var direction: float = sign((body.global_position - source).x)

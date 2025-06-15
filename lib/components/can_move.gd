@@ -12,6 +12,8 @@ var character_direction: float
 var rotation_offset := 0.01
 var rotation_snapped: bool = true
 
+var launched: bool = false
+
 
 func _node_ready() -> void:
 
@@ -24,8 +26,8 @@ func _node_ready() -> void:
 
 
 func move(delta: float) -> void:
-
-	character.velocity.x = character_direction * speed
+	if not launched:
+		character.velocity.x = character_direction * speed
 
 	if character.velocity.x != 0.0:
 		var target_angle := Vector3.BACK.signed_angle_to(Vector3(character.velocity.x, 0.0, 0.0), Vector3.UP)
@@ -49,6 +51,9 @@ func move(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	move(delta)
+	if launched:
+		if character.is_on_floor():
+			launched = false
 
 
 func _on_can_receive_input_move_left_right_pressed(left_right: float) -> void:

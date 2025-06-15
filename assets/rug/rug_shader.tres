@@ -1,0 +1,78 @@
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://bigvycvi3kwjv"]
+
+[ext_resource type="Texture2D" uid="uid://ce4posc4quyxs" path="res://assets/rug/Blood_Rug.png" id="1_ceisq"]
+[ext_resource type="Texture2D" uid="uid://okonaw2i00rf" path="res://assets/rug/SM_Rug_BC_Rug.png" id="2_umvrn"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_034ve"]
+source = 5
+texture = ExtResource("1_ceisq")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_e6pv6"]
+source = 5
+texture = ExtResource("2_umvrn")
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_ek8in"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 0.0]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2w5us"]
+parameter_name = "rug"
+texture_filter = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ntpp3"]
+parameter_name = "bloody_rug"
+texture_filter = 1
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_73jf3"]
+parameter_name = "Blood"
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D rug : filter_nearest;
+uniform sampler2D bloody_rug : filter_nearest;
+uniform bool Blood = false;
+
+
+
+void fragment() {
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(rug, UV);
+
+
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(bloody_rug, UV);
+
+
+// BooleanParameter:7
+	bool n_out7p0 = Blood;
+
+
+// Mix:4
+	vec3 n_out4p0 = mix(vec3(n_out3p0.xyz), vec3(n_out2p0.xyz), (n_out7p0 ? 1.0 : 0.0));
+
+
+// Output:0
+	ALBEDO = n_out4p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(1160, 360)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_034ve")
+nodes/fragment/2/position = Vector2(460, 700)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_e6pv6")
+nodes/fragment/3/position = Vector2(460, 400)
+nodes/fragment/4/node = SubResource("VisualShaderNodeMix_ek8in")
+nodes/fragment/4/position = Vector2(800, 520)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_2w5us")
+nodes/fragment/5/position = Vector2(80, 300)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture2DParameter_ntpp3")
+nodes/fragment/6/position = Vector2(80, 640)
+nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_73jf3")
+nodes/fragment/7/position = Vector2(440, 1020)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 4, 1, 4, 0, 0, 0, 5, 0, 3, 2, 6, 0, 2, 2, 7, 0, 4, 2)

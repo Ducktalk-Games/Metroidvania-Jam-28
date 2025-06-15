@@ -5,7 +5,7 @@
 [resource]
 resource_name = "M_Floor_B"
 cull_mode = 2
-albedo_color = Color(0.435192, 0.435192, 0.435192, 1)
+albedo_color = Color(0.98062, 0.587944, 0.556141, 1)
 albedo_texture = ExtResource("1_un312")
 uv1_scale = Vector3(0.67, 1, 0.32)
 uv1_offset = Vector3(-0.035, 0, 0)

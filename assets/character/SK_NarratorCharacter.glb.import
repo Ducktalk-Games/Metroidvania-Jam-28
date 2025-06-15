@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckftcbi7nyo7n"
-path="res://.godot/imported/SM_Rug.glb-2f0d96d24d2a284b08a7bec5cc9f359c.scn"
+uid="uid://cr0vu53xdp0dj"
+path="res://.godot/imported/SK_NarratorCharacter.glb-8192bc6503480e2acbf6799e59064cfc.scn"
 
 [deps]
 
-source_file="res://assets/rug/SM_Rug.glb"
-dest_files=["res://.godot/imported/SM_Rug.glb-2f0d96d24d2a284b08a7bec5cc9f359c.scn"]
+source_file="res://assets/character/SK_NarratorCharacter.glb"
+dest_files=["res://.godot/imported/SK_NarratorCharacter.glb-8192bc6503480e2acbf6799e59064cfc.scn"]
 
 [params]
 
@@ -32,13 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Material.004": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/rug/Material.004.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

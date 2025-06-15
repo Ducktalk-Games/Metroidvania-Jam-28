@@ -26,8 +26,6 @@ func _physics_process(_delta: float) -> void:
 		if jump_pressed:
 			character.velocity.y = jump_max
 			jump_pressed = false
-		else:
-			character.velocity.y = 0.0
 
 
 func _on_can_receive_input_jump_pressed(just_pressed: bool) -> void:

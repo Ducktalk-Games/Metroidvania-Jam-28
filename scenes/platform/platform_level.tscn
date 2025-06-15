@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://kd2q84rw6pel" path="res://assets/stage_props/SM_PlantProp_04.glb" id="16_xjm0t"]
 [ext_resource type="PackedScene" uid="uid://c5taksg5wm54h" path="res://assets/stage_props/SM_Vine1.glb" id="18_k3lh4"]
 [ext_resource type="PackedScene" uid="uid://cnqvjetj1suor" path="res://assets/stage_props/SM_Crane.glb" id="20_uk108"]
+[ext_resource type="PackedScene" uid="uid://6qsh8h58car6" path="res://lib/enemy/enemy.tscn" id="17_mrteu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -874,9 +875,6 @@ transform = Transform3D(1.29464, -0.0110193, -0.563141, 0, 1.41159, -0.0276215, 
 [node name="Background" parent="." instance=ExtResource("12_7gmst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.19859, -0.167568, -3.844)
 
-[node name="SM_Wolf" parent="." instance=ExtResource("12_mrteu")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 12.12, 0.1, 0)
-
 [node name="KillArea" type="Area3D" parent="."]
 script = ExtResource("12_j3s4p")
 
@@ -1494,4 +1492,21 @@ transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 60.063, 3.73571
 [node name="SM_Crane" parent="." instance=ExtResource("20_uk108")]
 transform = Transform3D(4.63815, 0, 0, 0, 4.63815, 0, 0, 0, 10.2467, 223.764, 42.3954, 0.909583)
 
+[node name="Enemy" parent="." instance=ExtResource("17_mrteu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1889, 0.607465, 0.579688)
+
+[node name="CollisionShape3D" parent="Enemy" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.233124, 0)
+
+[node name="CollisionShape3D" parent="Enemy/Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, -0.6)
+
+[node name="PatrolA" parent="Enemy" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17411, 0, 0)
+
+[node name="PatrolB" parent="Enemy" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44172, 0, 0)
+
 [connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]
+
+[editable path="Enemy"]

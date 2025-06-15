@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://6qsh8h58car6"]
+
+[ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="1_67x4v"]
+[ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="1_wxr5b"]
+[ext_resource type="Script" uid="uid://ceknlyib7kfcy" path="res://lib/components/can_die.gd" id="2_wxr5b"]
+[ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="3_8pyxn"]
+[ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="4_rj5y4"]
+[ext_resource type="Script" uid="uid://4l8gqw0idygk" path="res://lib/components/enemy_patrol.gd" id="5_t2rmx"]
+[ext_resource type="PackedScene" uid="uid://cp3q2nqlb81ir" path="res://assets/enemy/SM_Wolf.glb" id="7_8pyxn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0e4a0"]
+radius = 0.548604
+height = 1.96108
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8pyxn"]
+radius = 0.547344
+height = 2.28883
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_wxr5b")
+metadata/_custom_type_script = "uid://cpqk8hugr3cve"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.176992, 0)
+shape = SubResource("CapsuleShape3D_0e4a0")
+
+[node name="ComponentOwner" type="Node" parent="." node_paths=PackedStringArray("hit_area", "body", "point_a", "point_b")]
+script = ExtResource("1_67x4v")
+fall_death_offset = -25.0
+value = 5.0
+delay_seconds = 1.0
+continuous = true
+hit_area = NodePath("../Area3D")
+health = 100.0
+can_be_launched = false
+body = NodePath("../Area3D/CollisionShape3D")
+magnitude = 3
+patrol_speed = 2.0
+end_of_path_delay = 0.1
+point_a = NodePath("../PatrolA")
+point_b = NodePath("../PatrolB")
+metadata/_custom_type_script = "uid://c6qpeui8vrucl"
+
+[node name="CanDie" type="Node" parent="ComponentOwner"]
+script = ExtResource("2_wxr5b")
+
+[node name="CanAttack" type="Node" parent="ComponentOwner" node_paths=PackedStringArray("hit_area")]
+script = ExtResource("3_8pyxn")
+value = 5.0
+hit_area = NodePath("../../Area3D")
+
+[node name="HasHealth" type="Node" parent="ComponentOwner" node_paths=PackedStringArray("body")]
+script = ExtResource("4_rj5y4")
+body = NodePath("../../Area3D/CollisionShape3D")
+
+[node name="EnemyPatrol" type="Node" parent="ComponentOwner" node_paths=PackedStringArray("point_a", "point_b")]
+script = ExtResource("5_t2rmx")
+patrol_speed = 2.0
+point_a = NodePath("../../PatrolA")
+point_b = NodePath("../../PatrolB")
+
+[node name="SM_Wolf" parent="." instance=ExtResource("7_8pyxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.169455, 0)
+shape = SubResource("CapsuleShape3D_8pyxn")
+
+[node name="PatrolA" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37411, 0, 0)
+
+[node name="PatrolB" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74172, 0, 0)

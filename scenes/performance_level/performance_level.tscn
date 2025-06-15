@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pq83kor03e6a" path="res://scenes/house_level/stage_scene.tscn" id="3_wijj7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cry6s"]
-size = Vector3(7.6, 0.3, 1.9)
+size = Vector3(7.6, 0.3, 3.90063)
 
 [node name="PerformanceLevel" type="Node3D"]
 script = ExtResource("1_cry6s")

@@ -80,16 +80,16 @@ gizmo_extents = 1.26
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04309, -1.18216, -5.40725)
 
 [node name="SM_Kids_Room" parent="." instance=ExtResource("7_njwc2")]
-transform = Transform3D(0.999699, 0, 0, 0, 1.01542, 0, 0, 0, 1, 22.7003, -1.32706, -6.7276)
+transform = Transform3D(0.999699, 0, 0, 0, 1.01542, 0, 0, 0, 1, 22.7003, -1.32706, -6.60112)
 
 [node name="SM_Kitchen_Room" parent="." instance=ExtResource("8_w83gc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9994, -1.25072, -6.08783)
 
 [node name="Stage_Scene" parent="." instance=ExtResource("11_31yjs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0538, -1.17763, -5.40238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0538, -1.29832, -5.37878)
 
 [node name="SM_Wall_A2" parent="." instance=ExtResource("12_qfjab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.25, 3.15037, -6.24275)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.25, 3.00614, -6.24275)
 
 [editable path="StaticFloor/DiningTableTrigger"]
 [editable path="StaticFloor/BucketMopTrigger"]

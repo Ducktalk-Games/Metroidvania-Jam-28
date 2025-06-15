@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
-[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="13_8pkue"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_boarder.glb" id="13_8pkue"]
 [ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="13_634kf"]
 [ext_resource type="PackedScene" uid="uid://babsrhu3cucox" path="res://assets/stage/SM_Floor.glb" id="14_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 [ext_resource type="PackedScene" uid="uid://du7634u3aenbb" path="res://assets/matron/SK_Matron.glb" id="38_lvwud"]
 [ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
+[ext_resource type="PackedScene" uid="uid://dd36r6v8cb2nu" path="res://assets/amp/SM_Amp.glb" id="42_6uyam"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -185,6 +186,8 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_6uyam"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -1153,6 +1156,7 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 2.03261, -0.218168)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
+stream = SubResource("AudioStreamPolyphonic_6uyam")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -1423,6 +1427,9 @@ skeleton = NodePath("")
 transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.977, 18.6306)
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
+
+[node name="SM_Amp" parent="Stage/StageBody/Options" instance=ExtResource("42_6uyam")]
+transform = Transform3D(-0.918087, 0, -0.396379, 0, 1, 0, 0.396379, 0, -0.918087, 4.18249, -2.19035, 20.3551)
 
 [node name="OptionsSpotlight" type="SpotLight3D" parent="Stage/StageBody/Options"]
 transform = Transform3D(0.865244, -0.108624, -0.489442, 0.312467, 0.880285, 0.357019, 0.392067, -0.461843, 0.795603, 2.69606, -0.35397, 22.4523)

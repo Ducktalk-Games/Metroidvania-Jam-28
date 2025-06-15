@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://d2ujw7vc162bx"]
 
 [ext_resource type="Script" uid="uid://dsgogk18w40wb" path="res://lib/options/options_amp.gd" id="1_kxyb1"]
-[ext_resource type="PackedScene" uid="uid://dd36r6v8cb2nu" path="res://assets/amp/SM_Amp.glb" id="2_lov1f"]
+[ext_resource type="PackedScene" uid="uid://ctqfi4ol2ur6l" path="res://assets/amp/SM_Amp.glb" id="2_lov1f"]
 [ext_resource type="AudioStream" uid="uid://crsys4spn8owl" path="res://audio/sfx/SFX_Whirring.ogg" id="3_2ntvs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lov1f"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=130 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -48,10 +48,9 @@
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 [ext_resource type="PackedScene" uid="uid://du7634u3aenbb" path="res://assets/matron/SK_Matron.glb" id="38_lvwud"]
 [ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
-[ext_resource type="PackedScene" uid="uid://6qsh8h58car6" path="res://lib/enemy/enemy.tscn" id="43_lvwud"]
 [ext_resource type="AudioStream" uid="uid://104dw8svv7px" path="res://audio/sfx/SFX_BackButton.wav" id="44_6a4sw"]
 [ext_resource type="PackedScene" uid="uid://cr0vu53xdp0dj" path="res://assets/character/SK_NarratorCharacter.glb" id="49_6a4sw"]
-[ext_resource type="PackedScene" uid="uid://ctqfi4ol2ur6l" path="res://assets/amp/SM_AMP.glb" id="49_624yl"]
+[ext_resource type="PackedScene" uid="uid://ctqfi4ol2ur6l" path="res://assets/amp/SM_Amp.glb" id="49_624yl"]
 [ext_resource type="PackedScene" uid="uid://b58jqqgmem4s8" path="res://assets/amp/SM_Sliders.glb" id="50_6a4sw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
@@ -1031,7 +1030,7 @@ spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 matron = NodePath("StageBody/OffStageEnv/Matron")
 narrator = NodePath("StageBody/Narrator")
-kill_dialog = true
+has_scissors = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -1280,21 +1279,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0171275, 0)
 [node name="Skeleton3D" parent="Stage/StageBody/OffStageEnv/Patron/SK_Patron/SK_Patron" index="0"]
 bones/0/position = Vector3(-0.00220496, -0.575162, -2.01498)
 bones/0/rotation = Quaternion(-0.706617, -0.0263259, 0.0263259, 0.706617)
-bones/1/rotation = Quaternion(0.373411, 0.0138691, -0.009131, 0.927518)
+bones/1/rotation = Quaternion(0.41287, 0.0130533, -0.0114948, 0.910624)
 bones/2/rotation = Quaternion(0.180286, 0.0133093, 0.00243968, 0.983521)
 bones/3/rotation = Quaternion(0.120281, 1.05729e-10, -5.89353e-10, 0.99274)
 bones/5/position = Vector3(0.640739, 0.337775, 2.28174e-08)
 bones/5/rotation = Quaternion(0.126454, -0.485447, -0.23033, 0.833846)
-bones/6/position = Vector3(1.23313, 0.0408517, -0.064485)
-bones/6/rotation = Quaternion(-0.204394, -0.218059, 0.629573, 0.717155)
+bones/6/position = Vector3(1.2361, 0.0465659, -0.061434)
+bones/6/rotation = Quaternion(-0.221104, -0.22169, 0.670084, 0.673018)
 bones/7/position = Vector3(0.763518, 0.0286318, -8.9407e-08)
 bones/7/rotation = Quaternion(0.0521774, -0.0127921, 0.158947, 0.985824)
 bones/8/position = Vector3(0.461292, -0.00636257, -1.3411e-07)
 bones/8/rotation = Quaternion(1.98034e-09, 3.58937e-09, -0.339607, 0.940567)
 bones/10/position = Vector3(-0.640739, 0.337771, 4.11412e-07)
 bones/10/rotation = Quaternion(0.841875, 0.0512565, -0.513945, -0.156459)
-bones/11/position = Vector3(-1.09545, 0.145966, 0.0776793)
-bones/11/rotation = Quaternion(-0.0193843, -0.196425, 0.620401, 0.759041)
+bones/11/position = Vector3(-1.09106, 0.151214, 0.0796745)
+bones/11/rotation = Quaternion(-0.02833, -0.177545, 0.66686, 0.723168)
 bones/12/position = Vector3(-0.76352, -0.02863, -1.71057e-07)
 bones/12/rotation = Quaternion(0.0334514, -0.0128528, 0.0716637, 0.996785)
 bones/13/position = Vector3(-0.46129, 0.00636008, 4.90797e-08)
@@ -1514,9 +1513,6 @@ spot_angle = 7.36489
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StageBody/StageHitArea"]
 shape = SubResource("SphereShape3D_x6r7u")
-
-[node name="Enemy" parent="Stage" instance=ExtResource("43_lvwud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58885, -0.0925354, 0.579688)
 
 [node name="PlatformLevel" parent="." instance=ExtResource("34_1sasl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85055, -0.0439386, 1.39792)

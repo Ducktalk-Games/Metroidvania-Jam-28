@@ -1841,7 +1841,7 @@ _subresources={
 },
 "Matron_clothing": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/matron/Matron_clothing.tres"
+"use_external/path": "uid://2c5yw44e04am"
 }
 }
 }

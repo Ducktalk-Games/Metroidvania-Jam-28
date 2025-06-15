@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2ujw7vc162bx"]
+[gd_scene load_steps=12 format=3 uid="uid://d2ujw7vc162bx"]
 
 [ext_resource type="Script" uid="uid://dsgogk18w40wb" path="res://lib/options/options_amp.gd" id="1_kxyb1"]
+[ext_resource type="PackedScene" uid="uid://dd36r6v8cb2nu" path="res://assets/amp/SM_Amp.glb" id="2_lov1f"]
+[ext_resource type="AudioStream" uid="uid://crsys4spn8owl" path="res://audio/sfx/SFX_Whirring.ogg" id="3_2ntvs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lov1f"]
 size = Vector3(1, 1, 0.6)
@@ -34,11 +36,12 @@ emission_energy_multiplier = 0.0
 material = SubResource("StandardMaterial3D_lov1f")
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("debug_music_label", "debug_sfx_label", "debug_master_label")]
+[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("debug_music_label", "debug_sfx_label", "debug_master_label", "options_audio_stream")]
 script = ExtResource("1_kxyb1")
 debug_music_label = NodePath("MusicLabel")
 debug_sfx_label = NodePath("SFXLabel")
 debug_master_label = NodePath("MasterLabel")
+options_audio_stream = NodePath("OptionsMenu")
 
 [node name="MusicLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58286, 0.4)
@@ -60,26 +63,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_lov1f")
 
 [node name="PointA" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.699264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546083, 0.909158, 0.35064)
 
 [node name="PointB" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.699264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470776, 0.909158, 0.35064)
 
 [node name="PointC" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.419264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545077, 0.671189, 0.351565)
 
 [node name="PointD" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.419264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470776, 0.667513, 0.35064)
 
 [node name="PointE" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.139264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546083, 0.429299, 0.35064)
 
 [node name="PointF" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.139264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.471, 0.429, 0.351)
+
+[node name="SM_Amp" parent="." instance=ExtResource("2_lov1f")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.2266e-08, 0, -0.280614)
 
 [node name="MasterSlider" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.699264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546083, 0.909158, 0.35064)
 
 [node name="SliderCollision" type="CollisionShape3D" parent="MasterSlider"]
 shape = SubResource("BoxShape3D_2ntvs")
@@ -90,7 +96,7 @@ mesh = SubResource("BoxMesh_w113x")
 
 [node name="MusicSlider" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.419264, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545077, 0.671189, 0.351565)
 
 [node name="SliderCollision" type="CollisionShape3D" parent="MusicSlider"]
 shape = SubResource("BoxShape3D_2ntvs")
@@ -100,13 +106,20 @@ mesh = SubResource("BoxMesh_jkgd3")
 
 [node name="SfxSlider" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.149514, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546083, 0.429299, 0.35064)
 
 [node name="SliderCollision" type="CollisionShape3D" parent="SfxSlider"]
 shape = SubResource("BoxShape3D_2ntvs")
 
 [node name="SliderMesh" type="MeshInstance3D" parent="SfxSlider/SliderCollision"]
 mesh = SubResource("BoxMesh_kxyb1")
+
+[node name="OptionsMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2ntvs")
+volume_db = -20.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
 
 [connection signal="mouse_entered" from="MasterSlider" to="." method="_on_master_slider_mouse_entered"]
 [connection signal="mouse_exited" from="MasterSlider" to="." method="_on_master_slider_mouse_exited"]

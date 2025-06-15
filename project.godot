@@ -65,6 +65,7 @@ enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://a
 [file_customization]
 
 folder_colors={
+"res://audio/": "blue",
 "res://dialogues/": "yellow"
 }
 

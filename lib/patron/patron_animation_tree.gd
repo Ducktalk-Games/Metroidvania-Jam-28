@@ -19,6 +19,10 @@ func patron_plays_piano() -> void:
 	state_machine.travel("PlayingPiano")
 
 
+func patron_stops_playing_piano() -> void:
+	state_machine.travel("Idle")
+
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "WakeUp":
 		woken_up.emit()

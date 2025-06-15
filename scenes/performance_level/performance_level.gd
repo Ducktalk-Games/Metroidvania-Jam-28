@@ -8,9 +8,10 @@ const OF_MICE_AND_LIONS_OGG: AudioStreamOggVorbis = preload("uid://cdhmvoqac6ua0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	await Global.curtains_opened
 	Global.current_menu_state = Global.MenuState.PERFORMANCE
 	var character: StageCharacter = Global.stage.stage_body
+	character.global_position = Vector3.ZERO
+	Global.stage.player_child_body.character_mesh.global_position = character.global_position
 
 	# 120_matron_song_request
 	var sequencer: DialogueSequencer = DialogueSequencer.start_dialog("uid://pb73ouwr1sif")

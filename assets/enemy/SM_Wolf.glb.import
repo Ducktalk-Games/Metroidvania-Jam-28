@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://i8mjr1ibov6q"
-path="res://.godot/imported/SM_Chair.glb-5376946e92409fc643ba3a1846dee00b.scn"
+uid="uid://cp3q2nqlb81ir"
+path="res://.godot/imported/SM_Wolf.glb-58e75b8a73df2cc7986e6a4efbd1eb61.scn"
 
 [deps]
 
-source_file="res://assets/chair/SM_Chair.glb"
-dest_files=["res://.godot/imported/SM_Chair.glb-5376946e92409fc643ba3a1846dee00b.scn"]
+source_file="res://assets/enemy/SM_Wolf.glb"
+dest_files=["res://.godot/imported/SM_Wolf.glb-58e75b8a73df2cc7986e6a4efbd1eb61.scn"]
 
 [params]
 
@@ -34,9 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"M_Chair": {
+"awoo": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/chair/M_Chair.tres"
+"use_external/path": "uid://mgvmvrdgass7"
 }
 }
 }

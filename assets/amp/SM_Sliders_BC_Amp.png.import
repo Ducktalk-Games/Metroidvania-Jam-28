@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bebb78i2cmoew"
-path.s3tc="res://.godot/imported/SM_AMP_BC_Amp.png-a64a241db9a4489682876470503583d6.s3tc.ctex"
+uid="uid://bukdjmj63i2k1"
+path.s3tc="res://.godot/imported/SM_Sliders_BC_Amp.png-8ccd4b36435228d34b1c2a4b6fa6b523.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/amp/SM_AMP_BC_Amp.png"
-dest_files=["res://.godot/imported/SM_AMP_BC_Amp.png-a64a241db9a4489682876470503583d6.s3tc.ctex"]
+source_file="res://assets/amp/SM_Sliders_BC_Amp.png"
+dest_files=["res://.godot/imported/SM_Sliders_BC_Amp.png-8ccd4b36435228d34b1c2a4b6fa6b523.s3tc.ctex"]
 
 [params]
 

@@ -1,14 +1,21 @@
 extends PlatformLevel
 
 @export var PlayerStart: Marker3D
+@export var player_finds_lion_trigger: SimpleDialogueTrigger
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	Global.stage.patron.set_music_to("house_theme")
 	var character: StageCharacter = Global.stage.stage_body
 	global_position = character.character_mesh.global_position
 	character.character_mesh.global_position = PlayerStart.global_position
 	(Component.find(character, "CanMove") as CanMove).speed *= 0.7
 	(Component.find(character, "CanJump") as CanJump).disable()
+	(Component.find(character, "CanLoot") as CanLoot).inventory.clear()
+
+	await Global.curtains_opened
+	player_finds_lion_trigger.play_triggered_dialogue()
+
+	await DialogueManager.dialogue_ended
+	Global.stage.patron.set_music_to("house_theme")

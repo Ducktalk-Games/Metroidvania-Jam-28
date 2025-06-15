@@ -67,6 +67,7 @@ func enable_player_input() -> void:
 func curtains_fall(target: PackedScene) -> void:
 	Global.disable_player_input()
 	Global.current_menu_state = Global.MenuState.TRANSITIONING
+	Global.stage.patron.set_music_to("")
 	target_scene = target
 	stage.stage_body.curtain_anim_player.play("close_curtain")
 	stage.stage_body\
@@ -82,7 +83,7 @@ func _on_curtains_fall(_animation: String) -> void:
 
 func _change_level_and_open_curtains() -> void:
 	current_platform_level.queue_free()
-	var to_node: Node3D = target_scene.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
+	var to_node: Node = target_scene.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
 	to_node.ready.connect(_curtains_rise)
 	stage.add_child(to_node)
 
@@ -142,4 +143,4 @@ func reset_to_title() -> void:
 	last_dimmed = null
 	who_is_dimmed = null
 	lock_dialogue_input = false
-	get_tree().change_scene_to_packed(STAGE)
+	get_tree().change_scene_to_file("res://scenes/stage/stage.tscn")

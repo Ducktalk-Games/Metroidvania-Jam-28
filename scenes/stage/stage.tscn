@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
+[ext_resource type="PackedScene" uid="uid://dgy0euukak08u" path="res://scenes/platform/house_level.tscn" id="2_6uyam"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="2_a221a"]
 [ext_resource type="Script" uid="uid://dcm1mndf36aas" path="res://scenes/stage/stage_body.gd" id="2_oomxc"]
 [ext_resource type="Script" uid="uid://bh1jql0owo2v1" path="res://lib/components/can_jump.gd" id="3_a221a"]
@@ -282,6 +283,9 @@ xfade_time = 0.5
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1edo"]
 xfade_time = 0.5
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pn4bj"]
+xfade_time = 0.5
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x6r7u"]
 states/End/position = Vector2(581, 80)
 states/Idle/node = SubResource("AnimationNodeAnimation_dtws5")
@@ -294,9 +298,9 @@ states/SlamLid/node = SubResource("AnimationNodeAnimation_opsrg")
 states/SlamLid/position = Vector2(450, 80)
 states/Start/position = Vector2(-136, 80)
 states/WakeUp/node = SubResource("AnimationNodeAnimation_634kf")
-states/WakeUp/position = Vector2(131, 80)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_n3cgd"), "PlayingPiano", "SlamLid", SubResource("AnimationNodeStateMachineTransition_lvwud"), "Idle", "WakeUp", SubResource("AnimationNodeStateMachineTransition_3ap4e"), "WakeUp", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_opsrg"), "Idle", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_t5v3n"), "PlayingPianoPause", "Idle", SubResource("AnimationNodeStateMachineTransition_6uyam"), "WakeUp", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_624yl"), "PlayingPianoPause", "WakeUp", SubResource("AnimationNodeStateMachineTransition_6a4sw"), "PlayingPiano", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_dgy2l"), "PlayingPianoPause", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_o1edo")]
-graph_offset = Vector2(-338, -84)
+states/WakeUp/position = Vector2(131, 122)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_n3cgd"), "PlayingPiano", "SlamLid", SubResource("AnimationNodeStateMachineTransition_lvwud"), "Idle", "WakeUp", SubResource("AnimationNodeStateMachineTransition_3ap4e"), "WakeUp", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_opsrg"), "Idle", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_t5v3n"), "PlayingPianoPause", "Idle", SubResource("AnimationNodeStateMachineTransition_6uyam"), "WakeUp", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_624yl"), "PlayingPianoPause", "WakeUp", SubResource("AnimationNodeStateMachineTransition_6a4sw"), "PlayingPiano", "PlayingPianoPause", SubResource("AnimationNodeStateMachineTransition_dgy2l"), "PlayingPianoPause", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_o1edo"), "Idle", "PlayingPiano", SubResource("AnimationNodeStateMachineTransition_pn4bj")]
+graph_offset = Vector2(-535, -25)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_x6r7u"]
 viewport_path = NodePath("Stage/StageBody/OffStageEnv/Patron/patron_bubble/SubViewport")
@@ -342,7 +346,7 @@ Vector2i(-1, 0): {
 },
 Vector2i(-1, 1): {
 "fade_beats": 0.5,
-"fade_mode": 4,
+"fade_mode": 2,
 "from_time": 0,
 "hold_previous": true,
 "to_time": 0
@@ -995,6 +999,7 @@ spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 matron = NodePath("StageBody/OffStageEnv/Matron")
 narrator = NodePath("StageBody/Narrator")
+startup_level = ExtResource("2_6uyam")
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -1085,37 +1090,8 @@ map_body = NodePath("PlayerChildCollision")
 [node name="SK_PlayerCharacter" parent="Stage/StageBody/ChildLevel/Player" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/Armature" index="0"]
-bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
-bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
-bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
-bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
-bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
-bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
-bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
-bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
-bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
-bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
-bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
-bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
-bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
-bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
-bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
-bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
-bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
-bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
-bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
-bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
-bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
-bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
-bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
+[node name="AnimationPlayer" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter" index="1"]
+autoplay = "Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter"]
 tree_root = SubResource("AnimationNodeStateMachine_dtws5")
@@ -1133,7 +1109,7 @@ metadata/_custom_type_script = "uid://dpi5bfkmvmj80"
 
 [node name="SubViewport" type="SubViewport" parent="Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble"]
 transparent_bg = true
-size = Vector2i(131, 87)
+size = Vector2i(171, 102)
 
 [node name="PlayerChildCollision" type="CollisionShape3D" parent="Stage/StageBody/ChildLevel/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -1213,11 +1189,11 @@ animation_tree = NodePath("MatronAnimationTree")
 [node name="Skeleton3D" parent="Stage/StageBody/OffStageEnv/Matron/metarig" index="0"]
 bones/0/position = Vector3(0, 0.579271, -0.021255)
 bones/0/rotation = Quaternion(0.0527792, 0, 0, 0.998606)
-bones/1/rotation = Quaternion(-0.0561773, 0, 0, 0.998421)
-bones/2/rotation = Quaternion(-0.0904261, 0, 0, 0.995903)
-bones/4/rotation = Quaternion(0.0360451, 0, 0, 0.99935)
+bones/1/rotation = Quaternion(-0.0638416, 0, 0, 0.99796)
+bones/2/rotation = Quaternion(-0.0779733, 0, 0, 0.996956)
+bones/4/rotation = Quaternion(0.0433945, 0, 0, 0.999058)
 bones/7/rotation = Quaternion(-0.68889, -0.245566, -0.327819, 0.598049)
-bones/8/rotation = Quaternion(-0.157127, 0.640609, -0.658558, 0.36226)
+bones/8/rotation = Quaternion(-0.155919, 0.63841, -0.66069, 0.362782)
 bones/9/rotation = Quaternion(0.328892, -0.0585097, -0.17121, 0.926873)
 bones/10/rotation = Quaternion(0.0736906, 0.540263, 0.102016, 0.832033)
 bones/11/rotation = Quaternion(-0.68889, 0.245566, 0.327819, 0.598049)
@@ -1245,7 +1221,7 @@ tree_root = SubResource("AnimationNodeStateMachine_2t6vl")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="matron_bubble" type="Sprite3D" parent="Stage/StageBody/OffStageEnv/Matron"]
-transform = Transform3D(-0.904476, 0, -0.426524, 0, 1, 0, 0.426524, 0, -0.904476, -0.0581055, 2.52664, -0.186169)
+transform = Transform3D(-0.904476, 0, -0.426524, 0, 1, 0, 0.426524, 0, -0.904476, -0.0581059, 2.72664, -0.186172)
 billboard = 1
 texture = SubResource("ViewportTexture_kdtcl")
 script = ExtResource("11_400yc")
@@ -1271,33 +1247,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.029
 [node name="SM_FilmCamera2" parent="Stage/StageBody/OffStageEnv" instance=ExtResource("14_5b43b")]
 transform = Transform3D(0.993896, -0.00100169, 0.110308, 0.00108576, 0.999999, -0.000702048, -0.110307, 0.000817531, 0.993897, -1.47449, 1.40927, -4.95885)
 
-[node name="Patron" type="Node3D" parent="Stage/StageBody/OffStageEnv" node_paths=PackedStringArray("music")]
+[node name="Patron" type="Node3D" parent="Stage/StageBody/OffStageEnv" node_paths=PackedStringArray("music", "patron_anim_player")]
 transform = Transform3D(-0.788287, 0, 0.850765, 0, 1.15983, 0, -0.850765, 0, -0.788287, 3.68362, 0.430891, -9.16243)
 script = ExtResource("26_lr1w7")
 music = NodePath("PatronMusic")
+patron_anim_player = NodePath("SK_Patron/PatronAnimationTree")
 
 [node name="SK_PatronLookingDown" parent="Stage/StageBody/OffStageEnv/Patron" instance=ExtResource("30_t5v3n")]
 transform = Transform3D(-0.861572, 0, -0.0328418, 0, 0.862195, 0, 0.0328418, 0, -0.861572, 1.91475, -0.075193, -1.08553)
 visible = false
-
-[node name="Skeleton3D" parent="Stage/StageBody/OffStageEnv/Patron/SK_PatronLookingDown/All" index="0"]
-bones/1/rotation = Quaternion(0.0890314, -4.97931e-11, 4.43005e-12, 0.996029)
-bones/2/rotation = Quaternion(0.111794, 4.92723e-11, -5.55083e-12, 0.993731)
-bones/3/rotation = Quaternion(0.178682, -3.15822e-10, -1.67347e-10, 0.983907)
-bones/5/rotation = Quaternion(0.969001, 0.200306, 0.0292755, 0.141623)
-bones/6/position = Vector3(-1.19209e-07, 1.22761, 0.0692935)
-bones/6/rotation = Quaternion(-0.103062, 0.0147319, 0.140735, 0.984558)
-bones/7/rotation = Quaternion(-4.72235e-08, 0.235111, 2.00288e-07, 0.971969)
-bones/8/rotation = Quaternion(-7.43703e-08, -8.60001e-08, 0.722401, 0.691474)
-bones/10/rotation = Quaternion(0.938583, -0.283116, -0.139474, 0.139475)
-bones/11/position = Vector3(-3.12924e-07, 1.10279, 0.0742399)
-bones/11/rotation = Quaternion(-0.0508033, 0.0082293, -0.159688, 0.985825)
-bones/12/rotation = Quaternion(4.94947e-08, -0.249938, 1.9595e-07, 0.968262)
-bones/13/rotation = Quaternion(5.71924e-08, -9.39254e-08, -0.451681, 0.892179)
-bones/16/position = Vector3(1.49012e-08, 1.01573, -1.12777e-08)
-bones/17/position = Vector3(7.45058e-08, 1.32803, 1.49012e-08)
-bones/20/position = Vector3(1.49012e-08, 1.01573, 1.12776e-08)
-bones/21/position = Vector3(7.45058e-08, 1.32868, 0)
 
 [node name="AnimationPlayer" parent="Stage/StageBody/OffStageEnv/Patron/SK_PatronLookingDown" index="1"]
 autoplay = "LookingDown"
@@ -1313,8 +1271,8 @@ bones/2/rotation = Quaternion(0.180286, 0.0133093, 0.00243968, 0.983521)
 bones/3/rotation = Quaternion(0.120281, 1.05729e-10, -5.89353e-10, 0.99274)
 bones/5/position = Vector3(0.640739, 0.337775, 2.28174e-08)
 bones/5/rotation = Quaternion(0.126454, -0.485447, -0.23033, 0.833846)
-bones/6/position = Vector3(1.23613, 0.0466226, -0.0614036)
-bones/6/rotation = Quaternion(-0.220337, -0.221539, 0.668236, 0.675154)
+bones/6/position = Vector3(1.23596, 0.046288, -0.0615824)
+bones/6/rotation = Quaternion(-0.219285, -0.221328, 0.6657, 0.678065)
 bones/7/position = Vector3(0.763518, 0.0286318, -8.9407e-08)
 bones/7/rotation = Quaternion(0.0521774, -0.0127921, 0.158947, 0.985824)
 bones/8/position = Vector3(0.461292, -0.00636257, -1.3411e-07)
@@ -1416,6 +1374,7 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_634kf")
 }
+autoplay = "RESET"
 
 [node name="MainCamera" type="Camera3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, -0.200467, 1.44103, 22.529)
@@ -1498,113 +1457,17 @@ visible = false
 
 [node name="Witness1" parent="Stage/StageBody/Witnesses" instance=ExtResource("24_lr1w7")]
 
-[node name="Skeleton3D" parent="Stage/StageBody/Witnesses/Witness1/Armature" index="0"]
-bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
-bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
-bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
-bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
-bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
-bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
-bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
-bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
-bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
-bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
-bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
-bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
-bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
-bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
-bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
-bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
-bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
-bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
-bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
-bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
-bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
-bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
-bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-
 [node name="AnimationPlayer" parent="Stage/StageBody/Witnesses/Witness1" index="1"]
 autoplay = "Idle"
 
 [node name="Witness2" parent="Stage/StageBody/Witnesses" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 1.2, 0, 0.200001)
 
-[node name="Skeleton3D" parent="Stage/StageBody/Witnesses/Witness2/Armature" index="0"]
-bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
-bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
-bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
-bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
-bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
-bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
-bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
-bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
-bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
-bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
-bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
-bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
-bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
-bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
-bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
-bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
-bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
-bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
-bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
-bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
-bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
-bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
-bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-
 [node name="AnimationPlayer" parent="Stage/StageBody/Witnesses/Witness2" index="1"]
 autoplay = "Idle"
 
 [node name="Witness3" parent="Stage/StageBody/Witnesses" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.880677, 0, 3.53535)
-
-[node name="Skeleton3D" parent="Stage/StageBody/Witnesses/Witness3/Armature" index="0"]
-bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
-bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
-bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
-bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
-bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
-bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
-bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
-bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
-bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
-bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
-bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
-bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
-bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
-bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
-bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
-bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
-bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
-bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
-bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
-bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
-bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
-bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
-bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
 
 [node name="AnimationPlayer" parent="Stage/StageBody/Witnesses/Witness3" index="1"]
 autoplay = "Idle"
@@ -1624,38 +1487,6 @@ size = Vector2i(213, 85)
 
 [node name="SK_PlayerCharacter" parent="Stage/StageBody/Narrator" instance=ExtResource("24_lr1w7")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.0462599, 0.14058, 0.0500519)
-
-[node name="Skeleton3D" parent="Stage/StageBody/Narrator/SK_PlayerCharacter/Armature" index="0"]
-bones/0/position = Vector3(0.0018421, 5.77143e-17, -2.75841)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/2/rotation = Quaternion(0.0261769, 0, 0, 0.999657)
-bones/3/rotation = Quaternion(0, 1.16455e-10, 0.0261769, 0.999657)
-bones/5/position = Vector3(0.803512, 0.15857, -7.4506e-09)
-bones/5/rotation = Quaternion(0.984808, 0.173648, 1.23061e-08, -7.03312e-08)
-bones/6/rotation = Quaternion(-4.04465e-10, -3.11376e-08, 0.0715759, 0.997435)
-bones/7/position = Vector3(0.100986, 1.03791, -0.0244034)
-bones/7/rotation = Quaternion(-0.0584916, 0.180319, 0.10306, 0.976444)
-bones/8/rotation = Quaternion(-3.10253e-09, -2.3834e-09, 0.70824, 0.705971)
-bones/10/position = Vector3(-0.803512, 0.158565, -2.23517e-08)
-bones/10/rotation = Quaternion(-0.984808, 0.173648, -2.19533e-08, -1.18567e-07)
-bones/11/position = Vector3(-0.15709, 1.26793, -5.80147e-08)
-bones/11/rotation = Quaternion(5.67336e-09, -3.38145e-08, -0.0825443, 0.996587)
-bones/12/position = Vector3(-0.10099, 1.03791, -0.0244034)
-bones/12/rotation = Quaternion(0.00776228, 0.00134845, -0.0908742, 0.995831)
-bones/13/rotation = Quaternion(2.42618e-09, 3.24872e-09, -0.640216, 0.768195)
-bones/15/position = Vector3(0.586658, -0.404988, -3.84696e-15)
-bones/15/rotation = Quaternion(1, 0, 7.54979e-08, 3.62375e-29)
-bones/16/position = Vector3(0.061053, 1.20506, -0.0397043)
-bones/16/rotation = Quaternion(-1.36862e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/17/position = Vector3(-0.0305265, 0.986938, 0.180428)
-bones/17/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
-bones/19/position = Vector3(-0.586658, -0.40499, -1.14711e-14)
-bones/19/rotation = Quaternion(1, -5.16696e-15, 3.27896e-08, 4.37114e-08)
-bones/20/position = Vector3(7.45058e-09, 1.20506, -0.0397043)
-bones/20/rotation = Quaternion(-1.38331e-29, -3.17865e-08, 2.52435e-29, 1)
-bones/21/position = Vector3(-1.86265e-09, 0.986935, 0.180428)
-bones/21/rotation = Quaternion(-0.707107, -3.04325e-08, -3.04325e-08, 0.707107)
 
 [node name="AnimationPlayer" parent="Stage/StageBody/Narrator/SK_PlayerCharacter" index="1"]
 autoplay = "Idle"

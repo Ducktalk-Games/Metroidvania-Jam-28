@@ -19,9 +19,10 @@ size = Vector3(80.7, 1, 1.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qfjab"]
 size = Vector3(3.65059, 6.6665, 1.1)
 
-[node name="HouseLevel" type="Node3D" node_paths=PackedStringArray("PlayerStart")]
+[node name="HouseLevel" type="Node3D" node_paths=PackedStringArray("PlayerStart", "player_finds_lion_trigger")]
 script = ExtResource("1_ihf5a")
 PlayerStart = NodePath("PlayerStart")
+player_finds_lion_trigger = NodePath("StaticFloor/PlayerFindsLionsTrigger")
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, -2.9)
@@ -63,13 +64,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.46922, 0.407218, 3.82685)
 [node name="Spotlight" parent="StaticFloor/DollhouseTrigger" index="2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.81814, 6.24412, -4.71801)
 light_energy = 0.0
-spot_range = 6.6261
+spot_range = 6.31848
 
 [node name="PerformanceLevelTrigger" parent="StaticFloor" instance=ExtResource("6_a4jp6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6038, 0.407218, 3.82685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3183, 0.407218, 3.82685)
 
 [node name="PlayerFindsLionsTrigger" parent="StaticFloor" instance=ExtResource("5_7sn60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3649, 0.407218, 3.82685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1281, 0.407218, 3.82685)
 
 [node name="PlayerStart" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.598, -0.008, 0)

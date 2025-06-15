@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhl3dby1g4fyh"]
+[gd_scene load_steps=10 format=3 uid="uid://bhl3dby1g4fyh"]
 
 [ext_resource type="PackedScene" uid="uid://bd5qini8qs3h8" path="res://assets/pause_menu/AM_PauseMenu.glb" id="1_ejwgg"]
 [ext_resource type="Script" uid="uid://7h1p82yligtg" path="res://ui/pause_menu.gd" id="2_fob5h"]
 [ext_resource type="Script" uid="uid://bkxpj73vi025b" path="res://ui/pause_menu_selector.gd" id="3_avurv"]
 [ext_resource type="Script" uid="uid://btvg3n38d22mb" path="res://ui/pause_menu_button.gd" id="3_fob5h"]
+[ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="4_npydk"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avurv"]
-albedo_color = Color(0.997619, 0, 0.214608, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3kxr"]
+size = Vector3(1.22, 0.0530605, 0.177)
 
-[sub_resource type="BoxMesh" id="BoxMesh_npydk"]
-material = SubResource("StandardMaterial3D_avurv")
-size = Vector3(1.22, 0.014, 0.177)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vovkw"]
+albedo_color = Color(0.608513, 0.443191, 0.294003, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jyvtb"]
+top_radius = 0.002
+bottom_radius = 0.002
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ap7o"]
 size = Vector3(1.42578, 0.441162, 0.154297)
@@ -32,10 +36,14 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 script = ExtResource("3_avurv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Selector" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35973e-07, -0.213138, -0.200121)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_npydk")
+[node name="ProceduralPlatform" type="CollisionShape3D" parent="Selector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23252, -0.2)
+shape = SubResource("BoxShape3D_j3kxr")
+script = ExtResource("4_npydk")
+string_material = SubResource("StandardMaterial3D_vovkw")
+string_mesh = SubResource("CylinderMesh_jyvtb")
+string_offset = 0.008
+metadata/_custom_type_script = "uid://bybg6d10xsd13"
 
 [node name="Buttons" type="Node3D" parent="." index="3"]
 unique_name_in_owner = true

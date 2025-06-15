@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d0ueki0jlp5fe"]
 
 [ext_resource type="Script" uid="uid://gcfk1mfuwlmv" path="res://scenes/platform/falling_platform.gd" id="1_2fhj7"]
+[ext_resource type="Material" uid="uid://eb4ts6kg4cli" path="res://assets/stage_props/stage_prop_material.tres" id="2_qjarj"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_x5e5x"]
 [ext_resource type="Script" uid="uid://c87ywthbtjb1s" path="res://lib/components/can_reset.gd" id="3_qjarj"]
 
@@ -9,9 +10,6 @@ size = Vector3(0.961914, 0.1, 1.96484)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x5e5x"]
 size = Vector3(0.961914, 0.1, 1.96484)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjarj"]
-albedo_color = Color(0.832882, 0, 0.120556, 1)
 
 [sub_resource type="Animation" id="Animation_q7r88"]
 length = 0.001
@@ -66,7 +64,7 @@ shape = SubResource("BoxShape3D_4npk2")
 [node name="FallingPlatform" type="MeshInstance3D" parent="FallingPlatformCollision"]
 mesh = SubResource("BoxMesh_x5e5x")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qjarj")
+surface_material_override/0 = ExtResource("2_qjarj")
 
 [node name="PlatformAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

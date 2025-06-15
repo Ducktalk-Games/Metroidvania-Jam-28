@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnf24mg5ngb1g"
-path="res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"
+uid="uid://d34pftv6nmjrl"
+path="res://.godot/imported/SM_Tree1.glb-b51be686bf96cbd76fdc337d94854cb7.scn"
 
 [deps]
 
-source_file="res://assets/stage/SM_Stage_Boarder.glb"
-dest_files=["res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"]
+source_file="res://assets/stage_props/SM_Tree1.glb"
+dest_files=["res://.godot/imported/SM_Tree1.glb-b51be686bf96cbd76fdc337d94854cb7.scn"]
 
 [params]
 

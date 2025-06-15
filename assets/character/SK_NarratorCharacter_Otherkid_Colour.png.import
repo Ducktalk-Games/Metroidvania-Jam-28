@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bebb78i2cmoew"
-path.s3tc="res://.godot/imported/SM_Amp_BC_Amp.png-6f983435fd84245622b51504fa679fac.s3tc.ctex"
+uid="uid://jxkpivmi88wb"
+path.s3tc="res://.godot/imported/SK_NarratorCharacter_Otherkid_Colour.png-452530a5b503711158e0906082bc4474.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "53cd9f85dba4e55f657e15e27aaeaece"
+"md5": "caa452f2169f55afe1d8bbefb7016bb9"
 }
 
 [deps]
 
-source_file="res://assets/amp/SM_Amp_BC_Amp.png"
-dest_files=["res://.godot/imported/SM_Amp_BC_Amp.png-6f983435fd84245622b51504fa679fac.s3tc.ctex"]
+source_file="res://assets/character/SK_NarratorCharacter_Otherkid_Colour.png"
+dest_files=["res://.godot/imported/SK_NarratorCharacter_Otherkid_Colour.png-452530a5b503711158e0906082bc4474.s3tc.ctex"]
 
 [params]
 

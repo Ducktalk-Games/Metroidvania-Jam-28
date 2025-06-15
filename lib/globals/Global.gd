@@ -34,6 +34,8 @@ var was_input_disabled_before_pause: bool = false
 var is_input_disabled: bool = true
 var lock_dialogue_input: bool = false
 
+var options_amp: OptionsAmp
+
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
 
 const STAGE = preload("res://scenes/stage/stage.tscn")
@@ -126,12 +128,10 @@ func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
 
 
 func disable_options_menu() -> void:
-	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
 	options_amp.has_input_enabled = false
 
 
 func enable_options_menu() -> void:
-	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
 	options_amp.has_input_enabled = true
 
 

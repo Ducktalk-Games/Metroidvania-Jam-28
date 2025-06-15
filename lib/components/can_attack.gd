@@ -57,7 +57,7 @@ func _npc_attack() -> void:
 	if not can_attack:
 		return
 
-	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return not [get_object(), %Map, %StageBody, %StageFloor].has(t))
+	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return t!=get_object() and Component.find(t,"HasHealth"))
 
 	if len(targs) < 1:
 		return
@@ -73,7 +73,6 @@ func _player_attack(pressed:bool) -> void:
 
 
 func _attack() -> void:
-	print("Attempting attack")
 	attack.emit()
 	damage()
 	# reset cooldown
@@ -82,17 +81,14 @@ func _attack() -> void:
 
 
 func damage() -> void:
-	# All bodies in hitbox, but filter out self, stage, and floor
-	# Should instead do this using collision layers or similar
-	if not hit_area:
-		return
+	# All bodies in hitbox, but filter out unneccessary nodes
 
-	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return not [get_object(), %StaticFloor, %StageBody].has(t))
+	var targs: Array[Node3D] = hit_area.get_overlapping_bodies().filter(func(t: Node3D)-> bool: return t!=get_object() and Component.find(t,"HasHealth"))
 
 	for target in targs:
 		var targ: HasHealth = Component.find(target, "HasHealth")
 
 		if targ:
-			targ.take_damage(value)
+			targ.take_damage(value, hit_area.global_position)
 		else:
 			print("Could not damage target", target.name,"; it has no health component.")

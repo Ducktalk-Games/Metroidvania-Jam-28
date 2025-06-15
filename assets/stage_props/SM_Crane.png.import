@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bebb78i2cmoew"
-path.s3tc="res://.godot/imported/SM_Amp_BC_Amp.png-6f983435fd84245622b51504fa679fac.s3tc.ctex"
+uid="uid://by451hyk844b6"
+path.s3tc="res://.godot/imported/SM_Crane.png-130eb7ac1a7daa36d7dd1f7bd4b6d54a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "53cd9f85dba4e55f657e15e27aaeaece"
+"md5": "6926646878c53c23618d87baff0f599c"
 }
 
 [deps]
 
-source_file="res://assets/amp/SM_Amp_BC_Amp.png"
-dest_files=["res://.godot/imported/SM_Amp_BC_Amp.png-6f983435fd84245622b51504fa679fac.s3tc.ctex"]
+source_file="res://assets/stage_props/SM_Crane.png"
+dest_files=["res://.godot/imported/SM_Crane.png-130eb7ac1a7daa36d7dd1f7bd4b6d54a.s3tc.ctex"]
 
 [params]
 

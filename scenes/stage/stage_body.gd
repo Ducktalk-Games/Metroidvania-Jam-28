@@ -6,3 +6,7 @@ extends Character
 
 @export var can_jump: CanJump
 @export var can_die: CanDie
+
+
+func _ready() -> void:
+	is_player = true

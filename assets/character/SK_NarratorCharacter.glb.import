@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnf24mg5ngb1g"
-path="res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"
+uid="uid://cr0vu53xdp0dj"
+path="res://.godot/imported/SK_NarratorCharacter.glb-8192bc6503480e2acbf6799e59064cfc.scn"
 
 [deps]
 
-source_file="res://assets/stage/SM_Stage_Boarder.glb"
-dest_files=["res://.godot/imported/SM_Stage_Boarder.glb-7a9300d028b3228da444457e923c8b7f.scn"]
+source_file="res://assets/character/SK_NarratorCharacter.glb"
+dest_files=["res://.godot/imported/SK_NarratorCharacter.glb-8192bc6503480e2acbf6799e59064cfc.scn"]
 
 [params]
 

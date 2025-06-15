@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bebb78i2cmoew"
-path.s3tc="res://.godot/imported/SM_Amp_BC_Amp.png-6f983435fd84245622b51504fa679fac.s3tc.ctex"
+uid="uid://do1hmebnaivok"
+path.s3tc="res://.godot/imported/SM_Vine1_vine_1.png-8e0c6c095f9ea640d573f156e0c287e1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "53cd9f85dba4e55f657e15e27aaeaece"
+"md5": "05cb006f336d9dd868401c70e5f0d7a4"
 }
 
 [deps]
 
-source_file="res://assets/amp/SM_Amp_BC_Amp.png"
-dest_files=["res://.godot/imported/SM_Amp_BC_Amp.png-6f983435fd84245622b51504fa679fac.s3tc.ctex"]
+source_file="res://assets/stage_props/SM_Vine1_vine_1.png"
+dest_files=["res://.godot/imported/SM_Vine1_vine_1.png-8e0c6c095f9ea640d573f156e0c287e1.s3tc.ctex"]
 
 [params]
 

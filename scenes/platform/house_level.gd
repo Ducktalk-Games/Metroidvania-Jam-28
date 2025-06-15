@@ -11,6 +11,7 @@ func _ready() -> void:
 	character.character_mesh.global_position = PlayerStart.global_position
 	(Component.find(character, "CanMove") as CanMove).speed *= 0.7
 	(Component.find(character, "CanJump") as CanJump).disable()
+	(Component.find(character, "CanLoot") as CanLoot).inventory.clear()
 
 	await DialogueManager.dialogue_ended
 	Global.stage.patron.set_music_to("house_theme")

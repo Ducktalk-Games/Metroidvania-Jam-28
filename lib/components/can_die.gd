@@ -21,4 +21,7 @@ func _physics_process(delta: float) -> void:
 
 
 func die() -> void:
+	# TODO: handle character death in a special way
+	if character.is_player:
+		pass
 	has_died.emit()

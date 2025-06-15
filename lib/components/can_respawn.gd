@@ -20,4 +20,9 @@ func respawn() -> void:
 
 	tween.chain().tween_callback(func() -> void: resetting = false; Global.enable_player_input())
 
+	var health := other("HasHealth") as HasHealth
+
+	if health:
+		health.reset_health()
+
 	current_checkpoint.reset_all()

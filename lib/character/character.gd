@@ -8,6 +8,8 @@ var relocating: bool = false
 var reloc_target: Vector3
 var reloc_start: Vector3
 
+var is_player: bool = false
+
 var nearby_interactable: Interactable
 var nearby_item: ItemPickup
 

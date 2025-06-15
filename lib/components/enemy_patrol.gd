@@ -7,30 +7,35 @@ var patrol_speed: float = 10.0
 
 @export
 var end_of_path_delay: float = 0.1
-
-@onready
-var points_node: Node3D = $PatrollingPoints
+#
+#@onready
+#var points_node: Node3D = $PatrollingPoints
 
 @onready
 var patrol_agent := get_object() as CharacterBody3D
 
 @onready
-var stage := %Stage
+var patrolling:= false
 
 var is_waiting: bool
 
 var current_path: String
 
 @export
-var point_a : Node3D
+var point_a: Node3D
 
 @export
-var point_b : Node3D
+var point_b: Node3D
+
+
+func toggle_patrolling() -> void:
+	patrolling = !patrolling
 
 
 func _ready() -> void:
 	is_waiting = false
 	current_path = point_a.name
+	#toggle_patrolling()
 	pass
 
 
@@ -74,10 +79,8 @@ func wait(seconds: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if (stage.current_body.name == "StageBody"):
+	if (patrolling):
 		patrol(delta)
-
-	pass
 
 
 func _on_reach_patrol_point() -> void:

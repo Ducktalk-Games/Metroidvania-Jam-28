@@ -32,7 +32,7 @@ hit_area = NodePath("../Area3D")
 health = 100.0
 can_be_launched = false
 magnitude = 3
-patrol_speed = 10.0
+patrol_speed = 2.0
 end_of_path_delay = 0.1
 point_a = NodePath("../PatrolA")
 point_b = NodePath("../PatrolB")
@@ -51,6 +51,7 @@ script = ExtResource("4_rj5y4")
 
 [node name="EnemyPatrol" type="Node" parent="ComponentOwner" node_paths=PackedStringArray("point_a", "point_b")]
 script = ExtResource("5_t2rmx")
+patrol_speed = 2.0
 point_a = NodePath("../../PatrolA")
 point_b = NodePath("../../PatrolB")
 

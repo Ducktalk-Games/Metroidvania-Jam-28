@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://g6rymfol78gp"]
+
+[ext_resource type="Shader" uid="uid://bigvycvi3kwjv" path="res://assets/rug/rug_shader.tres" id="1_r8yym"]
+[ext_resource type="Texture2D" uid="uid://ce4posc4quyxs" path="res://assets/rug/Blood_Rug.png" id="2_i0hou"]
+[ext_resource type="Texture2D" uid="uid://okonaw2i00rf" path="res://assets/rug/SM_Rug_BC_Rug.png" id="3_bkc5y"]
+
+[resource]
+resource_name = "Material.004"
+render_priority = 0
+shader = ExtResource("1_r8yym")
+shader_parameter/rug = ExtResource("3_bkc5y")
+shader_parameter/bloody_rug = ExtResource("2_i0hou")
+shader_parameter/Blood = false

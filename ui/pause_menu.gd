@@ -137,13 +137,4 @@ func _on_exit_button_button_clicked(_button: Area3D) -> void:
 	Global.current_parent_menu_state = Global.MenuState.MAIN
 	is_paused = false
 	#Reset Global State
-	Global.are_lights_dimmed = false
-	Global.is_paused_whilst_lights_dimmed = false
-	Global.was_input_disabled_before_pause = false
-	Global.was_input_disabled_before_pause = false
-	Global.last_dimmed = null
-	Global.who_is_dimmed = null
-	Global.lock_dialogue_input = false
-	#target_platform_level
-	#current_platform_level
-	get_tree().reload_current_scene()
+	Global.reset_to_title()

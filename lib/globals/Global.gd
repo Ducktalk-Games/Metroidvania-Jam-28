@@ -36,6 +36,8 @@ var lock_dialogue_input: bool = false
 
 const ITEM_POPUP = preload("res://ui/item_popup.tscn")
 
+const STAGE = preload("res://scenes/stage/stage.tscn")
+
 signal curtains_opened
 
 
@@ -130,3 +132,14 @@ func disable_options_menu() -> void:
 func enable_options_menu() -> void:
 	var options_amp: OptionsAmp = stage.stage_body.get_node("CreditsMenu/OptionsAmp")
 	options_amp.has_input_enabled = true
+
+
+func reset_to_title() -> void:
+	are_lights_dimmed = false
+	is_paused_whilst_lights_dimmed = false
+	was_input_disabled_before_pause = false
+	was_input_disabled_before_pause = false
+	last_dimmed = null
+	who_is_dimmed = null
+	lock_dialogue_input = false
+	get_tree().change_scene_to_packed(STAGE)

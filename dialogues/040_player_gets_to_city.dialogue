@@ -1,5 +1,10 @@
 ~ start
 # The player gets to the city level
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: Eventually they made it to a city
+do Global.control_spotlight(Global.stage.player_child_body, true)
 Player: I'm sure it can't be much worse than the forest
+do Global.control_spotlight(Global.stage.player_child_body, false)
+do Global.dim_lights(false)
 => END

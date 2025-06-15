@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgy0euukak08u"]
+[gd_scene load_steps=15 format=3 uid="uid://dgy0euukak08u"]
 
 [ext_resource type="Script" uid="uid://bofdcq0r2586u" path="res://scenes/platform/house_level.gd" id="1_ihf5a"]
 [ext_resource type="PackedScene" uid="uid://c2gw83ua4d6f6" path="res://lib/box_triggers/player_finds_dining_table_trigger.tscn" id="2_vec2o"]
@@ -7,27 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://c8w7pokbjey67" path="res://lib/box_triggers/player_finds_dollhouse_trigger.tscn" id="4_njwc2"]
 [ext_resource type="PackedScene" uid="uid://hbr873nc66vk" path="res://lib/box_triggers/player_finds_lions_trigger.tscn" id="5_7sn60"]
 [ext_resource type="PackedScene" uid="uid://q4d6oc15tsji" path="res://assets/house_rooms/SM_Entry_Room.glb" id="6_7sn60"]
+[ext_resource type="PackedScene" uid="uid://dbsmurx870lwr" path="res://lib/box_triggers/performance_level_trigger.tscn" id="6_a4jp6"]
 [ext_resource type="PackedScene" uid="uid://ddriajo3i8fqv" path="res://assets/house_rooms/SM_Kids_Room.glb" id="7_njwc2"]
 [ext_resource type="PackedScene" uid="uid://cj7ghabxtumb6" path="res://assets/house_rooms/SM_Kitchen_Room.glb" id="8_w83gc"]
-[ext_resource type="PackedScene" uid="uid://dnsuqc0b2w8w0" path="res://assets/house_rooms/SM_Stage_Room.glb" id="9_25182"]
-[ext_resource type="PackedScene" uid="uid://ig7bong2l5un" path="res://assets/stage/SM_Stage_BaseTest.glb" id="10_hx43i"]
-[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_boarder.glb" id="11_ddyxt"]
-[ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_f0xqw"]
-[ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="13_w17w7"]
-[ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_geaq2"]
-[ext_resource type="PackedScene" uid="uid://ckftcbi7nyo7n" path="res://assets/rug/SM_Rug.glb" id="15_bc3iu"]
-[ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="16_f0xqw"]
-[ext_resource type="PackedScene" uid="uid://dhx8cy6q2cyo5" path="res://assets/spotlight/SM_Spotlight_Base.glb" id="17_w17w7"]
-[ext_resource type="PackedScene" uid="uid://bmrtun15vqyf6" path="res://assets/stage/Piano_Stool.glb" id="18_geaq2"]
-[ext_resource type="PackedScene" uid="uid://bdj2vm2ty0fcj" path="res://assets/stage/Piano.glb" id="19_bc3iu"]
-[ext_resource type="PackedScene" uid="uid://c4l25jhh8ukvr" path="res://assets/curtains/SM_StageCurtains.glb" id="20_bc3iu"]
+[ext_resource type="PackedScene" uid="uid://pq83kor03e6a" path="res://scenes/house_level/stage_scene.tscn" id="11_31yjs"]
+[ext_resource type="PackedScene" uid="uid://dc43gk4ll20bn" path="res://assets/wall/SM_Wall_B.glb" id="12_qfjab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s38hc"]
 size = Vector3(80.7, 1, 1.1)
 
-[node name="HouseLevel" type="Node3D" node_paths=PackedStringArray("PlayerStart")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfjab"]
+size = Vector3(3.65059, 6.6665, 1.1)
+
+[node name="HouseLevel" type="Node3D" node_paths=PackedStringArray("PlayerStart", "player_finds_lion_trigger")]
 script = ExtResource("1_ihf5a")
 PlayerStart = NodePath("PlayerStart")
+player_finds_lion_trigger = NodePath("StaticFloor/PlayerFindsLionsTrigger")
 
 [node name="StaticFloor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, -2.9)
@@ -35,6 +30,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0531, -0.407218, -2.9)
 [node name="Floor2" type="CollisionShape3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65313, 0, 4.40556)
 shape = SubResource("BoxShape3D_s38hc")
+
+[node name="Wall" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8716, 2.83325, 4.40556)
+shape = SubResource("BoxShape3D_qfjab")
 
 [node name="DiningTableTrigger" parent="StaticFloor" instance=ExtResource("2_vec2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48781, 0.407218, 3.82685)
@@ -65,10 +64,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.46922, 0.407218, 3.82685)
 [node name="Spotlight" parent="StaticFloor/DollhouseTrigger" index="2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.81814, 6.24412, -4.71801)
 light_energy = 0.0
-spot_range = 6.6261
+spot_range = 6.31848
+
+[node name="PerformanceLevelTrigger" parent="StaticFloor" instance=ExtResource("6_a4jp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3183, 0.407218, 3.82685)
 
 [node name="PlayerFindsLionsTrigger" parent="StaticFloor" instance=ExtResource("5_7sn60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3649, 0.407218, 3.82685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1281, 0.407218, 3.82685)
 
 [node name="PlayerStart" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.598, -0.008, 0)
@@ -83,44 +85,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8255, -1.23752, -6.7291)
 [node name="SM_Kitchen_Room" parent="." instance=ExtResource("8_w83gc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1257, -1.25072, -6.08783)
 
-[node name="SM_Stage_Room" parent="." instance=ExtResource("9_25182")]
+[node name="Stage_Scene" parent="." instance=ExtResource("11_31yjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1674, -1.20144, -5.40238)
 
-[node name="SM_Stage_BaseTest2" parent="." instance=ExtResource("10_hx43i")]
-transform = Transform3D(0.481501, 0, 0, 0, 0.373874, 0, 0, 0, 0.527478, 38.0348, 0.211141, -8.3122)
+[node name="SM_Wall_B2" parent="." instance=ExtResource("12_qfjab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7068, 3.31691, -6.23007)
 
-[node name="SM_Stage_boarder2" parent="." instance=ExtResource("11_ddyxt")]
-transform = Transform3D(0.584021, 0, 0, 0, 0.584021, 0, 0, 0, 1, 37.4855, -0.165823, -7.97593)
-
-[node name="SM_Stage_LightStrip2" parent="." instance=ExtResource("12_f0xqw")]
-transform = Transform3D(-4.37114e-08, 0, 0.840971, 0, 0.840971, 0, -1, 0, -3.676e-08, 39.5176, 6.32909, -0.49976)
-
-[node name="SM_Chair2" parent="." instance=ExtResource("13_w17w7")]
-transform = Transform3D(0.340089, 0, 0.970896, 0, 0.815997, 0, -0.747293, 0, 0.441849, 36.0221, 0.351243, -1.25004)
-
-[node name="SM_FilmCamera2" parent="." instance=ExtResource("14_geaq2")]
-transform = Transform3D(0.930103, 0, 0.0120727, 0, 0.868858, 0, -0.0104385, 0, 1.07572, 37.6414, 1.01744, -1.38427)
-
-[node name="SM_Rug2" parent="." instance=ExtResource("15_bc3iu")]
-transform = Transform3D(1.35765, 0, 0, 0, 1.53995, 0, 0, 0, 1.16289, 39.2347, 0.297372, -4.12161)
-
-[node name="SM_Stage_Frame" parent="." instance=ExtResource("16_f0xqw")]
-transform = Transform3D(0.625754, 0, 0, 0, 0.617518, 0, 0, 0, 1, 37.3563, -0.365236, -7.99473)
-
-[node name="SM_Spotlight_Base" parent="." instance=ExtResource("17_w17w7")]
-transform = Transform3D(0.37084, 0, 0.534313, 0, 0.531915, 0, -0.592847, 0, 0.334226, 41.7397, 0.907472, -0.970115)
-
-[node name="SM_Spotlight_Base2" parent="." instance=ExtResource("17_w17w7")]
-transform = Transform3D(0.628114, 0, -0.182051, 0, 0.506334, 0, 0.153199, 0, 0.746406, 35.4661, 0.848762, -4.02847)
-
-[node name="Piano_Stool2" parent="." instance=ExtResource("18_geaq2")]
-transform = Transform3D(0.741614, 0, 0, 0, 0.667263, 0, 0, 0, 0.776451, 41.9143, 0.269348, -3.95301)
-
-[node name="Piano" parent="." instance=ExtResource("19_bc3iu")]
-transform = Transform3D(0.795084, 0, -0.221124, 0, 0.9338, 0, 0.234277, 0, 0.750446, 42.3747, 0.666461, -4.25775)
-
-[node name="SM_StageCurtains2" parent="." instance=ExtResource("20_bc3iu")]
-transform = Transform3D(0.678467, 0, 0, 0, 0.599552, 0, 0, 0, 1, 39.2138, 0.628983, -6.09597)
+[node name="SM_Wall_B2" parent="SM_Wall_B2" instance=ExtResource("12_qfjab")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.0033, -0.180903, -0.0201468)
 
 [editable path="StaticFloor/DiningTableTrigger"]
 [editable path="StaticFloor/BucketMopTrigger"]

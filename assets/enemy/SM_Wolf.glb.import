@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://drxcv0b5jxwf4"
-path="res://.godot/imported/SM_Circular_rug.glb-9e8a6b84bbef390b960d8c98daacaa18.scn"
+uid="uid://cp3q2nqlb81ir"
+path="res://.godot/imported/SM_Wolf.glb-58e75b8a73df2cc7986e6a4efbd1eb61.scn"
 
 [deps]
 
-source_file="res://assets/rug/SM_Circular_rug.glb"
-dest_files=["res://.godot/imported/SM_Circular_rug.glb-9e8a6b84bbef390b960d8c98daacaa18.scn"]
+source_file="res://assets/enemy/SM_Wolf.glb"
+dest_files=["res://.godot/imported/SM_Wolf.glb-58e75b8a73df2cc7986e6a4efbd1eb61.scn"]
 
 [params]
 
@@ -32,6 +32,13 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"awoo": {
+"use_external/enabled": true,
+"use_external/path": "uid://mgvmvrdgass7"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

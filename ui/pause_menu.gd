@@ -18,6 +18,8 @@ var resume_button: Area3D = %ResumeButton
 @export
 var stage_camera: MainCamera
 
+@export var pause_menu_stream_player: AudioStreamPlayer
+
 var original_node: String
 var original_song: StringName
 
@@ -54,6 +56,8 @@ func pause_game() -> void:
 	if Global.is_input_disabled: Global.was_input_disabled_before_pause = true
 	#print(str(Global.MenuState.keys()[Global.current_menu_state]))
 	if Global.current_menu_state == Global.MenuState.GAME:
+		pause_menu_stream_player.play()
+
 		Global.current_menu_state = Global.MenuState.PAUSE
 		Global.current_parent_menu_state = Global.MenuState.PAUSE
 		Global.disable_player_input()
@@ -137,13 +141,4 @@ func _on_exit_button_button_clicked(_button: Area3D) -> void:
 	Global.current_parent_menu_state = Global.MenuState.MAIN
 	is_paused = false
 	#Reset Global State
-	Global.are_lights_dimmed = false
-	Global.is_paused_whilst_lights_dimmed = false
-	Global.was_input_disabled_before_pause = false
-	Global.was_input_disabled_before_pause = false
-	Global.last_dimmed = null
-	Global.who_is_dimmed = null
-	Global.lock_dialogue_input = false
-	#target_platform_level
-	#current_platform_level
-	get_tree().reload_current_scene()
+	Global.reset_to_title()

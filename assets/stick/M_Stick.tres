@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d18bcaalpn53b"]
+
+[ext_resource type="Texture2D" uid="uid://ckuqxcym8bojo" path="res://assets/stick/SM_Stick_BC_Stick_128x128.png" id="1_7i2kq"]
+
+[resource]
+resource_name = "M_Stick"
+cull_mode = 2
+albedo_texture = ExtResource("1_7i2kq")
+roughness = 0.5
+texture_filter = 2

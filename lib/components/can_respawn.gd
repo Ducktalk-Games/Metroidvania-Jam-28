@@ -10,7 +10,9 @@ var resetting: bool = false
 func respawn() -> void:
 	if not current_checkpoint: return
 	resetting = true
+	# player_dies_matron
 	DialogueSequencer.start_dialog("uid://1wyveoo4p3km")
+	Global.stage.matron.get_angry()
 	var character: Character = get_object() as Character
 	var tween: Tween = get_tree().create_tween().set_parallel()
 	tween.tween_method(func(_delta: float) -> void: Global.disable_player_input(), 0.0, 1.0, 1.0)

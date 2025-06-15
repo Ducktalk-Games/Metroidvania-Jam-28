@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=121 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -78,6 +78,9 @@ adjustment_saturation = 0.44
 radius = 0.0505981
 height = 0.280261
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_624yl"]
+animation = &"Fall"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v755w"]
 animation = &"Idle"
 
@@ -124,12 +127,7 @@ advance_expression = "not is_current_body_child()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dtws5"]
 advance_mode = 2
-advance_expression = "stage_body.velocity.y"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oomxc"]
-xfade_time = 0.1
-advance_mode = 2
-advance_expression = "not stage_body.velocity.y"
+advance_expression = "stage_body.velocity.y > 0.1"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8pkue"]
 advance_mode = 2
@@ -140,12 +138,34 @@ xfade_time = 0.5
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g2y51"]
 xfade_time = 0.2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2t6vl"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "stage_body.velocity.y < -0.1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g2yst"]
+xfade_time = 0.1
+break_loop_at_end = true
+advance_mode = 2
+advance_expression = "is_equal_approx(stage_body.velocity.y, 0.0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ckgkk"]
+advance_mode = 2
+advance_expression = "is_equal_approx(stage_body.velocity.y, 0.0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_roenb"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "stage_body.velocity.y < -0.1"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dtws5"]
 states/End/position = Vector2(870, 100)
+states/Fall/node = SubResource("AnimationNodeAnimation_624yl")
+states/Fall/position = Vector2(443, -25)
 states/Idle/node = SubResource("AnimationNodeAnimation_v755w")
 states/Idle/position = Vector2(685, 100)
 states/Jump/node = SubResource("AnimationNodeAnimation_8pkue")
-states/Jump/position = Vector2(364, -4)
+states/Jump/position = Vector2(276, -25)
 states/Singing/node = SubResource("AnimationNodeAnimation_x6r7u")
 states/Singing/position = Vector2(553, 100)
 states/Start/position = Vector2(153, 100)
@@ -153,8 +173,8 @@ states/WalkForward/node = SubResource("AnimationNodeBlendSpace1D_lvwud")
 states/WalkForward/position = Vector2(364, 212)
 states/WalkInPlace/node = SubResource("AnimationNodeBlendSpace1D_8pkue")
 states/WalkInPlace/position = Vector2(364, 100)
-transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_oomxc"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb"), "Singing", "Idle", SubResource("AnimationNodeStateMachineTransition_g2y51")]
-graph_offset = Vector2(-203, -41)
+transitions = ["WalkInPlace", "WalkForward", SubResource("AnimationNodeStateMachineTransition_x6r7u"), "WalkForward", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_v755w"), "WalkInPlace", "Jump", SubResource("AnimationNodeStateMachineTransition_dtws5"), "Start", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_8pkue"), "WalkInPlace", "Singing", SubResource("AnimationNodeStateMachineTransition_i1iyb"), "Singing", "Idle", SubResource("AnimationNodeStateMachineTransition_g2y51"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_2t6vl"), "Fall", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_g2yst"), "Jump", "WalkInPlace", SubResource("AnimationNodeStateMachineTransition_ckgkk"), "WalkInPlace", "Fall", SubResource("AnimationNodeStateMachineTransition_roenb")]
+graph_offset = Vector2(-264, -211)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lvwud"]
 viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/player_bubble/SubViewport")
@@ -162,6 +182,8 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_x6r7u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -898,7 +920,7 @@ spotlight = NodePath("StageBody/CharacterSpotlight")
 patron = NodePath("StageBody/OffStageEnv/Patron")
 matron = NodePath("StageBody/OffStageEnv/Matron")
 narrator = NodePath("StageBody/Narrator")
-has_scissors = true
+kill_dialog = true
 
 [node name="StageBody" type="CharacterBody3D" parent="Stage" node_paths=PackedStringArray("key_dialog", "curtain_anim_player", "can_jump", "can_die", "character_mesh", "map_body")]
 unique_name_in_owner = true
@@ -1061,6 +1083,7 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 2.03261, -0.218168)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
+stream = SubResource("AudioStreamPolyphonic_x6r7u")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -1116,11 +1139,11 @@ animation_tree = NodePath("MatronAnimationTree")
 [node name="Skeleton3D" parent="Stage/StageBody/OffStageEnv/Matron/metarig" index="0"]
 bones/0/position = Vector3(0, 0.579271, -0.021255)
 bones/0/rotation = Quaternion(0.0527792, 0, 0, 0.998606)
-bones/1/rotation = Quaternion(-0.0507326, 0, 0, 0.998712)
-bones/2/rotation = Quaternion(-0.0989185, 0, 0, 0.995096)
-bones/4/rotation = Quaternion(0.0349893, 0, 0, 0.999388)
+bones/1/rotation = Quaternion(-0.0540682, 0, 0, 0.998537)
+bones/2/rotation = Quaternion(-0.0937169, 0, 0, 0.995599)
+bones/4/rotation = Quaternion(0.0426058, 0, 0, 0.999092)
 bones/7/rotation = Quaternion(-0.68889, -0.245566, -0.327819, 0.598049)
-bones/8/rotation = Quaternion(-0.158008, 0.642209, -0.656998, 0.361877)
+bones/8/rotation = Quaternion(-0.157468, 0.641228, -0.657956, 0.362112)
 bones/9/rotation = Quaternion(0.328892, -0.0585097, -0.17121, 0.926873)
 bones/10/rotation = Quaternion(0.0736906, 0.540263, 0.102016, 0.832033)
 bones/11/rotation = Quaternion(-0.68889, 0.245566, 0.327819, 0.598049)

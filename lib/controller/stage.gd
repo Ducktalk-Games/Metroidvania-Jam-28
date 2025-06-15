@@ -19,9 +19,11 @@ extends Node3D
 
 @onready var stage_body: StageCharacter = %StageBody
 @onready var player_child_body: Character = %Player
+@onready var ability_panel: AbilityPanel = %AbilityPanel
 
 var stage_relocating: bool = false
 var player_relocating: bool = false
+var is_pocketwatch_enabled: bool = false
 
 @onready var can_loot: CanLoot = Component.find(stage_body, "CanLoot") as CanLoot
 
@@ -102,10 +104,14 @@ func switch_current_body() -> void:
 		match current_body:
 			stage_body:
 				current_body = player_child_body
+				is_pocketwatch_enabled = true
+				ability_panel.pulley_down()
 
 			player_child_body:
 				await relocate_player()
 				current_body = stage_body
+				is_pocketwatch_enabled = false
+				ability_panel.pulley_up()
 
 		update_controllers()
 

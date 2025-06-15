@@ -10,7 +10,8 @@ do Global.patron_animation_tree.patron_wakes_up()
 # Jolts awake, like sits up suddenly
 do wait(1)
 Patron: (Unintelligible drunk mumbling)
-do Global.dim_lights_and_spotlight(Global.stage.narrator)
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.narrator, true)
 do wait(1)
 do Global.patron_animation_tree.patron_plays_piano()
 do Global.stage.patron.set_music_to("forest_theme")
@@ -19,5 +20,6 @@ Narrator: Once upon a time there was a little mouse, who was lost in the forest
 Narrator: Their mom abandoned them, so they were all alone
 Narrator: She didn’t want to be a parent, she wanted to do drugs!
 Player: Maybe I can find a new family
-do Global.dim_lights_and_spotlight(Global.stage.narrator, false)
+do Global.control_spotlight(Global.stage.narrator, false)
+do Global.dim_lights(false)
 => END

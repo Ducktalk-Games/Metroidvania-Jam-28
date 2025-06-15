@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ctqfi4ol2ur6l"
-path="res://.godot/imported/SM_AMP.glb-f1755a8f79a91eb844997ea2472a904b.scn"
+uid="uid://b58jqqgmem4s8"
+path="res://.godot/imported/SM_Sliders.glb-595efb8de17522d30d4ca36605d64e9d.scn"
 
 [deps]
 
-source_file="res://assets/amp/SM_AMP.glb"
-dest_files=["res://.godot/imported/SM_AMP.glb-f1755a8f79a91eb844997ea2472a904b.scn"]
+source_file="res://assets/amp/SM_Sliders.glb"
+dest_files=["res://.godot/imported/SM_Sliders.glb-595efb8de17522d30d4ca36605d64e9d.scn"]
 
 [params]
 

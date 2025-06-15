@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=125 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -48,7 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://ciory2vr1p5f7" path="res://scenes/stage/stage_spotlight.tscn" id="38_dtws5"]
 [ext_resource type="PackedScene" uid="uid://du7634u3aenbb" path="res://assets/matron/SK_Matron.glb" id="38_lvwud"]
 [ext_resource type="PackedScene" uid="uid://d2ujw7vc162bx" path="res://lib/options/options_amp.tscn" id="38_opsrg"]
-[ext_resource type="PackedScene" uid="uid://dd36r6v8cb2nu" path="res://assets/amp/SM_Amp.glb" id="42_6uyam"]
+[ext_resource type="PackedScene" uid="uid://ctqfi4ol2ur6l" path="res://assets/amp/SM_AMP.glb" id="49_624yl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecxui"]
 font_size = 8
@@ -186,8 +186,6 @@ viewport_path = NodePath("Stage/StageBody/ChildLevel/Player/SK_PlayerCharacter/p
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecxui"]
 radius = 0.321
 height = 1.2
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_6uyam"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oomxc"]
 size = Vector3(15.6741, 0.107074, 1)
@@ -974,6 +972,7 @@ _data = {
 viewport_path = NodePath("Stage/StageBody/Narrator/narrator_bubble/SubViewport")
 
 [node name="World" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128126, 0, 0.0013628)
 
 [node name="DebugLog" type="CanvasLayer" parent="."]
 visible = false
@@ -1133,7 +1132,6 @@ unique_name_in_owner = true
 transform = Transform3D(2.18168, 0, 0, 0, 2.18168, 0, 0, 0, 2.18168, 0, 2.03261, -0.218168)
 
 [node name="StepPlayer" type="AudioStreamPlayer3D" parent="Stage/StageBody/ChildLevel/Player"]
-stream = SubResource("AudioStreamPolyphonic_6uyam")
 volume_db = -2.0
 max_db = 0.0
 max_distance = 26.55
@@ -1189,11 +1187,11 @@ animation_tree = NodePath("MatronAnimationTree")
 [node name="Skeleton3D" parent="Stage/StageBody/OffStageEnv/Matron/metarig" index="0"]
 bones/0/position = Vector3(0, 0.579271, -0.021255)
 bones/0/rotation = Quaternion(0.0527792, 0, 0, 0.998606)
-bones/1/rotation = Quaternion(-0.0638416, 0, 0, 0.99796)
-bones/2/rotation = Quaternion(-0.0779733, 0, 0, 0.996956)
-bones/4/rotation = Quaternion(0.0433945, 0, 0, 0.999058)
+bones/1/rotation = Quaternion(-0.0430381, 0, 0, 0.999073)
+bones/2/rotation = Quaternion(-0.111756, 0, 0, 0.993736)
+bones/4/rotation = Quaternion(0.0374977, 0, 0, 0.999297)
 bones/7/rotation = Quaternion(-0.68889, -0.245566, -0.327819, 0.598049)
-bones/8/rotation = Quaternion(-0.155919, 0.63841, -0.66069, 0.362782)
+bones/8/rotation = Quaternion(-0.159228, 0.644421, -0.654828, 0.361342)
 bones/9/rotation = Quaternion(0.328892, -0.0585097, -0.17121, 0.926873)
 bones/10/rotation = Quaternion(0.0736906, 0.540263, 0.102016, 0.832033)
 bones/11/rotation = Quaternion(-0.68889, 0.245566, 0.327819, 0.598049)
@@ -1266,21 +1264,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0171275, 0)
 [node name="Skeleton3D" parent="Stage/StageBody/OffStageEnv/Patron/SK_Patron/SK_Patron" index="0"]
 bones/0/position = Vector3(-0.00220496, -0.575162, -2.01498)
 bones/0/rotation = Quaternion(-0.706617, -0.0263259, 0.0263259, 0.706617)
-bones/1/rotation = Quaternion(0.411028, 0.0130923, -0.0113839, 0.911458)
+bones/1/rotation = Quaternion(0.394675, 0.0134344, -0.0104018, 0.918664)
 bones/2/rotation = Quaternion(0.180286, 0.0133093, 0.00243968, 0.983521)
 bones/3/rotation = Quaternion(0.120281, 1.05729e-10, -5.89353e-10, 0.99274)
 bones/5/position = Vector3(0.640739, 0.337775, 2.28174e-08)
 bones/5/rotation = Quaternion(0.126454, -0.485447, -0.23033, 0.833846)
-bones/6/position = Vector3(1.23596, 0.046288, -0.0615824)
-bones/6/rotation = Quaternion(-0.219285, -0.221328, 0.6657, 0.678065)
+bones/6/position = Vector3(1.23482, 0.0441106, -0.0627449)
+bones/6/rotation = Quaternion(-0.213475, -0.220116, 0.651652, 0.693777)
 bones/7/position = Vector3(0.763518, 0.0286318, -8.9407e-08)
 bones/7/rotation = Quaternion(0.0521774, -0.0127921, 0.158947, 0.985824)
 bones/8/position = Vector3(0.461292, -0.00636257, -1.3411e-07)
 bones/8/rotation = Quaternion(1.98034e-09, 3.58937e-09, -0.339607, 0.940567)
 bones/10/position = Vector3(-0.640739, 0.337771, 4.11412e-07)
 bones/10/rotation = Quaternion(0.841875, 0.0512565, -0.513945, -0.156459)
-bones/11/position = Vector3(-1.09102, 0.151266, 0.0796944)
-bones/11/rotation = Quaternion(-0.0279115, -0.178449, 0.664732, 0.72492)
+bones/11/position = Vector3(-1.09295, 0.148959, 0.0788172)
+bones/11/rotation = Quaternion(-0.0242024, -0.186371, 0.645675, 0.740125)
 bones/12/position = Vector3(-0.76352, -0.02863, -1.71057e-07)
 bones/12/rotation = Quaternion(0.0334514, -0.0128528, 0.0716637, 0.996785)
 bones/13/position = Vector3(-0.46129, 0.00636008, 4.90797e-08)
@@ -1400,6 +1398,9 @@ visible = false
 [node name="Options" type="Node3D" parent="Stage/StageBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 
+[node name="SM_AMP" parent="Stage/StageBody/Options" instance=ExtResource("49_624yl")]
+transform = Transform3D(-0.910099, 0, -0.414391, 0, 1, 0, 0.414391, 0, -0.910099, 4.29204, -2.37247, 20.5955)
+
 [node name="Wall5" type="MeshInstance3D" parent="Stage/StageBody/Options"]
 transform = Transform3D(-1.30968e-07, 0, -2.19536, 0, 10.3263, 0, 2.9962, 0, -9.59624e-08, -4.912, 1.805, 20.2404)
 mesh = SubResource("BoxMesh_henb2")
@@ -1409,9 +1410,6 @@ skeleton = NodePath("")
 transform = Transform3D(2.86303, 0, 0, 0, 8.87747, 0, 0, 0, 5.73753, -3.841, 0.977, 18.6306)
 mesh = SubResource("BoxMesh_henb2")
 skeleton = NodePath("")
-
-[node name="SM_Amp" parent="Stage/StageBody/Options" instance=ExtResource("42_6uyam")]
-transform = Transform3D(-0.918087, 0, -0.396379, 0, 1, 0, 0.396379, 0, -0.918087, 4.18249, -2.19035, 20.3551)
 
 [node name="OptionsSpotlight" type="SpotLight3D" parent="Stage/StageBody/Options"]
 transform = Transform3D(0.865244, -0.108624, -0.489442, 0.312467, 0.880285, 0.357019, 0.392067, -0.461843, 0.795603, 2.69606, -0.35397, 22.4523)

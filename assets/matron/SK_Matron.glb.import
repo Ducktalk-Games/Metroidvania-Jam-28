@@ -1835,13 +1835,13 @@ _subresources={
 }
 },
 "materials": {
-"M_Chair": {
-"use_external/enabled": true,
-"use_external/path": "uid://cjjgdx1atxe56"
-},
 "M_Stick": {
 "use_external/enabled": true,
 "use_external/path": "uid://d18bcaalpn53b"
+},
+"Matron_clothing": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/matron/Matron_clothing.tres"
 }
 }
 }

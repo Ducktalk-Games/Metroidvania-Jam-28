@@ -9,7 +9,6 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("1_8ewi8")
 roughness = 0.552786
 texture_filter = 0

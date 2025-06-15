@@ -122,6 +122,8 @@ void fragment() {
 }
 "
 flags/world_vertex_coords = true
+preview_params/triplanar_scale = "Vector3(1, 1, 1)"
+preview_params/DrawingOpacity = "0.0"
 nodes/fragment/0/position = Vector2(1080, 140)
 nodes/fragment/7/node = SubResource("VisualShaderNodeTextureParameterTriplanar_54p6k")
 nodes/fragment/7/position = Vector2(0, -420)

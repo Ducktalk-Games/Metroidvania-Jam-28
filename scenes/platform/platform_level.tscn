@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dr3jngosx1u3o"]
+[gd_scene load_steps=54 format=3 uid="uid://dr3jngosx1u3o"]
 
 [ext_resource type="Script" uid="uid://bicuwv1gntqj1" path="res://scenes/platform/platform_level.gd" id="1_jhs13"]
 [ext_resource type="Script" uid="uid://bybg6d10xsd13" path="res://scenes/platform/procedural_platform.gd" id="2_jhs13"]
@@ -7,16 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://bnt77blimhms4" path="res://lib/interactable/item_pickup.tscn" id="5_1dhn5"]
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
 [ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://lib/box_triggers/forest_city_trigger.tscn" id="7_unilm"]
-[ext_resource type="Script" uid="uid://bmeid2lkyat51" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
+[ext_resource type="PackedScene" uid="uid://d34pftv6nmjrl" path="res://assets/stage_props/SM_Tree1.glb" id="8_xjm0t"]
+[ext_resource type="Script" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
 [ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/Background.tscn" id="12_7gmst"]
-[ext_resource type="Script" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
+[ext_resource type="Script" uid="uid://cswxly08gjpka" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
 [ext_resource type="PackedScene" uid="uid://cp3q2nqlb81ir" path="res://assets/enemy/SM_Wolf.glb" id="12_mrteu"]
 [ext_resource type="PackedScene" uid="uid://d1g7i6cxsvw3f" path="res://assets/stage_props/SM_PlantProp_01.glb" id="13_ii7us"]
 [ext_resource type="PackedScene" uid="uid://cbbebxdauwgxl" path="res://assets/stage_props/SM_PlantProp_02.glb" id="14_mrteu"]
 [ext_resource type="PackedScene" uid="uid://b1h5lhyu0547u" path="res://assets/stage_props/SM_PlantProp_03.glb" id="15_k3lh4"]
 [ext_resource type="PackedScene" uid="uid://kd2q84rw6pel" path="res://assets/stage_props/SM_PlantProp_04.glb" id="16_xjm0t"]
+[ext_resource type="PackedScene" uid="uid://c5taksg5wm54h" path="res://assets/stage_props/SM_Vine1.glb" id="18_k3lh4"]
+[ext_resource type="PackedScene" uid="uid://cnqvjetj1suor" path="res://assets/stage_props/SM_Crane.glb" id="20_uk108"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -27,9 +30,11 @@ albedo_color = Color(0.608513, 0.443191, 0.294003, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_jhs13"]
 top_radius = 0.01
 bottom_radius = 0.01
-height = 10.395
+height = 24.917
 radial_segments = 4
 rings = 0
+cap_top = false
+cap_bottom = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unilm"]
 size = Vector3(6.18359, 0.072876, 1.81445)
@@ -73,14 +78,62 @@ size = Vector3(6.07537, 0.072876, 1.81445)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhnqd"]
 size = Vector3(1.24505, 0.072876, 1.81445)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h336c"]
+size = Vector3(6.19662, 0.072876, 1.81445)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ur5yd"]
-size = Vector3(3.33427, 0.072876, 1.81445)
+size = Vector3(7.36623, 0.072876, 1.81445)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7svi0"]
-size = Vector3(5.77468, 0.072876, 1.81445)
+size = Vector3(1.84897, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ff8n"]
+size = Vector3(0.994279, 0.072876, 1.81445)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lub8d"]
+size = Vector3(1.28055, 0.072876, 1.81445)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xmb3h"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 3.755
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_klwvr"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 5.415
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7erix"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 3.52
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nhnqd"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.8
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b8q3j"]
+size = Vector3(4.54203, 0.072876, 1.81445)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7wql"]
-size = Vector3(13.5664, 0.072876, 1.81445)
+size = Vector3(13.3374, 0.072876, 1.81445)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmb3h"]
 size = Vector3(6.06096, 0.072876, 1.81445)
@@ -257,14 +310,6 @@ string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform19" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.405, 1.20681, 0)
-shape = SubResource("BoxShape3D_62nr4")
-script = ExtResource("2_jhs13")
-string_material = SubResource("StandardMaterial3D_iriyj")
-string_mesh = SubResource("CylinderMesh_jhs13")
-string_offset = 0.045
-
-[node name="Platform24" type="CollisionShape3D" parent="StaticFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.405, 1.20681, 0)
 shape = SubResource("BoxShape3D_62nr4")
 script = ExtResource("2_jhs13")
@@ -473,15 +518,15 @@ string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform60" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.368, 38.991, 0)
-shape = SubResource("BoxShape3D_nhnqd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.844, 38.991, 0)
+shape = SubResource("BoxShape3D_h336c")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform68" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.158, 40.7465, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 248.77, 40.707, 0)
 shape = SubResource("BoxShape3D_ur5yd")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
@@ -489,7 +534,7 @@ string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform69" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.007, 42.3245, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 255.192, 42.1634, 0)
 shape = SubResource("BoxShape3D_7svi0")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
@@ -497,31 +542,79 @@ string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform70" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.422, 43.7604, 0)
-shape = SubResource("BoxShape3D_7svi0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.134, 43.47, 0)
+shape = SubResource("BoxShape3D_7ff8n")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
-[node name="Platform61" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.857, 37.5165, 0)
-shape = SubResource("BoxShape3D_nhnqd")
+[node name="Platform79" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.134, 47.0344, 0)
+shape = SubResource("BoxShape3D_7ff8n")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
-[node name="Platform62" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.518, 39.0945, 0)
-shape = SubResource("BoxShape3D_nhnqd")
+[node name="Platform71" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260.107, 45.2703, 0)
+shape = SubResource("BoxShape3D_lub8d")
+script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
+string_mesh = SubResource("CylinderMesh_xmb3h")
+string_offset = 0.045
+
+[node name="Platform72" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260.107, 48.7236, 0)
+shape = SubResource("BoxShape3D_lub8d")
+script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
+string_mesh = SubResource("CylinderMesh_klwvr")
+string_offset = 0.045
+
+[node name="Platform74" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.376, 48.7216, 0)
+shape = SubResource("BoxShape3D_lub8d")
+script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
+string_mesh = SubResource("CylinderMesh_7erix")
+string_offset = 0.045
+
+[node name="Platform76" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.376, 52.2798, 0)
+shape = SubResource("BoxShape3D_lub8d")
+script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
+string_mesh = SubResource("CylinderMesh_nhnqd")
+string_offset = 0.045
+
+[node name="Platform78" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 261.737, 54.1392, 0)
+shape = SubResource("BoxShape3D_b8q3j")
+script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform75" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.475, 50.5182, 0)
+shape = SubResource("BoxShape3D_lub8d")
+script = ExtResource("2_jhs13")
+string_material = SubResource("StandardMaterial3D_iriyj")
+string_mesh = SubResource("CylinderMesh_jhs13")
+string_offset = 0.045
+
+[node name="Platform77" type="CollisionShape3D" parent="StaticFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.475, 53.3676, 0)
+shape = SubResource("BoxShape3D_lub8d")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
 [node name="Platform64" type="CollisionShape3D" parent="StaticFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.954, 39.0945, 0.000326157)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.839, 39.0945, 0.000326157)
 shape = SubResource("BoxShape3D_g7wql")
 script = ExtResource("2_jhs13")
 string_material = SubResource("StandardMaterial3D_iriyj")
@@ -656,7 +749,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 153.59
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.493, -0.915001, -0.0847793)
 
 [node name="ItemPickup2" parent="." instance=ExtResource("5_1dhn5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 261.46, 43.8427, -0.084785)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 262.316, 53.405, -0.084785)
 ability = 1
 
 [node name="Checkpoint" parent="." instance=ExtResource("7_hwg6q")]
@@ -668,14 +761,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.953, 0.032, 0)
 [node name="FallingPlatformBody" parent="Checkpoint1" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 17.3422, 1.12557, -0.00833002)
 
+[node name="SM_Tree8" parent="Checkpoint1/FallingPlatformBody" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-0.000100905, 0.00014725, 1, -0.0701244, 0.639667, -0.000244553, -0.639667, -0.0701244, -0.000130936, 0.494235, -0.00351501, 0.441841)
+
+[node name="SM_Tree9" parent="Checkpoint1/FallingPlatformBody" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-7.03303e-05, 0.000164067, 1, 0.0556579, 0.641088, -0.000244553, -0.641088, 0.0556579, -0.000130936, 0.494125, 0.00829959, -0.424469)
+
 [node name="Checkpoint2" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6527, 0.0322131, 0)
 
 [node name="FallingPlatformBody2" parent="Checkpoint2" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 21.2472, 3.81896, -0.00576873)
 
+[node name="SM_Tree10" parent="Checkpoint2/FallingPlatformBody2" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-0.000100905, 0.00014725, 0.999999, -0.0701243, 0.639667, -0.000244553, -0.639667, -0.0701244, -0.000130936, 0.491669, -0.0145195, 0.428368)
+
+[node name="SM_Tree11" parent="Checkpoint2/FallingPlatformBody2" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-7.03302e-05, 0.000164067, 0.999999, 0.0556579, 0.641088, -0.000244553, -0.641088, 0.0556579, -0.000130936, 0.491559, -0.00270486, -0.437935)
+
 [node name="FallingPlatformBody3" parent="Checkpoint2" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 23.9782, 3.81887, -0.00541131)
+
+[node name="SM_Tree12" parent="Checkpoint2/FallingPlatformBody3" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-0.000100905, 0.00014725, 0.999999, -0.0701243, 0.639667, -0.000244553, -0.639667, -0.0701244, -0.000130936, 0.491308, -0.0144289, 0.399803)
+
+[node name="SM_Tree13" parent="Checkpoint2/FallingPlatformBody3" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-7.03302e-05, 0.000164067, 0.999999, 0.0556579, 0.641088, -0.000244553, -0.641088, 0.0556579, -0.000130936, 0.491198, -0.00261426, -0.466499)
 
 [node name="Checkpoint3" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.8527, 3.93221, 0)
@@ -686,11 +797,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9527, 0.0322131, 0)
 [node name="FallingPlatformBody4" parent="Checkpoint4" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 33.3988, -0.000549205, 0.00360009)
 
+[node name="SM_Tree10" parent="Checkpoint4/FallingPlatformBody4" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-0.000100905, 0.00014725, 0.999999, -0.0701243, 0.639667, -0.000244553, -0.639667, -0.0701244, -0.000130936, 0.482311, 0.00060815, 0.480652)
+
+[node name="SM_Tree11" parent="Checkpoint4/FallingPlatformBody4" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-7.03302e-05, 0.000164067, 0.999999, 0.0556579, 0.641088, -0.000244553, -0.641088, 0.0556579, -0.000130936, 0.482201, 0.0124232, -0.385681)
+
 [node name="FallingPlatformBody5" parent="Checkpoint4" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 41.0687, -0.000669844, 0.00408839)
 
+[node name="SM_Tree12" parent="Checkpoint4/FallingPlatformBody5" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-0.000100905, 0.00014725, 0.999999, -0.0701243, 0.639667, -0.000244553, -0.639667, -0.0701244, -0.000130936, 0.481819, 0.000729751, 0.454895)
+
+[node name="SM_Tree13" parent="Checkpoint4/FallingPlatformBody5" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-7.03302e-05, 0.000164067, 0.999999, 0.0556578, 0.641088, -0.000244553, -0.641088, 0.0556579, -0.000130936, 0.481709, 0.0125448, -0.411438)
+
 [node name="FallingPlatformBody7" parent="Checkpoint4" instance=ExtResource("9_unilm")]
 transform = Transform3D(-0.000130928, 3.24025e-05, -1, 0.000244557, 1, 3.23705e-05, 1, -0.000244552, -0.000130936, 48.6108, -0.0010413, 0.00559099)
+
+[node name="SM_Tree14" parent="Checkpoint4/FallingPlatformBody7" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-0.000100904, 0.00014725, 0.999999, -0.0701243, 0.639667, -0.000244553, -0.639667, -0.0701244, -0.000130936, 0.486122, 0.00109976, 0.47084)
+
+[node name="SM_Tree15" parent="Checkpoint4/FallingPlatformBody7" instance=ExtResource("8_xjm0t")]
+transform = Transform3D(-7.03301e-05, 0.000164067, 0.999999, 0.0556578, 0.641088, -0.000244553, -0.641088, 0.055658, -0.000130936, 0.486011, 0.0129148, -0.395493)
 
 [node name="Checkpoint6" parent="." instance=ExtResource("7_hwg6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.453, 0.0322131, 0)
@@ -714,7 +843,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230.901, 39.0728, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 246.801, 40.7728, 0)
 
 [node name="Checkpoint13" parent="." instance=ExtResource("7_hwg6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 260.601, 43.7728, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.429, 54.1616, 0)
 
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.13, 34.9994, 0.00389761)
@@ -725,10 +854,7 @@ script = ExtResource("9_iriyj")
 label_string = "City -> Forest Trigger"
 
 [node name="SM_BushProp2" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.33242, 0, -0.466919, 0, 1.41186, 0, 0.466919, 0, 1.33242, 4.84777, 0.0450185, 0.0149912)
-
-[node name="SM_BushProp6" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(1.1346, 0, 0, 0, 1.1346, 0, 0, 0, 1.1346, 5.48474, 0.0450185, -0.254376)
+transform = Transform3D(1.33242, 0, -0.466919, 0, 1.41186, 0, 0.466919, 0, 1.33242, -0.0652075, 0.0450185, -2.35959)
 
 [node name="SM_BushProp5" parent="." instance=ExtResource("11_iriyj")]
 transform = Transform3D(1.9624, 0, 0.349875, 0, 1.99335, 0, -0.349875, 0, 1.9624, 6.43029, 0.3041, -3.17777)
@@ -744,9 +870,6 @@ transform = Transform3D(1.85344, 0, 0, 0, 1.85344, 0, 0, 0, 1.85344, 5.34467, 0.
 
 [node name="SM_BushProp3" parent="." instance=ExtResource("11_iriyj")]
 transform = Transform3D(1.29464, -0.0110193, -0.563141, 0, 1.41159, -0.0276215, 0.563249, 0.0253283, 1.29439, 4.43199, 0.126085, -2.86735)
-
-[node name="SM_BushProp4" parent="." instance=ExtResource("11_iriyj")]
-transform = Transform3D(0.980592, 0, 0.62837, 0, 1.16465, 0, -0.62837, 0, 0.980592, 6.07886, 0.0485524, -0.104727)
 
 [node name="Background" parent="." instance=ExtResource("12_7gmst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.19859, -0.167568, -3.844)
@@ -766,18 +889,609 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.05, 15.65, -0.1)
 shape = SubResource("BoxShape3D_wmg3h")
 
 [node name="T_Plant_012" parent="." instance=ExtResource("13_ii7us")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 7.22, 0.1, 0)
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 7.22, 0.1, -2.75312)
 
 [node name="T_Plant_022" parent="." instance=ExtResource("14_mrteu")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 8.4, 0.1, 0.3)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.803792, 0.1, -3.33594)
 
 [node name="T_Plant_032" parent="." instance=ExtResource("15_k3lh4")]
-transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 9.19, 0.1, -0.1)
+transform = Transform3D(2.07941, 0, 0.293316, 0, 2.1, 0, -0.293316, 0, 2.07941, 6.17454, 0.1, -2.44246)
 
 [node name="T_Plant_042" parent="." instance=ExtResource("16_xjm0t")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 9.8, 0.1, 0.2)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.167593, 0.1, -2.9359)
 
 [node name="T_Plant_043" parent="." instance=ExtResource("16_xjm0t")]
-transform = Transform3D(-0.565685, 0, 0.565685, 0, 0.8, 0, -0.565685, 0, -0.565685, 10.0206, 0.1, 0.0868629)
+transform = Transform3D(-0.757866, 0, -0.256199, 0, 0.8, 0, 0.256199, 0, -0.757866, 3.38683, 0.1, -3.39228)
+
+[node name="SM_Vine1" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.75679, 0, 0, 0, 1, 0, 0, 0, 1, 147.618, 0.0656614, 0.915836)
+
+[node name="SM_Vine55" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 113.155, 2.73401, 0.915836)
+
+[node name="SM_Vine56" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 113.155, 5.54584, 0.915836)
+
+[node name="SM_Vine67" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 28.0199, 2.73401, 0.915836)
+
+[node name="SM_Vine68" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 28.0199, 5.54584, 0.915836)
+
+[node name="SM_Vine69" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 29.0799, 2.73401, 0.915836)
+
+[node name="SM_Vine70" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 29.0799, 5.54584, 0.915836)
+
+[node name="SM_Vine111" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 25.8797, 2.73401, 0.915836)
+
+[node name="SM_Vine112" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 25.8797, 5.54584, 0.915836)
+
+[node name="SM_Vine113" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 24.7996, 2.73401, 0.915836)
+
+[node name="SM_Vine114" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 24.7996, 5.54584, 0.915836)
+
+[node name="SM_Vine147" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 28.0199, 8.05667, 0.915836)
+
+[node name="SM_Vine148" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 29.0799, 8.05667, 0.915836)
+
+[node name="SM_Vine149" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 25.8797, 8.05667, 0.915836)
+
+[node name="SM_Vine150" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 24.7996, 8.05667, 0.915836)
+
+[node name="SM_Vine57" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 117.716, 2.73401, 0.915836)
+
+[node name="SM_Vine58" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 117.716, 5.54584, 0.915836)
+
+[node name="SM_Vine59" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 111.1, 2.73401, 0.915836)
+
+[node name="SM_Vine60" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 111.1, 5.54584, 0.915836)
+
+[node name="SM_Vine61" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 109.516, 2.73401, 0.915836)
+
+[node name="SM_Vine62" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 109.516, 5.54584, 0.915836)
+
+[node name="SM_Vine63" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 107.321, 2.73401, 0.915836)
+
+[node name="SM_Vine64" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 107.321, 5.54584, 0.915836)
+
+[node name="SM_Vine65" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 102.168, 2.73401, 0.915836)
+
+[node name="SM_Vine66" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 102.168, 5.54584, 0.915836)
+
+[node name="SM_Vine115" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 113.155, 8.38955, 0.915836)
+
+[node name="SM_Vine116" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 117.716, 8.38955, 0.915836)
+
+[node name="SM_Vine117" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 111.1, 8.38955, 0.915836)
+
+[node name="SM_Vine118" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 109.516, 8.38955, 0.915836)
+
+[node name="SM_Vine119" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 107.321, 8.38955, 0.915836)
+
+[node name="SM_Vine120" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 102.168, 8.38955, 0.915836)
+
+[node name="SM_Vine71" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 92.9212, 2.84505, 0.915836)
+
+[node name="SM_Vine72" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 92.9212, 5.65688, 0.915836)
+
+[node name="SM_Vine73" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 91.3565, 2.84505, 0.915836)
+
+[node name="SM_Vine74" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 91.3565, 5.65688, 0.915836)
+
+[node name="SM_Vine75" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 89.61, 4.14732, 0.915836)
+
+[node name="SM_Vine76" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 89.61, 6.95915, 0.915836)
+
+[node name="SM_Vine77" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 88.0453, 4.14732, 0.915836)
+
+[node name="SM_Vine78" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 88.0453, 6.95915, 0.915836)
+
+[node name="SM_Vine79" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 85.9354, 2.91572, 0.915836)
+
+[node name="SM_Vine80" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 85.9354, 5.72755, 0.915836)
+
+[node name="SM_Vine81" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 84.3707, 2.91572, 0.915836)
+
+[node name="SM_Vine82" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 84.3707, 5.72755, 0.915836)
+
+[node name="SM_Vine121" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 92.9212, 5.65688, 0.915836)
+
+[node name="SM_Vine122" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 91.3565, 5.65688, 0.915836)
+
+[node name="SM_Vine123" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 89.61, 6.95915, 0.915836)
+
+[node name="SM_Vine124" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 88.0453, 6.95915, 0.915836)
+
+[node name="SM_Vine125" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 85.9354, 5.72755, 0.915836)
+
+[node name="SM_Vine126" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 84.3707, 5.72755, 0.915836)
+
+[node name="SM_Vine127" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 92.9212, 8.30312, 0.915836)
+
+[node name="SM_Vine128" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 91.3565, 8.30312, 0.915836)
+
+[node name="SM_Vine129" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 89.61, 9.60538, 0.915836)
+
+[node name="SM_Vine130" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 88.0453, 9.60538, 0.915836)
+
+[node name="SM_Vine131" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 85.9354, 8.37378, 0.915836)
+
+[node name="SM_Vine132" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 84.3707, 8.37378, 0.915836)
+
+[node name="SM_Vine83" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 82.5031, 2.1384, 0.915836)
+
+[node name="SM_Vine84" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 82.5031, 4.95023, 0.915836)
+
+[node name="SM_Vine85" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 76.4057, 2.1384, 0.915836)
+
+[node name="SM_Vine86" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 76.4057, 4.95023, 0.915836)
+
+[node name="SM_Vine87" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 74.8511, 3.7738, 0.915836)
+
+[node name="SM_Vine88" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 74.8511, 6.58563, 0.915836)
+
+[node name="SM_Vine89" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 73.7608, 3.7738, 0.915836)
+
+[node name="SM_Vine90" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 73.7608, 6.58563, 0.915836)
+
+[node name="SM_Vine91" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 72.1052, 5.4193, 0.915836)
+
+[node name="SM_Vine92" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 72.1052, 8.23112, 0.915836)
+
+[node name="SM_Vine93" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 68.7637, 5.4193, 0.915836)
+
+[node name="SM_Vine94" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 68.7637, 8.23112, 0.915836)
+
+[node name="SM_Vine133" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 82.5031, 7.57013, 0.915836)
+
+[node name="SM_Vine134" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 76.4057, 7.57013, 0.915836)
+
+[node name="SM_Vine135" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 74.8511, 9.20553, 0.915836)
+
+[node name="SM_Vine136" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 73.7608, 9.20553, 0.915836)
+
+[node name="SM_Vine137" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 72.1052, 10.851, 0.915836)
+
+[node name="SM_Vine138" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 68.7637, 10.851, 0.915836)
+
+[node name="SM_Vine95" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 61.7981, 5.4193, 0.915836)
+
+[node name="SM_Vine96" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 61.7981, 8.23112, 0.915836)
+
+[node name="SM_Vine97" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 58.4365, 5.4193, 0.915836)
+
+[node name="SM_Vine98" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 58.4365, 8.23112, 0.915836)
+
+[node name="SM_Vine99" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 57.7197, 4.70255, 0.915836)
+
+[node name="SM_Vine100" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 57.7197, 7.51437, 0.915836)
+
+[node name="SM_Vine101" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 56.1651, 4.70255, 0.915836)
+
+[node name="SM_Vine102" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 56.1651, 7.51437, 0.915836)
+
+[node name="SM_Vine103" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 55.0849, 3.58199, 0.915836)
+
+[node name="SM_Vine104" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 55.0849, 6.39382, 0.915836)
+
+[node name="SM_Vine105" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 53.5404, 3.58199, 0.915836)
+
+[node name="SM_Vine106" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 53.5404, 6.39382, 0.915836)
+
+[node name="SM_Vine107" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 51.7737, 2.50182, 0.915836)
+
+[node name="SM_Vine108" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 51.7737, 5.31365, 0.915836)
+
+[node name="SM_Vine109" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 50.2494, 2.50182, 0.915836)
+
+[node name="SM_Vine110" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 50.2494, 5.31365, 0.915836)
+
+[node name="SM_Vine139" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 61.7981, 10.9695, 0.915836)
+
+[node name="SM_Vine140" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 58.4365, 10.9695, 0.915836)
+
+[node name="SM_Vine141" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 57.7197, 10.2528, 0.915836)
+
+[node name="SM_Vine142" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 56.1651, 10.2528, 0.915836)
+
+[node name="SM_Vine143" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 55.0849, 9.13221, 0.915836)
+
+[node name="SM_Vine144" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 53.5404, 9.13221, 0.915836)
+
+[node name="SM_Vine145" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 51.7737, 8.05204, 0.915836)
+
+[node name="SM_Vine146" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(-7.67917e-08, 0.431258, 0, -1.75679, -1.88509e-08, 0, 0, 0, 1, 50.2494, 8.05204, 0.915836)
+
+[node name="SM_Vine2" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.964029, 0, 0, 0, 1, 0, 0, 0, 1, 151.015, 1.36978, 0.915836)
+
+[node name="SM_Vine3" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.964029, 0, 0, 0, 1, 0, 0, 0, 1, 153.26, 2.93473, 0.915836)
+
+[node name="SM_Vine4" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.964029, 0, 0, 0, 1, 0, 0, 0, 1, 151.005, 4.6933, 0.915836)
+
+[node name="SM_Vine5" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.964029, 0, 0, 0, 1, 0, 0, 0, 1, 153.305, 6.25895, 0.915836)
+
+[node name="SM_Vine6" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.964029, 0, 0, 0, 1, 0, 0, 0, 1, 151.012, 7.98785, 0.915836)
+
+[node name="SM_Vine7" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.73544, 0, 0, 0, 1, 0, 0, 0, 1, 147.6, 9.60305, 0.915836)
+
+[node name="SM_Vine8" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 144.077, 11.2283, 0.915836)
+
+[node name="SM_Vine27" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 144.077, 20.6083, 0.915836)
+
+[node name="SM_Vine28" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 150.934, 17.8803, 0.915836)
+
+[node name="SM_Vine29" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 153.345, 16.1308, 0.915836)
+
+[node name="SM_Vine30" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 155.769, 14.3826, 0.915836)
+
+[node name="SM_Vine31" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 146.745, 19.011, 0.915836)
+
+[node name="SM_Vine32" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 148.352, 19.011, 0.915836)
+
+[node name="SM_Vine33" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 155.74, 23.6027, 0.915836)
+
+[node name="SM_Vine34" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 153.299, 25.3464, 0.915836)
+
+[node name="SM_Vine35" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 153.299, 28.2774, 0.915836)
+
+[node name="SM_Vine36" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 155.77, 26.5782, 0.915836)
+
+[node name="SM_Vine37" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 151.036, 27.5873, 0.915836)
+
+[node name="SM_Vine38" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 148.453, 28.7448, 0.915836)
+
+[node name="SM_Vine39" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 147.4, 28.7448, 0.915836)
+
+[node name="SM_Vine40" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 146.717, 28.7448, 0.915836)
+
+[node name="SM_Vine41" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 144.016, 30.3624, 0.915836)
+
+[node name="SM_Vine42" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 155.745, 33.4114, 0.915836)
+
+[node name="SM_Vine43" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 158.066, 35.0046, 0.915836)
+
+[node name="SM_Vine49" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 169.719, 35.0046, 0.915836)
+
+[node name="SM_Vine50" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 171.103, 35.0046, 0.915836)
+
+[node name="SM_Vine51" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 174.222, 36.3371, 0.916)
+
+[node name="SM_Vine52" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 180.35, 36.3371, 0.916)
+
+[node name="SM_Vine53" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 185.801, 36.3371, 0.916)
+
+[node name="SM_Vine54" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 188.416, 37.9422, 0.916)
+
+[node name="SM_Vine44" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.50088, 0, 0, 0, 1, 0, 0, 0, 1, 159.988, 35.0046, 0.915836)
+
+[node name="SM_Vine48" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.50088, 0, 0, 0, 1, 0, 0, 0, 1, 167.797, 35.0046, 0.915836)
+
+[node name="SM_Vine45" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.50088, 0, 0, 0, 1, 0, 0, 0, 1, 162.111, 35.0046, 0.915836)
+
+[node name="SM_Vine46" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.25451, 0, 0, 0, 1, 0, 0, 0, 1, 164.206, 35.0046, 0.915836)
+
+[node name="SM_Vine47" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(1.25451, 0, 0, 0, 1, 0, 0, 0, 1, 165.983, 35.0046, 0.915836)
+
+[node name="SM_Vine9" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 146.752, 12.7931, 0.915836)
+
+[node name="SM_Vine10" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 147.842, 12.7931, 0.915836)
+
+[node name="SM_Vine11" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 149.256, 12.7931, 0.915836)
+
+[node name="SM_Vine12" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 150.679, 12.7931, 0.915836)
+
+[node name="SM_Vine13" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 152.163, 12.7931, 0.915836)
+
+[node name="SM_Vine14" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 153.425, 12.7931, 0.915836)
+
+[node name="SM_Vine15" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 146.752, 21.9392, 0.915836)
+
+[node name="SM_Vine16" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 147.842, 21.9392, 0.915836)
+
+[node name="SM_Vine17" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 149.256, 21.9392, 0.915836)
+
+[node name="SM_Vine18" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 150.679, 21.9392, 0.915836)
+
+[node name="SM_Vine19" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 152.163, 21.9392, 0.915836)
+
+[node name="SM_Vine20" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 153.425, 21.9392, 0.915836)
+
+[node name="SM_Vine21" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 146.752, 31.6555, 0.915836)
+
+[node name="SM_Vine22" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 147.842, 31.6555, 0.915836)
+
+[node name="SM_Vine23" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 149.256, 31.6555, 0.915836)
+
+[node name="SM_Vine24" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 150.679, 31.6555, 0.915836)
+
+[node name="SM_Vine25" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 152.163, 31.6555, 0.915836)
+
+[node name="SM_Vine26" parent="." instance=ExtResource("18_k3lh4")]
+transform = Transform3D(0.923659, 0, 0, 0, 1, 0, 0, 0, 1, 153.425, 31.6555, 0.915836)
+
+[node name="SM_Tree4" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5214, -0.0637984, 0.913833)
+
+[node name="SM_Tree8" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.082, -0.0637984, 0.913833)
+
+[node name="SM_Tree9" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.3846, -0.0637984, 0.913833)
+
+[node name="SM_Tree10" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0412, -0.0637984, 0.913833)
+
+[node name="SM_Tree11" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5295, -0.0637984, 0.913833)
+
+[node name="SM_Tree12" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.2632, -0.0637984, 0.913833)
+
+[node name="SM_Tree13" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.9911, -0.0637984, 0.913833)
+
+[node name="SM_Tree14" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.5425, -0.0637984, 0.913833)
+
+[node name="SM_Tree15" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.5487, -0.0637984, 0.913833)
+
+[node name="SM_Tree16" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.355, -0.0637984, 0.913833)
+
+[node name="SM_Tree17" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.295, -0.0637984, 0.913833)
+
+[node name="SM_Tree18" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.095, -0.0637984, 0.913833)
+
+[node name="SM_Tree20" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.223, -0.0637984, 0.913833)
+
+[node name="SM_Tree21" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.948, -0.0637984, 0.913833)
+
+[node name="SM_Tree22" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.256, -0.0637984, 0.913833)
+
+[node name="SM_Tree23" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.032, -0.0637984, 0.913833)
+
+[node name="SM_Tree24" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.789, 1.11659, 0.913833)
+
+[node name="SM_Tree25" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.15, 1.11659, 0.913833)
+
+[node name="SM_Tree26" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.899, 1.11659, 0.913833)
+
+[node name="SM_Tree45" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.427, 1.11659, 0.913833)
+
+[node name="SM_Tree46" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.706, 1.11659, 0.913833)
+
+[node name="SM_Tree47" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.02, 1.11659, 0.913833)
+
+[node name="SM_Tree44" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.8827, 0, 0, 0, 1, 0, 0, 0, 1, 110.286, 1.1121, 0.913833)
+
+[node name="SM_Tree19" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.859, -0.0637984, 0.913833)
+
+[node name="SM_Tree5" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9242, -0.0637984, 0.913833)
+
+[node name="SM_Tree6" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2662, -0.0637984, 0.913833)
+
+[node name="SM_Tree7" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.9589, -0.0637984, 0.913833)
+
+[node name="SM_Tree2" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.6435, 0, 0, 0, 0.6435, 0, 0, 0, 1, 25.3351, 1.35301, 0.913833)
+
+[node name="SM_Tree3" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.6435, 0, 0, 0, 0.6435, 0, 0, 0, 1, 28.5054, 1.35301, 0.913833)
+
+[node name="SM_Tree27" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 50.9494, 0.865855, 0.913833)
+
+[node name="SM_Tree28" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 54.2841, 1.91173, 0.913833)
+
+[node name="SM_Tree29" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 56.8963, 3.00561, 0.913833)
+
+[node name="SM_Tree37" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 85.0948, 1.42828, 0.913833)
+
+[node name="SM_Tree38" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 88.8107, 2.5508, 0.913833)
+
+[node name="SM_Tree39" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 92.1105, 1.2928, 0.913833)
+
+[node name="SM_Tree30" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 59.1548, 3.73571, 0.913833)
+
+[node name="SM_Tree31" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 61.0051, 3.73571, 0.913833)
+
+[node name="SM_Tree33" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 69.4807, 3.73571, 0.913833)
+
+[node name="SM_Tree34" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 70.5606, 3.73571, 0.913833)
+
+[node name="SM_Tree35" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912947, 0, 0, 0, 0.912947, 0, 0, 0, 1.0009, 71.3338, 3.73644, 0.913833)
+
+[node name="SM_Tree40" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912947, 0, 0, 0, 0.912947, 0, 0, 0, 1.0009, 77.1236, 0.628145, 0.913833)
+
+[node name="SM_Tree41" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912947, 0, 0, 0, 0.912947, 0, 0, 0, 1.0009, 78.6529, 0.628145, 0.913833)
+
+[node name="SM_Tree42" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912947, 0, 0, 0, 0.912947, 0, 0, 0, 1.0009, 79.9545, 0.628145, 0.913833)
+
+[node name="SM_Tree43" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912947, 0, 0, 0, 0.912947, 0, 0, 0, 1.0009, 81.6189, 0.628145, 0.913833)
+
+[node name="SM_Tree36" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.703542, 0, 0, 0, 0.912947, 0, 0, 0, 1.0009, 74.2871, 2.09371, 0.913833)
+
+[node name="SM_Tree32" parent="." instance=ExtResource("8_xjm0t")]
+transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 60.063, 3.73571, 0.913833)
+
+[node name="SM_Crane" parent="." instance=ExtResource("20_uk108")]
+transform = Transform3D(4.63815, 0, 0, 0, 4.63815, 0, 0, 0, 10.2467, 223.764, 42.3954, 0.909583)
 
 [connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]

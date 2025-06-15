@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://du7634u3aenbb"
-path="res://.godot/imported/SK_Matron.glb-602d6e0e913d86e57de5f8cc4e46dd1e.scn"
+uid="uid://3ba55n4b7s8k"
+path="res://.godot/imported/SK_PatronLookingDown.glb-1e28ba41fb5e660cb769a632a72fb870.scn"
 
 [deps]
 
-source_file="res://assets/matron/SK_Matron.glb"
-dest_files=["res://.godot/imported/SK_Matron.glb-602d6e0e913d86e57de5f8cc4e46dd1e.scn"]
+source_file="res://assets/Patron/SK_PatronLookingDown.glb"
+dest_files=["res://.godot/imported/SK_PatronLookingDown.glb-1e28ba41fb5e660cb769a632a72fb870.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "animations": {
-"Idle": {
+"LookingDown": {
 "save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",
@@ -1835,13 +1835,9 @@ _subresources={
 }
 },
 "materials": {
-"M_Stick": {
+"M_Patron": {
 "use_external/enabled": true,
-"use_external/path": "uid://d18bcaalpn53b"
-},
-"Matron_clothing": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/matron/Matron_clothing.tres"
+"use_external/path": "uid://c8avuign1sakv"
 }
 }
 }

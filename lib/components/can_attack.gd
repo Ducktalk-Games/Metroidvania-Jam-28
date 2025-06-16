@@ -66,7 +66,7 @@ func _npc_attack() -> void:
 
 
 func _player_attack(pressed:bool) -> void:
-	if not pressed or not can_attack:
+	if not pressed or not can_attack or not (other("CanLoot") as CanLoot).inventory.has(Global.Ability.SCISSORS):
 		return
 
 	Global.stage.player_child_body.move_comp.state_machine.travel("Attack")

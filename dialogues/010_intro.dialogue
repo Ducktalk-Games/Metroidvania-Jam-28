@@ -21,6 +21,6 @@ Narrator: Their mom abandoned them, so they were all alone
 Narrator: She didn’t want to be a parent, she wanted to do drugs!
 do Global.control_spotlight(Global.stage.player_child_body, true)
 Player: Maybe I can find a new family
-do Global.control_spotlight(Global.stage.narrator, false)
+do Global.control_spotlight(Global.stage.player_child_body, false)
 do Global.dim_lights(false)
 => END

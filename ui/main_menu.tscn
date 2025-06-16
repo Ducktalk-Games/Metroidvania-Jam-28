@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1wwv7wnet3rg"]
+[gd_scene load_steps=30 format=3 uid="uid://d1wwv7wnet3rg"]
 
 [ext_resource type="Script" uid="uid://f85x4vebaw5k" path="res://ui/main_menu.gd" id="1_p8ri8"]
 [ext_resource type="Shader" uid="uid://bvppykyi3ougu" path="res://addons/godot_vat/shaders/vat_multiple_anims.gdshader" id="2_ubpvv"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://deug35iid454o" path="res://ui/house_logo.png" id="11_8jgmr"]
 [ext_resource type="Texture2D" uid="uid://kkbr1oniltwk" path="res://assets/main_menu/Credits_01.png" id="11_kaxbk"]
 [ext_resource type="Texture2D" uid="uid://cs407v210vsuq" path="res://assets/main_menu/Exit_01.png" id="12_0nobx"]
+[ext_resource type="AudioStream" uid="uid://cuax8pd822r3i" path="res://audio/sfx/SFX_Select.wav" id="14_0i0gl"]
+[ext_resource type="Script" uid="uid://bbmr3yytorn4r" path="res://addons/action_button/action_button_effect.gd" id="14_q75kt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iyrh0"]
 render_priority = 0
@@ -78,6 +80,22 @@ Button/styles/focus = SubResource("StyleBoxEmpty_kaxbk")
 Button/styles/hover = SubResource("StyleBoxEmpty_0nobx")
 Button/styles/normal = SubResource("StyleBoxEmpty_bgtsx")
 Button/styles/pressed = SubResource("StyleBoxEmpty_iyrh0")
+
+[sub_resource type="Resource" id="Resource_0i0gl"]
+script = ExtResource("14_q75kt")
+motion_duration = 0.1
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+color = Color(1, 1, 1, 1)
+transition_type = 0
+ease_type = 0
+audio_stream = ExtResource("14_0i0gl")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 1
+bus = &"Master"
+metadata/_custom_type_script = "uid://bbmr3yytorn4r"
 
 [node name="MainMenu" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, 0, 0, 0)
@@ -167,6 +185,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
+on_button_down = SubResource("Resource_0i0gl")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
 
 [node name="TextureRect" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/PlayButton"]
@@ -187,6 +206,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
+on_button_down = SubResource("Resource_0i0gl")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
 
 [node name="TextureRect2" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/OptionsButton"]
@@ -206,6 +226,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
+on_button_down = SubResource("Resource_0i0gl")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
 
 [node name="TextureRect3" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/CreditsButton"]
@@ -225,6 +246,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("9_kaxbk")
 on_hover = ExtResource("10_kaxbk")
+on_button_down = SubResource("Resource_0i0gl")
 metadata/_custom_type_script = "uid://di11q0mhb4hdo"
 
 [node name="TextureRect4" type="TextureRect" parent="MainUI/UI/MarginContainer/VBoxContainer/ExitButton"]

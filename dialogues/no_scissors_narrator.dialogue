@@ -1,6 +1,10 @@
 ~ start
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: The little mouse tried opening the door, but alas!
 Narrator: The path ahead was blocked by thick strips of paper
 Narrator: The little mouse would need something sharp to get into this... 
 Narrator: Beautiful and welcoming home
+do Global.control_spotlight(Global.stage.narrator, false)
+do Global.dim_lights(false)
 => END

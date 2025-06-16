@@ -1,7 +1,12 @@
 ~ start
 # Finds pocket watch
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.player_child_body, true)
 Player: I wonder how this got here
 Player: Maybe I can use it for something
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: The mouse decided to leave the forest in search of a better life
 Narrator: hoping it could find a new family
+do Global.control_spotlight(Global.stage.narrator, false)
+do Global.dim_lights(false)
 => END

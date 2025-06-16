@@ -64,25 +64,28 @@ func pause_game() -> void:
 		Global.lock_dialogue_input = true
 
 		if Global.are_lights_dimmed:
-			Global.dim_lights_and_spotlight(Global.who_is_dimmed, false)
-			Global.last_dimmed = Global.who_is_dimmed
+			Global.last_person_on_spotlight = Global.who_is_on_spotlight
 			Global.is_paused_whilst_lights_dimmed = true
+		else:
+			Global.dim_lights(true)
 
-			#Wait for the lights to dim before pausing
-			await get_tree().create_timer(0.25).timeout
+		unroll_menu()
+		Global.control_spotlight(Global.stage.patron, true, 0.6)
 
-		animation_player.speed_scale = 1.5
-		animation_player.play("Unroll")
-		selector.current_button = resume_button
 		is_paused = true
-		Global.dim_lights_and_spotlight(Global.stage.patron)
-		original_node = Global.patron_animation_tree.state_machine.get_current_node()
-		Global.patron_animation_tree.state_machine.travel("PlayingPianoPause")
-		await get_tree().create_timer(0.5).timeout
 		#get_tree().create_tween().tween_property(music, "volume_db", -10.0, 0.3)
-		original_song = Global.stage.patron.music["parameters/switch_to_clip"]
-		Global.stage.patron.music.play()
-		Global.stage.patron.set_music_to("pause_theme")
+
+
+func unroll_menu() -> void:
+	original_node = Global.patron_animation_tree.state_machine.get_current_node()
+	animation_player.speed_scale = 1.5
+	animation_player.play("Unroll")
+	selector.current_button = resume_button
+	Global.patron_animation_tree.state_machine.travel("PlayingPianoPause")
+	await get_tree().create_timer(0.5).timeout
+	original_song = Global.stage.patron.music["parameters/switch_to_clip"]
+	Global.stage.patron.music.play()
+	Global.stage.patron.set_music_to("pause_theme")
 
 
 func unpause_game() -> void:
@@ -90,26 +93,31 @@ func unpause_game() -> void:
 		Global.current_menu_state = Global.MenuState.GAME
 		animation_player.speed_scale = 1.5
 
-		if animation_player.current_animation == "Unroll":
-			animation_player.play_backwards("Unroll")
+		if Global.is_paused_whilst_lights_dimmed:
+			roll_menu()
+			await Global.control_spotlight(Global.stage.patron, false, 0.5)
+			await Global.control_spotlight(Global.last_person_on_spotlight, true, 0.2)
+			Global.is_paused_whilst_lights_dimmed = false
 		else:
-			animation_player.play("Dismiss")
+			Global.control_spotlight(Global.stage.patron, false)
+			Global.dim_lights(false)
+			roll_menu()
 
 		Global.stage.patron.set_music_to(original_song)
-
 		Global.patron_animation_tree.state_machine.travel(original_node)
-		Global.dim_lights_and_spotlight(Global.stage.patron, false)
-		if Global.is_paused_whilst_lights_dimmed:
-			Global.dim_lights_and_spotlight(Global.last_dimmed, true)
-			Global.is_paused_whilst_lights_dimmed = false
-			await get_tree().create_timer(0.25).timeout
-
 		if !Global.was_input_disabled_before_pause:
 			Global.enable_player_input()
 
 		Global.was_input_disabled_before_pause = false
 		await call_deferred("enable_dialogue_input")
 		is_paused = false
+
+
+func roll_menu() -> void:
+	if animation_player.current_animation == "Unroll":
+		animation_player.play_backwards("Unroll")
+	else:
+		animation_player.play("Dismiss")
 
 
 func enable_dialogue_input() -> void:

@@ -1,6 +1,11 @@
 ~ start
 # Player leaves the city with scissors
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: The mouse felt very silly about going to the city
 Narrator: but they didn’t know where else to go
+do Global.control_spotlight(Global.stage.player_child_body, true)
 Player: What's a little mouse like me supposed to do?
+do Global.control_spotlight(Global.stage.player_child_body, false)
+do Global.dim_lights(false)
 => END

@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://ccfmtiaxoyqck"]
+[gd_scene load_steps=134 format=3 uid="uid://ccfmtiaxoyqck"]
 
 [ext_resource type="Script" uid="uid://bury5oax8w4d7" path="res://lib/controller/stage.gd" id="1_ecxui"]
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="2_3kwj0"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dpi5bfkmvmj80" path="res://lib/dialogue/dialogue_container.gd" id="11_400yc"]
 [ext_resource type="PackedScene" uid="uid://i8mjr1ibov6q" path="res://assets/chair/SM_Chair.glb" id="11_wvhxk"]
 [ext_resource type="PackedScene" uid="uid://bu0wn1b3tbp1c" path="res://assets/stage_lightstrip/SM_Stage_LightStrip.glb" id="12_suqj7"]
-[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_boarder.glb" id="13_8pkue"]
+[ext_resource type="PackedScene" uid="uid://dnf24mg5ngb1g" path="res://assets/stage/SM_Stage_Boarder.glb" id="13_8pkue"]
 [ext_resource type="PackedScene" uid="uid://cjycg8ql85lyi" path="res://assets/stage/SM_Stage_Frame.glb" id="13_634kf"]
 [ext_resource type="PackedScene" uid="uid://babsrhu3cucox" path="res://assets/stage/SM_Floor.glb" id="14_3ap4e"]
 [ext_resource type="PackedScene" uid="uid://u01c2ccdjkwy" path="res://assets/film_camera/SM_FilmCamera.glb" id="14_5b43b"]
@@ -597,7 +597,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_634kf"]
-resource_name = "dim_lights_show_narrator"
+resource_name = "dim_lights"
 length = 0.8
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -609,20 +609,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0.239, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.466667)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../CharacterSpotlight")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"turn_on_spotlight"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_n3cgd"]
@@ -774,7 +760,7 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_dtws5"]
-resource_name = "hide_narrator"
+resource_name = "show_lights"
 length = 0.8
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -787,28 +773,14 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0.466667, 0.8)
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../CharacterSpotlight")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"turn_off_spotlight"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_634kf"]
 _data = {
 &"RESET": SubResource("Animation_8pkue"),
 &"close_curtain": SubResource("Animation_lr1w7"),
-&"dim_lights_spotlight_on": SubResource("Animation_634kf"),
+&"dim_lights": SubResource("Animation_634kf"),
 &"flicker_lights": SubResource("Animation_n3cgd"),
-&"show_lights_spotlight_off": SubResource("Animation_dtws5")
+&"show_lights": SubResource("Animation_dtws5")
 }
 
 [sub_resource type="Animation" id="Animation_5b43b"]
@@ -1237,6 +1209,9 @@ transform = Transform3D(0.426524, 0, 0.904476, 0, 1, 0, -0.904476, 0, 0.426524, 
 transform = Transform3D(-0.904476, 0, 0.426524, 0, 1, 0, -0.426524, 0, -0.904476, -2.94495, 0.383125, -5.53243)
 script = ExtResource("10_nrxvr")
 animation_tree = NodePath("MatronAnimationTree")
+
+[node name="Matron" parent="Stage/StageBody/OffStageEnv/Matron/metarig/Skeleton3D" index="0"]
+transform = Transform3D(1.1, 0, -2.98023e-08, 0, 1.1, 0, 2.98023e-08, 0, 1.1, 0, 0, 0)
 
 [node name="AnimationPlayer" parent="Stage/StageBody/OffStageEnv/Matron" index="1"]
 autoplay = "Idle"

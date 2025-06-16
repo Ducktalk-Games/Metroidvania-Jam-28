@@ -1,8 +1,13 @@
 ~ start
 #Finds scissors
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.player_child_body, true)
 Player: I need to be careful not to run with these
 Player: Accidents can happen
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: There were lots of places to sleep and much more to eat
 Narrator: But it was far more dangerous than the forest
 Narrator: Everyone was meaner and knew the mouse was weak
+do Global.control_spotlight(Global.stage.narrator, false)
+do Global.dim_lights(false)
 => END

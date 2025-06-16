@@ -24,6 +24,7 @@ func _ready() -> void:
 	Global.patron_animation_tree.state_machine.travel("SlamLid")
 	await get_tree().create_timer(1.0).timeout
 	Global.stage.player_child_body.move_comp.state_machine.travel("Idle")
+	Global.dim_lights(false)
 	Global.stage.stage_body.curtain_anim_player.play("flicker_lights")
 	await Global.stage.stage_body.curtain_anim_player.animation_finished
 	get_tree().change_scene_to_packed(end_credits_scene)

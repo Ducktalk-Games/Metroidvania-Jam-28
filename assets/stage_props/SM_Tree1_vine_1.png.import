@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do1hmebnaivok"
-path.s3tc="res://.godot/imported/SM_Vine1_vine_1.png-8e0c6c095f9ea640d573f156e0c287e1.s3tc.ctex"
+uid="uid://rjlhcxbg4qc6"
+path.s3tc="res://.godot/imported/SM_Tree1_vine_1.png-a1b0986b10c3bbbd8c1e0427aa317ee4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/stage_props/SM_Vine1_vine_1.png"
-dest_files=["res://.godot/imported/SM_Vine1_vine_1.png-8e0c6c095f9ea640d573f156e0c287e1.s3tc.ctex"]
+source_file="res://assets/stage_props/SM_Tree1_vine_1.png"
+dest_files=["res://.godot/imported/SM_Tree1_vine_1.png-a1b0986b10c3bbbd8c1e0427aa317ee4.s3tc.ctex"]
 
 [params]
 

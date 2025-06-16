@@ -43,6 +43,18 @@ const STAGE = preload("res://scenes/stage/stage.tscn")
 signal curtains_opened
 
 
+func start_house_level()-> void:
+	#Disable attack
+	var can_attack: CanAttack = Component.find(stage.stage_body, "CanAttack")
+	can_attack.disable()
+
+
+func start_performance_lock() -> void:
+	current_menu_state = Global.MenuState.PERFORMANCE
+	disable_player_input()
+	can_pause_game = false
+
+
 func spawn_item_popup(item: Ability) -> ItemPopup:
 	var item_popup := ITEM_POPUP.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as ItemPopup
 	item_popup.ability = item
@@ -115,6 +127,37 @@ func dim_lights(dim: bool = true) -> void:
 		stage.stage_body.curtain_anim_player.play("show_lights")
 
 	await stage.stage_body.curtain_anim_player.animation_finished
+
+
+func dim_lights_async(dim: bool = true) -> void:
+	are_lights_dimmed = dim
+
+	if dim:
+		stage.stage_body.curtain_anim_player.play("dim_lights")
+	else:
+		stage.stage_body.curtain_anim_player.play("show_lights")
+
+
+func control_spotlight_async(who: Node3D, switch_on: bool = true, duration: float = 0.2) -> void:
+	who_is_on_spotlight = who
+	var height_offset: float = 0.0
+
+	match who:
+		Global.stage.patron:
+			height_offset = 5.686
+
+		Global.stage.narrator:
+			height_offset = 7.882
+
+		Global.stage.player_child_body:
+			height_offset = 11.2
+
+	stage.spotlight.global_position = who.global_position + Vector3.UP * height_offset
+
+	if switch_on:
+		stage.spotlight.turn_on_spotlight(duration).timeout
+	else:
+		stage.spotlight.turn_off_spotlight(duration).timeout
 
 
 func control_spotlight(who: Node3D, switch_on: bool = true, duration: float = 0.2) -> void:

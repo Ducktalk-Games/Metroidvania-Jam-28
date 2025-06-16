@@ -3,6 +3,6 @@ do Global.dim_lights(true)
 do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: The lions told the mouse not to worry, they didn’t mind looking after them.
 Narrator: As long as they were good, they could stay forever
-do Global.control_spotlight(Global.stage.narrator, false)
-do Global.dim_lights(false)
+do Global.control_spotlight_async(Global.stage.narrator, false)
+do Global.dim_lights_async(false)
 => END

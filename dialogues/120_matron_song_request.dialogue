@@ -3,9 +3,10 @@ do get_tree().create_timer(1.0).timeout
 # This happens
 Matron: Okay, that was still terrible, but at least you're consistent
 Matron: Now, show me the song
-do Global.dim_lights(true)
-do Global.control_spotlight(Global.stage.player_child_body, false)
+do Global.dim_lights_async(true)
+do Global.control_spotlight_async(Global.stage.player_child_body, true)
 do Global.stage.player_child_body.rotate_to_audience()
 # Player starts singing
+do Global.start_performance_lock()
 do Global.patron_animation_tree.patron_plays_piano()
 => END

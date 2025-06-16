@@ -735,9 +735,8 @@ string_material = SubResource("StandardMaterial3D_iriyj")
 string_mesh = SubResource("CylinderMesh_jhs13")
 string_offset = 0.045
 
-[node name="RippableDoor" parent="." node_paths=PackedStringArray("current_level") instance=ExtResource("3_1dhn5")]
+[node name="RippableDoor" parent="." instance=ExtResource("3_1dhn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05055, 0.07428, -0.621856)
-current_level = NodePath("..")
 
 [node name="LvlBlockout" parent="." instance=ExtResource("4_1dhn5")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.9291, -0.610204, -1.79148)

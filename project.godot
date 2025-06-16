@@ -35,6 +35,7 @@ warnings/check_invalid_track_paths=false
 config/name="The Play"
 run/main_scene="uid://ccfmtiaxoyqck"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://168pr1sm0h"
 config/icon="res://icon.svg"
 
 [audio]

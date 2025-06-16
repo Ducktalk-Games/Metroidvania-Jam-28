@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bllgb4njne0j3"]
+
+[ext_resource type="Texture2D" uid="uid://ca6ffk8ij88vf" path="res://assets/door/SK_RippingDoor_BC_Dark_Stairs.png" id="1_gujrk"]
+
+[resource]
+resource_name = "Door"
+cull_mode = 2
+albedo_texture = ExtResource("1_gujrk")
+texture_filter = 2

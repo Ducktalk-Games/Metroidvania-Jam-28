@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ciov1r72h4koh"]
+
+[ext_resource type="Texture2D" uid="uid://7ys8hfx8apaj" path="res://assets/door/SK_RippingDoor_BC_Bandages.png" id="1_wo71o"]
+
+[resource]
+resource_name = "Bandages"
+cull_mode = 2
+albedo_texture = ExtResource("1_wo71o")
+texture_filter = 2

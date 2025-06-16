@@ -55,14 +55,18 @@ var sfx_bus_i: int = AudioServer.get_bus_index("SFX")
 @onready
 var master_bus_i: int = AudioServer.get_bus_index("Master")
 
-@onready
-var music_slider_mat: StandardMaterial3D = $MusicSlider/SliderCollision/SliderMesh.get_active_material(0)
+@export var master_slider_mesh: MeshInstance3D
+@export var music_slider_mesh: MeshInstance3D
+@export var sfx_slider_mesh: MeshInstance3D
 
 @onready
-var sfx_slider_mat: StandardMaterial3D = $SfxSlider/SliderCollision/SliderMesh.get_active_material(0)
+var master_slider_mat: StandardMaterial3D = master_slider_mesh.get_surface_override_material(0)
 
 @onready
-var master_slider_mat: StandardMaterial3D = $MasterSlider/SliderCollision/SliderMesh.get_active_material(0)
+var music_slider_mat: StandardMaterial3D = music_slider_mesh.get_surface_override_material(0)
+
+@onready
+var sfx_slider_mat: StandardMaterial3D = sfx_slider_mesh.get_surface_override_material(0)
 
 @export var options_audio_stream: AudioStreamPlayer
 
@@ -101,10 +105,12 @@ var point_b_ss_loc: Vector2
 var slider_hovered: bool = false
 var slider_grabbed: bool = false
 
+var energy_max: float = 0.5
+
 
 func _ready() -> void:
 	Global.options_amp = self
-	master_slider_mat.emission_energy_multiplier = 2.0
+	master_slider_mat.emission_energy_multiplier = energy_max
 	music_slider_mat.emission_energy_multiplier = 0.0
 	sfx_slider_mat.emission_energy_multiplier = 0.0
 
@@ -144,7 +150,7 @@ func _input(event: InputEvent) -> void:
 	var direction_input: float = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 
 	if focused_slider == %MasterSlider:
-		master_slider_mat.emission_energy_multiplier = 2.0
+		master_slider_mat.emission_energy_multiplier = energy_max
 		music_slider_mat.emission_energy_multiplier = 0.0
 		sfx_slider_mat.emission_energy_multiplier = 0.0
 		master_volume+=direction_input * 0.01
@@ -154,7 +160,7 @@ func _input(event: InputEvent) -> void:
 
 	if focused_slider == %MusicSlider:
 		master_slider_mat.emission_energy_multiplier = 0.0
-		music_slider_mat.emission_energy_multiplier = 2.0
+		music_slider_mat.emission_energy_multiplier = energy_max
 		sfx_slider_mat.emission_energy_multiplier = 0.0
 		music_volume+=direction_input * 0.01
 
@@ -167,7 +173,7 @@ func _input(event: InputEvent) -> void:
 	if focused_slider == %SfxSlider:
 		master_slider_mat.emission_energy_multiplier = 0.0
 		music_slider_mat.emission_energy_multiplier = 0.0
-		sfx_slider_mat.emission_energy_multiplier = 2.0
+		sfx_slider_mat.emission_energy_multiplier = energy_max
 		sfx_volume+=direction_input * 0.01
 
 		if Input.is_action_just_pressed("ui_up") and !is_locked_ui:

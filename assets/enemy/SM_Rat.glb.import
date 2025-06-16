@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b58jqqgmem4s8"
-path="res://.godot/imported/SM_Sliders.glb-595efb8de17522d30d4ca36605d64e9d.scn"
+uid="uid://bdtklmmeg413y"
+path="res://.godot/imported/SM_Rat.glb-8dcf7d7fd92777f4056bb8c0f1ccc72c.scn"
 
 [deps]
 
-source_file="res://assets/amp/SM_Sliders.glb"
-dest_files=["res://.godot/imported/SM_Sliders.glb-595efb8de17522d30d4ca36605d64e9d.scn"]
+source_file="res://assets/enemy/SM_Rat.glb"
+dest_files=["res://.godot/imported/SM_Rat.glb-8dcf7d7fd92777f4056bb8c0f1ccc72c.scn"]
 
 [params]
 
@@ -34,9 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"M_Amp": {
+"nibbles": {
 "use_external/enabled": true,
-"use_external/path": "uid://bmiddmngfm06r"
+"use_external/path": "uid://mb6td6ryvmsk"
 }
 }
 }

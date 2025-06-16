@@ -843,10 +843,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 246.801, 40.7728, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.429, 54.1616, 0)
 
 [node name="ForestCityTrigger" parent="." instance=ExtResource("7_unilm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.13, 34.9994, 0.00389761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.642, 36.6802, 0.00389761)
 
 [node name="CityForestTrigger" parent="." instance=ExtResource("7_unilm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.33, 34.9994, 0.00389761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.842, 36.6802, 0.00389761)
 script = ExtResource("9_iriyj")
 label_string = "City -> Forest Trigger"
 
@@ -1492,15 +1492,6 @@ transform = Transform3D(4.63815, 0, 0, 0, 4.63815, 0, 0, 0, 10.2467, 223.764, 42
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.3, 33.502, -3.81626)
 occluder = SubResource("BoxOccluder3D_xjm0t")
 
-[node name="Enemy" parent="." instance=ExtResource("20_xmb3h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.921, 37.4507, 0)
-
-[node name="PatrolA" parent="Enemy" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46394, 0, 0)
-
-[node name="PatrolB" parent="Enemy" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64928, 0, 0)
-
 [node name="Enemy3" parent="." instance=ExtResource("20_xmb3h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.626, 39.7439, 0)
 
@@ -1575,7 +1566,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39412, 0, 0)
 
 [connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]
 
-[editable path="Enemy"]
 [editable path="Enemy3"]
 [editable path="Enemy4"]
 [editable path="Enemy5"]

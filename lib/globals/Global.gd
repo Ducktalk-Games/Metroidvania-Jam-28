@@ -187,6 +187,10 @@ func disable_options_menu() -> void:
 
 
 func enable_options_menu() -> void:
+	if not options_amp.settled:
+		options_amp.options_screen_settled()
+		options_amp.current_slider_index = 0
+
 	options_amp.has_input_enabled = true
 
 

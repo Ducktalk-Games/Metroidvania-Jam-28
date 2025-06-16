@@ -141,7 +141,6 @@ func _on_resume_button_button_clicked(_button: Area3D) -> void:
 
 func _on_options_button_button_clicked(_button: Area3D) -> void:
 	stage_camera.pivot_to_options(true)
-	Global.enable_options_menu()
 
 
 func _on_exit_button_button_clicked(_button: Area3D) -> void:

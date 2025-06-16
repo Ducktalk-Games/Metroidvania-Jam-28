@@ -1,240 +1,55 @@
 class_name OptionsAmp
 extends Node3D
 
-@export
-var has_mouse_input_enabled: bool = false
-
-@export
+var settled: bool = false
 var has_input_enabled: bool = false
+var mouse_x_location: float = 0.0
 
-@export
-var debug_music_label: Label3D
+@onready var sliders: Array[AmpSlider]
 
-@export
-var debug_sfx_label: Label3D
-
-@export
-var debug_master_label: Label3D
-
-@onready
-var point_a: Marker3D = $PointA
-
-@onready 
-var point_b: Marker3D = $PointB
-
-@onready
-var point_c: Marker3D = $PointC
-
-@onready 
-var point_d: Marker3D = $PointD
-
-@onready
-var point_e: Marker3D = $PointE
-
-@onready 
-var point_f: Marker3D = $PointF
-
-@onready
-var music_slider: Area3D = %MusicSlider
-
-@onready
-var sfx_slider: Area3D = %SfxSlider
-
-@onready
-var master_slider: Area3D = %MasterSlider
-
-@onready
-var focused_slider: Area3D = %MasterSlider
-
-@onready
-var music_bus_i: int = AudioServer.get_bus_index("Music")
-
-@onready
-var sfx_bus_i: int = AudioServer.get_bus_index("SFX")
-
-@onready
-var master_bus_i: int = AudioServer.get_bus_index("Master")
-
-@export var master_slider_mesh: MeshInstance3D
-@export var music_slider_mesh: MeshInstance3D
-@export var sfx_slider_mesh: MeshInstance3D
-
-@onready
-var master_slider_mat: StandardMaterial3D = master_slider_mesh.get_surface_override_material(0)
-
-@onready
-var music_slider_mat: StandardMaterial3D = music_slider_mesh.get_surface_override_material(0)
-
-@onready
-var sfx_slider_mat: StandardMaterial3D = sfx_slider_mesh.get_surface_override_material(0)
+var current_slider_index: int = 0:
+	set(value):
+		if 0 <= value and value < sliders.size():
+			sliders[current_slider_index].focused = false
+			sliders[value].focused = true
+			current_slider_index = value
 
 @export var options_audio_stream: AudioStreamPlayer
 
-var master_volume: float:
-	set(value):
-		var clamped_val: float = clampf(value, 0.0, 1.0)
-		master_slider.position = lerp(point_a.position, point_b.position, clamped_val)
 
-		if debug_master_label:
-			debug_master_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
+func options_screen_settled() -> void:
+	for slider in sliders:
+		if (slider.start_point and slider.end_point) and not (slider.start_point.screen_space_loc or slider.end_point.screen_space_loc):
+			slider.start_point.screen_space_loc = get_viewport().get_camera_3d().unproject_position(slider.start_point_marker.global_position)
+			slider.end_point.screen_space_loc = get_viewport().get_camera_3d().unproject_position(slider.end_point_marker.global_position)
 
-		master_volume = clamped_val
-
-var music_volume: float:
-	set(value):
-		var clamped_val: float = clampf(value, 0.0, 1.0)
-		music_slider.position = lerp(point_c.position, point_d.position, clamped_val)
-
-		if debug_music_label:
-			debug_music_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
-
-		music_volume = clamped_val
-
-var sfx_volume: float:
-	set(value):
-		var clamped_val: float = clampf(value, 0.0, 1.0)
-		sfx_slider.position = lerp(point_e.position, point_f.position, clamped_val)
-
-		if debug_sfx_label:
-			debug_sfx_label.text = str(int(snapped(clamped_val, 0.01) * 100), "%")
-
-		sfx_volume = clamped_val
-
-var point_a_ss_loc: Vector2
-var point_b_ss_loc: Vector2
-var slider_hovered: bool = false
-var slider_grabbed: bool = false
-
-var energy_max: float = 0.5
+	settled = true
 
 
 func _ready() -> void:
 	Global.options_amp = self
-	master_slider_mat.emission_energy_multiplier = energy_max
-	music_slider_mat.emission_energy_multiplier = 0.0
-	sfx_slider_mat.emission_energy_multiplier = 0.0
 
-	master_volume = 1.0
-	music_volume = 0.5
-	sfx_volume = 0.5
+	for child in get_children():
+		if child is AmpSlider:
+			child.options_amp = self
+			sliders.append(child)
 
-	AudioServer.set_bus_volume_linear(music_bus_i, music_volume)
-	AudioServer.set_bus_volume_linear(sfx_bus_i, sfx_volume)
-	AudioServer.set_bus_volume_linear(master_bus_i, master_volume)
+	if sliders:
+		sliders[0].focused = true
 
 
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if !has_input_enabled: return
 
-	AudioServer.set_bus_volume_linear(music_bus_i, music_volume)
-	AudioServer.set_bus_volume_linear(sfx_bus_i, sfx_volume)
-	AudioServer.set_bus_volume_linear(master_bus_i, master_volume)
+	if event is InputEventMouseMotion:
+		mouse_x_location = event.position.x
 
-	if slider_grabbed and has_mouse_input_enabled:
-		var current_mouse_y_position: float = get_viewport().get_mouse_position().x
+	var up_down_input: int = Input.get_axis("ui_up", "ui_down")
 
-		if focused_slider == %MasterSlider:
-			master_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
+	if up_down_input != 0:
+		var incremented_clamped_index: int = clampi(current_slider_index + up_down_input, 0, sliders.size()-1)
 
-		if focused_slider == %MusicSlider:
-			music_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
-
-		if focused_slider == %SfxSlider:
-			sfx_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
-
-
-func _input(_event: InputEvent) -> void:
-	if !has_input_enabled: return
-	var is_locked_ui: bool = false
-
-	var direction_input: float = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-
-	if focused_slider == %MasterSlider:
-		master_slider_mat.emission_energy_multiplier = energy_max
-		music_slider_mat.emission_energy_multiplier = 0.0
-		sfx_slider_mat.emission_energy_multiplier = 0.0
-		master_volume+=direction_input * 0.01
-
-		if Input.is_action_just_pressed("ui_down") and !is_locked_ui:
-			call_deferred("set_focused_slider", %MusicSlider)
-
-	if focused_slider == %MusicSlider:
-		master_slider_mat.emission_energy_multiplier = 0.0
-		music_slider_mat.emission_energy_multiplier = energy_max
-		sfx_slider_mat.emission_energy_multiplier = 0.0
-		music_volume+=direction_input * 0.01
-
-		if Input.is_action_just_pressed("ui_up") and !is_locked_ui:
-			call_deferred("set_focused_slider", %MasterSlider)
-
-		if Input.is_action_just_pressed("ui_down") and !is_locked_ui:
-			call_deferred("set_focused_slider", %SfxSlider)
-
-	if focused_slider == %SfxSlider:
-		master_slider_mat.emission_energy_multiplier = 0.0
-		music_slider_mat.emission_energy_multiplier = 0.0
-		sfx_slider_mat.emission_energy_multiplier = energy_max
-		sfx_volume+=direction_input * 0.01
-
-		if Input.is_action_just_pressed("ui_up") and !is_locked_ui:
-			call_deferred("set_focused_slider", %MusicSlider)
-
-	if Input.is_action_just_pressed("button_select") and slider_hovered and has_mouse_input_enabled:
-		var selected_point_a: Marker3D = null
-		var selected_point_b: Marker3D = null
-
-		if focused_slider == %MasterSlider:
-				selected_point_a = point_a
-				selected_point_b = point_b
-
-		if focused_slider == %MusicSlider:
-				selected_point_a = point_c
-				selected_point_b = point_d
-
-		if focused_slider == %SfxSlider:
-				selected_point_a = point_e
-				selected_point_b = point_f
-
-		point_a_ss_loc = get_viewport().get_camera_3d().unproject_position(selected_point_a.global_position)
-		point_b_ss_loc = get_viewport().get_camera_3d().unproject_position(selected_point_b.global_position)
-		slider_grabbed = true
-
-	if Input.is_action_just_released("button_select") and has_mouse_input_enabled:
-		slider_grabbed = false
-
-
-func set_focused_slider(slider: Area3D) -> void:
-	focused_slider = slider
-
-
-func _on_master_slider_mouse_entered() -> void:
-	if has_mouse_input_enabled:
-		call_deferred("set_focused_slider", %MasterSlider)
-		slider_hovered = true
-
-
-func _on_master_slider_mouse_exited() -> void:
-	if has_mouse_input_enabled:
-		slider_hovered = false
-
-
-func _on_music_slider_mouse_entered() -> void:
-	if has_mouse_input_enabled:
-		call_deferred("set_focused_slider", %MusicSlider)
-		slider_hovered = true
-
-
-func _on_music_slider_mouse_exited() -> void:
-	if has_mouse_input_enabled:
-		slider_hovered = false
-
-
-func _on_sfx_slider_mouse_entered() -> void:
-	if has_mouse_input_enabled:
-		call_deferred("set_focused_slider", %SfxSlider)
-		slider_hovered = true
-
-
-func _on_sfx_slider_mouse_exited() -> void:
-	if has_mouse_input_enabled:
-		slider_hovered = false
+		if current_slider_index != incremented_clamped_index:
+			sliders[current_slider_index].focused = false
+			current_slider_index = incremented_clamped_index
+			sliders[current_slider_index].focused = true

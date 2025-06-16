@@ -35,6 +35,9 @@ func pivot_to_options(ingame: bool = false) -> void:
 		Global.current_menu_state = Global.MenuState.OPTIONS
 
 	camera_animation_player.play("pivot_to_options")
+	await camera_animation_player.animation_finished
+	Global.enable_options_menu()
+
 	get_tree().create_tween().tween_property(options_menu.options_audio_stream, "volume_db", 0.0, 0.5)
 
 
@@ -49,7 +52,7 @@ func pivot_from_options(ingame: bool = false) -> void:
 	camera_animation_player.play("pivot_to_options", -1, -1, true)
 	wait_for_from_anim_to_finish()
 
-	get_tree().create_tween().tween_property(options_menu.options_audio_stream, "volume_db", -20.0, 0.5).finished
+	get_tree().create_tween().tween_property(options_menu.options_audio_stream, "volume_db", -20.0, 0.5)
 
 
 func pivot_to_credits() -> void:

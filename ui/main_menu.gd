@@ -35,7 +35,6 @@ func _on_options_button_pressed() -> void:
 	Global.current_menu_state = Global.MenuState.OPTIONS
 	main_ui.hide()
 	options_clicked.emit()
-	Global.enable_options_menu()
 
 
 func _on_credits_button_pressed() -> void:

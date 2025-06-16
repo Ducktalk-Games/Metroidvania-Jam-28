@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8kgj6bwmqj6x"]
+
+[ext_resource type="Script" uid="uid://bw6hvxl3tccdw" path="res://lib/options/slider.gd" id="1_3bhtc"]
+[ext_resource type="PackedScene" uid="uid://b58jqqgmem4s8" path="res://assets/amp/SM_Sliders.glb" id="2_hydea"]
+[ext_resource type="Texture2D" uid="uid://bebb78i2cmoew" path="res://assets/amp/SM_Amp_BC_Amp.png" id="3_rgowv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ntvs"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bhtc"]
+resource_name = "M_Amp"
+cull_mode = 2
+albedo_texture = ExtResource("3_rgowv")
+emission_enabled = true
+emission = Color(0.393086, 0.393086, 0.393085, 1)
+emission_energy_multiplier = 0.0
+texture_filter = 2
+
+[node name="Slider" type="Node3D" node_paths=PackedStringArray("slider_area", "slider_mesh", "start_point_marker", "end_point_marker")]
+script = ExtResource("1_3bhtc")
+slider_area = NodePath("SliderArea")
+slider_mesh = NodePath("SliderArea/SliderCollision/SM_Sliders2/SM_Sliders")
+start_point_marker = NodePath("PointA")
+end_point_marker = NodePath("PointB")
+
+[node name="SliderArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="SliderCollision" type="CollisionShape3D" parent="SliderArea"]
+shape = SubResource("BoxShape3D_2ntvs")
+
+[node name="SM_Sliders2" parent="SliderArea/SliderCollision" instance=ExtResource("2_hydea")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.00738e-09, 0, 0.0230461)
+
+[node name="SM_Sliders" parent="SliderArea/SliderCollision/SM_Sliders2" index="0"]
+material_override = SubResource("StandardMaterial3D_3bhtc")
+
+[node name="PointA" type="Marker3D" parent="."]
+
+[node name="PointB" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.856828, 0, 0)
+
+[connection signal="mouse_entered" from="SliderArea" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SliderArea" to="." method="_on_mouse_exited"]
+
+[editable path="SliderArea/SliderCollision/SM_Sliders2"]

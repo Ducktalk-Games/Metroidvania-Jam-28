@@ -1,135 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2ujw7vc162bx"]
+[gd_scene load_steps=5 format=3 uid="uid://d2ujw7vc162bx"]
 
 [ext_resource type="Script" uid="uid://dsgogk18w40wb" path="res://lib/options/options_amp.gd" id="1_kxyb1"]
 [ext_resource type="PackedScene" uid="uid://ctqfi4ol2ur6l" path="res://assets/amp/SM_Amp.glb" id="2_lov1f"]
 [ext_resource type="AudioStream" uid="uid://crsys4spn8owl" path="res://audio/sfx/SFX_Whirring.ogg" id="3_2ntvs"]
-[ext_resource type="PackedScene" uid="uid://b58jqqgmem4s8" path="res://assets/amp/SM_Sliders.glb" id="3_jkgd3"]
-[ext_resource type="Texture2D" uid="uid://bebb78i2cmoew" path="res://assets/amp/SM_Amp_BC_Amp.png" id="4_w113x"]
+[ext_resource type="PackedScene" uid="uid://c8kgj6bwmqj6x" path="res://lib/ui/slider.tscn" id="3_43ofv"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_lov1f"]
-size = Vector3(1, 1, 0.6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2ntvs"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43ofv"]
-resource_name = "M_Amp"
-cull_mode = 2
-albedo_texture = ExtResource("4_w113x")
-emission_enabled = true
-emission = Color(0.393086, 0.393086, 0.393085, 1)
-emission_energy_multiplier = 0.0
-texture_filter = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcys0"]
-resource_name = "M_Amp"
-cull_mode = 2
-albedo_texture = ExtResource("4_w113x")
-emission_enabled = true
-emission = Color(0.393086, 0.393086, 0.393085, 1)
-emission_energy_multiplier = 0.0
-texture_filter = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glbr1"]
-resource_name = "M_Amp"
-cull_mode = 2
-albedo_texture = ExtResource("4_w113x")
-emission_enabled = true
-emission = Color(0.393086, 0.393086, 0.393085, 1)
-emission_energy_multiplier = 0.0
-texture_filter = 2
-
-[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("debug_music_label", "debug_sfx_label", "debug_master_label", "master_slider_mesh", "music_slider_mesh", "sfx_slider_mesh", "options_audio_stream")]
+[node name="OptionsAmp" type="Node3D" node_paths=PackedStringArray("options_audio_stream")]
 script = ExtResource("1_kxyb1")
-debug_music_label = NodePath("MusicLabel")
-debug_sfx_label = NodePath("SFXLabel")
-debug_master_label = NodePath("MasterLabel")
-master_slider_mesh = NodePath("MasterSlider/SliderCollision/SM_Sliders2/SM_Sliders")
-music_slider_mesh = NodePath("MusicSlider/SliderCollision/SM_Sliders2/SM_Sliders")
-sfx_slider_mesh = NodePath("SfxSlider/SliderCollision/SM_Sliders2/SM_Sliders")
 options_audio_stream = NodePath("OptionsMenu")
-
-[node name="MusicLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58286, 0.4)
-visible = false
-texture_filter = 0
-text = "0%"
-
-[node name="SFXLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.316857, 0.4)
-visible = false
-texture_filter = 0
-text = "0%"
-
-[node name="MasterLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.852058, 0.4)
-visible = false
-texture_filter = 0
-text = "0%"
-
-[node name="AmpBase" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_lov1f")
-
-[node name="PointA" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477096, 0.911803, 0.35064)
-
-[node name="PointB" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.379732, 0.911803, 0.35064)
-
-[node name="PointC" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47609, 0.431594, 0.374764)
-
-[node name="PointD" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.431405, 0.374)
-
-[node name="PointE" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477096, 0.671941, 0.375845)
-
-[node name="PointF" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.672325, 0.376)
 
 [node name="SM_Amp" parent="." instance=ExtResource("2_lov1f")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.2266e-08, 0, -0.280614)
 
-[node name="MasterSlider" type="Area3D" parent="."]
-unique_name_in_owner = true
+[node name="MasterSlider" parent="." instance=ExtResource("3_43ofv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477096, 0.911803, 0.35064)
+initial_volume = 1.0
 
-[node name="SliderCollision" type="CollisionShape3D" parent="MasterSlider"]
-shape = SubResource("BoxShape3D_2ntvs")
+[node name="SFXSlider" parent="." instance=ExtResource("3_43ofv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477096, 0.671098, 0.35064)
+bus_id = 2
 
-[node name="SM_Sliders2" parent="MasterSlider/SliderCollision" instance=ExtResource("3_jkgd3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.00738e-09, 0, 0.0230461)
-
-[node name="SM_Sliders" parent="MasterSlider/SliderCollision/SM_Sliders2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_43ofv")
-
-[node name="MusicSlider" type="Area3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47609, 0.431594, 0.374764)
-
-[node name="SliderCollision" type="CollisionShape3D" parent="MusicSlider"]
-shape = SubResource("BoxShape3D_2ntvs")
-
-[node name="SM_Sliders2" parent="MusicSlider/SliderCollision" instance=ExtResource("3_jkgd3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="SM_Sliders" parent="MusicSlider/SliderCollision/SM_Sliders2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_mcys0")
-
-[node name="SfxSlider" type="Area3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477096, 0.671941, 0.375845)
-
-[node name="SliderCollision" type="CollisionShape3D" parent="SfxSlider"]
-shape = SubResource("BoxShape3D_2ntvs")
-
-[node name="SM_Sliders2" parent="SfxSlider/SliderCollision" instance=ExtResource("3_jkgd3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="SM_Sliders" parent="SfxSlider/SliderCollision/SM_Sliders2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_glbr1")
+[node name="MusicSlider" parent="." instance=ExtResource("3_43ofv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477096, 0.43039, 0.35064)
+bus_id = 1
 
 [node name="OptionsMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2ntvs")
@@ -137,14 +30,3 @@ volume_db = -20.0
 autoplay = true
 bus = &"SFX"
 parameters/looping = true
-
-[connection signal="mouse_entered" from="MasterSlider" to="." method="_on_master_slider_mouse_entered"]
-[connection signal="mouse_exited" from="MasterSlider" to="." method="_on_master_slider_mouse_exited"]
-[connection signal="mouse_entered" from="MusicSlider" to="." method="_on_music_slider_mouse_entered"]
-[connection signal="mouse_exited" from="MusicSlider" to="." method="_on_music_slider_mouse_exited"]
-[connection signal="mouse_entered" from="SfxSlider" to="." method="_on_sfx_slider_mouse_entered"]
-[connection signal="mouse_exited" from="SfxSlider" to="." method="_on_sfx_slider_mouse_exited"]
-
-[editable path="MasterSlider/SliderCollision/SM_Sliders2"]
-[editable path="MusicSlider/SliderCollision/SM_Sliders2"]
-[editable path="SfxSlider/SliderCollision/SM_Sliders2"]

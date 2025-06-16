@@ -8,6 +8,6 @@ render_priority = 0
 shader = ExtResource("1_f7krt")
 shader_parameter/WoodTexture = ExtResource("2_ygmyy")
 shader_parameter/DrawingOpacity = 0.0
-shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_scale = Vector3(1.6, 2.295, 1)
 shader_parameter/triplanar_offset = Vector3(0, 0, 0)
 shader_parameter/triplanar_sharpness = 0.5

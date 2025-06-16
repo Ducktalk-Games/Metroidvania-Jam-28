@@ -100,6 +100,7 @@ shape = SubResource("BoxShape3D_6ap7o")
 
 [node name="PauseMenuStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("6_6ap7o")
+volume_db = -24.054
 
 [connection signal="button_clicked" from="Buttons/ResumeAttachment/ResumeButton" to="." method="_on_resume_button_button_clicked"]
 [connection signal="button_hovered" from="Buttons/ResumeAttachment/ResumeButton" to="Selector" method="_on_button_hovered"]

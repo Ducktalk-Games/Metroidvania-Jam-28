@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 
 func die() -> void:
 	has_died.emit()
-	if not character.is_player:
+	if character and not character.is_player:
 		# TODO: animate it falling over and then disable can_attack?
 		#(other("CanAttack") as CanAttack).disable()
 		character.queue_free()

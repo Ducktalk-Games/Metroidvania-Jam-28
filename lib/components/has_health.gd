@@ -58,7 +58,9 @@ func take_damage(value: float, source: Vector3) -> void:
 		health -= value
 
 		if health <= 0:
-			(other("CanDie") as CanDie).die()
+			var die_comp := (other("CanDie") as CanDie)
+			if die_comp:
+				die_comp.die()
 
 	if can_be_launched and not waiting:
 		var direction: float = sign((body.global_position - source).x)

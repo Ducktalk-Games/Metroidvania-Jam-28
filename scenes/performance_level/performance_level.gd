@@ -14,7 +14,7 @@ func _ready() -> void:
 	Global.stage.player_child_body.character_mesh.global_position = character.global_position
 
 	# 120_matron_song_request
-	var sequencer: DialogueSequencer = DialogueSequencer.start_dialog("uid://pb73ouwr1sif")
+	DialogueSequencer.start_dialog("uid://pb73ouwr1sif")
 
 	# play patron slam -0.5 before audio ends
 	await DialogueManager.dialogue_ended

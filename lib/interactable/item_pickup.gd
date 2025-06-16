@@ -8,10 +8,10 @@ class_name ItemPickup
 		if not item: return
 		match value:
 			Global.Ability.POCKET_WATCH:
-				item.mesh = load("uid://cpxnqocqxcsyb")
+				item.mesh = preload("uid://cpxnqocqxcsyb")
 
 			Global.Ability.SCISSORS:
-				item.mesh = load("uid://bftytufqh0ov5")
+				item.mesh = preload("uid://bftytufqh0ov5")
 
 		ability = value
 

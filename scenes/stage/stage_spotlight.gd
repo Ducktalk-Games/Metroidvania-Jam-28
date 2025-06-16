@@ -22,7 +22,7 @@ func _ready() -> void:
 	alpha_spotlight(0.0)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	create_spotlight_cylinder()
 
 

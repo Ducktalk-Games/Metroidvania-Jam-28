@@ -56,9 +56,9 @@ func start_performance_lock() -> void:
 
 
 func spawn_item_popup(item: Ability) -> ItemPopup:
-	var item_popup := ITEM_POPUP.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE) as ItemPopup
+	var item_popup := ITEM_POPUP.instantiate() as ItemPopup
 	item_popup.ability = item
-	add_child(item_popup)
+	Global.stage.player_child_body.add_child(item_popup)
 	return item_popup
 
 

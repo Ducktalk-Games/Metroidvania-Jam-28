@@ -12,5 +12,5 @@ func play_triggered_dialogue() -> void:
 		triggered = true
 
 
-func _stage_body_entered(body: StageCharacter) -> void:
+func _stage_body_entered(_body: StageCharacter) -> void:
 	play_triggered_dialogue()

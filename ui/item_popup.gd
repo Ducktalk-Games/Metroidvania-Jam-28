@@ -56,6 +56,6 @@ func _on_dialogue_end(res: DialogueResource) -> void:
 		queue_free()
 
 
-func _on_gui_input(event: InputEvent) -> void:
+func _on_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("next_line"):
 			balloon.next_line()

@@ -17,14 +17,21 @@ var point_a: Node3D
 @export
 var point_b: Node3D
 
+var patrol_tween: Tween
+
 
 func _ready() -> void:
 
 	var point_a_pos := point_a.global_position
 	var point_b_pos := point_b.global_position
 
-	var patrol_tween: Tween = get_tree().create_tween().set_loops()
+	patrol_tween = get_tree().create_tween().set_loops()
 	patrol_tween.tween_property(patrol_agent, "global_position", point_b_pos, patrol_speed)
 	patrol_tween.tween_property(patrol_agent, "global_rotation", Vector3.UP * PI, end_of_path_delay).as_relative()
 	patrol_tween.tween_property(patrol_agent, "global_position", point_a_pos, patrol_speed)
 	patrol_tween.tween_property(patrol_agent, "global_rotation", Vector3.UP * PI, end_of_path_delay).as_relative()
+
+
+func _exit_tree() -> void:
+	patrol_tween.kill()
+	super._exit_tree()

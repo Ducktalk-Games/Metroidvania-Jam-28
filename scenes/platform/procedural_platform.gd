@@ -76,10 +76,11 @@ func update_string_positions(string: MeshInstance3D, column: int, row: int) -> v
 	string.position.z = string_offset + mesh_aabb.position.z + row * (mesh_aabb.size.z - string_offset * 2)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not platform_mesh: return
 	(platform_mesh.mesh as BoxMesh).size = (shape as BoxShape3D).size
 	update_all_strings()
+	if not Engine.is_editor_hint(): set_process(false)
 
 
 func update_all_strings() -> void:

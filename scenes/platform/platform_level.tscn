@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
 [ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/Background.tscn" id="12_7gmst"]
-[ext_resource type="Script" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
+[ext_resource type="Script" uid="uid://cswxly08gjpka" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
 [ext_resource type="PackedScene" uid="uid://d1g7i6cxsvw3f" path="res://assets/stage_props/SM_PlantProp_01.glb" id="13_ii7us"]
 [ext_resource type="PackedScene" uid="uid://cbbebxdauwgxl" path="res://assets/stage_props/SM_PlantProp_02.glb" id="14_mrteu"]
 [ext_resource type="PackedScene" uid="uid://b1h5lhyu0547u" path="res://assets/stage_props/SM_PlantProp_03.glb" id="15_k3lh4"]
@@ -1531,10 +1531,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1741, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14171, 0, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("21_klwvr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.9, 39.9, 0)
-
-[node name="Enemy3" parent="." instance=ExtResource("21_klwvr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4, 0.745201, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 237.474, 40.0187, 0)
 
 [node name="Enemy2" parent="." instance=ExtResource("21_klwvr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194, 37.4599, 0)

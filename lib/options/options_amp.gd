@@ -123,7 +123,7 @@ func _ready() -> void:
 	AudioServer.set_bus_volume_linear(master_bus_i, master_volume)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !has_input_enabled: return
 
 	AudioServer.set_bus_volume_linear(music_bus_i, music_volume)
@@ -143,7 +143,7 @@ func _process(delta: float) -> void:
 			sfx_volume = remap(current_mouse_y_position, point_a_ss_loc.x, point_b_ss_loc.x, 0.0, 1.0)
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if !has_input_enabled: return
 	var is_locked_ui: bool = false
 

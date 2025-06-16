@@ -26,5 +26,5 @@ func _on_body_entered(body: Node3D) -> void:
 		_stage_body_entered(body)
 
 
-func _stage_body_entered(body: StageCharacter) -> void:
+func _stage_body_entered(_body: StageCharacter) -> void:
 	pass

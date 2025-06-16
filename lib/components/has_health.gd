@@ -21,10 +21,10 @@ var magnitude := 3
 
 var launch_direction: Vector3
 
-var char: Character
+var character: Character
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if can_be_launched and not waiting and not launch_direction.is_zero_approx():
 		if body is Character:
 			(other("CanMove") as CanMove).launched = true
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _ready() -> void:
-	char = get_object()
+	character = get_object()
 	launch_cooldown = Timer.new()
 	add_child(launch_cooldown)
 	launch_cooldown.wait_time = 0.5
@@ -54,7 +54,7 @@ func reset_health() -> void:
 
 
 func take_damage(value: float, source: Vector3) -> void:
-	if not char.is_player:
+	if not character.is_player:
 		health -= value
 
 		if health <= 0:

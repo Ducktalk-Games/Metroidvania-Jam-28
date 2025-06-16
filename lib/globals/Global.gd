@@ -128,6 +128,9 @@ func control_spotlight(who: Node3D, switch_on: bool = true, duration: float = 0.
 		Global.stage.narrator:
 			height_offset = 7.882
 
+		Global.stage.player_child_body:
+			height_offset = 11.2
+
 	stage.spotlight.global_position = who.global_position + Vector3.UP * height_offset
 
 	if switch_on:

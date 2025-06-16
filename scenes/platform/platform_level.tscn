@@ -1493,12 +1493,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.3, 33.502, -3.81626)
 occluder = SubResource("BoxOccluder3D_xjm0t")
 
 [node name="Enemy" parent="." instance=ExtResource("20_xmb3h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.873, 36.7134, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.921, 37.4507, 0)
 
 [node name="PatrolA" parent="Enemy" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46394, 0, 0)
 
 [node name="PatrolB" parent="Enemy" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64928, 0, 0)
+
+[node name="Enemy3" parent="." instance=ExtResource("20_xmb3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.626, 39.7439, 0)
+
+[node name="PatrolA" parent="Enemy3" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46394, 0, 0)
+
+[node name="PatrolB" parent="Enemy3" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64928, 0, 0)
 
 [node name="Enemy4" parent="." instance=ExtResource("21_klwvr")]
@@ -1567,6 +1576,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39412, 0, 0)
 [connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]
 
 [editable path="Enemy"]
+[editable path="Enemy3"]
 [editable path="Enemy4"]
 [editable path="Enemy5"]
 [editable path="Enemy6"]

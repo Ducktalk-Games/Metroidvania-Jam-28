@@ -52,6 +52,7 @@ CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
 
 [debug]
 
+settings/stdout/print_gpu_profile=true
 gdscript/warnings/untyped_declaration=2
 
 [display]

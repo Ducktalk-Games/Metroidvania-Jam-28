@@ -4,6 +4,6 @@ do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: Even though the mouse was very happy with the lions
 Narrator: they one day hoped to find a family of their own
 Narrator: Sadly, no one wanted them
-do Global.control_spotlight(Global.stage.narrator, false)
-do Global.dim_lights(false)
+do Global.control_spotlight_async(Global.stage.narrator, false)
+do Global.dim_lights_async(false)
 => END

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuo8f4vo5lhi4"]
+
+[ext_resource type="PackedScene" uid="uid://6qsh8h58car6" path="res://lib/enemy/enemy.tscn" id="1_mrrjc"]
+[ext_resource type="PackedScene" uid="uid://cp3q2nqlb81ir" path="res://assets/enemy/SM_Wolf.glb" id="2_i2o48"]
+
+[node name="Enemy" instance=ExtResource("1_mrrjc")]
+
+[node name="SM_Wolf" parent="." index="5" instance=ExtResource("2_i2o48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.723551, 0)

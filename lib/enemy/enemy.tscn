@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6qsh8h58car6"]
+[gd_scene load_steps=9 format=3 uid="uid://6qsh8h58car6"]
 
 [ext_resource type="Script" uid="uid://c7ad4jx6mnj3q" path="res://addons/composition/component_owner.gd" id="1_67x4v"]
 [ext_resource type="Script" uid="uid://cpqk8hugr3cve" path="res://lib/character/character.gd" id="1_wxr5b"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://ccxoslo2ho4vg" path="res://lib/components/can_attack.gd" id="3_8pyxn"]
 [ext_resource type="Script" uid="uid://c3mx820648kp5" path="res://lib/components/has_health.gd" id="4_rj5y4"]
 [ext_resource type="Script" uid="uid://4l8gqw0idygk" path="res://lib/components/enemy_patrol.gd" id="5_t2rmx"]
-[ext_resource type="PackedScene" uid="uid://cp3q2nqlb81ir" path="res://assets/enemy/SM_Wolf.glb" id="7_8pyxn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0e4a0"]
 radius = 0.548604
@@ -59,9 +58,6 @@ script = ExtResource("5_t2rmx")
 patrol_speed = 2.0
 point_a = NodePath("../../PatrolA")
 point_b = NodePath("../../PatrolB")
-
-[node name="SM_Wolf" parent="." instance=ExtResource("7_8pyxn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 

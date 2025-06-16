@@ -36,7 +36,7 @@ source = 5
 [resource]
 resource_local_to_scene = true
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, world_vertex_coords;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D WoodTexture : filter_nearest, repeat_enable;
 uniform sampler2D Drawing : filter_nearest;
@@ -121,7 +121,6 @@ void fragment() {
 
 }
 "
-flags/world_vertex_coords = true
 preview_params/triplanar_scale = "Vector3(1, 1, 1)"
 preview_params/DrawingOpacity = "0.0"
 nodes/fragment/0/position = Vector2(1080, 140)

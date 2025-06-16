@@ -1,9 +1,10 @@
 ~ start
 # Player finds lion billboards?
+do Global.start_house_level()
 do Global.dim_lights(true)
-do Global.control_spotlight(Global.stage.narrator, true)
+do Global.control_spotlight(Global.stage.narrator, true, 0.25)
 Narrator: But luckily, one day they were found by two kind and generous lions
 Narrator: They took the little mouse in and raised them in their own home
-do Global.control_spotlight(Global.stage.narrator, false)
-do Global.dim_lights(false)
+do Global.control_spotlight_async(Global.stage.narrator, false)
+do Global.dim_lights_async(false)
 => END

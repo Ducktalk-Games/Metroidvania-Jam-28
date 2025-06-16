@@ -38,12 +38,16 @@ func create_spotlight_cylinder() -> void:
 	spotlight_mesh.mesh = spotlight_cylinder
 
 
-func turn_on_spotlight() -> void:
-	get_tree().create_tween().tween_method(alpha_spotlight, 0.0, 1.0, 0.2)
+func turn_on_spotlight(duration: float = 0.2) -> SceneTreeTimer:
+	get_tree().create_tween().tween_method(alpha_spotlight, 0.0, 1.0, duration)
+	var timer: SceneTreeTimer = get_tree().create_timer(duration)
+	return timer
 
 
-func turn_off_spotlight() -> void:
-	get_tree().create_tween().tween_method(alpha_spotlight, 1.0, 0.0, 0.5)
+func turn_off_spotlight(duration: float = 0.5) -> SceneTreeTimer:
+	get_tree().create_tween().tween_method(alpha_spotlight, 1.0, 0.0, duration)
+	var timer: SceneTreeTimer = get_tree().create_timer(duration)
+	return timer
 
 
 func alpha_spotlight(alpha: float) -> void:

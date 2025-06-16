@@ -28,8 +28,8 @@ var can_pause_game: bool = true
 var patron_animation_tree: PatronAnimationTree
 var are_lights_dimmed: bool = false
 var is_paused_whilst_lights_dimmed: bool = false
-var last_dimmed: Node3D = null
-var who_is_dimmed: Node3D = null
+var last_person_on_spotlight: Node3D = null
+var who_is_on_spotlight: Node3D = null
 var was_input_disabled_before_pause: bool = false
 var is_input_disabled: bool = true
 var lock_dialogue_input: bool = false
@@ -106,9 +106,19 @@ func set_patron_animation_tree(animation_tree: PatronAnimationTree) -> void:
 	patron_animation_tree = animation_tree
 
 
-func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
-	who_is_dimmed = who
+func dim_lights(dim: bool = true) -> void:
 	are_lights_dimmed = dim
+
+	if dim:
+		stage.stage_body.curtain_anim_player.play("dim_lights")
+	else:
+		stage.stage_body.curtain_anim_player.play("show_lights")
+
+	await stage.stage_body.curtain_anim_player.animation_finished
+
+
+func control_spotlight(who: Node3D, switch_on: bool = true, duration: float = 0.2) -> void:
+	who_is_on_spotlight = who
 	var height_offset: float = 0.0
 
 	match who:
@@ -118,13 +128,12 @@ func dim_lights_and_spotlight(who: Node3D, dim: bool = true) -> void:
 		Global.stage.narrator:
 			height_offset = 7.882
 
-	if dim:
-		stage.spotlight.global_position = who.global_position + Vector3.UP * height_offset
-		stage.stage_body.curtain_anim_player.play("dim_lights_spotlight_on")
-	else:
-		stage.stage_body.curtain_anim_player.play("show_lights_spotlight_off")
+	stage.spotlight.global_position = who.global_position + Vector3.UP * height_offset
 
-	await stage.stage_body.curtain_anim_player.animation_finished
+	if switch_on:
+		await stage.spotlight.turn_on_spotlight(duration).timeout
+	else:
+		await stage.spotlight.turn_off_spotlight(duration).timeout
 
 
 func disable_options_menu() -> void:
@@ -140,7 +149,7 @@ func reset_to_title() -> void:
 	is_paused_whilst_lights_dimmed = false
 	was_input_disabled_before_pause = false
 	was_input_disabled_before_pause = false
-	last_dimmed = null
-	who_is_dimmed = null
+	last_person_on_spotlight = null
+	who_is_on_spotlight = null
 	lock_dialogue_input = false
 	get_tree().change_scene_to_file("res://scenes/stage/stage.tscn")

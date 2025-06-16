@@ -1,5 +1,9 @@
 ~ start
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: The lions made sure the mouse always had food and shelter
 Narrator: They did their best to keep them safe
 Narrator: even when the mouse misbehaved and acted more like a little rat
+do Global.control_spotlight(Global.stage.narrator, false)
+do Global.dim_lights(false)
 => END

@@ -1,6 +1,11 @@
 ~ start
 # Child sees first enemy
+do Global.dim_lights(true)
+do Global.control_spotlight(Global.stage.narrator, true)
 Narrator: The mouse didn’t know how to look after itself
 Narrator: Because they were so small, all the other animals wanted to catch and eat them
+do Global.control_spotlight(Global.stage.player_child_body, true)
 Player: I wish they'd leave me alone, I didn't do anything to them
+do Global.control_spotlight(Global.stage.player_child_body, true)
+do Global.dim_lights(false)
 => END

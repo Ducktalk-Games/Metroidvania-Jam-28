@@ -8,19 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://b8n7vcmsnmuwi" path="res://lib/scenes/checkpoint.tscn" id="7_hwg6q"]
 [ext_resource type="PackedScene" uid="uid://gy8lxtr86ejd" path="res://lib/box_triggers/forest_city_trigger.tscn" id="7_unilm"]
 [ext_resource type="PackedScene" uid="uid://d34pftv6nmjrl" path="res://assets/stage_props/SM_Tree1.glb" id="8_xjm0t"]
-[ext_resource type="Script" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
+[ext_resource type="Script" uid="uid://bmeid2lkyat51" path="res://lib/box_triggers/city_forest_trigger.gd" id="9_iriyj"]
 [ext_resource type="PackedScene" uid="uid://d0ueki0jlp5fe" path="res://scenes/platform/falling_platform.tscn" id="9_unilm"]
 [ext_resource type="PackedScene" uid="uid://bx88omfg6g6f7" path="res://assets/stage_props/SM_BushProp.glb" id="11_iriyj"]
 [ext_resource type="PackedScene" uid="uid://du18httk1inwt" path="res://assets/backgrounds/Background.tscn" id="12_7gmst"]
-[ext_resource type="Script" uid="uid://cswxly08gjpka" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
-[ext_resource type="PackedScene" uid="uid://cp3q2nqlb81ir" path="res://assets/enemy/SM_Wolf.glb" id="12_mrteu"]
+[ext_resource type="Script" path="res://scenes/platform/kill_area.gd" id="12_j3s4p"]
 [ext_resource type="PackedScene" uid="uid://d1g7i6cxsvw3f" path="res://assets/stage_props/SM_PlantProp_01.glb" id="13_ii7us"]
 [ext_resource type="PackedScene" uid="uid://cbbebxdauwgxl" path="res://assets/stage_props/SM_PlantProp_02.glb" id="14_mrteu"]
 [ext_resource type="PackedScene" uid="uid://b1h5lhyu0547u" path="res://assets/stage_props/SM_PlantProp_03.glb" id="15_k3lh4"]
 [ext_resource type="PackedScene" uid="uid://kd2q84rw6pel" path="res://assets/stage_props/SM_PlantProp_04.glb" id="16_xjm0t"]
+[ext_resource type="PackedScene" uid="uid://6qsh8h58car6" path="res://lib/enemy/enemy.tscn" id="17_mrteu"]
 [ext_resource type="PackedScene" uid="uid://c5taksg5wm54h" path="res://assets/stage_props/SM_Vine1.glb" id="18_k3lh4"]
 [ext_resource type="PackedScene" uid="uid://cnqvjetj1suor" path="res://assets/stage_props/SM_Crane.glb" id="20_uk108"]
-[ext_resource type="PackedScene" uid="uid://6qsh8h58car6" path="res://lib/enemy/enemy.tscn" id="17_mrteu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yb01c"]
 size = Vector3(31.2072, 0.072876, 1.81445)
@@ -745,9 +744,6 @@ visible = false
 
 [node name="ItemPickup" parent="." instance=ExtResource("5_1dhn5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 153.593, 30.585, -0.0847793)
-
-[node name="ItemPickup3" parent="." instance=ExtResource("5_1dhn5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.493, -0.915001, -0.0847793)
 
 [node name="ItemPickup2" parent="." instance=ExtResource("5_1dhn5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 262.316, 53.405, -0.084785)
@@ -1493,7 +1489,7 @@ transform = Transform3D(0.912129, 0, 0, 0, 0.912129, 0, 0, 0, 1, 60.063, 3.73571
 transform = Transform3D(4.63815, 0, 0, 0, 4.63815, 0, 0, 0, 10.2467, 223.764, 42.3954, 0.909583)
 
 [node name="Enemy" parent="." instance=ExtResource("17_mrteu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1889, 0.607465, 0.579688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6889, 0.607465, 0.579688)
 
 [node name="CollisionShape3D" parent="Enemy" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.233124, 0)
@@ -1507,6 +1503,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17411, 0, 0)
 [node name="PatrolB" parent="Enemy" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44172, 0, 0)
 
+[node name="Enemy2" parent="." instance=ExtResource("17_mrteu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6889, 1.30747, 0.579688)
+
+[node name="CollisionShape3D" parent="Enemy2" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.233124, 0)
+
+[node name="CollisionShape3D" parent="Enemy2/Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, -0.6)
+
+[node name="PatrolA" parent="Enemy2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17411, 0, 0)
+
+[node name="PatrolB" parent="Enemy2" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44172, 0, 0)
+
+[node name="Enemy3" parent="." instance=ExtResource("17_mrteu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.189, 0.707465, 0.579688)
+
+[node name="CollisionShape3D" parent="Enemy3" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.233124, 0)
+
+[node name="CollisionShape3D" parent="Enemy3/Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, -0.6)
+
+[node name="PatrolA" parent="Enemy3" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17411, 0, 0)
+
+[node name="PatrolB" parent="Enemy3" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44172, 0, 0)
+
+[node name="Enemy4" parent="." instance=ExtResource("17_mrteu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.289, 13.4075, 0.579688)
+
+[node name="CollisionShape3D" parent="Enemy4" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.233124, 0)
+
+[node name="CollisionShape3D" parent="Enemy4/Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, -0.6)
+
+[node name="PatrolA" parent="Enemy4" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8741, 0, 0)
+
+[node name="PatrolB" parent="Enemy4" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24173, 0, 0)
+
+[node name="Enemy5" parent="." instance=ExtResource("17_mrteu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.289, 22.6075, 0.579688)
+
+[node name="CollisionShape3D" parent="Enemy5" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.233124, 0)
+
+[node name="CollisionShape3D" parent="Enemy5/Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, -0.6)
+
+[node name="PatrolA" parent="Enemy5" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8741, 0, 0)
+
+[node name="PatrolB" parent="Enemy5" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24173, 0, 0)
+
 [connection signal="body_shape_entered" from="KillArea" to="KillArea" method="_on_body_shape_entered"]
 
 [editable path="Enemy"]
+[editable path="Enemy2"]
+[editable path="Enemy3"]
+[editable path="Enemy4"]
+[editable path="Enemy5"]

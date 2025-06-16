@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://db38syn1ybps3"]
+[gd_scene load_steps=7 format=3 uid="uid://db38syn1ybps3"]
 
 [ext_resource type="Script" uid="uid://cuunsuywccd6m" path="res://scenes/performance_level/performance_level.gd" id="1_cry6s"]
 [ext_resource type="PackedScene" uid="uid://bj422f2eg6i7b" path="res://scenes/Scenes/end_credits.tscn" id="2_tmht1"]
 [ext_resource type="PackedScene" uid="uid://pq83kor03e6a" path="res://scenes/house_level/stage_scene.tscn" id="3_wijj7"]
+[ext_resource type="PackedScene" uid="uid://btlmult8b4avo" path="res://assets/house_rooms/SM_Black_background.glb" id="4_dokyc"]
+[ext_resource type="PackedScene" uid="uid://8oqqrr5vh6h" path="res://assets/wall/SM_Wall_A.glb" id="5_0jn06"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cry6s"]
 size = Vector3(7.6, 0.3, 3.90063)
@@ -19,3 +21,9 @@ shape = SubResource("BoxShape3D_cry6s")
 
 [node name="Stage_Scene" parent="." instance=ExtResource("3_wijj7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28328, -1.53899, -5.40238)
+
+[node name="SM_Black_background" parent="." instance=ExtResource("4_dokyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78128, 3.98912, -7.59931)
+
+[node name="SM_Wall_A2" parent="." instance=ExtResource("5_0jn06")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 8.26297, 2.86369, -6.22357)
